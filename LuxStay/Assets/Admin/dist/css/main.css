@@ -1,0 +1,99 @@
+/* --------- positons------------ */
+.middle{ 
+  vertical-align: middle !important;
+  text-align: center;
+}
+.center{
+  text-align: center
+}
+.end{
+  text-align:end
+}
+.t-150{
+  top: 150px;
+}
+.l-600{
+  left:  600px;
+}
+.overflow-hidden{
+  overflow: hidden;
+}
+/* ---------- size ------------ */
+.w-30{
+  width: 30px }
+
+.w-150{
+  width: 150px;
+}
+.w-300{
+    width: 300px;
+}
+.w-350{
+  width: 350px;
+}
+.h-600{
+  height: 600px;
+}
+
+
+
+/* -----------margin/ padding------------- */
+.ml-25{
+  margin-left: 25px;
+}
+.mt-10{
+  margin-top: 10px;
+}
+/* -----------background------------- */
+.bg-white{
+  background-color: #fff;
+}
+
+/* ---------------- font sizre --------------- */
+.fs-25{
+  font-size:25px;
+}
+
+
+/* -------------- remove arrows input --------- */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.bg-lightgray{
+  background-color: #9c9c9c;
+}
+.sub-menu{
+  position: relative;
+}
+.sub-menu::before{
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: 1;
+  left: 23px;
+  top: 0;
+  bottom: 0;
+  border-left: 1px solid #7A7A7A;
+}
+.sub-menu li {
+  position: relative;
+}
+.sub-menu li::before{
+  content: "";
+  display: block;
+  position: absolute;
+  width: 8px;
+  left: 0px;
+  top: 20px;
+  border-top: 1px solid #7A7A7A;
+  z-index: 1;
+}
+.judge-table thead{
+  text-align:center;
+}
+.judge-table thead tr{
+  text-align:center;
+}

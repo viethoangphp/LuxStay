@@ -1,0 +1,26 @@
+.sub-menu{
+    position: relative;
+}
+.sub-menu::before{
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: 1;
+    left: 23px;
+    top: 0;
+    bottom: 0;
+    border-left: 1px solid #7A7A7A;
+}
+.sub-menu li {
+    position: relative;
+}
+.sub-menu li::before{
+    content: "";
+    display: block;
+    position: absolute;
+    width: 8px;
+    left: 0px;
+    top: 20px;
+    border-top: 1px solid #7A7A7A;
+    z-index: 1;
+}

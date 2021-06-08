@@ -57,6 +57,7 @@
     <Compile Include="Entity\Advice.cs" />
     <Compile Include="Entity\Bill.cs" />
     <Compile Include="Entity\CODE.cs" />
+    <Compile Include="Entity\Config.cs" />
     <Compile Include="Entity\Customer.cs" />
     <Compile Include="Entity\DBContext.cs" />
     <Compile Include="Entity\Image.cs" />

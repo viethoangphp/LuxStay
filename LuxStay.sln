@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuxStay", "LuxStay\LuxStay.csproj", "{F76AA341-07E4-4575-BBAC-472BAE947749}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NiceHouse", "LuxStay\NiceHouse.csproj", "{F76AA341-07E4-4575-BBAC-472BAE947749}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{4D667C36-11F1-4489-BA54-E096451E59E4}"
 EndProject

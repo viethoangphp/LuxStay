@@ -5,7 +5,6 @@ C:\Users\VIET HOANG\OneDrive\Máy tính\LuxStay\Models\bin\Debug\EntityFramework
 C:\Users\VIET HOANG\OneDrive\Máy tính\LuxStay\Models\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\VIET HOANG\OneDrive\Máy tính\LuxStay\Models\bin\Debug\EntityFramework.xml
 C:\Users\VIET HOANG\OneDrive\Máy tính\LuxStay\Models\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\VIET HOANG\OneDrive\Máy tính\LuxStay\Models\obj\Debug\Models.csprojAssemblyReference.cache
 C:\Users\VIET HOANG\OneDrive\Máy tính\LuxStay\Models\obj\Debug\Models.csproj.CoreCompileInputs.cache
 C:\Users\VIET HOANG\OneDrive\Máy tính\LuxStay\Models\obj\Debug\Models.csproj.CopyComplete
 C:\Users\VIET HOANG\OneDrive\Máy tính\LuxStay\Models\obj\Debug\Models.dll
