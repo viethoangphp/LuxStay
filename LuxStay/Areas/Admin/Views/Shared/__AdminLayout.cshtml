@@ -30,6 +30,9 @@
     <link rel="stylesheet" href="~/Assets/Admin/plugins/summernote/summernote-bs4.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="~/Assets/Admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="~/Assets/Admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <!-- my style css -->
     <link href="~/Assets/Admin/plugins/toastr/toastr.min.css" rel="stylesheet">
     <link rel="stylesheet" href="~/Assets/Admin/dist/css/left-menu.css">
@@ -73,7 +76,7 @@
                     <a class="nav-link" data-toggle="dropdown" href="#">
                         <!-- <button type="button" class="btn btn-block btn-secondary">Logout</button> -->
                         <!-- <i class="far fa-bell"></i>
-                    <span class="badge badge-warning navbar-badge">15</span> -->
+                        <span class="badge badge-warning navbar-badge">15</span> -->
                         <i class=" fas fa-user"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
@@ -122,7 +125,7 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
-                       with font-awesome or any other icon font library -->
+                        with font-awesome or any other icon font library -->
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="fa fa-home" aria-hidden="true"></i>
@@ -246,8 +249,8 @@
                             <ul class="nav nav-treeview sub-menu">
 
                                 <li class="nav-item ml-25">
-                                    <a href="#" class="nav-link">
-                                        <p>Danh Sách Ưu Đãi</p>
+                                    <a href="/Admin/Customer" class="nav-link">
+                                        <p>Danh Sách Khách Hàng</p>
                                     </a>
                                 </li>
 
@@ -336,9 +339,9 @@
     <!-- ./wrapper -->
     <!-- jQuery -->
     <script src="~/Assets/Admin/plugins/jquery/jquery.min.js"></script>
-     @*jQuery UI 1.11.4*@ 
+    @*jQuery UI 1.11.4*@
     <script src="~/Assets/Admin/plugins/jquery-ui/jquery-ui.min.js"></script>
-     @*Resolve conflict in jQuery UI tooltip with Bootstrap tooltip*@ 
+    @*Resolve conflict in jQuery UI tooltip with Bootstrap tooltip*@
     <script>
         $.widget.bridge('uibutton', $.ui.button)
     </script>
@@ -362,6 +365,11 @@
     <script src="~/Assets/Admin/plugins/summernote/summernote-bs4.min.js"></script>
     <!-- overlayScrollbars -->
     <script src="~/Assets/Admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <!-- DataTables -->
+    <script src="~/Assets/Admin/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Assets/Admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Assets/Admin/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/Assets/Admin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
     <!-- AdminLTE App -->
     <script src="~/Assets/Admin/dist/js/adminlte.js"></script>
     <script src="~/Assets/Admin/plugins/toastr/toastr.min.js"></script>
@@ -369,6 +377,24 @@
     <script src="~/Assets/Admin/dist/js/pages/dashboard.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="~/Assets/Admin/dist/js/demo.js"></script>
+    <!-- page script -->
+    <script>
+        $(function () {
+            $("#example1").DataTable({
+                "responsive": true,
+                "autoWidth": false,
+            });
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+        });
+    </script>
 </body>
 
 </html>
