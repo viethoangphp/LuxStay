@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Models.DAO;
+using Models.Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +13,9 @@ namespace LuxStay.Areas.Admin.Controllers
         // GET: Admin/Customer
         public ActionResult Index()
         {
-            return View();
+            CustomerDAO dao = new CustomerDAO();
+            List<Customer> list = dao.getListAll();
+            return View(list);
         }
     }
 }
