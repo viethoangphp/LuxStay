@@ -1,0 +1,163 @@
+﻿@{
+    ViewBag.Title = "Thông Tin Tài Khoản";
+    Layout = "~/Areas/Admin/Views/Shared/__AdminLayout.cshtml";
+}
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Thông tin tài khoản</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="../../index.html">Trang chủ</a></li>
+                    <li class="breadcrumb-item active">Thông tin tài khoản</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <!-- Profile Image -->
+                <div class="card card-primary card-outline">
+                    <div class="card-body box-profile">
+                        <div class="text-center">
+                            <img class="profile-user-img img-fluid img-circle"
+                                 src="~/Assets/Admin/dist/img/user1-128x128.jpg"
+                                 alt="User profile picture">
+                        </div>
+                        <h3 class="profile-username text-center">@ViewBag.user.Fullname</h3>
+
+                        <ul class="list-group list-group-unbordered mb-3">
+                            <li class="list-group-item">
+                                <b>Quyền :</b> <a class="float-right">Quản Trị Viên</a>
+                            </li>
+                            <li class="list-group-item">
+                                <b>Chức Vụ:</b> <a class="float-right">Quản Trị Viên</a>
+                            </li>
+                           
+                        </ul>
+
+                        <!-- <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a> -->
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+
+            </div>
+            <!-- /.col -->
+            <div class="col-md-9">
+                <div class="card">
+                    <div class="card-header p-2">
+                        <ul class="nav nav-pills">
+                            <li class="nav-item"><a class="nav-link active" href="#user-information" data-toggle="tab">Tài khoản</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#user-notification" data-toggle="tab">Thông báo</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#user-changePassword" data-toggle="tab">Đổi mật khẩu</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#user-avatar" data-toggle="tab">Cập nhật ảnh đại diện</a></li>
+                        </ul>
+                    </div><!-- /.card-header -->
+                    <div class="card-body">
+                        <div class="tab-content">
+                            <div class="active tab-pane" id="user-information">
+                                <form class="form-horizontal" role="form" id="information-user">
+                                    <div class="form-group row">
+                                        <label for="inputUserName" class="col-sm-2 col-form-label">Email</label>
+                                        <div class="col-sm-10">
+                                            <input type="email" class="form-control" id="inputUserName" placeholder="@ViewBag.user.Email" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputPhoneNumber" class="col-sm-2 col-form-label">Họ Và Tên</label>
+                                        <div class="col-sm-10">
+                                            <div class="input-group mb-3">
+                                                <input type="text" class="form-control" value="@ViewBag.user.Fullname" required id="fullname" name="fullname">
+                                                <div class="invalid-feedback"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputPhoneNumber" class="col-sm-2 col-form-label">Số điện thoại</label>
+                                        <div class="col-sm-10">
+                                            <div class="input-group mb-3">
+                                                <span class="input-group-text" id="inputPhoneNumber">+84</span>
+                                                <input type="text" class="form-control" value="@ViewBag.user.Phone" required id="phone" name="phone">
+                                                <div class="invalid-feedback"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="offset-sm-2 col-sm-10">
+                                            <button class="btn btn-success" id="btn-save">Lưu thông tin</button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <!-- /.post -->
+                            </div>
+                            <!-- /.tab-pane -->
+                            
+                            <!-- /.tab-pane -->
+                            <div class="tab-pane" id="user-changePassword">
+                                <form class="form-horizontal">
+                                    <div class="form-group row">
+                                        <label for="inputOldPassword" class="col-sm-2 col-form-label">Mật khẩu cũ</label>
+                                        <div class="col-sm-10">
+                                            <input type="password" class="form-control" id="inputOldPassword" placeholder="Mật khẩu">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputNewPassword" class="col-sm-2 col-form-label">Mật khẩu mới</label>
+                                        <div class="col-sm-10">
+                                            <input type="password" class="form-control" id="inputNewPassword" placeholder="Mật khẩu mới">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputPreNewPassword" class="col-sm-2 col-form-label">Nhập lại mật khẩu</label>
+                                        <div class="col-sm-10">
+                                            <input type="password" class="form-control" id="inputPreNewPassword" placeholder="Nhập lại mật khẩu mới">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="offset-sm-2 col-sm-10">
+                                            <button type="submit" class="btn btn-success">Thay đổi mật khẩu</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- /.tab-pane -->
+                            <div class="tab-pane" id="user-avatar">
+                                <form class="form-horizontal">
+                                    <!-- <div class="form-group row">
+                                          <div class="text-center w-100">
+                                              <img src="../../dist/img/user1-128x128.jpg" alt="">
+                                          </div>
+                                    </div> -->
+                                    <div class="form-group row">
+                                        <div class="text-center w-100">
+                                            <input type="file" id="file" style="display:none;" />
+                                            <button id="" name="" class="btn btn-success" value="" onclick="thisFileUpload()">Tải ảnh lên</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- /.tab-pane -->
+                        </div>
+                        <!-- /.tab-content -->
+                    </div><!-- /.card-body -->
+                </div>
+                <!-- /.nav-tabs-custom -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div><!-- /.container-fluid -->
+</section>
+<!-- /.content -->
+@section js{
+    <script src="~/Assets/Admin/dist/js/ajax/profile.js"></script>    
+}

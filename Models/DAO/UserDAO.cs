@@ -19,6 +19,37 @@ namespace Models.DAO
             db.SaveChanges();
             return user.UserID;
         }
+        public User getUserById(int id)
+        {
+            User user = db.Users.Where(m => m.UserID == id).FirstOrDefault();
+            return user;
+        }
+        public int changeInformation(User user)
+        {
+            int id = user.UserID;
+            var result = db.Users.Where(m => m.UserID == id).FirstOrDefault();
+            if(result != null)
+            {
+                result.Fullname = user.Fullname;
+                result.Password = user.Password;
+                result.Phone = user.Phone;
+                return 1;
+            }
+            return 0;
+        }
+        public List<User> getListUser()
+        {
+            return db.Users.ToList();
+        }
+        public User Login(string email , string password)
+        {
+            var user = db.Users.Where(m => m.Email == email && m.Password == password).FirstOrDefault();
+            if(user != null)
+            {
+                return user;
+            }
+            return null;
+        }
 
     }
 }

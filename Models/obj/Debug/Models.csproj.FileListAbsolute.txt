@@ -9,3 +9,4 @@ C:\Users\VIET HOANG\OneDrive\Máy tính\LuxStay\Models\obj\Debug\Models.csproj.C
 C:\Users\VIET HOANG\OneDrive\Máy tính\LuxStay\Models\obj\Debug\Models.csproj.CopyComplete
 C:\Users\VIET HOANG\OneDrive\Máy tính\LuxStay\Models\obj\Debug\Models.dll
 C:\Users\VIET HOANG\OneDrive\Máy tính\LuxStay\Models\obj\Debug\Models.pdb
+C:\Users\VIET HOANG\OneDrive\Máy tính\LuxStay\Models\obj\Debug\Models.csprojAssemblyReference.cache

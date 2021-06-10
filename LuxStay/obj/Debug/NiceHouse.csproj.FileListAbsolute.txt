@@ -82,3 +82,5 @@ C:\Users\VIET HOANG\OneDrive\Máy tính\LuxStay\LuxStay\obj\Debug\NiceHouse.cspr
 C:\Users\VIET HOANG\OneDrive\Máy tính\LuxStay\LuxStay\obj\Debug\NiceHouse.csproj.CopyComplete
 C:\Users\VIET HOANG\OneDrive\Máy tính\LuxStay\LuxStay\obj\Debug\LuxStay.dll
 C:\Users\VIET HOANG\OneDrive\Máy tính\LuxStay\LuxStay\obj\Debug\LuxStay.pdb
+C:\Users\VIET HOANG\OneDrive\Máy tính\LuxStay\LuxStay\bin\EntityFramework.SqlServer.dll
+C:\Users\VIET HOANG\OneDrive\Máy tính\LuxStay\LuxStay\bin\EntityFramework.SqlServer.xml

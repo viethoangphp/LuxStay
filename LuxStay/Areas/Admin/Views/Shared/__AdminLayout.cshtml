@@ -78,17 +78,12 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                         <div class="dropdown-divider"></div>
-                        <a href="pages/examples/register.html" class="dropdown-item">
+                        <a href="/Admin/Profile" class="dropdown-item">
                             Thông tin tài khoản
                             <i class="float-right fas fa-info-circle mt-1"></i>
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a href="pages/examples/recover-password.html" class="dropdown-item">
-                            Đổi mật khẩu
-                            <i class="float-right fas fa-exchange-alt"></i>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="pages/examples/login.html" class="dropdown-item">
+                        <a href="/Admin/Login/Logout" class="dropdown-item">
                             Đăng xuất
                             <i class="float-right fas fa-sign-out-alt"></i>
                         </a>
@@ -102,7 +97,7 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="index.html" class="brand-link">
-                <img src="~/Assets/Admin/dist/img/logo-hutech.png" alt="" class="brand-image img-circle elevation-3 bg-white">
+                <img src="~/Assets/Admin/dist/img/logo.jpg" alt="" class="brand-image img-circle elevation-3 bg-white">
                 <span class="brand-text font-weight-light">Nice House</span>
             </a>
 
@@ -114,7 +109,13 @@
                         <img src="~/Assets/Admin/dist/img/user1-128x128.jpg" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">Trần Việt Hoàng</a>
+                        @using Models.DAO
+                        @{ 
+                            var dao = new UserDAO();
+                            int id = (int)Session["USER_ID"];
+                            var user = dao.getUserById(id);
+                        }
+                        <a href="#" class="d-block">@user.Fullname</a>
                     </div>
                 </div>
 
@@ -336,9 +337,9 @@
     <!-- ./wrapper -->
     <!-- jQuery -->
     <script src="~/Assets/Admin/plugins/jquery/jquery.min.js"></script>
-     @*jQuery UI 1.11.4*@ 
+
     <script src="~/Assets/Admin/plugins/jquery-ui/jquery-ui.min.js"></script>
-     @*Resolve conflict in jQuery UI tooltip with Bootstrap tooltip*@ 
+
     <script>
         $.widget.bridge('uibutton', $.ui.button)
     </script>
@@ -352,7 +353,7 @@
     <script src="~/Assets/Admin/plugins/jqvmap/jquery.vmap.min.js"></script>
     <script src="~/Assets/Admin/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
     <!-- jQuery Knob Chart -->
-    <script src="plugins/jquery-knob/jquery.knob.min.js"></script>
+    @*<script src="plugins/jquery-knob/jquery.knob.min.js"></script>*@
     <!-- daterangepicker -->
     <script src="~/Assets/Admin/plugins/moment/moment.min.js"></script>
     <script src="~/Assets/Admin/plugins/daterangepicker/daterangepicker.js"></script>
@@ -364,11 +365,13 @@
     <script src="~/Assets/Admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
     <!-- AdminLTE App -->
     <script src="~/Assets/Admin/dist/js/adminlte.js"></script>
+    <script src="~/Assets/Admin/Login/js/validator.min.js"></script>
     <script src="~/Assets/Admin/plugins/toastr/toastr.min.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="~/Assets/Admin/dist/js/pages/dashboard.js"></script>
+    @*<script src="~/Assets/Admin/dist/js/pages/dashboard.js"></script>*@
     <!-- AdminLTE for demo purposes -->
     <script src="~/Assets/Admin/dist/js/demo.js"></script>
+    @RenderSection("js",false)
 </body>
 
 </html>
