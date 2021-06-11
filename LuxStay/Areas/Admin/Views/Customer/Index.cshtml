@@ -32,7 +32,7 @@
                 </tr>
             </thead>
             <tbody>
-                @{ int i = 1}
+                @{ int i = 1;}
                 @foreach (var item in Model)
                 {
                     <tr>
@@ -41,7 +41,14 @@
                         <td>@item.Address</td>
                         <td>@item.Email</td>
                         <td>@item.Phone</td>
-                        <td>@if (item.Gender == 1) { "Nam" } else { "Nữ"}</td>
+                        @if (item.Gender == 1) 
+                        { 
+                            @:<td>Nam</td>
+                        } 
+                        else 
+                        { 
+                            @:<td>Nữ</td>
+                        }
                         <td style="text-align: center;">
                             <button class="btn btn-success">
                                 <i class="fas fa-eye"></i>
@@ -54,6 +61,7 @@
                             </button>
                         </td>
                     </tr>
+                    i++;
                 }
             </tbody>
         </table>

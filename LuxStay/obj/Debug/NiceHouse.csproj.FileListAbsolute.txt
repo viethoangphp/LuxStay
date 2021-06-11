@@ -166,3 +166,5 @@ C:\Users\tungu\Source\Repos\viethoangphp\LuxStay\LuxStay\obj\Debug\NiceHouse.csp
 C:\Users\tungu\Source\Repos\viethoangphp\LuxStay\LuxStay\obj\Debug\NiceHouse.csproj.CopyComplete
 C:\Users\tungu\Source\Repos\viethoangphp\LuxStay\LuxStay\obj\Debug\LuxStay.dll
 C:\Users\tungu\Source\Repos\viethoangphp\LuxStay\LuxStay\obj\Debug\LuxStay.pdb
+C:\Users\tungu\Source\Repos\viethoangphp\LuxStay\LuxStay\bin\EntityFramework.SqlServer.dll
+C:\Users\tungu\Source\Repos\viethoangphp\LuxStay\LuxStay\bin\EntityFramework.SqlServer.xml
