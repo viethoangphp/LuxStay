@@ -106,15 +106,26 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="~/Assets/Admin/dist/img/user1-128x128.jpg" class="img-circle elevation-2" alt="User Image">
-                    </div>
-                    <div class="info">
                         @using Models.DAO
-                        @{ 
+                        @{
                             var dao = new UserDAO();
                             int id = (int)Session["USER_ID"];
                             var user = dao.getUserById(id);
                         }
+                        @if (user.Avatar == null)
+                        {
+                            <img class="profile-user-img img-fluid img-circle"
+                                 src="~/Assets/Admin/dist/img/user1-128x128.jpg"
+                                 alt="User profile picture">
+                        }
+                        else
+                        {
+                            <img class="profile-user-img img-fluid img-circle"
+                                 src="@user.Avatar"
+                                 alt="User profile picture">
+                        }
+                    </div>
+                    <div class="info">
                         <a href="#" class="d-block">@user.Fullname</a>
                     </div>
                 </div>

@@ -24,7 +24,7 @@ namespace Models.DAO
             User user = db.Users.Where(m => m.UserID == id).FirstOrDefault();
             return user;
         }
-        public int changeInformation(User user)
+        public void changeInformation(User user)
         {
             int id = user.UserID;
             var result = db.Users.Where(m => m.UserID == id).FirstOrDefault();
@@ -33,9 +33,9 @@ namespace Models.DAO
                 result.Fullname = user.Fullname;
                 result.Password = user.Password;
                 result.Phone = user.Phone;
-                return 1;
+                db.SaveChanges();
             }
-            return 0;
+          
         }
         public List<User> getListUser()
         {
@@ -50,6 +50,12 @@ namespace Models.DAO
             }
             return null;
         }
-
+        public void UploadAvatar(User user)
+        {
+            var user_id = user.UserID;
+            var result = db.Users.Where(m => m.UserID == user_id).FirstOrDefault();
+            result.Avatar = user.Avatar;
+            db.SaveChanges();
+        }
     }
 }
