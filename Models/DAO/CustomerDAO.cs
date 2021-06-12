@@ -18,5 +18,19 @@ namespace Models.DAO
             List<Customer> list = db.Customers.ToList();
             return list;
         }
+        public string addCustomer(Customer cus)
+        {
+            string errstring = "";
+            try
+            {
+                db.Customers.Add(cus);
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                errstring = ex.Message;
+            }
+            return errstring;
+        }
     }
 }

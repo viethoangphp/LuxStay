@@ -17,5 +17,15 @@ namespace LuxStay.Areas.Admin.Controllers
             List<Customer> list = dao.getListAll();
             return View(list);
         }
+        //Thông tin khách hàng
+
+        //Thêm khách hàng
+        [HttpPost]
+        public void Add(FormCollection form)
+        {
+
+            CustomerDAO dao = new CustomerDAO();
+            //dao.addCustomer(cus);
+        }
     }
 }
