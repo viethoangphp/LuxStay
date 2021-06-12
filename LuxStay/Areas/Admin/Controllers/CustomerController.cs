@@ -11,6 +11,7 @@ namespace LuxStay.Areas.Admin.Controllers
     public class CustomerController : Controller
     {
         // GET: Admin/Customer
+        protected CustomerDAO dao = new CustomerDAO();
         public ActionResult Index()
         {
             CustomerDAO dao = new CustomerDAO();
@@ -21,11 +22,30 @@ namespace LuxStay.Areas.Admin.Controllers
 
         //Thêm khách hàng
         [HttpPost]
-        public void Add(FormCollection form)
+        public ActionResult Add(FormCollection form)
         {
+            int gender = Convert.ToInt32(form.Get("inputGender"));
+            Customer cus = new Customer()
+            {
+                FullName = form.Get("inputFullName"),
+                Email = form.Get("inputEmail"),
+                Phone = form.Get("inputPhone"),
+                Gender = gender,
+                Address = form.Get("inputAddress")
+            };
+            dao.Add(cus);
+            return RedirectToAction("Index");
+        }
 
-            CustomerDAO dao = new CustomerDAO();
-            //dao.addCustomer(cus);
+        //Xóa khách hàng
+        public ActionResult Delete()
+        {
+            int id = Convert.ToInt32(Request.QueryString["id"]);
+            if (dao.Delete(id) == 1)
+            {
+                return RedirectToAction("Index");
+            }
+            return RedirectToAction("Index");
         }
     }
 }

@@ -25,23 +25,23 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <form action="/">
+                        <form action="/Admin/Customer/Add" method="post">
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label for="inputFullName">Họ tên</label>
-                                    <input type="text" class="form-control" id="inputFullName">
+                                    <input type="text" class="form-control" name="inputFullName">
                                 </div>
                                 <div class="form-group">
                                     <label for="inputEmail">Email</label>
-                                    <input type="email" class="form-control" id="inputEmail">
+                                    <input type="email" class="form-control" name="inputEmail">
                                 </div>
                                 <div class="form-group">
                                     <label for="inputPhone">Phone</label>
-                                    <input type="tel" class="form-control" id="inputPhone">
+                                    <input type="tel" class="form-control" name="inputPhone">
                                 </div>
                                 <div class="form-group">
                                     <label for="inputGender">Giới tính</label>
-                                    <select class="form-control" id="inputGender">
+                                    <select class="form-control" name="inputGender">
                                         <option>(chọn)</option>
                                         <option value="1">Nam</option>
                                         <option value="0">Nữ</option>
@@ -49,7 +49,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="inputAddress">Địa chỉ</label>
-                                    <input type="text" class="form-control" id="inputAddress">
+                                    <input type="text" class="form-control" name="inputAddress">
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -60,6 +60,7 @@
                     </div>
                 </div>
             </div>
+            <!-- End Add Modal -->
         </div>
     </div>
     <!-- /.card-header -->
@@ -98,9 +99,9 @@
                             <button class="btn btn-success" data-toggle="modal" data-target="#formEditModal">
                                 <i class="fas fa-eye"></i>
                             </button>
-                            <button class="btn btn-danger">
-                                <i class="fas fa-user-times"></i>
-                            </button>
+                            <a href="/Admin/Customer/Delete?id=@item.CustomerID" class="btn btn-danger">
+                                <i class="fas fa-trash-alt"></i>
+                            </a>
                         </td>
                     </tr>
                     i++;
@@ -152,6 +153,7 @@
                 </div>
             </div>
         </div>
+        <!-- End Edit Modal -->
     </div>
     <!-- /.card-body -->
 </div>
