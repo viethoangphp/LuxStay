@@ -38,7 +38,7 @@
         var inputNewPassword = $("#inputNewPassword").val()
         var inputPreNewPassword = $("#inputPreNewPassword").val()
         console.log("click-save");
-        if (inputOldPassword.length > 6 && inputNewPassword.length > 6 && inputPreNewPassword.length > 6) {
+        if (inputOldPassword.length >= 6 && inputNewPassword.length >= 6 && inputPreNewPassword.length >= 6) {
             $.ajax({
                 url: "/Admin/Profile/PasswordChange",
                 method: "POST",
@@ -79,6 +79,10 @@
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 alert(xhr.responseText);
+                setTimeout(() => {
+                    window.location = "/Admin/Profile";
+                }, 1500)
+               
             }
         }
         return false;

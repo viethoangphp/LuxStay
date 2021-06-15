@@ -15,9 +15,17 @@ namespace Models.DAO
         }
         public int Insert(User user)
         {
-            db.Users.Add(user);
-            db.SaveChanges();
-            return user.UserID;
+            User result = db.Users.Where(m => m.Email == user.Email).FirstOrDefault();
+            if (result == null)
+            {
+                db.Users.Add(user);
+                db.SaveChanges();
+                return user.UserID;
+            }
+            else
+            {
+                return 0;
+            }   
         }
         public User getUserById(int id)
         {
