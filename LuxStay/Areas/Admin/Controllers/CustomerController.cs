@@ -19,6 +19,13 @@ namespace LuxStay.Areas.Admin.Controllers
             List<Customer> list = dao.getListAll();
             return View(list);
         }
+        public JsonResult DataTable() 
+        {
+            CustomerDAO dao = new CustomerDAO();
+            List<Customer> list = dao.getListAll();
+            return Json(list, JsonRequestBehavior.AllowGet);
+        }
+
         //Thông tin khách hàng
 
         //Thêm khách hàng

@@ -378,15 +378,8 @@
     <!-- AdminLTE for demo purposes -->
     <script src="~/Assets/Admin/dist/js/demo.js"></script>
     <!-- page script -->
-    <script>
-        $(function () {
-            $("#example1").DataTable({
-                "responsive": true,
-                "autoWidth": false,
-                "lengthMenu": [5, 10, 20, 50],
-            });
-        });
-    </script>
+    @RenderSection("js", false)
+    
 </body>
 
 </html>
