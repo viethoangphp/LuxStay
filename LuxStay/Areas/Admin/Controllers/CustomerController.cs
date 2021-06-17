@@ -1,4 +1,5 @@
-﻿using Models.DAO;
+﻿using LuxStay.Areas.Admin.Data;
+using Models.DAO;
 using Models.Entity;
 using System;
 using System.Collections.Generic;
@@ -22,19 +23,30 @@ namespace LuxStay.Areas.Admin.Controllers
 
         //Thêm khách hàng
         [HttpPost]
-        public ActionResult Add(FormCollection form)
+        public JsonResult Add(CustomerView data)
         {
-            int gender = Convert.ToInt32(form.Get("inputGender"));
-            Customer cus = new Customer()
+            if(ModelState.IsValid)
             {
-                FullName = form.Get("inputFullName"),
-                Email = form.Get("inputEmail"),
-                Phone = form.Get("inputPhone"),
-                Gender = gender,
-                Address = form.Get("inputAddress")
-            };
-            dao.Add(cus);
-            return RedirectToAction("Index");
+                Customer cus = new Customer()
+                {
+                    FullName = data.fullname,
+                    Email = data.email,
+                    Phone = data.phone,
+                    Gender = data.gender,
+                    Address = data.address
+                };
+                int id = dao.Add(cus);
+                if(id == 0)
+                {
+                    return Json("false", JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    return Json(id, JsonRequestBehavior.AllowGet);
+                }
+                
+            }
+            return Json("false", JsonRequestBehavior.AllowGet);
         }
 
         //Xóa khách hàng

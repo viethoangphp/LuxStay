@@ -133,6 +133,7 @@
     <Compile Include="Areas\Admin\Controllers\CustomerController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
+    <Compile Include="Areas\Admin\Data\CustomerView.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -178,6 +179,7 @@
     <Content Include="Assets\Admin\dist\img\user1-128x128.jpg" />
     <Content Include="Assets\Admin\dist\js\adminlte.js" />
     <Content Include="Assets\Admin\dist\js\adminlte.min.js" />
+    <Content Include="Assets\Admin\dist\js\ajax\customer.js" />
     <Content Include="Assets\Admin\dist\js\demo.js" />
     <Content Include="Assets\Admin\dist\js\main.js" />
     <Content Include="Assets\Admin\dist\js\pages\dashboard.js" />
@@ -2014,7 +2016,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Controllers\" />
     <Folder Include="Data\Admin\" />
     <Folder Include="Models\" />

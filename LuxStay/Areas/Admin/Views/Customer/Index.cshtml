@@ -25,31 +25,34 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <form action="/Admin/Customer/Add" method="post">
+                        <form id="addUser" method="post">
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label for="inputFullName">Họ tên</label>
-                                    <input type="text" class="form-control" name="inputFullName">
+                                    <input type="text" class="form-control" name="inputFullName" id="inputFullName" required>
+                                    <div class="invalid-feedback">Không Được Để Trống Trường Này</div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputEmail">Email</label>
-                                    <input type="email" class="form-control" name="inputEmail">
+                                    <input type="email" class="form-control" name="inputEmail" id="inputEmail" required>
+                                    <div class="invalid-feedback">Không Được Để Trống Trường Này</div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputPhone">Phone</label>
-                                    <input type="tel" class="form-control" name="inputPhone">
+                                    <input type="tel" class="form-control" name="inputPhone" id="inputPhone" required>
+                                    <div class="invalid-feedback">Không Được Để Trống Trường Này</div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputGender">Giới tính</label>
-                                    <select class="form-control" name="inputGender">
-                                        <option>(chọn)</option>
+                                    <select class="form-control" name="inputGender" id="inputGender" required>
                                         <option value="1">Nam</option>
                                         <option value="0">Nữ</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputAddress">Địa chỉ</label>
-                                    <input type="text" class="form-control" name="inputAddress">
+                                    <input type="text" class="form-control" name="inputAddress" id="inputAddress" required>
+                                    <div class="invalid-feedback">Không Được Để Trống Trường Này</div>
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -64,7 +67,7 @@
         </div>
     </div>
     <!-- /.card-header -->
-    <div class="card-body">
+    <div id="dataTable" class="card-body">
         <table id="example1" class="table table-bordered table-striped">
             <thead>
                 <tr>

@@ -20,17 +20,16 @@ namespace Models.DAO
         }
         public int Add(Customer cus)
         {
-            int errstring = 0;
             try
             {
                 db.Customers.Add(cus);
                 db.SaveChanges();
+                return cus.CustomerID;
             }
             catch (Exception)
             {
-                errstring = 1;
+                return 0;
             }
-            return errstring;
         }
         public int Delete(int id)
         {
