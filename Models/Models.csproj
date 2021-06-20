@@ -66,8 +66,6 @@
     <Compile Include="Entity\Room.cs" />
     <Compile Include="Entity\RoomCategory.cs" />
     <Compile Include="Entity\Sale.cs" />
-    <Compile Include="Entity\Slider.cs" />
-    <Compile Include="Entity\sysdiagram.cs" />
     <Compile Include="Entity\User.cs" />
     <Compile Include="Entity\Utility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

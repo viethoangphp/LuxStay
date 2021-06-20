@@ -9,13 +9,11 @@ namespace Models.Entity
     [Table("Image")]
     public partial class Image
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Image()
-        {
-            Rooms = new HashSet<Room>();
-        }
-
         public int ImageID { get; set; }
+
+        [Column("Image")]
+        [StringLength(150)]
+        public string Image1 { get; set; }
 
         [StringLength(150)]
         public string Url { get; set; }
@@ -24,7 +22,8 @@ namespace Models.Entity
 
         public int? Type { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Room> Rooms { get; set; }
+        public int RoomID { get; set; }
+
+        public virtual Room Room { get; set; }
     }
 }

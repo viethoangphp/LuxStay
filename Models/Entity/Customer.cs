@@ -23,7 +23,7 @@ namespace Models.Entity
         [StringLength(11)]
         public string Phone { get; set; }
 
-        [StringLength(35)]
+        [StringLength(50)]
         public string Email { get; set; }
 
         public int? Gender { get; set; }
@@ -31,7 +31,7 @@ namespace Models.Entity
         [StringLength(250)]
         public string Address { get; set; }
 
-        [StringLength(100)]
+        [StringLength(35)]
         public string Password { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

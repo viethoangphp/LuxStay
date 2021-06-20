@@ -33,6 +33,7 @@ namespace Models.Entity
 
         [StringLength(150)]
         public string Avatar { get; set; }
+        public int Status { set; get; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Advice> Advices { get; set; }

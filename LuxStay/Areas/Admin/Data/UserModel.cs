@@ -8,12 +8,12 @@ namespace LuxStay.Areas.Admin.Data
 {
     public class UserModel
     {
+        public int id { set; get; }
         [Required]
         public string fullname { set; get; }
         [Required]
         [EmailAddress]
         public string email { set; get; }
-        [Required]
         public string password { set; get; }
         public string avatar { set; get; }
         [Required]
