@@ -17,8 +17,6 @@ namespace Models.Entity
 
         public int SaleID { get; set; }
 
-        public int? PriceSale { get; set; }
-
         public int? PercentSale { get; set; }
 
         public DateTime? Create_At { get; set; }
