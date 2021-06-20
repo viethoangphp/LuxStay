@@ -19,12 +19,6 @@ namespace LuxStay.Areas.Admin.Controllers
             List<Customer> list = dao.getListAll();
             return View(list);
         }
-        public JsonResult DataTable() 
-        {
-            CustomerDAO dao = new CustomerDAO();
-            List<Customer> list = dao.getListAll();
-            return Json(list, JsonRequestBehavior.AllowGet);
-        }
 
         //Thông tin khách hàng
 
@@ -57,14 +51,17 @@ namespace LuxStay.Areas.Admin.Controllers
         }
 
         //Xóa khách hàng
-        public ActionResult Delete()
+        public JsonResult Delete()
         {
             int id = Convert.ToInt32(Request.QueryString["id"]);
             if (dao.Delete(id) == 1)
             {
-                return RedirectToAction("Index");
+                return Json(true, JsonRequestBehavior.AllowGet);
             }
-            return RedirectToAction("Index");
+            else
+            {
+                return Json(false, JsonRequestBehavior.AllowGet);
+            }
         }
     }
 }

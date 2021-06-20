@@ -3,8 +3,6 @@
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/__AdminLayout.cshtml";
 }
-@using Models.Entity
-@model List<Customer>
 
 @section js{
     <script>
@@ -99,34 +97,22 @@
                 </tr>
             </thead>
             <tbody>
-                @{ int i = 1;}
-                @foreach (var item in Model)
-                {
                     <tr>
-                        <td>@i</td>
-                        <td>@item.FullName</td>
-                        <td>@item.Address</td>
-                        <td>@item.Email</td>
-                        <td>@item.Phone</td>
-                        @if (item.Gender == 1)
-                        {
-                            @:<td>Nam</td>
-                        }
-                        else
-                        {
-                            @:<td>Nữ</td>
-                        }
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
                         <td style="text-align: center;">
                             <button class="btn btn-success" data-toggle="modal" data-target="#formEditModal">
                                 <i class="fas fa-eye"></i>
                             </button>
-                            <a href="/Admin/Customer/Delete?id=@item.CustomerID" class="btn btn-danger delete-btn">
+                            <a href="/Admin/Customer/Delete?id=" class="btn btn-danger">
                                 <i class="fas fa-trash-alt"></i>
                             </a>
                         </td>
                     </tr>
-                    i++;
-                }
             </tbody>
         </table>
         <!-- Edit Modal -->
@@ -178,3 +164,4 @@
     </div>
     <!-- /.card-body -->
 </div>
+
