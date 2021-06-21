@@ -9,4 +9,19 @@ C:\Users\VIET HOANG\OneDrive\Máy tính\LuxStay\Models\obj\Debug\Models.csproj.C
 C:\Users\VIET HOANG\OneDrive\Máy tính\LuxStay\Models\obj\Debug\Models.csproj.CopyComplete
 C:\Users\VIET HOANG\OneDrive\Máy tính\LuxStay\Models\obj\Debug\Models.dll
 C:\Users\VIET HOANG\OneDrive\Máy tính\LuxStay\Models\obj\Debug\Models.pdb
+<<<<<<< HEAD
 C:\Users\VIET HOANG\OneDrive\Máy tính\LuxStay\Models\obj\Debug\Models.csprojAssemblyReference.cache
+=======
+C:\Users\tungu\Source\Repos\viethoangphp\LuxStay\Models\bin\Debug\Models.dll.config
+C:\Users\tungu\Source\Repos\viethoangphp\LuxStay\Models\bin\Debug\Models.dll
+C:\Users\tungu\Source\Repos\viethoangphp\LuxStay\Models\bin\Debug\Models.pdb
+C:\Users\tungu\Source\Repos\viethoangphp\LuxStay\Models\bin\Debug\EntityFramework.dll
+C:\Users\tungu\Source\Repos\viethoangphp\LuxStay\Models\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\tungu\Source\Repos\viethoangphp\LuxStay\Models\bin\Debug\EntityFramework.xml
+C:\Users\tungu\Source\Repos\viethoangphp\LuxStay\Models\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\tungu\Source\Repos\viethoangphp\LuxStay\Models\obj\Debug\Models.csproj.AssemblyReference.cache
+C:\Users\tungu\Source\Repos\viethoangphp\LuxStay\Models\obj\Debug\Models.csproj.CoreCompileInputs.cache
+C:\Users\tungu\Source\Repos\viethoangphp\LuxStay\Models\obj\Debug\Models.csproj.CopyComplete
+C:\Users\tungu\Source\Repos\viethoangphp\LuxStay\Models\obj\Debug\Models.dll
+C:\Users\tungu\Source\Repos\viethoangphp\LuxStay\Models\obj\Debug\Models.pdb
+>>>>>>> part1

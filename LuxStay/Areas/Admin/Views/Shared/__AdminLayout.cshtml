@@ -30,7 +30,13 @@
     <link rel="stylesheet" href="~/Assets/Admin/plugins/summernote/summernote-bs4.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+<<<<<<< HEAD
     <link data-n-head="1" rel="icon" type="image/png" sizes="16x16" href="https://www.luxstay.com/logos/16.png">
+=======
+    <!-- DataTables -->
+    <link rel="stylesheet" href="~/Assets/Admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="~/Assets/Admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+>>>>>>> part1
     <!-- my style css -->
     <link href="~/Assets/Admin/plugins/toastr/toastr.min.css" rel="stylesheet">
     <link rel="stylesheet" href="~/Assets/Admin/dist/css/left-menu.css">
@@ -298,6 +304,7 @@
                             </a>
                             <ul class="nav nav-treeview sub-menu">
                                 <li class="nav-item ml-25">
+<<<<<<< HEAD
                                     <a href="#" class="nav-link">
                                         <p>Danh Sách Khách Hàng</p>
                                     </a>
@@ -305,6 +312,10 @@
                                 <li class="nav-item ml-25">
                                     <a href="#" class="nav-link">
                                         <p>Khách Hàng Thân Thiết</p>
+=======
+                                    <a href="/Admin/Customer" class="nav-link">
+                                        <p>Danh Sách Khách Hàng</p>
+>>>>>>> part1
                                     </a>
                                 </li>
 
@@ -435,9 +446,15 @@
     <!-- ./wrapper -->
     <!-- jQuery -->
     <script src="~/Assets/Admin/plugins/jquery/jquery.min.js"></script>
+<<<<<<< HEAD
 
     <script src="~/Assets/Admin/plugins/jquery-ui/jquery-ui.min.js"></script>
 
+=======
+    @*jQuery UI 1.11.4*@
+    <script src="~/Assets/Admin/plugins/jquery-ui/jquery-ui.min.js"></script>
+    @*Resolve conflict in jQuery UI tooltip with Bootstrap tooltip*@
+>>>>>>> part1
     <script>
         $.widget.bridge('uibutton', $.ui.button)
     </script>
@@ -450,8 +467,11 @@
     <!-- JQVMap -->
     <script src="~/Assets/Admin/plugins/jqvmap/jquery.vmap.min.js"></script>
     <script src="~/Assets/Admin/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+<<<<<<< HEAD
     <!-- jQuery Knob Chart -->
     @*<script src="plugins/jquery-knob/jquery.knob.min.js"></script>*@
+=======
+>>>>>>> part1
     <!-- daterangepicker -->
     <script src="~/Assets/Admin/plugins/moment/moment.min.js"></script>
     <script src="~/Assets/Admin/plugins/daterangepicker/daterangepicker.js"></script>
@@ -461,16 +481,29 @@
     <script src="~/Assets/Admin/plugins/summernote/summernote-bs4.min.js"></script>
     <!-- overlayScrollbars -->
     <script src="~/Assets/Admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <!-- DataTables -->
+    <script src="~/Assets/Admin/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Assets/Admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Assets/Admin/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/Assets/Admin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
     <!-- AdminLTE App -->
     <script src="https://use.fontawesome.com/b05c7fbb3b.js"></script>
     <script src="~/Assets/Admin/dist/js/adminlte.js"></script>
     <script src="~/Assets/Admin/Login/js/validator.min.js"></script>
     <script src="~/Assets/Admin/plugins/toastr/toastr.min.js"></script>
+<<<<<<< HEAD
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     @*<script src="~/Assets/Admin/dist/js/pages/dashboard.js"></script>*@
     <!-- AdminLTE for demo purposes -->
     <script src="~/Assets/Admin/dist/js/demo.js"></script>
     @RenderSection("js", false)
+=======
+    <!-- AdminLTE for demo purposes -->
+    <script src="~/Assets/Admin/dist/js/demo.js"></script>
+    <!-- page script -->
+    @RenderSection("js", false)
+    
+>>>>>>> part1
 </body>
 
 </html>
