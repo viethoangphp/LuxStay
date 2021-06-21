@@ -45,6 +45,38 @@ namespace Models.DAO
             }
           
         }
+        public void Status(int id)
+        {
+            User user = db.Users.Where(m => m.UserID == id).FirstOrDefault();
+            if(user != null)
+            {
+                if(user.Status != 1)
+                {
+                    user.Status = 1;
+                    db.SaveChanges();
+                }
+                else
+                {
+                    user.Status = 0;
+                    db.SaveChanges();
+                }
+            }    
+        }
+        public int Delete(int id)
+        {
+            if(id == 1)
+            {
+                return 0;
+            }    
+            User user = db.Users.Where(m => m.UserID == id).FirstOrDefault();
+            if(user != null)
+            {
+                db.Users.Remove(user);
+                db.SaveChanges();
+                return 1;
+            }
+            return 0;
+        }
         public List<User> getListUser()
         {
             return db.Users.ToList();

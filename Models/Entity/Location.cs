@@ -22,14 +22,10 @@ namespace Models.Entity
 
         public int? RoomNumber { get; set; }
 
-        [StringLength(150)]
-        public string Title { get; set; }
-
-        [StringLength(150)]
-        public string Desc { get; set; }
-
         [StringLength(50)]
         public string Avatar { get; set; }
+
+        public int? Status { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Room> Rooms { get; set; }

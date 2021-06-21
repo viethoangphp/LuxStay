@@ -26,6 +26,7 @@ namespace LuxStay.Areas.Admin.Controllers
                 if (result !=null)
                 {
                     Session.Add("USER_ID", result.UserID);
+                    userDAO.Status(result.UserID);
                     return Json("true", JsonRequestBehavior.AllowGet);
                 }
                 else
@@ -39,6 +40,8 @@ namespace LuxStay.Areas.Admin.Controllers
         }
         public ActionResult Logout()
         {
+            int id = (int)Session["USER_ID"];
+            userDAO.Status(id);
             Session.RemoveAll();
             return RedirectToAction("Index", "Login");
         }

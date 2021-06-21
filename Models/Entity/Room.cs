@@ -13,8 +13,8 @@ namespace Models.Entity
         public Room()
         {
             Bills = new HashSet<Bill>();
-            CODEs = new HashSet<CODE>();
             Images = new HashSet<Image>();
+            CODEs = new HashSet<CODE>();
             Utilities = new HashSet<Utility>();
         }
 
@@ -22,7 +22,7 @@ namespace Models.Entity
 
         public int CatID { get; set; }
 
-        public int SaleID { get; set; }
+        public int? SaleID { get; set; }
 
         public int LocationID { get; set; }
 
@@ -58,6 +58,9 @@ namespace Models.Entity
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Bill> Bills { get; set; }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Image> Images { get; set; }
+
         public virtual Location Location { get; set; }
 
         public virtual RoomCategory RoomCategory { get; set; }
@@ -66,9 +69,6 @@ namespace Models.Entity
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CODE> CODEs { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Image> Images { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Utility> Utilities { get; set; }

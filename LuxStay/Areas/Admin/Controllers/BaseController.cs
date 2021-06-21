@@ -18,5 +18,6 @@ namespace LuxStay.Areas.Admin.Controllers
             }
             base.OnActionExecuting(filterContext);
         }
+       
     }
 }

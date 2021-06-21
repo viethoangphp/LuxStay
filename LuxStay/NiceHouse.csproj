@@ -132,6 +132,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LocationController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProfileController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
@@ -139,6 +140,7 @@
     <Compile Include="Areas\Admin\Data\InformationUser.cs" />
     <Compile Include="Areas\Admin\Data\PasswordUser.cs" />
     <Compile Include="Areas\Admin\Data\UserModel.cs" />
+    <Compile Include="Areas\Admin\Helper\UserHelper.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -178,9 +180,6 @@
     <Content Include="Assets\Admin\dist\css\left-menu.css" />
     <Content Include="Assets\Admin\dist\css\main.css" />
     <Content Include="Assets\Admin\dist\css\table.css" />
-    <Content Include="Assets\Admin\dist\img\logo-hutech-long.png" />
-    <Content Include="Assets\Admin\dist\img\logo-hutech.png" />
-    <Content Include="Assets\Admin\dist\img\loop.gif" />
     <Content Include="Assets\Admin\dist\img\user1-128x128.jpg" />
     <Content Include="Assets\Admin\dist\js\adminlte.js" />
     <Content Include="Assets\Admin\dist\js\adminlte.min.js" />
@@ -2115,6 +2114,7 @@
     <Content Include="Assets\Admin\Login\vendor\bootstrap\css\bootstrap.css.map" />
     <Content Include="Assets\Admin\Login\vendor\bootstrap\css\bootstrap.min.css.map" />
     <Content Include="Areas\Admin\Views\Profile\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Location\Index.cshtml" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

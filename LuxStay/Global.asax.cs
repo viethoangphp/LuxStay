@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Models.DAO;
 
 namespace LuxStay
 {
@@ -17,5 +18,12 @@ namespace LuxStay
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+        public void Session_End(Object sender, EventArgs e)
+        {
+            int id = (int)Session["USER_ID"];
+            UserDAO dao = new UserDAO();
+            dao.Status(id);
+        }
+       
     }
 }

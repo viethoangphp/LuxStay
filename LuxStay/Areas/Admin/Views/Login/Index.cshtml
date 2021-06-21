@@ -73,7 +73,7 @@
                         </div>
                     </div>
                     <div class="container-login100-form-btn">
-                        <button class="login100-form-btn" id="btn">
+                        <button class="login100-form-btn" id="btn" type="submit">
                             Login
                         </button>
                     </div>
@@ -127,9 +127,7 @@
         });
 
 
-        $("#btn").off("click").on("click", function (e) {
-            console.log("click");
-            e.preventDefault();
+        $("#FormLogin").submit(function () {
             var email = $("#input-email").val();
             var pass = $("#input-password").val();
             $.ajax({
@@ -142,13 +140,15 @@
                         $(".loading").css("display", "flex");
                         setTimeout(function () {
                             window.location = "/Admin"
-                        },2000)
+                        }, 2000)
                     } else {
                         toastr.error("Email hoặc Mật Khẩu Không Chính Xác", "Lỗi Đăng Nhập");
                     }
                 }
             })
+            return false;
         })
+      
     </script>
 
 </body>
