@@ -130,7 +130,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-<<<<<<< HEAD
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\LocationController.cs" />
@@ -142,13 +141,6 @@
     <Compile Include="Areas\Admin\Data\PasswordUser.cs" />
     <Compile Include="Areas\Admin\Data\UserModel.cs" />
     <Compile Include="Areas\Admin\Helper\UserHelper.cs" />
-=======
-    <Compile Include="Areas\Admin\Controllers\CustomerController.cs" />
-    <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
-    <Compile Include="Areas\Admin\Controllers\SaleController.cs" />
-    <Compile Include="Areas\Admin\Controllers\UserController.cs" />
-    <Compile Include="Areas\Admin\Data\CustomerView.cs" />
->>>>>>> part1
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -191,12 +183,8 @@
     <Content Include="Assets\Admin\dist\img\user1-128x128.jpg" />
     <Content Include="Assets\Admin\dist\js\adminlte.js" />
     <Content Include="Assets\Admin\dist\js\adminlte.min.js" />
-<<<<<<< HEAD
     <Content Include="Assets\Admin\dist\js\ajax\profile.js" />
     <Content Include="Assets\Admin\dist\js\ajax\User.js" />
-=======
-    <Content Include="Assets\Admin\dist\js\ajax\customer.js" />
->>>>>>> part1
     <Content Include="Assets\Admin\dist\js\demo.js" />
     <Content Include="Assets\Admin\dist\js\main.js" />
     <Content Include="Assets\Admin\dist\js\pages\dashboard.js" />
@@ -2032,23 +2020,6 @@
     <Content Include="Assets\Admin\plugins\toastr\toastr.js.map" />
     <Content Include="Areas\Admin\Views\Dashboard\Index.cshtml" />
     <Content Include="Areas\Admin\Views\User\Index.cshtml" />
-<<<<<<< HEAD
-=======
-    <Content Include="Areas\Admin\Views\Customer\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Customer\LoadTable.cshtml" />
-    <Content Include="Areas\Admin\Views\Sale\Index.cshtml" />
-    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
-    <Content Include="Scripts\jquery-3.4.1.js" />
-    <Content Include="Scripts\jquery-3.4.1.min.js" />
-    <Content Include="Scripts\jquery-3.4.1.slim.js" />
-    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\modernizr-2.8.3.js" />
->>>>>>> part1
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -2061,10 +2032,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-<<<<<<< HEAD
     <Folder Include="Areas\Admin\Views\Base\" />
-=======
->>>>>>> part1
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
   </ItemGroup>
