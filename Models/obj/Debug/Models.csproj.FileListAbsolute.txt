@@ -10,3 +10,15 @@ C:\Users\VIET HOANG\OneDrive\Máy tính\LuxStay\Models\obj\Debug\Models.csproj.C
 C:\Users\VIET HOANG\OneDrive\Máy tính\LuxStay\Models\obj\Debug\Models.dll
 C:\Users\VIET HOANG\OneDrive\Máy tính\LuxStay\Models\obj\Debug\Models.pdb
 C:\Users\VIET HOANG\OneDrive\Máy tính\LuxStay\Models\obj\Debug\Models.csprojAssemblyReference.cache
+C:\Users\The Duy\Source\Repos\LuxStay\Models\bin\Debug\Models.dll.config
+C:\Users\The Duy\Source\Repos\LuxStay\Models\bin\Debug\Models.dll
+C:\Users\The Duy\Source\Repos\LuxStay\Models\bin\Debug\Models.pdb
+C:\Users\The Duy\Source\Repos\LuxStay\Models\bin\Debug\EntityFramework.dll
+C:\Users\The Duy\Source\Repos\LuxStay\Models\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\The Duy\Source\Repos\LuxStay\Models\bin\Debug\EntityFramework.xml
+C:\Users\The Duy\Source\Repos\LuxStay\Models\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\The Duy\Source\Repos\LuxStay\Models\obj\Debug\Models.csproj.AssemblyReference.cache
+C:\Users\The Duy\Source\Repos\LuxStay\Models\obj\Debug\Models.csproj.CoreCompileInputs.cache
+C:\Users\The Duy\Source\Repos\LuxStay\Models\obj\Debug\Models.csproj.CopyComplete
+C:\Users\The Duy\Source\Repos\LuxStay\Models\obj\Debug\Models.dll
+C:\Users\The Duy\Source\Repos\LuxStay\Models\obj\Debug\Models.pdb
