@@ -18,6 +18,11 @@ namespace Models.DAO
             List<Customer> list = db.Customers.ToList();
             return list;
         }
+        public Customer getCustomer(int id)
+        {
+            Customer cus = db.Customers.Find(id);
+            return cus;
+        }
         public int Add(Customer cus)
         {
             try
@@ -41,6 +46,27 @@ namespace Models.DAO
                     return 0;
                 }
                 db.Customers.Remove(cus);
+                db.SaveChanges();
+                return 1;
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+        }
+        public int Edit(Customer cus)
+        {
+            try
+            {
+                Customer result = db.Customers.Find(cus.CustomerID);
+                if (result == null)
+                {
+                    return 0;
+                }
+                else
+                {
+                    result = cus;
+                }
                 db.SaveChanges();
                 return 1;
             }

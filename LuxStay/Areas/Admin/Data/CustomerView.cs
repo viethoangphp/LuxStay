@@ -8,13 +8,14 @@ namespace LuxStay.Areas.Admin.Data
 {
     public class CustomerView
     {
+        public int id { get; set; }
         [Required]
         public string fullname { get; set; }
         [Required]
         public string phone { get; set; }
         [Required]
         public string email { get; set; }
-        public int gender { get; set; }
+        public string gender { get; set; }
         [Required]
         public string address { get; set; }
     }

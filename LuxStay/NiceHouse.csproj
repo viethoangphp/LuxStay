@@ -131,15 +131,19 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CustomerController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\LocationController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProfileController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SaleController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Areas\Admin\Data\AdminLogin.cs" />
+    <Compile Include="Areas\Admin\Data\CustomerView.cs" />
     <Compile Include="Areas\Admin\Data\InformationUser.cs" />
     <Compile Include="Areas\Admin\Data\PasswordUser.cs" />
     <Compile Include="Areas\Admin\Data\UserModel.cs" />
+    <Compile Include="Areas\Admin\Helper\CustomerHelper.cs" />
     <Compile Include="Areas\Admin\Helper\UserHelper.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -180,9 +184,11 @@
     <Content Include="Assets\Admin\dist\css\left-menu.css" />
     <Content Include="Assets\Admin\dist\css\main.css" />
     <Content Include="Assets\Admin\dist\css\table.css" />
+    <Content Include="Assets\Admin\dist\imguser-2.png" />
     <Content Include="Assets\Admin\dist\img\user1-128x128.jpg" />
     <Content Include="Assets\Admin\dist\js\adminlte.js" />
     <Content Include="Assets\Admin\dist\js\adminlte.min.js" />
+    <Content Include="Assets\Admin\dist\js\ajax\customer.js" />
     <Content Include="Assets\Admin\dist\js\ajax\profile.js" />
     <Content Include="Assets\Admin\dist\js\ajax\User.js" />
     <Content Include="Assets\Admin\dist\js\demo.js" />
@@ -2115,6 +2121,8 @@
     <Content Include="Assets\Admin\Login\vendor\bootstrap\css\bootstrap.min.css.map" />
     <Content Include="Areas\Admin\Views\Profile\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Location\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Customer\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Sale\Index.cshtml" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
