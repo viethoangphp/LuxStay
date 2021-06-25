@@ -1,35 +1,36 @@
-﻿using System;
+﻿using Models.Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Models.Entity;
+
 namespace Models.DAO
 {
-    public class CustomerDAO
+    public class ServiceDAO
     {
         DBContext db = null;
-        public CustomerDAO()
+        public ServiceDAO()
         {
             db = new DBContext();
         }
-        public List<Customer> getListAll()
+        public List<Utility> getListAll()
         {
-            List<Customer> list = db.Customers.ToList();
+            List<Utility> list = db.Utilities.ToList();
             return list;
         }
-        public Customer getCustomer(int id)
+        public Utility getUtility(int id)
         {
-            Customer cus = db.Customers.Find(id);
-            return cus;
+            Utility utl = db.Utilities.Find(id);
+            return utl;
         }
-        public int Add(Customer cus)
+        public int Add(Utility utl)
         {
             try
             {
-                db.Customers.Add(cus);
+                db.Utilities.Add(utl);
                 db.SaveChanges();
-                return cus.CustomerID;
+                return utl.UtilityID;
             }
             catch (Exception)
             {
@@ -40,12 +41,12 @@ namespace Models.DAO
         {
             try
             {
-                Customer cus = db.Customers.Find(id);
-                if(cus == null)
+                Utility utl = db.Utilities.Find(id);
+                if (utl == null)
                 {
                     return 0;
                 }
-                db.Customers.Remove(cus);
+                db.Utilities.Remove(utl);
                 db.SaveChanges();
                 return 1;
             }
@@ -54,18 +55,18 @@ namespace Models.DAO
                 return 0;
             }
         }
-        public int Edit(Customer cus)
+        public int Edit(Utility utl)
         {
             try
             {
-                Customer result = db.Customers.Find(cus.CustomerID);
+                Utility result = db.Utilities.Find(utl.UtilityID);
                 if (result == null)
                 {
                     return 0;
                 }
                 else
                 {
-                    result = cus;
+                    result = utl;
                 }
                 db.SaveChanges();
                 return 1;

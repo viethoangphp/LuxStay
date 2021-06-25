@@ -24,8 +24,6 @@ namespace Models.Entity
 
         public int? Status { get; set; }
 
-        public int? Price { get; set; }
-
         [StringLength(50)]
         public string Icon { get; set; }
 

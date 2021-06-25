@@ -8,26 +8,61 @@
 
 @section js{
     <script>
-        $(function () {
-            $("#example1").DataTable({
-                "columnDefs": [
-                    { orderable: false, targets: 0 }
+        $(document).ready(function () {
+            var table = $("#listView").DataTable({
+                columnDefs: [
+                    { orderable: false, sortable: false, targets: 0 }
                 ],
-                "responsive": true,
-                "autoWidth": false,
-                "lengthMenu": [5, 10, 20, 50],
+                columns: [
+                    { "data": "id"},
+                    { "data": "fullname" },
+                    { "data": "address" },
+                    { "data": "email" },
+                    { "data": "phone" },
+                    { "data": "gender" },
+                    {
+                        "data" : "id",
+                        "render": function (data, type, row, meta) {
+                            return '<div class="align-middle">' +
+                                '<button class="btn btn-success m-1" data-toggle="modal" data-target="#formEditModal">' +
+                                '<i class="fas fa-eye"></i>' +
+                                '</button>' +
+                                '<button class="btn btn-danger delete-btn" data-id="' + data + '">' +
+                                '<i class="fas fa-trash-alt"></i>' +
+                                '</button>' +
+                                '</div>';
+                        }
+                    }
+                ],
+                responsive: true,
+                autoWidth: false,
+                lengthMenu: [5, 10, 20, 50],
+                order: [[ 1, 'asc' ]],
+                ajax: {
+                    url: "/Admin/Customer/LoadData",
+                    method: "post",
+                    dataSrc: ""
+                }
             });
+
+            table.on('order.dt search.dt', function () {
+                table.column(0, { search: 'applied', order: 'applied' }).nodes().each(function (cell, i) {
+                    cell.innerHTML = i + 1;
+                });
+            }).draw();
         });
     </script>
     <script src="~/Assets/Admin/dist/js/ajax/customer.js"></script>
 }
-
 <div class="card">
     <div class="card-header">
         <h3 class="card-title" style="margin-top: 9px;">
             Danh sách khách hàng
         </h3>
         <div style="float: right;">
+            <button class="btn btn-primary" id="btn-refresh">
+                <i class="fas fa-sync-alt"></i>
+            </button>
             <button class="btn btn-success" data-toggle="modal" data-target="#formModal">
                 <i class="fas fa-user-plus"></i>
             </button>
@@ -86,7 +121,7 @@
     </div>
     <!-- /.card-header -->
     <div id="dataTable" class="card-body">
-        <table id="example1" class="table table-bordered table-striped">
+        <table id="listView" class="table table-bordered table-striped">
             <thead>
                 <tr>
                     <th>#</th>
@@ -98,8 +133,9 @@
                     <th>Tác vụ</th>
                 </tr>
             </thead>
-            <tbody>
-                @{ int i = 1;}
+            <tbody class="text-center">
+                
+                @*@{ int i = 1;}
                 @foreach (var item in Model)
                 {
                     <tr>
@@ -120,17 +156,17 @@
                             <button class="btn btn-success" data-toggle="modal" data-target="#formEditModal">
                                 <i class="fas fa-eye"></i>
                             </button>
-                            <a href="/Admin/Customer/Delete?id=@item.CustomerID" class="btn btn-danger delete-btn">
+                            <button class="btn btn-danger delete-btn" data-id="@item.CustomerID">
                                 <i class="fas fa-trash-alt"></i>
-                            </a>
+                            </button>
                         </td>
                     </tr>
                     i++;
-                }
+                }*@
             </tbody>
         </table>
         <!-- Edit Modal -->
-        <div class="modal fade" id="formEditModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+        <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -139,23 +175,26 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form action="/">
+                    <form id="addUser" method="post" action="">
                         <div class="modal-body">
                             <div class="form-group">
                                 <label for="inputFullName">Họ tên</label>
-                                <input type="text" class="form-control" id="inputFullName">
+                                <input type="text" class="form-control" name="inputEditFullName" id="inputEditFullName" required>
+                                <div class="invalid-feedback">Không Được Để Trống Trường Này</div>
                             </div>
                             <div class="form-group">
                                 <label for="inputEmail">Email</label>
-                                <input type="email" class="form-control" id="inputEmail">
+                                <input type="email" class="form-control" name="inputEditEmail" id="inputEditEmail" required>
+                                <div class="invalid-feedback">Không Được Để Trống Trường Này</div>
                             </div>
                             <div class="form-group">
                                 <label for="inputPhone">Phone</label>
-                                <input type="tel" class="form-control" id="inputPhone">
+                                <input type="tel" class="form-control" name="inputEditPhone" id="inputEditPhone" required>
+                                <div class="invalid-feedback">Không Được Để Trống Trường Này</div>
                             </div>
                             <div class="form-group">
                                 <label for="inputGender">Giới tính</label>
-                                <select class="form-control" id="inputGender">
+                                <select class="form-control" name="inputEditGender" id="inputEditGender" required>
                                     <option>(chọn)</option>
                                     <option value="1">Nam</option>
                                     <option value="0">Nữ</option>
@@ -163,12 +202,13 @@
                             </div>
                             <div class="form-group">
                                 <label for="inputAddress">Địa chỉ</label>
-                                <input type="text" class="form-control" id="inputAddress">
+                                <input type="text" class="form-control" name="inputEditAddress" id="inputEditAddress" required>
+                                <div class="invalid-feedback">Không Được Để Trống Trường Này</div>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
-                            <button type="button" class="btn btn-success">Cập nhật</button>
+                            <button type="button" id="btn-edit-dismiss" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+                            <button type="submit" class="btn btn-success">Cập nhật</button>
                         </div>
                     </form>
                 </div>

@@ -10,52 +10,46 @@ using System.Web.Mvc;
 
 namespace LuxStay.Areas.Admin.Controllers
 {
-    public class CustomerController : BaseController
+    public class ServiceController : Controller
     {
-        // GET: Admin/Customer
-        protected CustomerDAO dao = new CustomerDAO();
+        protected ServiceDAO dao = new ServiceDAO();
         public ActionResult Index()
         {
-            return View();
+            
+            return View(dao.getListAll());
         }
         public JsonResult LoadData()
         {
-            List<CustomerView> list = new CustomerHelper().getListCustomer();
+            List<ServiceView> list = new ServiceHelper().getListUtility();
             var data = Json(list, JsonRequestBehavior.AllowGet);
             return data;
         }
         public JsonResult Get(int id)
         {
-            CustomerView cus = new CustomerHelper().getCustomer(id);
-            if(cus == null)
+            ServiceView utl = new ServiceHelper().getUtility(id);
+            if (utl == null)
             {
                 return Json(false, JsonRequestBehavior.AllowGet);
             }
-            return Json(cus,JsonRequestBehavior.AllowGet);
+            return Json(utl, JsonRequestBehavior.AllowGet);
         }
-        //Thông tin khách hàng
 
-        //Thêm khách hàng
+        //Thêm tiện ích
         [HttpPost]
-        public JsonResult Add(CustomerView data)
+        public JsonResult Add(ServiceView data)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                int gd = 0;
-                if(data.gender == "1")
+                int st = Convert.ToInt32(data.status);
+                Utility utl = new Utility()
                 {
-                    gd = 1;
-                }
-                Customer cus = new Customer()
-                {
-                    FullName = data.fullname,
-                    Email = data.email,
-                    Phone = data.phone,
-                    Gender = gd,
-                    Address = data.address
+                    Name = data.name,
+                    ParentID = data.parentid,
+                    Icon = data.icon,
+                    Status = st
                 };
-                int id = dao.Add(cus);
-                if(id == 0)
+                int id = dao.Add(utl);
+                if (id == 0)
                 {
                     return Json("false", JsonRequestBehavior.AllowGet);
                 }
@@ -63,12 +57,12 @@ namespace LuxStay.Areas.Admin.Controllers
                 {
                     return Json(LoadData(), JsonRequestBehavior.AllowGet);
                 }
-                
+
             }
             return Json("false", JsonRequestBehavior.AllowGet);
         }
 
-        //Xóa khách hàng
+        //Xóa tiện ích
         [HttpPost]
         public JsonResult Delete(int id)
         {
@@ -82,25 +76,19 @@ namespace LuxStay.Areas.Admin.Controllers
             }
         }
 
-        //Sửa khách hàng
+        //Sửa tiện ích
         [HttpPost]
-        public JsonResult Edit(CustomerView data)
+        public JsonResult Edit(ServiceView data)
         {
-            int gd = 0;
-            if (data.gender == "1")
+            int st = Convert.ToInt32(data.status);
+            Utility utl = new Utility()
             {
-                gd = 1;
-            }
-            Customer cus = new Customer()
-            {
-                CustomerID = data.id,
-                FullName = data.fullname,
-                Email = data.email,
-                Address = data.email,
-                Phone = data.phone,
-                Gender = gd
+                Name = data.name,
+                ParentID = data.parentid,
+                Icon = data.icon,
+                Status = st
             };
-            if (dao.Edit(cus) == 1)
+            if (dao.Edit(utl) == 1)
             {
                 return Json(true, JsonRequestBehavior.AllowGet);
             }
