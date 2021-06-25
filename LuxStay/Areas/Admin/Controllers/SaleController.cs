@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using LuxStay.Areas.Admin.Data;
+using LuxStay.Areas.Admin.Helper;
 namespace LuxStay.Areas.Admin.Controllers
 {
     public class SaleController : Controller
@@ -11,7 +12,8 @@ namespace LuxStay.Areas.Admin.Controllers
         // GET: Admin/Sale
         public ActionResult Index()
         {
-            return View();
+            List<SaleModel> list = new SaleHeper().getListAll();
+            return View(list);
         }
     }
 }

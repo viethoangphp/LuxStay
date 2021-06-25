@@ -2135,9 +2135,9 @@
     <Content Include="Areas\Admin\Views\Profile\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Location\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Customer\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Sale\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Service\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Sale\Index.cshtml" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
