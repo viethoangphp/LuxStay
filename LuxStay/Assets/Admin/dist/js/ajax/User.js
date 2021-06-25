@@ -1,6 +1,4 @@
-﻿
-
-Validator.plugin("numberonly", {
+﻿Validator.plugin("numberonly", {
     install() {
         console.log('plugin installed');
     },
@@ -36,7 +34,7 @@ $(document).ready(function () {
             data: obj,
             dataType: "json",
             success: function (data) {
-                if (data.length != 0) {
+                if (data != "false") {
                     // đóng modal 
                     $("#model-cancel").click();
                     var obj = data;
