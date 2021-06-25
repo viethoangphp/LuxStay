@@ -137,13 +137,16 @@
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProfileController.cs" />
     <Compile Include="Areas\Admin\Controllers\SaleController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ServiceController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Areas\Admin\Data\AdminLogin.cs" />
     <Compile Include="Areas\Admin\Data\CustomerView.cs" />
     <Compile Include="Areas\Admin\Data\InformationUser.cs" />
     <Compile Include="Areas\Admin\Data\PasswordUser.cs" />
+    <Compile Include="Areas\Admin\Data\ServiceView.cs" />
     <Compile Include="Areas\Admin\Data\UserModel.cs" />
     <Compile Include="Areas\Admin\Helper\CustomerHelper.cs" />
+    <Compile Include="Areas\Admin\Helper\ServiceHelper.cs" />
     <Compile Include="Areas\Admin\Helper\UserHelper.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -188,6 +191,7 @@
     <Content Include="Assets\Admin\dist\img\user1-128x128.jpg" />
     <Content Include="Assets\Admin\dist\js\adminlte.js" />
     <Content Include="Assets\Admin\dist\js\adminlte.min.js" />
+    <Content Include="Assets\Admin\dist\js\ajax\utility.js" />
     <Content Include="Assets\Admin\dist\js\ajax\customer.js" />
     <Content Include="Assets\Admin\dist\js\ajax\profile.js" />
     <Content Include="Assets\Admin\dist\js\ajax\User.js" />
@@ -2123,6 +2127,7 @@
     <Content Include="Areas\Admin\Views\Location\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Customer\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Sale\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Service\Index.cshtml" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
