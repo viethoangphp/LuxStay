@@ -1,45 +1,18 @@
-﻿@model IEnumerable<Models.Entity.Location>
-@{
-    ViewBag.Title = "Khu Vực";
+﻿@{
+    ViewBag.Title = "Loại Phòng";
     Layout = "~/Areas/Admin/Views/Shared/__AdminLayout.cshtml";
 }
-
-<!-- Content Header (Page header) -->
-<style>
-    .image-upload {
-        position: relative;
-        width: 103px;
-        border: 1px dashed #333;
-    }
-
-    label {
-        cursor: pointer;
-        /* Style as you please, it will become the visible UI component. */
-    }
-
-    .upload-photo {
-        opacity: 0;
-        position: absolute;
-        z-index: -1;
-        top: 0;
-        left: 0;
-    }
-
-    .target {
-        width: 100px;
-        height: auto;
-    }
-</style>
+@model IEnumerable<Models.Entity.RoomCategory>
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Quản Lý Khu Vực</h1>
+                <h1>Quản Lý Loại Phòng</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="">Trang chủ</a></li>
-                    <li class="breadcrumb-item active">Danh sách khu Vực</li>
+                    <li class="breadcrumb-item active">Danh sách Loại Phòng</li>
                 </ol>
             </div>
         </div>
@@ -53,36 +26,34 @@
             <h3 class="card-title"><b></b></h3>
             <!-- Button trigger modal add -->
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
-                <i class="fas fa-user-plus"></i>
+                Thêm Mới
             </button>
             <!-- Modal add user -->
             <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg ">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h3 class="modal-title text-uppercase" id="staticBackdropLabel">Thêm Khu Vực Mới</h3>
+                            <h3 class="modal-title text-uppercase" id="staticBackdropLabel">Thêm Loại Phòng Mới</h3>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span class="fos-40" aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form class="form-horizontal" id="Location" method="post" enctype="multipart/form-data">
+                            <form class="form-horizontal" id="Category" method="post">
                                 <div class="form-group row ">
-                                    <label for="" class="col-sm-2 col-form-label">Tên Khu Vực:</label>
+                                    <label for="" class="col-sm-2 col-form-label">Tên Loại Phòng:</label>
                                     <div class="col-sm-10">
-                                        <input type="text" name="LocationName" id="LocationName_add" class="form-control" placeholder="Tên Khu Vực"/>
+                                        <input type="text" name="LocationName" id="Category_add" class="form-control" placeholder="Tên Loại Phòng" />
                                         <div class="invalid-feedback"></div>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="password" class="col-sm-2 col-form-label">Ảnh Đại Diện</label>
+                                    <label for="password" class="col-sm-2 col-form-label">Trạng Thái</label>
                                     <div class="col-sm-10">
-                                        <div class="image-upload">
-                                            <label>
-                                                <img class="target" src="https://cdn-app.kiotviet.vn/retailler/bundles/2021616941/default-product-img.jpg" alt="">
-                                            </label>
-                                            <input type="file" class="upload-photo" name="avatar" id="avatar_add">
-                                        </div>
+                                        <select name="Status_add" class="form-control">
+                                            <option selected value="1">Active</option>
+                                            <option value="2">Disable</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -102,34 +73,32 @@
                     <div class="modal-dialog modal-lg ">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h3 class="modal-title text-uppercase" id="staticBackdropLabel">Thêm Khu Vực Mới</h3>
+                                <h3 class="modal-title text-uppercase" id="staticBackdropLabel">Thông Tin Khu Vực </h3>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span class="fos-40" aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form class="form-horizontal">
+                                <form class="form-horizontal" id="update_category" data-id="">
                                     <div class="form-group row">
                                         <label for="" class="col-sm-2 col-form-label">Tên Khu Vực:</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" placeholder="Tên Khu Vực" required minLength="6" maxlength="25" />
+                                            <input type="text" class="form-control" placeholder="Tên Khu Vực" required minLength="6" maxlength="25" id="Category_view" />
                                             <div class="invalid-feedback"></div>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="password" class="col-sm-2 col-form-label">Ảnh Đại Diện</label>
+                                        <label for="" class="col-sm-2 col-form-label">Trạng Thái</label>
                                         <div class="col-sm-10">
-                                            <div class="image-upload">
-                                                <label>
-                                                    <img class="target" src="https://cdn-app.kiotviet.vn/retailler/bundles/2021616941/default-product-img.jpg" alt="">
-                                                </label>
-                                                <input type="file" class="upload-photo">
-                                            </div>
+                                            <select name="status_view" class="form-control" id="status_view">
+                                                <option value="1">Active</option>
+                                                <option value="2">Disable</option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
-                                        <button type="submit" class="btn btn-success" value="Thêm">Thêm Mới</button>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal" id="btn-cancel-view">Hủy</button>
+                                        <button type="submit" class="btn btn-success" value="Thêm">Cập Nhật</button>
                                     </div>
                                 </form>
                             </div>
@@ -140,11 +109,10 @@
                     <thead class="">
                         <tr>
                             <th class="w-80">STT</th>
-                            <th class="w-300">Ảnh Đại Diện</th>
-                            <th class="w-250">Khu Vực</th>
-                            <th class="w-200">Số Lượng Phòng</th>
+                            <th class="w-300">Loại Phòng</th>
+                            <th class="">Số Lượng Phòng</th>
                             <th class="w-150">Trạng Thái</th>
-                            <th class="w-130">Tác vụ</th>
+                            <th class="w-80">Tác vụ</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -156,26 +124,23 @@
                             count++;
                             <tr>
                                 <td class="middle"><b>@count</b></td>
-                                <td class="middle">
-                                    <img src="@item.Avatar" class="img-fluid" alt="Alternate Text" style="width:100px;" />
-                                </td>
-                                <td class="middle">@item.LocationName</td>
-                                <td class="middle user_phone">@item.RoomNumber</td>
+                                <td class="middle">@item.CatName</td>
+                                <td class="middle">10</td>
                                 @if (item.Status == 1)
                                 {
-                                    <td class="middle">Đang Kinh Doanh</td>
+                                    <td class="middle">Active</td>
                                 }
                                 else
                                 {
-                                    <td class="middle">Ngừng Kinh Doanh</td>
+                                    <td class="middle">Disable</td>
                                 }
 
                                 <td class="middle">
                                     <div class="d-flex d-flex justify-content-around">
-                                        <button class="btn btn-danger btn-delete" data-id="@item.LocationID">
+                                        <button class="btn btn-danger btn-delete" data-id="@item.CatID">
                                             <i class="fas fa-trash-alt"></i>
                                         </button>
-                                        <button class="btn btn-secondary btn-view" data-id="@item.LocationID" data-toggle="modal" data-target="#viewUserInform">
+                                        <button class="btn btn-secondary btn-view" data-id="@item.CatID" data-toggle="modal" data-target="#viewUserInform">
                                             <i class="fas fa-eye"></i>
                                         </button>
                                     </div>
@@ -191,27 +156,6 @@
     <!-- /.card -->
 </section>
 <!-- /.content -->
-@section js
-{
-    <script src="~/Assets/Admin/dist/js/ajax/Location.js"></script>
+@section js{
+    <script src="~/Assets/Admin/dist/js/ajax/Category.js"></script>
 }
-<script>
-    var img = document.getElementsByClassName("image-upload");
-    for (var i = 0; i < img.length; i++) {
-        img[i].onclick = function () {
-            var target = this.getElementsByClassName("target")[0];
-            this.getElementsByClassName("upload-photo")[0].click();
-            this.getElementsByClassName("upload-photo")[0].onchange = function () {
-                var src = this;
-                showImage(src, target)
-            }
-        }
-    }
-    function showImage(src, target) {
-        var fr = new FileReader();
-        fr.onload = function () {
-            target.src = fr.result;
-        }
-        fr.readAsDataURL(src.files[0]);
-    }
-</script>
