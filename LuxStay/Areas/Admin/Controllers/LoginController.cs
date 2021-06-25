@@ -18,6 +18,7 @@ namespace LuxStay.Areas.Admin.Controllers
             return View();
         }
         [HttpPost]
+       
         public JsonResult isLogin(AdminLogin login)
         {
             if (ModelState.IsValid)

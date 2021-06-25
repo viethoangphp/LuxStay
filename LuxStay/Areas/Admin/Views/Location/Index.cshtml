@@ -1,6 +1,6 @@
-﻿
+﻿@model IEnumerable<Models.Entity.Location>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Khu Vực";
     Layout = "~/Areas/Admin/Views/Shared/__AdminLayout.cshtml";
 }
 
@@ -66,11 +66,11 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form class="form-horizontal" id="Location" method="post" role="form" action="">
+                            <form class="form-horizontal" id="Location" method="post" enctype="multipart/form-data">
                                 <div class="form-group row ">
                                     <label for="" class="col-sm-2 col-form-label">Tên Khu Vực:</label>
                                     <div class="col-sm-10">
-                                        <input type="text" name="" id="" class="form-control" placeholder="Tên Khu Vực" required minLength="6" maxlength="25" />
+                                        <input type="text" name="LocationName" id="LocationName_add" class="form-control" placeholder="Tên Khu Vực"/>
                                         <div class="invalid-feedback"></div>
                                     </div>
                                 </div>
@@ -81,13 +81,13 @@
                                             <label>
                                                 <img class="target" src="https://cdn-app.kiotviet.vn/retailler/bundles/2021616941/default-product-img.jpg" alt="">
                                             </label>
-                                            <input type="file" class="upload-photo">
+                                            <input type="file" class="upload-photo" name="avatar" id="avatar_add">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal" id="model-cancel">Hủy</button>
-                                    <button type="submit" class="btn btn-success" value="Thêm" id="btn-add">Thêm Mới</button>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
+                                    <button type="submit" class="btn btn-success">Thêm Mới</button>
                                 </div>
                             </form>
                         </div>
@@ -96,7 +96,7 @@
             </div>
         </div>
         <div class="card-body">
-            <div class="h-600 overflow-auto">
+            <div class="hoverflow-auto">
                 @*<-- Modal user information-->*@
                 <div class="modal fade" id="viewUserInform" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog modal-lg ">
@@ -108,11 +108,11 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form class="form-horizontal" id="Location" method="post" role="form" action="">
+                                <form class="form-horizontal">
                                     <div class="form-group row">
                                         <label for="" class="col-sm-2 col-form-label">Tên Khu Vực:</label>
                                         <div class="col-sm-10">
-                                            <input type="text" name="" id="" class="form-control" placeholder="Tên Khu Vực" required minLength="6" maxlength="25" />
+                                            <input type="text" class="form-control" placeholder="Tên Khu Vực" required minLength="6" maxlength="25" />
                                             <div class="invalid-feedback"></div>
                                         </div>
                                     </div>
@@ -128,8 +128,8 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-danger" data-dismiss="modal" id="model-cancel">Hủy</button>
-                                        <button type="submit" class="btn btn-success" value="Thêm" id="btn-add">Thêm Mới</button>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
+                                        <button type="submit" class="btn btn-success" value="Thêm">Thêm Mới</button>
                                     </div>
                                 </form>
                             </div>
@@ -148,25 +148,40 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td class="middle"><b>1</b></td>
-                            <td class="middle">
-                                <img src="~/Assets/Admin/dist/img/location_1.png" class="img-fluid" alt="Alternate Text" style="width:100px;" />
-                            </td>
-                            <td class="middle">Hà Nội</td>
-                            <td class="middle user_phone">10</td>
-                            <td class="middle">Đang Cho Thuê</td>
-                            <td class="middle">
-                                <div class="d-flex d-flex justify-content-around">
-                                    <button class="btn btn-danger btn-delete" data-id="">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </button>
-                                    <button class="btn btn-secondary btn-view" data-id="" data-toggle="modal" data-target="#viewUserInform">
-                                        <i class="fas fa-eye"></i>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
+                        @{
+                            int count = 0;
+                        }
+                        @foreach (var item in Model)
+                        {
+                            count++;
+                            <tr>
+                                <td class="middle"><b>@count</b></td>
+                                <td class="middle">
+                                    <img src="@item.Avatar" class="img-fluid" alt="Alternate Text" style="width:100px;" />
+                                </td>
+                                <td class="middle">@item.LocationName</td>
+                                <td class="middle user_phone">@item.RoomNumber</td>
+                                @if (item.Status == 1)
+                                {
+                                    <td class="middle">Đang Kinh Doanh</td>
+                                }
+                                else
+                                {
+                                    <td class="middle">Ngừng Kinh Doanh</td>
+                                }
+
+                                <td class="middle">
+                                    <div class="d-flex d-flex justify-content-around">
+                                        <button class="btn btn-danger btn-delete" data-id="@item.LocationID">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                        <button class="btn btn-secondary btn-view" data-id="@item.LocationID" data-toggle="modal" data-target="#viewUserInform">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
                     </tbody>
                 </table>
             </div>
@@ -176,6 +191,10 @@
     <!-- /.card -->
 </section>
 <!-- /.content -->
+@section js
+{
+    <script src="~/Assets/Admin/dist/js/ajax/Location.js"></script>
+}
 <script>
     var img = document.getElementsByClassName("image-upload");
     for (var i = 0; i < img.length; i++) {

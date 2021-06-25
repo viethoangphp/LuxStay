@@ -7,7 +7,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Chào Mừng Đến Với Trang Quản Trị</title>
+    <title>@ViewBag.Title</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
@@ -85,12 +85,12 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                         <div class="dropdown-divider"></div>
-                        <a href="/Admin/Profile" class="dropdown-item">
+                        <a href="@Url.Action("Index","Profile")" class="dropdown-item">
                             Thông tin tài khoản
                             <i class="float-right fas fa-info-circle mt-1"></i>
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a href="/Admin/Login/Logout" class="dropdown-item">
+                        <a href="@Url.Action("Logout","Login")" class="dropdown-item">
                             Đăng xuất
                             <i class="float-right fas fa-sign-out-alt"></i>
                         </a>
@@ -163,7 +163,7 @@
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="fa fa-building" aria-hidden="true"></i>
-                                <p>
+                                <p  class="pl-2">
                                     Quản Lý Phòng
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
@@ -174,22 +174,13 @@
                                         <p>Danh Sách Phòng</p>
                                     </a>
                                 </li>
-                                <li class="nav-item ml-25">
-                                    <a href="#" class="nav-link">
-                                        <p>+ Thêm Phòng Mới</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item ml-25">
-                                    <a href="#" class="nav-link">
-                                        <p>Thiết Lập Giá</p>
-                                    </a>
-                                </li>
+                                
                             </ul>
                         </li>
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="fa fa-life-ring" aria-hidden="true"></i>
-                                <p>
+                                <p  class="pl-2">
                                     Quản Lý Dịch Vụ
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
@@ -201,7 +192,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item ml-25">
-                                    <a href="#" class="nav-link">
+                                    <a href="/Admin/Service" class="nav-link">
                                         <p>Danh Sách Dịch Vụ</p>
                                     </a>
                                 </li>
@@ -210,7 +201,7 @@
                         <li class="nav-item has-treeview">
                             <a href="" class="nav-link">
                                 <i class="fa fa-envelope-open" aria-hidden="true"></i>
-                                <p>
+                                <p  class="pl-2">
                                     Quản Lý Đặt Phòng
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
@@ -226,20 +217,15 @@
                         <li class="nav-item has-treeview">
                             <a href="" class="nav-link">
                                 <i class="fa fa-th" aria-hidden="true"></i>
-                                <p>
+                                <p  class="pl-2">
                                     Quản Lý Loại Phòng
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview sub-menu">
                                 <li class="nav-item ml-25">
-                                    <a href="#" class="nav-link">
+                                    <a href="/Admin/Category" class="nav-link">
                                         <p>Danh Sách Loại Phòng</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item ml-25">
-                                    <a href="#" class="nav-link">
-                                        <p>+ Thêm Loại Phòng</p>
                                     </a>
                                 </li>
                             </ul>
@@ -247,7 +233,7 @@
                         <li class="nav-item has-treeview">
                             <a href="" class="nav-link">
                                 <i class="fa fa-bookmark" aria-hidden="true"></i>
-                                <p>
+                                <p  class="pl-2">
                                     Quản Lý Ưu Đãi
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
@@ -273,7 +259,7 @@
                         <li class="nav-item has-treeview">
                             <a href="" class="nav-link">
                                 <i class="fa fa-book" aria-hidden="true"></i>
-                                <p>
+                                <p  class="pl-2">
                                     Quản Lý Bài Viết
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
@@ -294,7 +280,7 @@
                         <li class="nav-item has-treeview">
                             <a href="" class="nav-link">
                                 <i class="fa fa-user-md" aria-hidden="true"></i>
-                                <p>
+                                <p  class="pl-2">
                                     Quản Lý Khách Hàng
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
@@ -316,7 +302,7 @@
                         <li class="nav-item has-treeview">
                             <a href="" class="nav-link">
                                 <i class="fa fa-tags" aria-hidden="true"></i>
-                                <p>
+                                <p  class="pl-2">
                                     Quản Lý Giá Phòng
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
@@ -334,7 +320,7 @@
                         <li class="nav-item has-treeview">
                             <a href="" class="nav-link">
                                 <i class="fa fa-users" aria-hidden="true"></i>
-                                <p>
+                                <p  class="pl-2">
                                     Quản Lý User
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
@@ -360,7 +346,7 @@
                         <li class="nav-item has-treeview">
                             <a href="" class="nav-link">
                                 <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                <p>
+                                <p  class="pl-2">
                                     Quản Lý Khu Vực
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
@@ -371,17 +357,12 @@
                                         <p>Danh Sách Khu Vực</p>
                                     </a>
                                 </li>
-                                <li class="nav-item ml-25">
-                                    <a href="#" class="nav-link">
-                                        <p>Thêm Khu Vực Mới</p>
-                                    </a>
-                                </li>
                             </ul>
                         </li>
                         <li class="nav-item has-treeview">
                             <a href="" class="nav-link">
                                 <i class="fa fa-bar-chart" aria-hidden="true"></i>
-                                <p>
+                                <p  class="pl-2">
                                     Báo Cáo Thống Kê
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
