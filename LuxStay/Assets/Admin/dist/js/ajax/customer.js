@@ -10,6 +10,10 @@ var validator = new Validator(document.querySelector("#addUser"), {
     autoScroll: true,
     showValid: true
 });
+var validator2 = new Validator(document.querySelector("#editUser"), {
+    autoScroll: true,
+    showValid: true
+});
 $(document).ready(function () {
     $("#addUser").submit(function (e) {
         e.preventDefault();
@@ -47,6 +51,7 @@ $(document).ready(function () {
         });
         return false;
     })
+    // Delete User
     $(document).on("click",".delete-btn", function () {
         var cusID = $(this).data("id");
         var answer = confirm("Bạn Muốn Xóa Khách Hàng Này Khỏi Hệ Thống ?")
@@ -68,6 +73,7 @@ $(document).ready(function () {
             })
         }
     })
+    // Edit User
     $(document).on("click", ".edit-btn", function () {
         var cusID = $(this).data("id");
         $.ajax({
@@ -81,11 +87,12 @@ $(document).ready(function () {
                     toastr.error("Đã Có Lỗi Xảy Ra. Vui Lòng Thử Lại", "Lỗi");
                 }
                 else {
-                    $("#inputEditFullName").attr("value", data.id);
-                    $("#inputEditEmail").attr("value", data.fullname);
-                    $("#inputEditPhone").attr("value", data.phone);
-                    $("#inputEditGender").attr("value", data.gender);
-                    $("#inputEditAddress").attr("value", data.address);
+                    $("#inputEditID").val(data.id);
+                    $("#inputEditFullName").val(data.fullname);
+                    $("#inputEditEmail").val(data.email);
+                    $("#inputEditPhone").val(data.phone);
+                    $("#inputEditGender").val(data.gender);
+                    $("#inputEditAddress").val(data.address);
                 }
             }
         })
@@ -93,12 +100,14 @@ $(document).ready(function () {
     $("#editUser").submit(function (e) {
         e.preventDefault();
 
+        var id = $("#inputEditID").val();
         var fullname = $("#inputEditFullName").val();
         var email = $("#inputEditEmail").val();
         var phone = $("#inputEditPhone").val();
         var gender = $("#inputEditGender").val();
         var address = $("#inputEditAddress").val();
         var obj = {
+            id: id,
             fullname: fullname,
             email: email,
             phone: phone,
@@ -111,11 +120,11 @@ $(document).ready(function () {
             data: obj,
             dataType: "json",
             success: function (data) {
-                if (data != "false") {
+                if (data != false) {
                     // đóng modal 
-                    $("#btn-dismiss").click();
+                    $("#btn-edit-dismiss").click();
                     //UpdateTable(data)
-                    $("#btn-reset").click();
+                    $("#btn-edit-reset").click();
                     toastr.success("Cập Nhật Thành Công", "Thành Công");
                     setTimeout(function () { $("#btn-refresh").click(); }, 250);
                 }

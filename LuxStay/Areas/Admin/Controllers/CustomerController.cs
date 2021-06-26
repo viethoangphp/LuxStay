@@ -21,15 +21,22 @@ namespace LuxStay.Areas.Admin.Controllers
         public JsonResult LoadData()
         {
             List<CustomerView> list = new CustomerHelper().getListCustomer();
-            var data = Json(list, JsonRequestBehavior.AllowGet);
-            return data;
+            return Json(list, JsonRequestBehavior.AllowGet);
         }
         public JsonResult Get(int id)
         {
             CustomerView cus = new CustomerHelper().getCustomer(id);
-            if(cus == null)
+            if (cus == null)
             {
                 return Json(false, JsonRequestBehavior.AllowGet);
+            }
+            if (cus.gender == "Nam")
+            {
+                cus.gender = "1";
+            }
+            else
+            {
+                cus.gender = "0";
             }
             return Json(cus,JsonRequestBehavior.AllowGet);
         }
@@ -86,28 +93,32 @@ namespace LuxStay.Areas.Admin.Controllers
         [HttpPost]
         public JsonResult Edit(CustomerView data)
         {
-            int gd = 0;
-            if (data.gender == "1")
+            if (ModelState.IsValid)
             {
-                gd = 1;
+                int gd = 0;
+                if (data.gender == "1")
+                {
+                    gd = 1;
+                }
+                Customer cus = new Customer()
+                {
+                    CustomerID = data.id,
+                    FullName = data.fullname,
+                    Email = data.email,
+                    Address = data.address,
+                    Phone = data.phone,
+                    Gender = gd
+                };
+                if (dao.Edit(cus) == 1)
+                {
+                    return Json(true, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    return Json(false, JsonRequestBehavior.AllowGet);
+                }
             }
-            Customer cus = new Customer()
-            {
-                CustomerID = data.id,
-                FullName = data.fullname,
-                Email = data.email,
-                Address = data.email,
-                Phone = data.phone,
-                Gender = gd
-            };
-            if (dao.Edit(cus) == 1)
-            {
-                return Json(true, JsonRequestBehavior.AllowGet);
-            }
-            else
-            {
-                return Json(false, JsonRequestBehavior.AllowGet);
-            }
+            return Json(false, JsonRequestBehavior.AllowGet);
         }
     }
 }
