@@ -11,7 +11,7 @@ namespace Models.DAO
         DBContext db = new DBContext();
         public List<Sale> getListAll()
         {
-            return db.Sales.ToList();
+            return db.Sales.OrderByDescending(m=>m.Create_At).ToList();
         }
         public int Insert(Sale sale)
         {
@@ -29,6 +29,12 @@ namespace Models.DAO
                 return 1;
             }
             return 0;
+        }
+        public Sale getById(int id)
+        {
+            Sale result = db.Sales.Find(id);
+            if (result != null) return result;
+            return null;
         }
         
     }
