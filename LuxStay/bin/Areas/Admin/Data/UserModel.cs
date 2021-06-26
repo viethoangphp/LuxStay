@@ -6,17 +6,17 @@ using System.Web;
 
 namespace LuxStay.Areas.Admin.Data
 {
-    public class SaleModel
+    public class UserModel
     {
         public int id { set; get; }
         [Required]
-        [Range(0,100)]
-        public int persent { set; get; }
+        public string fullname { set; get; }
         [Required]
-        public string check_in { set; get; }
+        [EmailAddress]
+        public string email { set; get; }
+        public string password { set; get; }
+        public string avatar { set; get; }
         [Required]
-        public string check_out { set; get; }
-        public int status { set; get; }
-        public string create_at { set; get; }
+        public string phone { set; get; }
     }
 }

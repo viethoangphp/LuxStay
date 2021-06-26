@@ -204,6 +204,7 @@
     <Content Include="Assets\Admin\dist\js\ajax\User.js" />
     <Content Include="Assets\Admin\dist\js\chart.js" />
     <Content Include="Assets\Admin\dist\js\demo.js" />
+    <Content Include="Assets\Admin\dist\js\fontawesome.js" />
     <Content Include="Assets\Admin\dist\js\main.js" />
     <Content Include="Assets\Admin\dist\js\pages\dashboard.js" />
     <Content Include="Assets\Admin\dist\js\pages\dashboard2.js" />
