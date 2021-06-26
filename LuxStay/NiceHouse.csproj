@@ -146,7 +146,6 @@
     <Compile Include="Areas\Admin\Data\LocationModel.cs" />
     <Compile Include="Areas\Admin\Data\PasswordUser.cs" />
     <Compile Include="Areas\Admin\Data\ServiceView.cs" />
-    <Compile Include="Areas\Admin\Data\UserModel.cs" />
     <Compile Include="Areas\Admin\Helper\CustomerHelper.cs" />
     <Compile Include="Areas\Admin\Helper\ServiceHelper.cs" />
     <Compile Include="Areas\Admin\Data\SaleModel.cs" />
