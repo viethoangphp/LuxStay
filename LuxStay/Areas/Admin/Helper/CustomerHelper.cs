@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using Models.DAO;
 using LuxStay.Areas.Admin.Data;
+using Models.Entity;
+
 namespace LuxStay.Areas.Admin.Helper
 {
     public class CustomerHelper
@@ -45,8 +47,46 @@ namespace LuxStay.Areas.Admin.Helper
                 address = models.Address,
                 gender = gd
             };
-
             return view;
+        }
+        public int DeleteCustomer(int id)
+        {
+            return dao.Delete(id);
+        }
+        public int AddCustomer(CustomerView data)
+        {
+            int gd = 0;
+            if (data.gender == "1")
+            {
+                gd = 1;
+            }
+            Customer cus = new Customer()
+            {
+                FullName = data.fullname,
+                Email = data.email,
+                Phone = data.phone,
+                Gender = gd,
+                Address = data.address
+            };
+            return dao.Add(cus);
+        }
+        public int EditCustomer(CustomerView data)
+        {
+            int gd = 0;
+            if (data.gender == "1")
+            {
+                gd = 1;
+            }
+            Customer cus = new Customer()
+            {
+                CustomerID = data.id,
+                FullName = data.fullname,
+                Email = data.email,
+                Address = data.address,
+                Phone = data.phone,
+                Gender = gd
+            };
+            return dao.Edit(cus);
         }
     }
 }

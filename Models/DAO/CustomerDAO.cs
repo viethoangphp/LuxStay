@@ -29,7 +29,7 @@ namespace Models.DAO
             {
                 db.Customers.Add(cus);
                 db.SaveChanges();
-                return cus.CustomerID;
+                return 1;
             }
             catch (Exception)
             {

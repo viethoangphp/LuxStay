@@ -36,7 +36,7 @@ $(document).ready(function () {
             data: obj,
             dataType: "json",
             success: function (data) {
-                if (data != "false") {
+                if (data != false) {
                     // đóng modal 
                     $("#btn-dismiss").click();
                     //UpdateTable(data)
