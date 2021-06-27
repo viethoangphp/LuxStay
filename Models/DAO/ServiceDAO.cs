@@ -66,7 +66,11 @@ namespace Models.DAO
                 }
                 else
                 {
-                    result = utl;
+                    result.UtilityID = utl.UtilityID;
+                    result.Name = utl.Name;
+                    result.ParentID = utl.ParentID;
+                    result.Icon = utl.Icon;
+                    result.Status = utl.Status;
                 }
                 db.SaveChanges();
                 return 1;

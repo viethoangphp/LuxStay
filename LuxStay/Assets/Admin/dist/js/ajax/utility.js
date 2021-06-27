@@ -10,6 +10,10 @@ var validator = new Validator(document.querySelector("#addUtility"), {
     autoScroll: true,
     showValid: true
 });
+var validator2 = new Validator(document.querySelector("#editUtility"), {
+    autoScroll: true,
+    showValid: true
+});
 $(document).ready(function () {
     $("#addUtility").submit(function (e) {
         e.preventDefault();
@@ -19,7 +23,7 @@ $(document).ready(function () {
         var status = $("#status").val();
         var obj = {
             name: name,
-            parentname: parentname,
+            parentid: parentname,
             status: status
         }
         $.ajax({
@@ -44,13 +48,13 @@ $(document).ready(function () {
         return false;
     })
     $(document).on("click",".delete-btn", function () {
-        var cusID = $(this).data("id");
+        var utlID = $(this).data("id");
         var answer = confirm("Bạn Muốn Xóa Dịch Vụ Này Khỏi Hệ Thống ?")
         if (answer) {
             $.ajax({
                 url: "/Admin/Service/Delete",
                 method: "post",
-                data: { id: cusID },
+                data: { id: utlID },
                 dataType: "json",
                 success: function (result) {
                     if (result != false) {
@@ -61,7 +65,7 @@ $(document).ready(function () {
                         toastr.error("Đã Có Lỗi Xảy Ra. Vui Lòng Thử Lại", "Lỗi");
                     }
                 }
-            })
+            });
         }
     })
     $(document).on("click", ".edit-btn", function () {
@@ -77,49 +81,48 @@ $(document).ready(function () {
                     toastr.error("Đã Có Lỗi Xảy Ra. Vui Lòng Thử Lại", "Lỗi");
                 }
                 else {
-                    $("#name").attr("value", name);;
-                    $("#parentName").attr("value", parentname);
-                    $("#status").attr("value", status);
+                    $("#editId").val(data.id);
+                    $("#editName").val(data.name);
+                    $("#editParentName").val(data.parentid);
+                    $("#editStatus").val(data.status);
                 }
             }
         })
     });
-    //$("#editUtility").submit(function (e) {
-    //    e.preventDefault();
+    $("#editUtility").submit(function (e) {
+        e.preventDefault();
 
-    //    var fullname = $("#inputEditFullName").val();
-    //    var email = $("#inputEditEmail").val();
-    //    var phone = $("#inputEditPhone").val();
-    //    var gender = $("#inputEditGender").val();
-    //    var address = $("#inputEditAddress").val();
-    //    var obj = {
-    //        fullname: fullname,
-    //        email: email,
-    //        phone: phone,
-    //        gender: gender,
-    //        address: address
-    //    }
-    //    $.ajax({
-    //        url: "/Admin/Customer/Edit",
-    //        method: "POST",
-    //        data: obj,
-    //        dataType: "json",
-    //        success: function (data) {
-    //            if (data != "false") {
-    //                // đóng modal 
-    //                $("#btn-dismiss").click();
-    //                //UpdateTable(data)
-    //                $("#btn-reset").click();
-    //                toastr.success("Cập Nhật Thành Công", "Thành Công");
-    //                setTimeout(function () { $("#btn-refresh").click(); }, 250);
-    //            }
-    //            else {
-    //                toastr.error("Cập Nhật Thất Bại . Vui Lòng Thao Tác Lại !", "Lỗi !");
-    //            }
-    //        }
-    //    });
-    //    return false;
-    //})
+        var id = $("#editId").val();
+        var name = $("#editName").val();
+        var parentname = $("#editParentName").val();
+        var status = $("#editStatus").val();
+        var obj = {
+            id: id,
+            name: name,
+            parentid: parentname,
+            status: status
+        }
+        $.ajax({
+            url: "/Admin/Service/Edit",
+            method: "POST",
+            data: obj,
+            dataType: "json",
+            success: function (data) {
+                if (data != false) {
+                    // đóng modal 
+                    $(".btn-dismiss").click();
+                    //UpdateTable(data)
+                    $(".btn-reset").click();
+                    toastr.success("Cập Nhật Thành Công", "Thành Công");
+                    setTimeout(function () { $("#btn-refresh").click(); }, 250);
+                }
+                else {
+                    toastr.error("Cập Nhật Thất Bại . Vui Lòng Thao Tác Lại !", "Lỗi !");
+                }
+            }
+        });
+        return false;
+    })
 });
 
 $("#btn-refresh").click(function () {

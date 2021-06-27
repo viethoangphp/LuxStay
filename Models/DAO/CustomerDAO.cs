@@ -29,7 +29,7 @@ namespace Models.DAO
             {
                 db.Customers.Add(cus);
                 db.SaveChanges();
-                return cus.CustomerID;
+                return 1;
             }
             catch (Exception)
             {
@@ -65,7 +65,11 @@ namespace Models.DAO
                 }
                 else
                 {
-                    result = cus;
+                    result.FullName = cus.FullName;
+                    result.Email = cus.Email;
+                    result.Phone = cus.Phone;
+                    result.Gender = cus.Gender;
+                    result.Address = cus.Address;
                 }
                 db.SaveChanges();
                 return 1;

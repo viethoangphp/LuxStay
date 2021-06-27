@@ -12,24 +12,31 @@ namespace LuxStay.Areas.Admin.Controllers
 {
     public class CustomerController : BaseController
     {
+        CustomerHelper helper = new CustomerHelper();
         // GET: Admin/Customer
-        protected CustomerDAO dao = new CustomerDAO();
         public ActionResult Index()
         {
             return View();
         }
         public JsonResult LoadData()
         {
-            List<CustomerView> list = new CustomerHelper().getListCustomer();
-            var data = Json(list, JsonRequestBehavior.AllowGet);
-            return data;
+            List<CustomerView> list = helper.getListCustomer();
+            return Json(list, JsonRequestBehavior.AllowGet);
         }
         public JsonResult Get(int id)
         {
-            CustomerView cus = new CustomerHelper().getCustomer(id);
-            if(cus == null)
+            CustomerView cus = helper.getCustomer(id);
+            if (cus == null)
             {
                 return Json(false, JsonRequestBehavior.AllowGet);
+            }
+            if (cus.gender == "Nam")
+            {
+                cus.gender = "1";
+            }
+            else
+            {
+                cus.gender = "0";
             }
             return Json(cus,JsonRequestBehavior.AllowGet);
         }
@@ -41,38 +48,24 @@ namespace LuxStay.Areas.Admin.Controllers
         {
             if(ModelState.IsValid)
             {
-                int gd = 0;
-                if(data.gender == "1")
+                if(helper.AddCustomer(data) == 0)
                 {
-                    gd = 1;
-                }
-                Customer cus = new Customer()
-                {
-                    FullName = data.fullname,
-                    Email = data.email,
-                    Phone = data.phone,
-                    Gender = gd,
-                    Address = data.address
-                };
-                int id = dao.Add(cus);
-                if(id == 0)
-                {
-                    return Json("false", JsonRequestBehavior.AllowGet);
+                    return Json(false, JsonRequestBehavior.AllowGet);
                 }
                 else
                 {
-                    return Json(LoadData(), JsonRequestBehavior.AllowGet);
+                    return Json(true, JsonRequestBehavior.AllowGet);
                 }
                 
             }
-            return Json("false", JsonRequestBehavior.AllowGet);
+            return Json(false, JsonRequestBehavior.AllowGet);
         }
 
         //Xóa khách hàng
         [HttpPost]
         public JsonResult Delete(int id)
         {
-            if (dao.Delete(id) == 1)
+            if (helper.DeleteCustomer(id) == 1)
             {
                 return Json(true, JsonRequestBehavior.AllowGet);
             }
@@ -86,28 +79,24 @@ namespace LuxStay.Areas.Admin.Controllers
         [HttpPost]
         public JsonResult Edit(CustomerView data)
         {
-            int gd = 0;
-            if (data.gender == "1")
+            if (ModelState.IsValid)
             {
-                gd = 1;
+                if(helper.EditCustomer(data) == 1)
+                {
+                    return Json(true, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    return Json(false, JsonRequestBehavior.AllowGet);
+                }
             }
-            Customer cus = new Customer()
-            {
-                CustomerID = data.id,
-                FullName = data.fullname,
-                Email = data.email,
-                Address = data.email,
-                Phone = data.phone,
-                Gender = gd
-            };
-            if (dao.Edit(cus) == 1)
-            {
-                return Json(true, JsonRequestBehavior.AllowGet);
-            }
-            else
-            {
-                return Json(false, JsonRequestBehavior.AllowGet);
-            }
+            return Json(false, JsonRequestBehavior.AllowGet);
+        }
+        //----------------------------------------------------------------------------------------
+        public ActionResult Details(int id)
+        {
+            ViewData["CustomerName"] = helper.getCustomer(id).fullname;
+            return View();
         }
     }
 }

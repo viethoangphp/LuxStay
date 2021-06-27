@@ -29,7 +29,6 @@ x86/
 bld/
 [Bb]in/
 [Oo]bj/
-[Oo]ut/
 [Ll]og/
 [Ll]ogs/
 
@@ -91,6 +90,7 @@ StyleCopReport.xml
 *.tmp_proj
 *_wpftmp.csproj
 *.log
+*.tlog
 *.vspscc
 *.vssscc
 .builds
@@ -205,6 +205,9 @@ PublishScripts/
 # NuGet v3's project.json files produces more ignorable files
 *.nuget.props
 *.nuget.targets
+
+# Nuget personal access tokens and Credentials
+nuget.config
 
 # Microsoft Azure Build Output
 csx/
@@ -361,39 +364,25 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
-LuxStay/obj/Debug/LuxStay.dll
-LuxStay/obj/Debug/LuxStay.pdb
-LuxStay/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
-LuxStay/obj/Debug/NiceHouse.csproj.CoreCompileInputs.cache
-Models/bin/Debug/Models.dll
-Models/bin/Debug/Models.pdb
-Models/obj/Debug/Models.dll
-Models/obj/Debug/Models.pdb
-LuxStay/obj/Debug/LuxStay.dll
-LuxStay/obj/Debug/LuxStay.pdb
-LuxStay/obj/Debug/NiceHouse.csproj.CoreCompileInputs.cache
-Models/bin/Debug/Models.dll
-Models/bin/Debug/Models.pdb
-Models/obj/Debug/Models.dll
-Models/obj/Debug/Models.pdb
-LuxStay/obj/Debug/LuxStay.pdb
-LuxStay/obj/Debug/NiceHouse.csproj.CoreCompileInputs.cache
-Models/bin/Debug/Models.dll
-Models/bin/Debug/Models.pdb
-Models/obj/Debug/Models.dll
-Models/obj/Debug/Models.pdb
-LuxStay/obj/Debug/NiceHouse.csproj.CoreCompileInputs.cache
-Models/bin/Debug/Models.dll
-Models/bin/Debug/Models.pdb
-Models/obj/Debug/Models.dll
-Models/obj/Debug/Models.pdb
-Models/bin/Debug/Models.dll
-Models/bin/Debug/Models.pdb
-Models/obj/Debug/Models.dll
-Models/obj/Debug/Models.pdb
-Models/bin/Debug/Models.pdb
-Models/obj/Debug/Models.dll
-Models/obj/Debug/Models.pdb
-Models/obj/Debug/Models.dll
-Models/obj/Debug/Models.pdb
-Models/obj/Debug/Models.pdb
+
+# VS Code files for those working on multiple tools
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# Local History for Visual Studio Code
+.history/
+
+# Windows Installer files from build outputs
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+
+# JetBrains Rider
+.idea/
+*.sln.iml

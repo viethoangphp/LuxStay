@@ -195,6 +195,7 @@
     <Content Include="Assets\Admin\dist\img\user1-128x128.jpg" />
     <Content Include="Assets\Admin\dist\js\adminlte.js" />
     <Content Include="Assets\Admin\dist\js\adminlte.min.js" />
+    <Content Include="Assets\Admin\dist\js\ajax\customerDetails.js" />
     <Content Include="Assets\Admin\dist\js\ajax\utility.js" />
     <Content Include="Assets\Admin\dist\js\ajax\customer.js" />
     <Content Include="Assets\Admin\dist\js\ajax\Category.js" />
@@ -2138,6 +2139,7 @@
     <Content Include="Areas\Admin\Views\Service\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Sale\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Customer\Details.cshtml" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

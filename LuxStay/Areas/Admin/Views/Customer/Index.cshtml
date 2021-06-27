@@ -24,7 +24,7 @@
                         "data" : "id",
                         "render": function (data, type, row, meta) {
                             return '<div class="align-middle">' +
-                                '<button class="btn btn-success m-1" data-toggle="modal" data-target="#formEditModal">' +
+                                '<button class="btn btn-success m-1 edit-btn" data-id="' + data + '" data-toggle="modal" data-target="#formEditModal">' +
                                 '<i class="fas fa-eye"></i>' +
                                 '</button>' +
                                 '<button class="btn btn-danger delete-btn" data-id="' + data + '">' +
@@ -68,7 +68,7 @@
             </button>
             <!-- Add Modal -->
             <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="formModalLabel">Thêm khách hàng</h5>
@@ -86,7 +86,7 @@
                                 <div class="form-group">
                                     <label for="inputEmail">Email</label>
                                     <input type="email" class="form-control" name="inputEmail" id="inputEmail" required>
-                                    <div class="invalid-feedback">Không Được Để Trống Trường Này</div>
+                                    <div class="invalid-feedback">Email để trống hoặc không đúng định dạng</div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputPhone">Phone</label>
@@ -96,10 +96,11 @@
                                 <div class="form-group">
                                     <label for="inputGender">Giới tính</label>
                                     <select class="form-control" name="inputGender" id="inputGender" required>
-                                        <option>(chọn)</option>
+                                        <option value="">(chọn)</option>
                                         <option value="1">Nam</option>
                                         <option value="0">Nữ</option>
                                     </select>
+                                    <div class="invalid-feedback">Vui lòng chọn giới tính</div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputAddress">Địa chỉ</label>
@@ -166,7 +167,7 @@
             </tbody>
         </table>
         <!-- Edit Modal -->
-        <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+        <div class="modal fade" id="formEditModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -175,38 +176,46 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form id="addUser" method="post" action="">
+                    <form id="editUser" method="post" action="">
                         <div class="modal-body">
                             <div class="form-group">
-                                <label for="inputFullName">Họ tên</label>
+                                <label for="inputEditID">Mã khách hàng</label>
+                                <input type="text" class="form-control" name="inputEditID" id="inputEditID" required disabled>
+                                <div class="invalid-feedback">Không Được Để Trống Trường Này</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEditFullName">Họ tên</label>
                                 <input type="text" class="form-control" name="inputEditFullName" id="inputEditFullName" required>
                                 <div class="invalid-feedback">Không Được Để Trống Trường Này</div>
                             </div>
                             <div class="form-group">
-                                <label for="inputEmail">Email</label>
+                                <label for="inputEditEmail">Email</label>
                                 <input type="email" class="form-control" name="inputEditEmail" id="inputEditEmail" required>
-                                <div class="invalid-feedback">Không Được Để Trống Trường Này</div>
+                                <div class="invalid-feedback">Email để trống hoặc không đúng định dạng</div>
                             </div>
                             <div class="form-group">
-                                <label for="inputPhone">Phone</label>
+                                <label for="inputEditPhone">Phone</label>
                                 <input type="tel" class="form-control" name="inputEditPhone" id="inputEditPhone" required>
                                 <div class="invalid-feedback">Không Được Để Trống Trường Này</div>
                             </div>
                             <div class="form-group">
-                                <label for="inputGender">Giới tính</label>
+                                <label for="inputEditGender">Giới tính</label>
                                 <select class="form-control" name="inputEditGender" id="inputEditGender" required>
-                                    <option>(chọn)</option>
+                                    <option value="">(chọn)</option>
                                     <option value="1">Nam</option>
                                     <option value="0">Nữ</option>
                                 </select>
+                                <div class="invalid-feedback">Vui lòng chọn giới tính</div>
                             </div>
                             <div class="form-group">
-                                <label for="inputAddress">Địa chỉ</label>
+                                <label for="inputEditAddress">Địa chỉ</label>
                                 <input type="text" class="form-control" name="inputEditAddress" id="inputEditAddress" required>
                                 <div class="invalid-feedback">Không Được Để Trống Trường Này</div>
                             </div>
                         </div>
                         <div class="modal-footer">
+                            <a href="Admin/Customer/Details/" class="btn btn-primary">DS đơn đặt phòng</a>
+                            <button type="reset" hidden id="btn-edit-reset" class="btn btn-secondary">Reset</button>
                             <button type="button" id="btn-edit-dismiss" class="btn btn-danger" data-dismiss="modal">Đóng</button>
                             <button type="submit" class="btn btn-success">Cập nhật</button>
                         </div>

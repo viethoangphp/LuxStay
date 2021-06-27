@@ -12,7 +12,7 @@
             var table = $("#listView").DataTable({
                 columnDefs: [
                     { orderable: false, sortable: false, targets: 0 },
-                    { visible: false, targets: 2}
+                    { visible: false, targets: 2 }
                 ],
                 columns: [
                     { "data": "id" },
@@ -25,7 +25,7 @@
                         "data": "id",
                         "render": function (data, type, row, meta) {
                             return '<div class="align-middle">' +
-                                '<button class="btn btn-success m-1" data-toggle="modal" data-target="#formEditModal">' +
+                                '<button class="btn btn-success m-1 edit-btn" data-id="' + data + '" data-toggle="modal" data-target="#formEditModal">' +
                                 '<i class="fas fa-eye"></i>' +
                                 '</button>' +
                                 '<button class="btn btn-danger delete-btn" data-id="' + data + '">' +
@@ -106,21 +106,71 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="name">Tên dịch vụ</label>
-                        <input type="text" class="form-control" id="name" value="" />
+                        <input type="text" class="form-control" id="name" value="" required />
                     </div>
                     <div class="form-group">
                         <label for="parentName">Tên dịch vụ cha</label>
-                        <select class="form-control" id="parentName">
-                            <option>(chọn)</option>
-                            @foreach(var item in Model)
-            {
+                        <select class="form-control" id="parentName" required>
+                            <option value="">(chọn)</option>
+                            <option value="0">(Gốc)</option>
+                            @foreach (var item in Model)
+                            {
                                 <option value="@item.UtilityID">@item.Name</option>
-            }
+                            }
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="status">Trạng thái</label>
-                        <select class="form-control" id="status">
+                        <select class="form-control" id="status" required>
+                            <option value="1">Hiển thị</option>
+                            <option value="0">Ẩn</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="reset" class="btn btn-secondary btn-reset" hidden>Reset Form</button>
+                    <button type="button" class="btn btn-secondary btn-dismiss" data-dismiss="modal">Đóng</button>
+                    <button type="submit" class="btn btn-primary">Lưu</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Modal Form-->
+<div class="modal fade" id="formEditModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="formModalLabel">Thông tin dịch vụ</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="editUtility" method="post">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="name">Mã dịch vụ</label>
+                        <input type="text" class="form-control" id="editId" value="" required disabled />
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Tên dịch vụ</label>
+                        <input type="text" class="form-control" id="editName" value="" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="parentName">Tên dịch vụ cha</label>
+                        <select class="form-control" id="editParentName" required>
+                            <option value="">(chọn)</option>
+                            <option value="0">(Gốc)</option>
+                            @foreach (var item in Model)
+                            {
+                                <option value="@item.UtilityID">@item.Name</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="status">Trạng thái</label>
+                        <select class="form-control" id="editStatus" required>
                             <option value="1">Hiển thị</option>
                             <option value="0">Ẩn</option>
                         </select>

@@ -31,6 +31,14 @@ namespace LuxStay.Areas.Admin.Controllers
             {
                 return Json(false, JsonRequestBehavior.AllowGet);
             }
+            if(utl.status.Equals("Hiển thị"))
+            {
+                utl.status = "1";
+            }
+            else
+            {
+                utl.status = "0";
+            }
             return Json(utl, JsonRequestBehavior.AllowGet);
         }
 
@@ -83,6 +91,7 @@ namespace LuxStay.Areas.Admin.Controllers
             int st = Convert.ToInt32(data.status);
             Utility utl = new Utility()
             {
+                UtilityID = data.id,
                 Name = data.name,
                 ParentID = data.parentid,
                 Icon = data.icon,
