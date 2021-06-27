@@ -1,10 +1,10 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Danh sách dịch vụ";
     Layout = "~/Areas/Admin/Views/Shared/__AdminLayout.cshtml";
 }
-@using Models.Entity
-@model List<Utility>
+@using LuxStay.Areas.Admin.Data
+@model List<ServiceView>
 
 @section js{
     <script>
@@ -115,7 +115,7 @@
                             <option value="0">(Gốc)</option>
                             @foreach (var item in Model)
                             {
-                                <option value="@item.UtilityID">@item.Name</option>
+                                <option value="@item.id">@item.name</option>
                             }
                         </select>
                     </div>
@@ -164,7 +164,7 @@
                             <option value="0">(Gốc)</option>
                             @foreach (var item in Model)
                             {
-                                <option value="@item.UtilityID">@item.Name</option>
+                                <option value="@item.id">@item.name</option>
                             }
                         </select>
                     </div>
