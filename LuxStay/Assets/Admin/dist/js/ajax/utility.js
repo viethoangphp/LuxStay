@@ -32,11 +32,11 @@ $(document).ready(function () {
             data: obj,
             dataType: "json",
             success: function (data) {
-                if (data != "false") {
+                if (data != false) {
                     // đóng modal 
-                    $("#btn-dismiss").click();
+                    $(".btn-dismiss").click();
                     //UpdateTable(data)
-                    $("#btn-reset").click();
+                    $(".btn-reset").click();
                     toastr.success("Thêm Thành Công", "Thành Công");
                     setTimeout(function () { $("#btn-refresh").click(); }, 250);
                 }

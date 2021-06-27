@@ -11,7 +11,7 @@ namespace LuxStay.Areas.Admin.Helper
     public class ServiceHelper
     {
         protected ServiceDAO dao = new ServiceDAO();
-        public List<ServiceView> getListUtility()
+        public List<ServiceView> getListAll()
         {
             var models = dao.getListAll();
             List<ServiceView> list = new List<ServiceView>();
@@ -46,17 +46,48 @@ namespace LuxStay.Areas.Admin.Helper
             {
                 st = "Ẩn";
             }
-            string parent = dao.getUtility((int)models.ParentID).Name;
+            Utility parent = dao.getUtility((int)models.ParentID);
+            string pName = "";
+            if (parent == null) { pName = "Gốc"; } else { pName = parent.Name; }
             ServiceView view = new ServiceView()
             {
                 id = models.UtilityID,
                 name = models.Name,
                 parentid = (int)models.ParentID,
-                parentname = parent,
+                parentname = pName,
                 icon = models.Icon,
                 status = st,
             };
             return view;
+        }
+        public int AddUtility(ServiceView data)
+        {
+            int st = Convert.ToInt32(data.status);
+            Utility utl = new Utility()
+            {
+                Name = data.name,
+                ParentID = data.parentid,
+                Icon = data.icon,
+                Status = st
+            };
+            return dao.Add(utl);
+        }
+        public int DeleteUtility(int id)
+        {
+            return dao.Delete(id);
+        }
+        public int EditUtility(ServiceView data)
+        {
+            int st = Convert.ToInt32(data.status);
+            Utility utl = new Utility()
+            {
+                UtilityID = data.id,
+                Name = data.name,
+                ParentID = data.parentid,
+                Icon = data.icon,
+                Status = st
+            };
+            return dao.Edit(utl);
         }
     }
 }
