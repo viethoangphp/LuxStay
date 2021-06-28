@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -10,7 +9,7 @@ using Models.DAO;
 using Models.Entity;
 namespace LuxStay.Areas.Admin.Controllers
 {
-    public class SaleController : BaseController
+    public class SaleController : Controller
     {
         // GET: Admin/Sale
         SaleHeper sale = new SaleHeper();

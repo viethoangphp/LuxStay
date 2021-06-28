@@ -33,6 +33,9 @@
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <link data-n-head="1" rel="icon" type="image/png" sizes="16x16" href="https://www.luxstay.com/logos/16.png">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="~/Assets/Admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="~/Assets/Admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <!-- my style css -->
     <link href="~/Assets/Admin/plugins/toastr/toastr.min.css" rel="stylesheet">
     <link rel="stylesheet" href="~/Assets/Admin/dist/css/left-menu.css">
@@ -196,7 +199,7 @@
                             </a>
                             <ul class="nav nav-treeview sub-menu">
                                 <li class="nav-item ml-25">
-                                    <a href="#" class="nav-link">
+                                    <a href="/Admin/Service" class="nav-link">
                                         <p>Danh Sách Dịch Vụ</p>
                                     </a>
                                 </li>
@@ -270,13 +273,8 @@
                             </a>
                             <ul class="nav nav-treeview sub-menu">
                                 <li class="nav-item ml-25">
-                                    <a href="#" class="nav-link">
+                                    <a href="/Admin/Post" class="nav-link">
                                         <p>Danh Sách Bài Viết</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item ml-25">
-                                    <a href="#" class="nav-link">
-                                        <p>Thêm Bài Viết Mới</p>
                                     </a>
                                 </li>
                             </ul>
@@ -291,7 +289,7 @@
                             </a>
                             <ul class="nav nav-treeview sub-menu">
                                 <li class="nav-item ml-25">
-                                    <a href="#" class="nav-link">
+                                    <a href="/Admin/Customer" class="nav-link">
                                         <p>Danh Sách Khách Hàng</p>
                                     </a>
                                 </li>
@@ -423,9 +421,7 @@
     <!-- ./wrapper -->
     <!-- jQuery -->
     <script src="~/Assets/Admin/plugins/jquery/jquery.min.js"></script>
-
     <script src="~/Assets/Admin/plugins/jquery-ui/jquery-ui.min.js"></script>
-
     <script>
         $.widget.bridge('uibutton', $.ui.button)
     </script>
@@ -438,8 +434,6 @@
     <!-- JQVMap -->
     <script src="~/Assets/Admin/plugins/jqvmap/jquery.vmap.min.js"></script>
     <script src="~/Assets/Admin/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
-    <!-- jQuery Knob Chart -->
-    @*<script src="plugins/jquery-knob/jquery.knob.min.js"></script>*@
     <!-- daterangepicker -->
     <!-- Select2 -->
     <script src="~/Assets/Admin/plugins/select2/js/select2.full.min.js"></script>
@@ -451,6 +445,11 @@
     <script src="~/Assets/Admin/plugins/summernote/summernote-bs4.min.js"></script>
     <!-- overlayScrollbars -->
     <script src="~/Assets/Admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <!-- DataTables -->
+    <script src="~/Assets/Admin/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Assets/Admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Assets/Admin/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/Assets/Admin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
     <!-- AdminLTE App -->
     <script src="~/Assets/Admin/dist/js/fontawesome.js"></script>
     <script src="~/Assets/Admin/dist/js/adminlte.js"></script>
