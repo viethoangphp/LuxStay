@@ -23,6 +23,8 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="~/Assets/Admin/dist/css/adminlte.min.css">
     <!-- overlayScrollbars -->
+    <!-- Select2 -->
+    <link rel="stylesheet" href="~/Assets/Admin/plugins/select2/css/select2.css">
     <link rel="stylesheet" href="~/Assets/Admin/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <!-- Daterange picker -->
     <link rel="stylesheet" href="~/Assets/Admin/plugins/daterangepicker/daterangepicker.css">
@@ -118,27 +120,37 @@
             <!-- Sidebar -->
             <div class="sidebar">
                 <!-- Sidebar user panel (optional) -->
-                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    <div class="image">
-                        @using Models.DAO
-                        @{
-                            var dao = new UserDAO();
-                            int id = (int)Session["USER_ID"];
-                            var user = dao.getUserById(id);
-                        }
-                        @if (user.Avatar == null)
-                        {
-                            <img class="profile-user-img img-fluid img-circle"
-                                 src="~/Assets/Admin/dist/img/user1-128x128.jpg"
-                                 alt="User profile picture">
-                        }
-                        else
-                        {
-                            <img class="profile-user-img img-fluid"
-                                 src="@user.Avatar"
-                                 alt="User profile picture">
-                        }
-                    </div>
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex" style="padding-left:8px">
+
+                    @using Models.DAO
+                    @{
+                        var dao = new UserDAO();
+                        int id = (int)Session["USER_ID"];
+                        var user = dao.getUserById(id);
+                    }
+                    @if (user.Avatar == null)
+                    {
+                        <div class="image"
+                             style="border-radius: 50%;
+                                padding: 8%;
+                                background-size: cover;
+                                background-position: top center;
+                                background-repeat: no-repeat;
+                                background-image: url(/Assets/Admin/dist/img/user1-128x128.jpg);">
+                        </div>
+
+                    }
+                    else
+                    {
+                        <div class="image"
+                             style="border-radius: 50%;
+                                padding: 8%;
+                                background-size: cover;
+                                background-position: top center;
+                                background-repeat: no-repeat;
+                                background-image: url(@user.Avatar);">
+                        </div>
+                    }
                     <div class="info">
                         <a href="#" class="d-block">@user.Fullname</a>
                     </div>
@@ -160,24 +172,24 @@
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="fa fa-building" aria-hidden="true"></i>
-                                <p  class="pl-2">
+                                <p class="pl-2">
                                     Quản Lý Phòng
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview sub-menu">
                                 <li class="nav-item ml-25">
-                                    <a href="#" class="nav-link">
+                                    <a href="/Admin/Room/" class="nav-link">
                                         <p>Danh Sách Phòng</p>
                                     </a>
                                 </li>
-                                
+
                             </ul>
                         </li>
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="fa fa-life-ring" aria-hidden="true"></i>
-                                <p  class="pl-2">
+                                <p class="pl-2">
                                     Quản Lý Dịch Vụ
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
@@ -193,7 +205,7 @@
                         <li class="nav-item has-treeview">
                             <a href="" class="nav-link">
                                 <i class="fa fa-envelope-open" aria-hidden="true"></i>
-                                <p  class="pl-2">
+                                <p class="pl-2">
                                     Quản Lý Đặt Phòng
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
@@ -209,7 +221,7 @@
                         <li class="nav-item has-treeview">
                             <a href="" class="nav-link">
                                 <i class="fa fa-th" aria-hidden="true"></i>
-                                <p  class="pl-2">
+                                <p class="pl-2">
                                     Quản Lý Loại Phòng
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
@@ -225,7 +237,7 @@
                         <li class="nav-item has-treeview">
                             <a href="" class="nav-link">
                                 <i class="fa fa-bookmark" aria-hidden="true"></i>
-                                <p  class="pl-2">
+                                <p class="pl-2">
                                     Quản Lý Ưu Đãi
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
@@ -251,7 +263,7 @@
                         <li class="nav-item has-treeview">
                             <a href="" class="nav-link">
                                 <i class="fa fa-book" aria-hidden="true"></i>
-                                <p  class="pl-2">
+                                <p class="pl-2">
                                     Quản Lý Bài Viết
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
@@ -272,7 +284,7 @@
                         <li class="nav-item has-treeview">
                             <a href="" class="nav-link">
                                 <i class="fa fa-user-md" aria-hidden="true"></i>
-                                <p  class="pl-2">
+                                <p class="pl-2">
                                     Quản Lý Khách Hàng
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
@@ -294,7 +306,7 @@
                         <li class="nav-item has-treeview">
                             <a href="" class="nav-link">
                                 <i class="fa fa-tags" aria-hidden="true"></i>
-                                <p  class="pl-2">
+                                <p class="pl-2">
                                     Quản Lý Giá Phòng
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
@@ -312,7 +324,7 @@
                         <li class="nav-item has-treeview">
                             <a href="" class="nav-link">
                                 <i class="fa fa-users" aria-hidden="true"></i>
-                                <p  class="pl-2">
+                                <p class="pl-2">
                                     Quản Lý User
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
@@ -338,7 +350,7 @@
                         <li class="nav-item has-treeview">
                             <a href="" class="nav-link">
                                 <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                <p  class="pl-2">
+                                <p class="pl-2">
                                     Quản Lý Khu Vực
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
@@ -354,7 +366,7 @@
                         <li class="nav-item has-treeview">
                             <a href="" class="nav-link">
                                 <i class="fa fa-bar-chart" aria-hidden="true"></i>
-                                <p  class="pl-2">
+                                <p class="pl-2">
                                     Báo Cáo Thống Kê
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
@@ -429,6 +441,8 @@
     <!-- jQuery Knob Chart -->
     @*<script src="plugins/jquery-knob/jquery.knob.min.js"></script>*@
     <!-- daterangepicker -->
+    <!-- Select2 -->
+    <script src="~/Assets/Admin/plugins/select2/js/select2.full.min.js"></script>
     <script src="~/Assets/Admin/plugins/moment/moment.min.js"></script>
     <script src="~/Assets/Admin/plugins/daterangepicker/daterangepicker.js"></script>
     <!-- Tempusdominus Bootstrap 4 -->
@@ -446,6 +460,7 @@
     @*<script src="~/Assets/Admin/dist/js/pages/dashboard.js"></script>*@
     <!-- AdminLTE for demo purposes -->
     <script src="~/Assets/Admin/dist/js/demo.js"></script>
+    <script src="~/Assets/Admin/dist/js/main.js"></script>
     @RenderSection("js", false)
 </body>
 

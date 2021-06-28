@@ -1,0 +1,26 @@
+﻿@model IEnumerable<LuxStay.Areas.Admin.Data.UtilityModel>
+@foreach (var item in Model.Where(m => m.parentID == 0))
+{
+    <div class="row">
+        <div class="col-md-12">
+            <h3>@item.utilityName</h3>
+        </div>
+        <div class="col-md-12">
+            <div class="row">
+                @foreach (var subItem in Model.Where(m => m.parentID == item.id))
+                {
+                    <div class="col-md-6">
+                        <div class="form-group clearfix">
+                            <div class="icheck-primary d-inline">
+                                <input type="checkbox" id="@subItem.utilityName" value="@subItem.id">
+                                <label for="@subItem.utilityName">
+                                    @subItem.utilityName
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+}

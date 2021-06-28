@@ -36,6 +36,19 @@ namespace Models.DAO
             if (result != null) return result;
             return null;
         }
-        
+        public int Update(Sale sale)
+        {
+            Sale result = db.Sales.Find(sale.SaleID);
+            if(result != null)
+            {
+                result.PercentSale = sale.PercentSale;
+                result.Check_in = sale.Check_in;
+                result.Check_out = sale.Check_out;
+                result.Status = sale.Status;
+                db.SaveChanges();
+                return 1;
+            }
+            return 0;
+        }
     }
 }

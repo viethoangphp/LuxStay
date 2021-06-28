@@ -40,9 +40,11 @@ $(document).ready(function () {
                     var obj = data;
                     $("#tableUser tbody tr").remove(); 
                     UpdateTable(data);
+                    playSound("/Assets/Admin/dist/mp3/smallbox.mp3");
                     toastr.success("Thêm Thành Công !", "Thành Công !");
                 }
                 else {
+                    playSound("/Assets/Admin/dist/mp3/error.mp3");
                     toastr.error("Thêm Thất Bại . Vui Lòng Thao Tác Lại !", "Lỗi !");
                 }
             }
@@ -86,10 +88,13 @@ $(document).ready(function () {
                     if (data != "duplicate" && data != "false") {
                         $("#tableUser tbody tr").remove();
                         UpdateTable(data);
+                        playSound("/Assets/Admin/dist/mp3/smallbox.mp3");
                         toastr.success("Xóa Thành Công", "Thành Công");
                     } else if (data == "duplicate") {
+                        playSound("/Assets/Admin/dist/mp3/error.mp3");
                         toastr.warning("User đang online. Vui Lòng Thao Tác Lại", "Cảnh Báo");
                     } else {
+                        playSound("/Assets/Admin/dist/mp3/error.mp3");
                         toastr.error("Bạn Không Có Quyền Thực Hiện Thao Tác Này", "Lỗi");
                     }
                 }
@@ -117,10 +122,12 @@ $(document).ready(function () {
                     var td = "#" + id;
                     console.log(td);
                     $(td+" .user_fullname").text(fullname);
-                    $(td+" .user_phone").text(phone);
+                    $(td + " .user_phone").text(phone);
+                    playSound("/Assets/Admin/dist/mp3/smallbox.mp3");
                     toastr.success("Cập Nhật Thành Công", "Thành Công")
 
                 } else {
+                    playSound("/Assets/Admin/dist/mp3/error.mp3");
                     toastr.error("Cập Nhật Thất Bại", "Lỗi")
                 }
             }
@@ -158,4 +165,8 @@ function UpdateTable(listObj) {
         tableBody = $("#tableUser tbody");
         tableBody.append(markup);
     }
+}
+function playSound(url) {
+    const audio = new Audio(url);
+    audio.play();
 }

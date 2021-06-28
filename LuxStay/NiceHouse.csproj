@@ -136,16 +136,23 @@
     <Compile Include="Areas\Admin\Controllers\LocationController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProfileController.cs" />
+    <Compile Include="Areas\Admin\Controllers\RoomController.cs" />
     <Compile Include="Areas\Admin\Controllers\SaleController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Areas\Admin\Data\AdminLogin.cs" />
+    <Compile Include="Areas\Admin\Data\CategoryModel.cs" />
     <Compile Include="Areas\Admin\Data\InformationUser.cs" />
     <Compile Include="Areas\Admin\Data\LocationModel.cs" />
     <Compile Include="Areas\Admin\Data\PasswordUser.cs" />
+    <Compile Include="Areas\Admin\Data\RoomModel.cs" />
     <Compile Include="Areas\Admin\Data\SaleModel.cs" />
     <Compile Include="Areas\Admin\Data\UserModel.cs" />
+    <Compile Include="Areas\Admin\Data\UtilityModel.cs" />
+    <Compile Include="Areas\Admin\Helper\CategoryHelper.cs" />
+    <Compile Include="Areas\Admin\Helper\LocationHeper.cs" />
     <Compile Include="Areas\Admin\Helper\SaleHeper.cs" />
     <Compile Include="Areas\Admin\Helper\UserHelper.cs" />
+    <Compile Include="Areas\Admin\Helper\UtilityHelper.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -191,6 +198,7 @@
     <Content Include="Assets\Admin\dist\js\ajax\Category.js" />
     <Content Include="Assets\Admin\dist\js\ajax\Location.js" />
     <Content Include="Assets\Admin\dist\js\ajax\profile.js" />
+    <Content Include="Assets\Admin\dist\js\ajax\Room.js" />
     <Content Include="Assets\Admin\dist\js\ajax\Sale.js" />
     <Content Include="Assets\Admin\dist\js\ajax\User.js" />
     <Content Include="Assets\Admin\dist\js\chart.js" />
@@ -202,8 +210,8 @@
     <Content Include="Assets\Admin\dist\js\pages\dashboard3.js" />
     <Content Include="Assets\Admin\dist\js\test.html" />
     <Content Include="Assets\Admin\dist\js\validator.min.js" />
-    <Content Include="Assets\Admin\dist\mp3\windows_exclamation.mp3" />
-    <Content Include="Assets\Admin\dist\mp3\windows_xp_error.mp3" />
+    <Content Include="Assets\Admin\dist\mp3\error.mp3" />
+    <Content Include="Assets\Admin\dist\mp3\smallbox.mp3" />
     <Content Include="Assets\Admin\Login\css\main.css" />
     <Content Include="Assets\Admin\Login\css\util.css" />
     <Content Include="Assets\Admin\Login\fonts\font-awesome-4.7.0\css\font-awesome.css" />
@@ -2127,6 +2135,10 @@
     <Content Include="Areas\Admin\Views\Location\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Sale\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Room\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Room\Location.cshtml" />
+    <Content Include="Areas\Admin\Views\Room\Category.cshtml" />
+    <Content Include="Areas\Admin\Views\Room\Utility.cshtml" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

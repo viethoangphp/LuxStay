@@ -27,18 +27,28 @@
                 <!-- Profile Image -->
                 <div class="card card-primary card-outline">
                     <div class="card-body box-profile">
-                        <div class="text-center">
+                        <div class="text-center" style="width:100px; margin: 0 auto">
                             @if (ViewBag.user.Avatar == null)
                             {
-                                <img class="profile-user-img img-fluid img-circle"
-                                     src="~/Assets/Admin/dist/img/user1-128x128.jpg"
-                                     alt="User profile picture">
+                                <div class="image"
+                                     style="border-radius: 50%;
+                                            padding: 50%;
+                                            background-size: cover;
+                                            background-position: top center;
+                                            background-repeat: no-repeat;
+                                            background-image: url(/Assets/Admin/dist/img/user1-128x128.jpg);">
+                                </div>
                             }
                             else
                             {
-                                <img class="profile-user-img img-fluid img-circle"
-                                     src="@ViewBag.user.Avatar"
-                                     alt="User profile picture">
+                                <div class="image"
+                                     style="border-radius: 50%;
+                                            padding: 50%;
+                                            background-size: cover;
+                                            background-position: top center;
+                                            background-repeat: no-repeat;
+                                            background-image: url( @ViewBag.user.Avatar );">
+                                </div>
                             }
                         </div>
                         <h3 class="profile-username text-center">@ViewBag.user.Fullname</h3>
@@ -50,7 +60,7 @@
                             <li class="list-group-item">
                                 <b>Chức Vụ:</b> <a class="float-right">Quản Trị Viên</a>
                             </li>
-                           
+
                         </ul>
 
                         <!-- <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a> -->
@@ -109,7 +119,6 @@
                                 <!-- /.post -->
                             </div>
                             <!-- /.tab-pane -->
-                            
                             <!-- /.tab-pane -->
                             <div class="tab-pane" id="user-changePassword">
                                 <form class="form-horizontal" id="change-password" role="form">
@@ -146,7 +155,7 @@
                                 <form class="form-horizontal" id="uploader">
                                     <div class="form-group row">
                                         <div class="text-center w-100">
-                                            <input type="file" id="fileInput" multiple/>
+                                            <input type="file" id="fileInput" multiple />
                                             <button type="submit" name="" class="btn btn-success">Tải ảnh lên</button>
                                         </div>
                                     </div>
@@ -166,5 +175,5 @@
 </section>
 <!-- /.content -->
 @section js{
-    <script src="~/Assets/Admin/dist/js/ajax/profile.js"></script>    
+    <script src="~/Assets/Admin/dist/js/ajax/profile.js"></script>
 }

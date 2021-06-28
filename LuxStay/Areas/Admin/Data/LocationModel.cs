@@ -8,6 +8,7 @@ namespace LuxStay.Areas.Admin.Data
 {
     public class LocationModel
     {
+        public int id { set; get; }
         [Required(ErrorMessage ="Bạn Không Được Để Trống Tên Khu Vực")]
         public String LocationName { set; get; }
         [Required(ErrorMessage = "Bạn Không Được Để Trống Ảnh Khu Vực")]
