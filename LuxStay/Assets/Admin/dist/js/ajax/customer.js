@@ -141,7 +141,15 @@ $(document).on("click","#btn-refresh",function () {
     $("#listView").DataTable().ajax.reload();
 });
 
-$(document).on("click", ".btn-details", function () {
-    var id = $("#inputEditID").val();
-    window.location.href = "/Admin/Customer/Details/"+id;
-});
+//$(document).on("click", ".btn-orderList", function () {
+//    var cusID = $("#inputEditID").val();
+//    $.ajax({
+//        url: "Admin/Bill/GetCus/" + cusID,
+//        method: "post",
+//        data: { id: cusID },
+//        dataType: "json",
+//        success: function (data) {
+            
+//        }
+//    })
+//});

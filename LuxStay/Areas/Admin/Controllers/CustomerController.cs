@@ -93,10 +93,5 @@ namespace LuxStay.Areas.Admin.Controllers
             return Json(false, JsonRequestBehavior.AllowGet);
         }
         //----------------------------------------------------------------------------------------
-        public ActionResult Details(int id)
-        {
-            ViewData["CustomerName"] = helper.getCustomer(id).fullname;
-            return View();
-        }
     }
 }
