@@ -13,11 +13,10 @@ namespace LuxStay.Areas.Admin.Controllers
     {
         // GET: Admin/User
         protected UserDAO dao = new UserDAO();
-
+        private UserHelper dto = new UserHelper();
         public ActionResult Index()
         {
-            List<User> listUser = new List<User>();
-            listUser = dao.getListUser();
+            List<UserModel> listUser = dto.getListUser();
             return View(listUser);
         }
         [HttpPost]
@@ -28,20 +27,15 @@ namespace LuxStay.Areas.Admin.Controllers
                 if(model.password == null || model.password.Length < 6)
                 {
                     return Json("false", JsonRequestBehavior.AllowGet);
-                }    
-                User user = new User();
-                user.Fullname = model.fullname;
-                user.Email = model.email;
-                user.Password = model.password;
-                user.Phone = model.phone;
-                var id = dao.Insert(user);
+                }
+                var id = dto.Insert(model);
                 if (id == 0)
                 {
                     return Json("false", JsonRequestBehavior.AllowGet);
                 }
                 else
                 {
-                    List<UserModel> list = new UserHelper().getListUser();
+                    List<UserModel> list = dto.getListUser();
                     return Json(list, JsonRequestBehavior.AllowGet);
                 }
 
@@ -51,19 +45,9 @@ namespace LuxStay.Areas.Admin.Controllers
         [HttpPost]
         public JsonResult View(int id)
         {
-            UserModel user = new UserModel();
-            User model = dao.getUserById(id);
-            if (model != null)
-            {
-                user.id = model.UserID;
-                user.fullname = model.Fullname;
-                user.phone = model.Phone;
-                user.email = model.Email;
-                user.avatar = model.Avatar;
-                return Json(user, JsonRequestBehavior.AllowGet);
-            }
+            UserModel model = dto.getUserById(id);
+            if (model != null) return Json(model, JsonRequestBehavior.AllowGet);
             return Json("false", JsonRequestBehavior.AllowGet);
-
         }
         [HttpPost]
         public JsonResult Delete(int userID)
@@ -78,7 +62,7 @@ namespace LuxStay.Areas.Admin.Controllers
                 int result = dao.Delete(userID);
                 if(result == 1)
                 {
-                    List<UserModel> list = new UserHelper().getListUser();
+                    List<UserModel> list = dto.getListUser();
                     return Json(list, JsonRequestBehavior.AllowGet);
                 }
                 else

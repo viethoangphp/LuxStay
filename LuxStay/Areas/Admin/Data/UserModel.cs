@@ -18,5 +18,6 @@ namespace LuxStay.Areas.Admin.Data
         public string avatar { set; get; }
         [Required]
         public string phone { set; get; }
+        public int status { set; get; }
     }
 }

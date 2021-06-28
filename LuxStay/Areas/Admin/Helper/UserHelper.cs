@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using Models.DAO;
 using LuxStay.Areas.Admin.Data;
+using Models.Entity;
+
 namespace LuxStay.Areas.Admin.Helper
 {
     public class UserHelper
@@ -24,6 +26,32 @@ namespace LuxStay.Areas.Admin.Helper
                 listUser.Add(user);
             }
             return listUser;
+        }
+        public UserModel getUserById(int id)
+        {
+            UserModel user = new UserModel();
+            User model = dao.getUserById(id);
+            if (model != null)
+            {
+                user.id = model.UserID;
+                user.fullname = model.Fullname;
+                user.phone = model.Phone;
+                user.email = model.Email;
+                user.avatar = model.Avatar;
+                user.status = model.Status;
+                return user;
+            }
+            return null;
+        }
+        public int Insert(UserModel model)
+        {
+            User user = new User();
+            user.Fullname = model.fullname;
+            user.Email = model.email;
+            user.Password = model.password;
+            user.Phone = model.phone;
+            var id = dao.Insert(user);
+            return id;
         }
     }
 }

@@ -61,6 +61,18 @@ namespace LuxStay.Areas.Admin.Helper
             if (result == 1) return 1;
             return 0;
         }
+        public int Update(SaleModel model)
+        {
+            Sale sale = new Sale();
+            sale.SaleID = model.id;
+            sale.PercentSale = model.persent;
+            sale.Check_in = DateTime.ParseExact(model.check_in, "dd/MM/yyyy", null);
+            sale.Check_out = DateTime.ParseExact(model.check_out, "dd/MM/yyyy", null);
+            sale.Status = model.status;
+            var result = dao.Update(sale);
+            if (result == 1) return 1;
+            return 0;
+        }
     }
     
 }

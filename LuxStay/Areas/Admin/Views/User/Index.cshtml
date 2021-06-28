@@ -3,7 +3,7 @@
     ViewBag.Title = "Danh Sách User";
     Layout = "~/Areas/Admin/Views/Shared/__AdminLayout.cshtml";
 }
-@model IEnumerable<Models.Entity.User>
+@model IEnumerable<LuxStay.Areas.Admin.Data.UserModel>
 @section js
 {
     <script src="~/Assets/Admin/dist/js/ajax/User.js"></script>
@@ -207,14 +207,14 @@
                         @foreach (var item in Model)
                         {
                             i++;
-                        <tr id="@item.UserID">
+                        <tr id="@item.id">
                             <td class="middle"><b>@i</b></td>
-                            <td class="middle user_fullname">@item.Fullname</td>
-                            <td class="middle">@item.Email</td>
-                            <td class="middle user_phone">@item.Phone</td>
+                            <td class="middle user_fullname">@item.fullname</td>
+                            <td class="middle">@item.email</td>
+                            <td class="middle user_phone">@item.phone</td>
                             <td class="middle">Quản Trị Viên</td>
                             <td class="middle">Quản Trị Viên</td>
-                            @if (item.Status == 1)
+                            @if (item.status == 1)
                             {
                                 <td class="middle">Đang Online</td>
                             }
@@ -224,11 +224,11 @@
                             }
                             <td class="middle">
                                 <div class="d-flex d-flex justify-content-around">
-                                    <button class="btn btn-danger btn-delete" data-id="@item.UserID">
+                                    <button class="btn btn-danger btn-delete" data-id="@item.id">
                                         <i class="fas fa-trash-alt"></i>
                                     </button>
                                     <!-- Button trigger modal user information -->
-                                    <button class="btn btn-secondary btn-view" data-id="@item.UserID" data-toggle="modal" data-target="#viewUserInform">
+                                    <button class="btn btn-secondary btn-view" data-id="@item.id" data-toggle="modal" data-target="#viewUserInform">
                                         <i class="fas fa-eye"></i>
                                     </button>
                                 </div>

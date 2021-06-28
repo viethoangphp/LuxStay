@@ -59,6 +59,7 @@
     <Compile Include="DAO\LocationDAO.cs" />
     <Compile Include="DAO\SaleDAO.cs" />
     <Compile Include="DAO\UserDAO.cs" />
+    <Compile Include="DAO\UtilityDAO.cs" />
     <Compile Include="Entity\Advice.cs" />
     <Compile Include="Entity\Bill.cs" />
     <Compile Include="Entity\CODE.cs" />

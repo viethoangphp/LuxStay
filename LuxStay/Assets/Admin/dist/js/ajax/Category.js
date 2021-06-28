@@ -34,12 +34,14 @@ $("#Category").submit(function () {
         success: function (data) {
             if (data != "false") {
                 $("#model-cancel").click();
+                playSound("/Assets/Admin/dist/mp3/smallbox.mp3");
                 toastr.success("Thêm Thành Công !", "Thành Công !");
                 setTimeout(function () {
                     window.location = "/Admin/Category";
                 }, 1000)
             }
             else {
+                playSound("/Assets/Admin/dist/mp3/error.mp3");
                 toastr.error("Thêm Thất Bại . Vui Lòng Thao Tác Lại !", "Lỗi !");
             }
         }
@@ -82,14 +84,20 @@ $("#update_category").submit(function () {
         success: function (data) {
             if (data == "true") {
                 $("#model-cancel-view").click();
+                playSound("/Assets/Admin/dist/mp3/smallbox.mp3");
                 toastr.success("Cập Nhật Thành Công", "Success !");
                 setTimeout(function () {
                     window.location = "/Admin/Category"
                 }, 1000)
             } else {
+                playSound("/Assets/Admin/dist/mp3/error.mp3");
                 toastr.error("Không Được Để Trống Tên Loại Phòng","Error")
             }
         }
     })
     return false;
 })
+function playSound(url) {
+    const audio = new Audio(url);
+    audio.play();
+}

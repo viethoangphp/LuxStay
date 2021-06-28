@@ -17,11 +17,13 @@
             if (xhr.readyState == 4 && xhr.status == 200) {
                 console.log(xhr.responseText);
                 if (xhr.responseText == "true") {
+                    playSound("/Assets/Admin/dist/mp3/smallbox.mp3");
                     toastr.success("Thêm Thành Công", "Thành Công");
                     setTimeout(function () {
                         window.location = "/Admin/Location";
                     }, 1000);
                 } else {
+                    playSound("/Assets/Admin/dist/mp3/error.mp3");
                     toastr.error("Thêm Thất Bại Vui Lòng Thao Tác Lại", "Thất Bại");
                 }
             }
@@ -40,16 +42,23 @@
                 data: { id: id },
                 dataType: "json",
                 success: function (data) {
-                    if (data == "true")
-                    {
+                    if (data == "true") {
+                        playSound("/Assets/Admin/dist/mp3/smallbox.mp3");
                         toastr.success("Xóa Thành Công !", "Thành Công");
                         setTimeout(function () {
                             window.location = "/Admin/Category";
                         }, 1000);
                     }
-                    else toastr.error("Xóa Thất Bại . Vui Lòng Thao Tác Lại", "Thất Bại");
+                    else {
+                        playSound("/Assets/Admin/dist/mp3/error.mp3");
+                        toastr.error("Xóa Thất Bại . Vui Lòng Thao Tác Lại", "Thất Bại");
+                    }
                 }
             })
         }
     })
 })
+function playSound(url) {
+    const audio = new Audio(url);
+    audio.play();
+}

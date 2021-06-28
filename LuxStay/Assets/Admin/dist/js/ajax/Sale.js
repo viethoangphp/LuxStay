@@ -36,8 +36,6 @@
     }
    
 })
-
-
 $('#check_out').daterangepicker({
     singleDatePicker: true,
     locale: {
@@ -94,11 +92,20 @@ $("#Sale").submit(function () {
         dataType: "json",
         success: function (data) {
             if (data != "false") {
+                $("#btn-cancel").click();
                 $("#tableUser tbody tr").remove();
                 UpdateTable(data);
-                toastr.success("Xóa Thành Công", "Thành Công");
+                $("#persent").val("");
+                $("#check_in").val("");
+                $("#check_out").val("");
+                $("#status").val("1");
+                playSound("/Assets/Admin/dist/mp3/smallbox.mp3");
+                toastr.success("Thêm Thành Công", "Thành Công");
             }
-            else toastr.error("Thêm Thất Bại . Vui Lòng Thao Tác Lại", "Thất Bại");
+            else {
+                toastr.error("Thêm Thất Bại . Vui Lòng Thao Tác Lại", "Thất Bại");
+                playSound("/Assets/Admin/dist/mp3/error.mp3");
+            }
         }
     })
     return false;
@@ -117,8 +124,10 @@ $(document).on("click", ".btn-delete", function () {
                 if (data != "false") {
                     $("#tableUser tbody tr").remove();
                     UpdateTable(data);
+                    playSound("/Assets/Admin/dist/mp3/smallbox.mp3");
                     toastr.success("Xóa Thành Công", "Thành Công");
                 } else {
+                    playSound("/Assets/Admin/dist/mp3/error.mp3");
                     toastr.error("Xóa Thất Bại", "Lỗi ");
                 }
             }
@@ -217,12 +226,51 @@ $(document).on("click", ".btn-view", function () {
                 } else {
                     $("#status_view").val("2");
                 }
+                $("#Sale_View").data("id", data.id);
+                var form_id = $("#Sale_View").data("id");
+                console.log(form_id);
             } else {
+                playSound("/Assets/Admin/dist/mp3/error.mp3");
                 toastr.error("Xóa Thất Bại", "Lỗi ");
             }
         }
     })
 });
+$("#Sale_View").submit(function () {
+    var id = $(this).data("id");
+    var persent = $("#persent_view").val();
+    var check_in = $("#check_in_view").val();
+    var check_out = $("#check_out_view").val();
+    var status = $("#status_view").val();
+    var obj = {
+        id: id,
+        persent: persent,
+        check_in: check_in,
+        check_out: check_out,
+        status: status
+    };
+    $.ajax({
+        url: "/Admin/Sale/Update",
+        method: "POST",
+        data: obj,
+        dataType: "json",
+        success: function (data) {
+            if (data != "false") {
+                $("#btn-view-cancel").click();
+                $("#tableUser tbody tr").remove();
+                UpdateTable(data);
+                playSound("/Assets/Admin/dist/mp3/smallbox.mp3");
+                toastr.success("Cập Nhật Thành Công", "Thành Công");
+            }
+            else {
+                playSound("/Assets/Admin/dist/mp3/error.mp3");
+                toastr.error("Cập Nhật Thất Bại . Vui Lòng Thao Tác Lại", "Thất Bại");
+            }
+                
+        }
+    })
+    return false;
+})
 function UpdateTable(listObj) {
     for (var i = 0; i < listObj.length; i++) {
         var count = i;
@@ -253,4 +301,8 @@ function UpdateTable(listObj) {
         tableBody = $("#tableUser tbody");
         tableBody.append(markup);
     }
+}
+function playSound(url) {
+    const audio = new Audio(url);
+    audio.play();
 }

@@ -26,8 +26,10 @@
             dataType: "json",
             success: function (data) {
                 if (data == "true") {
+                    playSound("/Assets/Admin/dist/mp3/smallbox.mp3");
                     toastr.success("Cập Nhật Thành Công", "Thành Công");
                 } else {
+                    playSound("/Assets/Admin/dist/mp3/error.mp3");
                     toastr.error("Cập Nhật Không Thành Công", "Thất Bại");
                 }
             }
@@ -46,16 +48,20 @@
                 dataType: "json",
                 success: function (data) {
                     if (data == "true") {
+                        playSound("/Assets/Admin/dist/mp3/smallbox.mp3");
                         toastr.success("Cập Nhật Thành Công", "Thành Công");
                         $("#inputOldPassword").val("");
                         $("#inputNewPassword").val("");
                         $("#inputPreNewPassword").val("");
+
                     } else if (data == "false-pass") {
+                        playSound("/Assets/Admin/dist/mp3/error.mp3");
                         toastr.error("Mật Khẩu Cũ Không Trùng Khớp", "Thất Bại");
                         $("#inputOldPassword").val("");
                         $("#inputNewPassword").val("");
                         $("#inputPreNewPassword").val("");
                     } else {
+                        playSound("/Assets/Admin/dist/mp3/error.mp3");
                         toastr.error("Mật Khẩu Mới Không Trùng Khớp", "Thất Bại");
                         $("#inputOldPassword").val("");
                         $("#inputNewPassword").val("");
@@ -78,6 +84,7 @@
         xhr.send(formdata);
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4 && xhr.status == 200) {
+
                 alert(xhr.responseText);
                 setTimeout(() => {
                     window.location = "/Admin/Profile";
@@ -88,3 +95,7 @@
         return false;
     }   
 });
+function playSound(url) {
+    const audio = new Audio(url);
+    audio.play();
+}

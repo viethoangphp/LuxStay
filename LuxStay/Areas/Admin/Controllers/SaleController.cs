@@ -38,10 +38,24 @@ namespace LuxStay.Areas.Admin.Controllers
             }
            return Json("false", JsonRequestBehavior.AllowGet);
         }
+        [HttpPost]
         public JsonResult View(int id)
         {
             SaleModel result = sale.getById(id);
             if (result != null) return Json(result, JsonRequestBehavior.AllowGet);
+            return Json("false", JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult Update(SaleModel model)
+        {
+            if(ModelState.IsValid)
+            {
+                int result = sale.Update(model);
+                if(result == 1)
+                {
+                    var list = sale.getListAll();
+                    return Json(list, JsonRequestBehavior.AllowGet);
+                }    
+            }
             return Json("false", JsonRequestBehavior.AllowGet);
         }
     }
