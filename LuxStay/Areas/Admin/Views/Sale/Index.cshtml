@@ -39,11 +39,11 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form class="form-horizontal" id="Sale_View" method="post">
+                            <form class="form-horizontal" id="Sale" method="post">
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Giảm Giá:</label>
                                     <div class="input-group col-sm-10">
-                                        <input type="number" class="form-control" name="persent" id="persent_view">
+                                        <input type="number" class="form-control" name="persent" id="persent">
                                         <div class="input-group-append">
                                             <span class="input-group-text"><i class="fa fa-percent" aria-hidden="true"></i></span>
                                         </div>
@@ -52,7 +52,7 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Từ Ngày:</label>
                                     <div class="input-group col-sm-10">
-                                        <input type="text" class="form-control float-right" id="check_in_view">
+                                        <input type="text" class="form-control float-right" id="check_in">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">
                                                 <i class="far fa-calendar-alt"></i>
@@ -63,7 +63,7 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Tới Ngày:</label>
                                     <div class="input-group col-sm-10">
-                                        <input type="text" class="form-control float-right" id="check_out_view">
+                                        <input type="text" class="form-control float-right" id="check_out">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">
                                                 <i class="far fa-calendar-alt"></i>
@@ -74,7 +74,7 @@
                                 <div class="form-group row">
                                     <label for="password" class="col-sm-2 col-form-label">Trạng Thái</label>
                                     <div class="col-sm-10">
-                                        <select id="status_view" class="form-control">
+                                        <select id="status" class="form-control">
                                             <option selected value="1">Áp Dụng Ngay</option>
                                             <option value="2">Chờ Xác Nhận</option>
                                         </select>
@@ -207,7 +207,8 @@
     <!-- /.card-body -->
     </div>
     <!-- /.card -->
-</section>
+        </div>
+        </section>
 <!-- /.content -->
 @section js{
     <script src="~/Assets/Admin/dist/js/ajax/Sale.js"></script>
