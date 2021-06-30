@@ -50,6 +50,19 @@
             }).draw();
         });
     </script>
+    <script src="~/Assets/Admin/plugins/ckeditor5-28.0.0/ckeditor.js"></script>
+    <script>
+        DecoupledEditor
+            .create(document.querySelector('#contentEditor'))
+            .then(editor => {
+                const toolbarContainer = document.querySelector('#toolbar-container');
+
+                toolbarContainer.appendChild(editor.ui.view.toolbar.element);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
 }
 
 <div class="card">
@@ -126,9 +139,10 @@
                                         </form>
                                     </div>
                                     <div class="tab-pane fade" id="content" role="tabpanel" aria-labelledby="content-tab">
-                                        <textarea id="contentEditor">
+                                        <div id="toolbar-container"></div>
+                                        <div id="contentEditor">
                                             <!-- content editor location -->
-                                        </textarea>
+                                        </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
                                             <button type="button" class="btn btn-primary">Lưu</button>
