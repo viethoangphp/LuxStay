@@ -12,7 +12,7 @@ namespace Models.Entity
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Utility()
         {
-            Rooms = new HashSet<Room>();
+            UtilityDetails = new HashSet<UtilityDetail>();
         }
 
         public int UtilityID { get; set; }
@@ -28,6 +28,6 @@ namespace Models.Entity
         public string Icon { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Room> Rooms { get; set; }
+        public virtual ICollection<UtilityDetail> UtilityDetails { get; set; }
     }
 }

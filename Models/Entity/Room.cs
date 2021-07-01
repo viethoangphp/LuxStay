@@ -13,9 +13,9 @@ namespace Models.Entity
         public Room()
         {
             Bills = new HashSet<Bill>();
+            CodeDetails = new HashSet<CodeDetail>();
             Images = new HashSet<Image>();
-            CODEs = new HashSet<CODE>();
-            Utilities = new HashSet<Utility>();
+            UtilityDetails = new HashSet<UtilityDetail>();
         }
 
         public int RoomID { get; set; }
@@ -34,10 +34,13 @@ namespace Models.Entity
         public int? Price { get; set; }
 
         [Column(TypeName = "ntext")]
-        public string Content { get; set; }
+        public string ContentRoom { get; set; }
 
-        [StringLength(50)]
+        [StringLength(150)]
         public string Avatar { get; set; }
+
+        [StringLength(150)]
+        public string Address { get; set; }
 
         public int? BedRoom { get; set; }
 
@@ -50,13 +53,16 @@ namespace Models.Entity
         [Column(TypeName = "ntext")]
         public string Note { get; set; }
 
-        [StringLength(1)]
+        [StringLength(150)]
         public string Status { get; set; }
 
         public int? MaxStay { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Bill> Bills { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CodeDetail> CodeDetails { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Image> Images { get; set; }
@@ -68,9 +74,6 @@ namespace Models.Entity
         public virtual Sale Sale { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CODE> CODEs { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Utility> Utilities { get; set; }
+        public virtual ICollection<UtilityDetail> UtilityDetails { get; set; }
     }
 }

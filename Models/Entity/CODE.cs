@@ -12,7 +12,7 @@ namespace Models.Entity
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CODE()
         {
-            Rooms = new HashSet<Room>();
+            CodeDetails = new HashSet<CodeDetail>();
         }
 
         public int CodeID { get; set; }
@@ -30,6 +30,6 @@ namespace Models.Entity
         public DateTime? Check_out { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Room> Rooms { get; set; }
+        public virtual ICollection<CodeDetail> CodeDetails { get; set; }
     }
 }

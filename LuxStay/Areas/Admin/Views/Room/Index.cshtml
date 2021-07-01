@@ -34,12 +34,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Quản Lý Thành Viên</h1>
+                <h1>Quản Lý HomeStay</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="">Trang chủ</a></li>
-                    <li class="breadcrumb-item active">Danh sách thành viên</li>
+                    <li class="breadcrumb-item active">Danh sách HomeStay Trong Hệ Thống</li>
                 </ol>
             </div>
         </div>
@@ -66,7 +66,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form class="form-horizontal" id="addUser" method="post" role="form" action="">
+                            <form class="form-horizontal" id="Room" method="post" action="/Admin/Room/Add" enctype="multipart/form-data">
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="card card-primary card-outline card-outline-tabs">
@@ -92,11 +92,11 @@
                                                         <div class="row">
                                                             <div class="form-group col-md-6">
                                                                 <label for="" class="col-form-label">Tên Phòng</label>
-                                                                <input type="text" class="form-control" placeholder="Vd : HomeStay ABC">
+                                                                <input type="text" class="form-control" placeholder="Vd : HomeStay ABC" name="roomName">
                                                             </div>
                                                             <div class="form-group col-md-6">
                                                                 <label for="" class="col-form-label">Giá Phòng</label>
-                                                                <input type="text" class="form-control" placeholder="Giá Cho Thuê">
+                                                                <input type="number" class="form-control" placeholder="Giá Cho Thuê" name="price">
                                                             </div>
                                                         </div>
                                                         <div class="row">
@@ -107,19 +107,19 @@
                                                             <div class="col-md-4">
                                                                 <div class="form-group">
                                                                     <label for="" class="col-form-label">Số Giường Ngủ</label>
-                                                                    <input type="text" class="form-control" placeholder="Vd : HomeStay ABC">
+                                                                    <input type="number" class="form-control" placeholder="Số Giưởng Ngủ" name="bedRoom">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <div class="form-group">
                                                                     <label for="" class="col-form-label">Số Phòng Tắm</label>
-                                                                    <input type="text" class="form-control" placeholder="Vd : HomeStay ABC">
+                                                                    <input type="number" class="form-control" placeholder="Số Phòng Tắm" name="bathRoom">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <div class="form-group">
                                                                     <label for="" class="col-form-label">Số Phòng Ngủ</label>
-                                                                    <input type="text" class="form-control" placeholder="Vd : HomeStay ABC">
+                                                                    <input type="number" class="form-control" placeholder="Số Phòng Ngủ" name="bedNumber">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -128,13 +128,13 @@
                                                             <div class="col-md-6">
                                                                 <div class="form-group">
                                                                     <label for="" class="col-form-label">Số Lượng Người Ở</label>
-                                                                    <input type="text" class="form-control" placeholder="Giá Cho Thuê">
+                                                                    <input type="number" class="form-control" placeholder="Số Lượng Người Ở" name="peopleMax">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6">
                                                                 <div class="form-group">
                                                                     <label for="" class="col-form-label">Diện Tích Phòng</label>
-                                                                    <input type="text" class="form-control" placeholder="Giá Cho Thuê">
+                                                                    <input type="number" class="form-control" placeholder="Diện Tích Home Stay" name="area">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -145,10 +145,19 @@
                                                                     <label>
                                                                         <img class="target" src="https://cdn-app.kiotviet.vn/retailler/bundles/2021616941/default-product-img.jpg" alt="">
                                                                     </label>
-                                                                    <input type="file" class="upload-photo" name="avatar">
+                                                                    <input type="file" class="upload-photo" name="avatarFile">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-9">
+                                                                <div class="form-group">
+                                                                    <label for="" class="col-form-label">Địa Chỉ HomeStay</label>
+                                                                    <input type="text" class="form-control" placeholder="Địa Chỉ HomeStay" name="Address">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <label for="" class="">Ảnh Chi Tiết Phòng</label>
                                                                 <div class="row">
                                                                     <div class="col-md-3">
                                                                         <label for="" class="">Slider 1</label>
@@ -156,7 +165,7 @@
                                                                             <label>
                                                                                 <img class="target" src="https://cdn-app.kiotviet.vn/retailler/bundles/2021616941/default-product-img.jpg" alt="">
                                                                             </label>
-                                                                            <input type="file" class="upload-photo" name="avatar">
+                                                                            <input type="file" class="upload-photo" name="slider">
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-3">
@@ -165,7 +174,7 @@
                                                                             <label>
                                                                                 <img class="target" src="https://cdn-app.kiotviet.vn/retailler/bundles/2021616941/default-product-img.jpg" alt="">
                                                                             </label>
-                                                                            <input type="file" class="upload-photo" name="avatar">
+                                                                            <input type="file" class="upload-photo" name="slider">
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-3">
@@ -174,36 +183,27 @@
                                                                             <label>
                                                                                 <img class="target" src="https://cdn-app.kiotviet.vn/retailler/bundles/2021616941/default-product-img.jpg" alt="">
                                                                             </label>
-                                                                            <input type="file" class="upload-photo" name="avatar">
+                                                                            <input type="file" class="upload-photo" name="slider">
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-md-3">
-                                                                        <label for="" class="">Slider 3</label>
-                                                                        <div class="image-upload">
-                                                                            <label>
-                                                                                <img class="target" src="https://cdn-app.kiotviet.vn/retailler/bundles/2021616941/default-product-img.jpg" alt="">
-                                                                            </label>
-                                                                            <input type="file" class="upload-photo" name="avatar">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
                                                                     <div class="col-md-3">
                                                                         <label for="" class="">Slider 4</label>
                                                                         <div class="image-upload">
                                                                             <label>
                                                                                 <img class="target" src="https://cdn-app.kiotviet.vn/retailler/bundles/2021616941/default-product-img.jpg" alt="">
                                                                             </label>
-                                                                            <input type="file" class="upload-photo" name="avatar">
+                                                                            <input type="file" class="upload-photo" name="slider">
                                                                         </div>
                                                                     </div>
+                                                                </div>
+                                                                <div class="row">
                                                                     <div class="col-md-3">
                                                                         <label for="" class="">Slider 5</label>
                                                                         <div class="image-upload">
                                                                             <label>
                                                                                 <img class="target" src="https://cdn-app.kiotviet.vn/retailler/bundles/2021616941/default-product-img.jpg" alt="">
                                                                             </label>
-                                                                            <input type="file" class="upload-photo" name="avatar">
+                                                                            <input type="file" class="upload-photo" name="slider">
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-3">
@@ -212,22 +212,30 @@
                                                                             <label>
                                                                                 <img class="target" src="https://cdn-app.kiotviet.vn/retailler/bundles/2021616941/default-product-img.jpg" alt="">
                                                                             </label>
-                                                                            <input type="file" class="upload-photo" name="avatar">
+                                                                            <input type="file" class="upload-photo" name="slider">
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-3">
-                                                                        <label for="" class="">Slider 3</label>
+                                                                        <label for="" class="">Slider 7</label>
                                                                         <div class="image-upload">
                                                                             <label>
                                                                                 <img class="target" src="https://cdn-app.kiotviet.vn/retailler/bundles/2021616941/default-product-img.jpg" alt="">
                                                                             </label>
-                                                                            <input type="file" class="upload-photo" name="avatar">
+                                                                            <input type="file" class="upload-photo" name="slider">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-3">
+                                                                        <label for="" class="">Slider 8</label>
+                                                                        <div class="image-upload">
+                                                                            <label>
+                                                                                <img class="target" src="https://cdn-app.kiotviet.vn/retailler/bundles/2021616941/default-product-img.jpg" alt="">
+                                                                            </label>
+                                                                            <input type="file" class="upload-photo" name="slider">
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-
                                                     </div>
                                                     <div class="tab-pane fade" id="custom-tabs-four-profile" role="tabpanel" aria-labelledby="custom-tabs-four-profile-tab">
                                                         <div class="row">
@@ -242,7 +250,7 @@
                                                                     <!-- /.card-header -->
                                                                     <div class="card-body pad">
                                                                         <div class="mb-3">
-                                                                            <textarea class="textarea" placeholder="Place some text here"
+                                                                            <textarea name="content" class="textarea" placeholder="Place some text here"
                                                                                       style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                                                                         </div>
                                                                     </div>
@@ -256,7 +264,7 @@
                                                         Ưu Đãi
                                                     </div>
                                                     <div class="tab-pane fade" id="custom-tabs-four-settings" role="tabpanel" aria-labelledby="custom-tabs-four-settings-tab">
-                                                        @Html.Action("Utility","Room")
+                                                        @Html.Action("Utility", "Room")
                                                     </div>
                                                 </div>
                                             </div>
@@ -279,85 +287,16 @@
         <div class="card-body">
             <div class="h-600 overflow-auto">
                 <!-- Modal user information-->
-                <div class="modal fade" id="viewUserInform" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg ">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h3 class="modal-title text-uppercase" id="viewUserInform">Thông tin user</h3>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span class="fos-40" aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form class="form-horizontal" id="InfomationUser" data-id="" role="form" method="post">
-                                    <div class="form-group row">
-                                        <label for="inputName" class="col-sm-2 col-form-label">Avatar : </label>
-                                        <div class="col-sm-10">
-                                            <img src="" class="profile-user-img img-fluid img-circle" alt="" id="avatar">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="inputName" class="col-sm-2 col-form-label">Họ và tên:</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="fullname_view" name="fullname" required>
-                                            <div class="invalid-feedback">Không Được Để Trống Trường Này</div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="inputEmail" class="col-sm-2 col-form-label">Email:</label>
-                                        <div class="col-sm-10">
-                                            <input type="email" class="form-control" id="email_view" name="email" required disabled>
-                                            <div class="invalid-feedback">Không Được Để Trống Trường Này</div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row mb-0">
-                                        <label for="inputPhoneNumber" class="col-sm-2 col-form-label">Số điện thoại:</label>
-                                        <div class="col-sm-10">
-                                            <div class="input-group mb-3">
-                                                <span class="input-group-text">+84</span>
-                                                <input type="text" class="form-control" id="phone_view" name="phone" required>
-                                                <div class="invalid-feedback">Không Được Để Trống Trường Này</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="input-group mb-0">
-                                        <label for="inputPhoneNumber" class="col-sm-2 col-form-label">Quyền</label>
-                                        <div class="col-sm-10">
-                                            <div class="input-group mb-3">
-                                                <select class="custom-select" id="inputGroupSelect">
-                                                    <option selected>Quản Trị Viên</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="input-group mb-3">
-                                        <label for="inputPhoneNumber" class="col-sm-2 col-form-label">Chức Vụ:</label>
-                                        <div class="col-sm-10">
-                                            <div class="input-group mb-3">
-                                                <select class="custom-select" id="inputGroupSelect02">
-                                                    <option selected>Quản Trị Viên</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
-                                        <button type="submit" class="btn btn-success">Lưu</button>
-                                    </div>
-                                </form>
-                            </div>
 
-                        </div>
-                    </div>
-                </div>
                 <table class="table table-striped table-bordered judge-table " id="tableUser">
                     <!-- header table -->
                     <thead class="">
                         <tr>
                             <th class="w-80">STT</th>
                             <th class="w-250">Tên Phòng</th>
-                            <th class="w-250">Loại Phòng</th>
-                            <th class="w-200">Khu Vực</th>
+                            <th class="w-250">Khu Vực</th>
+                            <th class="w-200">Loại Phòng</th>
+                            <th class="w-200">Địa Chỉ</th>
                             <th class="w-150">Giá Cho Thuê</th>
                             <th class="w-150">Ảnh Đại Diện</th>
                             <th class="w-150">Trạng Thái</th>
@@ -365,7 +304,37 @@
                         </tr>
                     </thead>
                     <!-- end header table -->
-
+                    <tbody>
+                        @{
+                            int count = 0;
+                        }
+                        @foreach (var item in Model)
+                        {
+                            count++;
+                        <tr>
+                            <td class="middle">@count</td>
+                            <td class="middle">@item.roomName</td>
+                            <td class="middle">@item.roomCategory</td>
+                            <td class="middle">@item.roomLocation</td>
+                            <td class="middle">@item.Address</td>
+                            <td class="middle">@item.priceShow đ/Đêm</td>
+                            <td class="middle">
+                                <img src="@item.avatar" class="img-fluid" alt="Alternate Text" style="width:100px;" />
+                            </td>
+                            <td class="middle">Đang Cho Thuê</td>
+                            <td class="middle">
+                                <div class="d-flex d-flex justify-content-around">
+                                    <button class="btn btn-danger btn-delete" data-id="@item.id">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                    <button class="btn btn-secondary btn-view" data-id="@item.id" data-toggle="modal" data-target="#viewUserInform">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
                 </table>
             </div>
         </div>
