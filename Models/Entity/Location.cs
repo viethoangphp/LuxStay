@@ -22,7 +22,7 @@ namespace Models.Entity
 
         public int? RoomNumber { get; set; }
 
-        [StringLength(50)]
+        [StringLength(150)]
         public string Avatar { get; set; }
 
         public int? Status { get; set; }

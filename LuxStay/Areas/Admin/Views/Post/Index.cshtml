@@ -56,6 +56,33 @@
         });
     </script>
 }
+<!-- Style Img Selector-->
+<style>
+    .image-upload {
+        position: relative;
+        width: 103px;
+        border: 1px dashed #333;
+    }
+
+    label {
+        cursor: pointer;
+        /* Style as you please, it will become the visible UI component. */
+    }
+
+    .upload-photo {
+        opacity: 0;
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+    }
+
+    .target {
+        width: 100px;
+        height: auto;
+    }
+</style>
+<!-- End Style Img Selector-->
 
 <div class="card">
     <div class="card-header">
@@ -118,9 +145,12 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6 align-bottom">
-                                                    <div class="form-group">
-                                                        <label for="postAvatar">Hình đại diện</label>
-                                                        <input type="text" class="form-control" id="postAvatar" name="postAvatar" disabled>
+                                                    <label for="" class="">Hình đại diện</label>
+                                                    <div class="image-upload">
+                                                        <label>
+                                                            <img class="target" src="https://cdn-app.kiotviet.vn/retailler/bundles/2021616941/default-product-img.jpg" alt="">
+                                                        </label>
+                                                        <input type="file" class="upload-photo" name="avatar">
                                                     </div>
                                                 </div>
                                             </div>
@@ -277,3 +307,24 @@
     </div>
     <!-- /.card-body -->
 </div>
+
+<script>
+    var img = document.getElementsByClassName("image-upload");
+    for (var i = 0; i < img.length; i++) {
+        img[i].onclick = function () {
+            var target = this.getElementsByClassName("target")[0];
+            this.getElementsByClassName("upload-photo")[0].click();
+            this.getElementsByClassName("upload-photo")[0].onchange = function () {
+                var src = this;
+                showImage(src, target)
+            }
+        }
+    }
+    function showImage(src, target) {
+        var fr = new FileReader();
+        fr.onload = function () {
+            target.src = fr.result;
+        }
+        fr.readAsDataURL(src.files[0]);
+    }
+</script>
