@@ -25,5 +25,14 @@ namespace LuxStay.Areas.Admin.Helper
             }
             return result;
         }
+        public CategoryModel getById(int id)
+        {
+            CategoryModel model = new CategoryModel();
+            var result = dao.GetCategoryById(id);
+            model.id = result.CatID;
+            model.categoryName = result.CatName;
+            model.status = (int)result.Status;
+            return model;
+        }
     }
 }

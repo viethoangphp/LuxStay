@@ -22,9 +22,21 @@ namespace LuxStay.Areas.Admin.Helper
                 model.LocationName = item.LocationName;
                 model.avatar = item.Avatar;
                 model.Status = (int)item.Status;
+                model.roomNumber = (int)item.RoomNumber;
                 result.Add(model);
             }
             return result;
+        }
+        public LocationModel getById(int id)
+        {
+            Location location = dao.getByLocationId(id);
+            LocationModel model = new LocationModel();
+            model.id = location.LocationID;
+            model.roomNumber =(int)location.RoomNumber;
+            model.LocationName = location.LocationName;
+            model.Status = (int)location.Status;
+            model.avatar = location.Avatar;
+            return model;
         }
     }
 }

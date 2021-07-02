@@ -13,6 +13,7 @@ namespace LuxStay.Areas.Admin.Data
         public String LocationName { set; get; }
         [Required(ErrorMessage = "Bạn Không Được Để Trống Ảnh Khu Vực")]
         public String avatar {set; get;} 
+        public int roomNumber { set; get; }
         public int Status { get; set;}
 
     }

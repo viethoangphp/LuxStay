@@ -66,7 +66,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form class="form-horizontal" id="Room" method="post" action="/Admin/Room/Add" enctype="multipart/form-data">
+                            <form class="form-horizontal" id="Room"  enctype="multipart/form-data">
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="card card-primary card-outline card-outline-tabs">
@@ -91,11 +91,11 @@
                                                     <div class="tab-pane fade active show" id="custom-tabs-four-home" role="tabpanel" aria-labelledby="custom-tabs-four-home-tab">
                                                         <div class="row">
                                                             <div class="form-group col-md-6">
-                                                                <label for="" class="col-form-label">Tên Phòng</label>
+                                                                <label for="" class="col-form-label">Tên Phòng(*)</label>
                                                                 <input type="text" class="form-control" placeholder="Vd : HomeStay ABC" name="roomName">
                                                             </div>
                                                             <div class="form-group col-md-6">
-                                                                <label for="" class="col-form-label">Giá Phòng</label>
+                                                                <label for="" class="col-form-label">Giá Phòng(*)</label>
                                                                 <input type="number" class="form-control" placeholder="Giá Cho Thuê" name="price">
                                                             </div>
                                                         </div>
@@ -106,19 +106,19 @@
                                                         <div class="row">
                                                             <div class="col-md-4">
                                                                 <div class="form-group">
-                                                                    <label for="" class="col-form-label">Số Giường Ngủ</label>
+                                                                    <label for="" class="col-form-label">Số Giường Ngủ(*)</label>
                                                                     <input type="number" class="form-control" placeholder="Số Giưởng Ngủ" name="bedRoom">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <div class="form-group">
-                                                                    <label for="" class="col-form-label">Số Phòng Tắm</label>
+                                                                    <label for="" class="col-form-label">Số Phòng Tắm(*)</label>
                                                                     <input type="number" class="form-control" placeholder="Số Phòng Tắm" name="bathRoom">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <div class="form-group">
-                                                                    <label for="" class="col-form-label">Số Phòng Ngủ</label>
+                                                                    <label for="" class="col-form-label">Số Phòng Ngủ(*)</label>
                                                                     <input type="number" class="form-control" placeholder="Số Phòng Ngủ" name="bedNumber">
                                                                 </div>
                                                             </div>
@@ -127,20 +127,20 @@
                                                         <div class="row">
                                                             <div class="col-md-6">
                                                                 <div class="form-group">
-                                                                    <label for="" class="col-form-label">Số Lượng Người Ở</label>
+                                                                    <label for="" class="col-form-label">Số Lượng Người Ở(*)</label>
                                                                     <input type="number" class="form-control" placeholder="Số Lượng Người Ở" name="peopleMax">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6">
                                                                 <div class="form-group">
-                                                                    <label for="" class="col-form-label">Diện Tích Phòng</label>
+                                                                    <label for="" class="col-form-label">Diện Tích Phòng(*)</label>
                                                                     <input type="number" class="form-control" placeholder="Diện Tích Home Stay" name="area">
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-md-3">
-                                                                <label for="" class="">Ảnh Đại Diện</label>
+                                                                <label for="" class="">Ảnh Đại Diện(*)</label>
                                                                 <div class="image-upload">
                                                                     <label>
                                                                         <img class="target" src="https://cdn-app.kiotviet.vn/retailler/bundles/2021616941/default-product-img.jpg" alt="">
@@ -150,7 +150,7 @@
                                                             </div>
                                                             <div class="col-md-9">
                                                                 <div class="form-group">
-                                                                    <label for="" class="col-form-label">Địa Chỉ HomeStay</label>
+                                                                    <label for="" class="col-form-label">Địa Chỉ HomeStay(*)</label>
                                                                     <input type="text" class="form-control" placeholder="Địa Chỉ HomeStay" name="Address">
                                                                 </div>
                                                             </div>
@@ -287,7 +287,21 @@
         <div class="card-body">
             <div class="h-600 overflow-auto">
                 <!-- Modal user information-->
-
+                <div class="modal fade" id="viewUserInform" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg ">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title text-uppercase" id="staticBackdropLabel">Thông Tin HomeStay</h3>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span class="fos-40" aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <table class="table table-striped table-bordered judge-table " id="tableUser">
                     <!-- header table -->
                     <thead class="">
@@ -311,28 +325,28 @@
                         @foreach (var item in Model)
                         {
                             count++;
-                        <tr>
-                            <td class="middle">@count</td>
-                            <td class="middle">@item.roomName</td>
-                            <td class="middle">@item.roomCategory</td>
-                            <td class="middle">@item.roomLocation</td>
-                            <td class="middle">@item.Address</td>
-                            <td class="middle">@item.priceShow đ/Đêm</td>
-                            <td class="middle">
-                                <img src="@item.avatar" class="img-fluid" alt="Alternate Text" style="width:100px;" />
-                            </td>
-                            <td class="middle">Đang Cho Thuê</td>
-                            <td class="middle">
-                                <div class="d-flex d-flex justify-content-around">
-                                    <button class="btn btn-danger btn-delete" data-id="@item.id">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </button>
-                                    <button class="btn btn-secondary btn-view" data-id="@item.id" data-toggle="modal" data-target="#viewUserInform">
-                                        <i class="fas fa-eye"></i>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td class="middle">@count</td>
+                                <td class="middle">@item.roomName</td>
+                                <td class="middle">@item.roomCategory</td>
+                                <td class="middle">@item.roomLocation</td>
+                                <td class="middle">@item.Address</td>
+                                <td class="middle">@item.priceShow đ/Đêm</td>
+                                <td class="middle">
+                                    <img src="@item.avatar" class="img-fluid" alt="Alternate Text" style="width:100px;" />
+                                </td>
+                                <td class="middle">Đang Cho Thuê</td>
+                                <td class="middle">
+                                    <div class="d-flex d-flex justify-content-around">
+                                        <button class="btn btn-danger btn-delete" data-id="@item.id">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                        <button class="btn btn-secondary btn-view" data-id="@item.id" data-toggle="modal" data-target="#viewUserInform">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
                         }
                     </tbody>
                 </table>

@@ -26,20 +26,19 @@ namespace Models.Entity
 
         public int LocationID { get; set; }
 
-        [StringLength(150)]
+        [StringLength(255)]
         public string RoomName { get; set; }
 
         public int? Area { get; set; }
 
         public int? Price { get; set; }
 
-        [Column(TypeName = "ntext")]
         public string ContentRoom { get; set; }
 
-        [StringLength(150)]
+        [StringLength(255)]
         public string Avatar { get; set; }
 
-        [StringLength(150)]
+        [StringLength(255)]
         public string Address { get; set; }
 
         public int? BedRoom { get; set; }
@@ -53,7 +52,7 @@ namespace Models.Entity
         [Column(TypeName = "ntext")]
         public string Note { get; set; }
 
-        [StringLength(150)]
+        [StringLength(11)]
         public string Status { get; set; }
 
         public int? MaxStay { get; set; }

@@ -7,6 +7,8 @@ using System.Web;
 using System.Web.Mvc;
 using Models.Entity;
 using Models.DAO;
+using System.IO;
+
 namespace LuxStay.Areas.Admin.Controllers
 {
     public class RoomController : BaseController
@@ -18,7 +20,6 @@ namespace LuxStay.Areas.Admin.Controllers
             List<RoomModel> list = new RoomHepler().getListAll();
             return View(list);
         }
-
         public ActionResult Location()
         {
             List<LocationModel> list = heper.getListAll();
@@ -36,7 +37,8 @@ namespace LuxStay.Areas.Admin.Controllers
             return PartialView(list);
         }
         [ValidateInput(false)]
-        public ActionResult Add(RoomModel model)
+        [HttpPost]
+        public JsonResult Add(RoomModel model)
         {
             if (ModelState.IsValid)
             {
@@ -51,7 +53,7 @@ namespace LuxStay.Areas.Admin.Controllers
                 // Lưu Ảnh Silder 
                 for (int i = 0; i < model.slider.Count; i++)
                 {
-                    if(model.slider[i] != null)
+                    if (model.slider[i] != null)
                     {
                         ImageDAO imageDAO = new ImageDAO();
                         Image image = new Image();
@@ -64,11 +66,11 @@ namespace LuxStay.Areas.Admin.Controllers
                         image.Status = 1;
                         image.Type = 1;
                         imageDAO.Insert(image);
-                    }    
-                    
+                    }
+
                 }
                 // Lưu Utility 
-                if(model.utility.Count > 0)
+                if (model.utility != null)
                 {
                     for (int i = 0; i < model.utility.Count; i++)
                     {
@@ -79,10 +81,21 @@ namespace LuxStay.Areas.Admin.Controllers
                         utilityDetail.Status = 1;
                         utilityDAO.Insert(utilityDetail);
                     }
-                }    
-                return RedirectToAction("Index", "Room");
+                }
+                var listRoom = new RoomHepler().getListAll();
+                return Json(listRoom,JsonRequestBehavior.AllowGet);
             }
-            return RedirectToAction("Index", "Room");
+            return Json("false", JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult Delete(int id)
+        {
+            RoomHepler hepler = new RoomHepler();
+            if(hepler.Delete(id) == 1)
+            {
+                var list = hepler.getListAll();
+                return Json(list, JsonRequestBehavior.AllowGet);
+            }
+            return Json("false", JsonRequestBehavior.AllowGet);
         }
     }
 }

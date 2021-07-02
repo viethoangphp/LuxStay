@@ -10,6 +10,7 @@ namespace LuxStay.Areas.Admin.Data
     {
         public int id { set; get; }
         public int saleID { set; get; }
+        public int salePersent { set; get;}
         [Required]
         public int locationID { set; get; }
         [Required]
@@ -34,7 +35,7 @@ namespace LuxStay.Areas.Admin.Data
         [Required]
         public int price { set; get; }
         public String priceShow { set; get; }
-        public int status { set; get; }
+        public String status { set; get; }
         public string avatar { set; get; }
         [Required]
         public HttpPostedFileBase avatarFile { set; get;}

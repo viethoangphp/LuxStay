@@ -19,7 +19,22 @@ namespace Models.DAO
         }
         public List<Room> getListAll()
         {
-            return db.Rooms.ToList();
+            return db.Rooms.Where(m=>m.Status == "Enable").ToList();
+        }
+        public int Delete(int id)
+        {
+            Room room = db.Rooms.Find(id);
+            if(room != null)
+            {
+                room.Status = "Disable";
+                db.SaveChanges();
+                return 1;
+            }
+            return 0;
+        }
+        public List<Room> getListRoomByLocationId(int locationId)
+        {
+            return db.Rooms.Where(m => m.Status == "Enable" && m.LocationID == locationId).ToList();
         }
     }
 }

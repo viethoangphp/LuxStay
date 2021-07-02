@@ -1,0 +1,675 @@
+﻿﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- -------------------- Font awsome  --------------- -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!--  ------------------ Reset css  --------------------->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+
+    <!--  ---------- Date piker css tool  ---------------- -->
+    <link rel="stylesheet" href="~/Assets/Client/assets/plugin/datePicker/datePiker.css">
+
+    <!-- ---------------- Slick carousel ----------------- -->
+    <link rel="stylesheet" href="~/Assets/Client/assets/plugin/slick-carousel/slick.css">
+    <link rel="stylesheet" href="~/Assets/Client/assets/plugin/slick-carousel/slick-theme.css">
+
+    <!-- ----------------- App css ----------------------- -->
+    <link rel="stylesheet" href="~/Assets/Client/assets/css/gird.css">
+    <link rel="stylesheet" href="~/Assets/Client/assets/css/base.css">
+    <link rel="stylesheet" href="~/Assets/Client/assets/css/main.css">
+    <link rel="stylesheet" href="~/Assets/Client/assets/css/responsive.css">
+
+    <!-- ------------------ Google font ------------------ -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <!-- -------------- Date piker js tool --------------- -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/date-fns/1.29.0/date_fns.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <!-- --------------- Page tittle --------------------- -->
+    <link rel="shortcut icon" href="~/Assets/Client/assets/img/logo/logo.png">
+    <title>Đặt Phòng Nhanh Tại LuxStay</title>
+
+</head>
+
+<body>
+    <div id="app">
+        <header class="header">
+            <div class="header__container grid wide">
+                <div class="row middle">
+                    <!-- header-sreach -->
+                    <div class="header__search col l-6 is-flex middle">
+                        <div class="header__logo is-inline-block">
+                            <a href="/" class="header__logo-link is-inline-block">
+                                <svg version="1.1" viewBox="0 0 50 50" class="header__logo-icon"
+                                     style="width: 50px; height: 50px;">
+                                    <path pid="0"
+                                          d="M25.093 0c13.781.06 24.94 11.317 24.882 25.106C49.917 38.894 38.663 50.058 24.88 50 11.1 49.942-.059 38.683.001 24.894.057 11.106 11.31-.058 25.092 0zm11.801 31.9L14.398 16.053c.241-.26.48-.518.74-.777 2.7-2.687 5.971-4.031 9.775-4.015 3.804.015 7.064 1.388 9.741 4.098.238.241.476.482.694.743l-5.951 4.133 2.381 1.688 5.153-3.576v.02L39.33 16.7c-.692-1.203-1.584-2.325-2.616-3.39-3.231-3.292-7.167-4.947-11.788-4.967-4.6-.019-8.53 1.603-11.809 4.867a17.806 17.806 0 00-2.682 3.408l1.429 1.004 23.429 16.51c-.24.26-.48.518-.74.777-2.7 2.687-5.971 4.011-9.775 3.996-3.803-.016-7.063-1.37-9.74-4.08-.258-.26-.496-.521-.734-.782l6.111-4.251-.139-.181-2.183-1.528-5.373 3.735v-.021l-2.377 1.65a17.824 17.824 0 002.654 3.43c3.253 3.291 7.169 4.946 11.769 4.965 4.62.021 8.549-1.602 11.83-4.866 1.06-1.075 1.96-2.21 2.682-3.406l-2.383-1.67z">
+                                    </path>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="header__search-box">
+                            <div class="header__search-box--wrapper is-flex middle">
+                                <!-- header input search -->
+                                <div class="header__search--item header__search-input">
+                                    <i class="header__search-icon fas fa-search"></i>
+                                    <input type="text" placeholder="Tìm kiếm">
+                                </div>
+                                <!-- header input days -->
+                                <div class="header__search--item header__search-day">
+                                    <div class="is-flex middle">
+                                        <i class="header__search-icon far fa-calendar"></i>
+                                        <div id="appDatePicker" :class="{&apos;align-right&apos;: alignRight}">
+                                            <div class="datepicker-container with-button">
+                                                <div class="datepicker-trigger">
+                                                    <button id="datepicker-button-trigger">
+                                                        {{ formatDates(buttonDateOne, buttonDateTwo) || &apos;Ngày&apos;
+                                                        }}
+                                                    </button>
+
+                                                    <airbnb-style-datepicker :trigger-element-id="&apos;datepicker-button-trigger&apos;"
+                                                                             :mode="&apos;range&apos;" :date-one="buttonDateOne"
+                                                                             :date-two="buttonDateTwo" :min-date="&apos;2018-02-28&apos;"
+                                                                             :fullscreen-mobile="true" :months-to-show="2" :offset-y="10"
+                                                                             :trigger="trigger"
+                                                                             v-on:date-one-selected="function(val) { buttonDateOne = val }"
+                                                                             v-on:date-two-selected="function(val) { buttonDateTwo = val }"
+                                                                             v-on:closed="onClosed" v-on:previous-month="onMonthChange"
+                                                                             v-on:next-month="onMonthChange"></airbnb-style-datepicker>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- header input people -->
+                                <div class="header__search--item header__search-people has-dropdown-box">
+                                    <i class="header__search-icon fas fa-user"></i>
+                                    <p>Số khách</p>
+                                    <div class="header__search-people--counter dropdown-box">
+                                        <div class="select-number">
+                                            <div class="select-number__title">
+                                                <p>Người lớn</p>
+                                                <span>Trên 18 tuổi</span>
+                                            </div>
+                                            <div class="select-number__input-wp">
+                                                <div class="select-number__input--decrease disable">
+                                                    -
+                                                </div>
+                                                <div class="select-number__input">
+                                                    <input type="text" placeholder="0">
+                                                </div>
+                                                <div class="select-number__input--increase ">
+                                                    +
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="select-number">
+                                            <div class="select-number__title">
+                                                <p>Trẻ em</p>
+                                                <span>Tuổi từ 2-12</span>
+                                            </div>
+                                            <div class="select-number__input-wp">
+                                                <div class="select-number__input--decrease">
+                                                    -
+                                                </div>
+                                                <div class="select-number__input">
+                                                    <input type="text" placeholder="0">
+                                                </div>
+                                                <div class="select-number__input--increase ">
+                                                    +
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="select-number">
+                                            <div class="select-number__title">
+                                                <p>Trẻ sơ sinh</p>
+                                                <span>Dưới 2 tuổi</span>
+                                            </div>
+                                            <div class="select-number__input-wp">
+                                                <div class="select-number__input--decrease">
+                                                    -
+                                                </div>
+                                                <div class="select-number__input">
+                                                    <input type="text" placeholder="0">
+                                                </div>
+                                                <div class="select-number__input--increase ">
+                                                    +
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="select-number__options is-flex">
+                                            <button class="select-number__options--delete">Xóa</button>
+                                            <button class="select-number__options--save">Áp dụng</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- header search btn -->
+                                <div class="header__search--item btn header__search-btn">
+                                    <i class="header__search-icon fas fa-search"></i>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <!-- header-navbar -->
+                    <nav class="header__navbar col l-6 is-flex middle">
+                        <ul class="header__navbar--list is-flex middle">
+                            <!-- Not login -->
+                            <li class="header__navbar--item header__navbar-register">
+                                <a href="">Đăng ký</a>
+                            </li>
+                            <li class="header__navbar--item header__navbar-login">
+                                <a href="">Đăng nhập</a>
+                            </li>
+                            <!-- Login
+                            <li class="header__navbar--item header__navbar-user has-dropdown-box">
+                                <a class="is-flex middle btn--dropdown">
+                                    <div class="user-avar">
+                                        <img src="assets/img/user-ava.jpg" alt="">
+                                    </div>
+                                    <span>Thế Duy</span>
+                                </a>
+                                <div class="user-menu dropdown-box">
+                                    <ul class="user-menu__list">
+                                        <li class="user-menu__item">
+                                            <a href="" class="user-menu__link">
+                                                <i class="far fa-calendar"></i>
+                                                <p>Đặt chỗ của tôi</p>
+                                            </a>
+                                        </li>
+                                        <li class="user-menu__item">
+                                            <a href="" class="user-menu__link">
+                                                <i class="fas fa-cog"></i>
+                                                <p>Cài đặt tài khoản</p>
+                                            </a>
+                                        </li>
+                                        <li class="user-menu__item">
+                                            <a href="" class="user-menu__link">
+                                                <i class="far fa-heart"></i>
+                                                <p>Yêu thích</p>
+                                            </a>
+                                        </li>
+                                        <li class="user-menu__item">
+                                            <a href="" class="user-menu__link">
+                                                <i class="fas fa-sign-out-alt"></i>
+                                                <p>Đăng xuất</p>
+                                            </a>
+                                        </li>
+                                        <div class="user-menu__line"></div>
+                                    </ul>
+
+                                </div>
+                            </li>
+                            <-- crurrency -->
+                            <li class="header__navbar--item header__navbar-currency has-dropdown-box">
+                                <a class="is-flex middle btn--dropdown">
+                                    <div class="currency-avar">
+                                        <img src="~/Assets/Client/assets/img/flag/vn.svg" alt="">
+                                    </div>
+                                    <span>VND</span>
+                                </a>
+                                <div class="currency-box dropdown-box">
+                                    <div class="is-flex">
+                                        <div class="currency-box__language ">
+                                            <a href="" class="is-flex middle is-checked">
+                                                <img src="~/Assets/Client/assets/img/flag/vn.svg" alt="">
+                                                <span>Tiếng Việt</span>
+                                            </a>
+                                            <a href="" class="is-flex middle ">
+                                                <img src="~/Assets/Client/assets/img/flag/en.svg" alt="">
+                                                <span>English</span>
+                                            </a>
+                                        </div>
+                                        <div class="currency-box__monney">
+                                            <a href="" class="is-flex middle is-checked">
+                                                <b>VND</b>
+                                                <span>Việt Nam Đồng</span>
+                                            </a>
+                                            <a href="" class="is-flex middle ">
+                                                <b>USA</b>
+                                                <span>United States Dollar</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        @RenderBody()
+        <footer class="footer">
+            <div class="grid wide">
+                <div class="footer-body">
+                    <div class="row">
+                        <!-- footer contact -->
+                        <div class="col l-2-4">
+                            <div class="footer-body__section footer__contact">
+                                <div class="footer-body__section-heading">
+                                    <h3>Liên lạc với chúng tôi</h3>
+                                </div>
+                                <ul class="footer-body__section-content">
+                                    <li class="footer-body__section-content--item is-flex middle">
+                                        <div class="contact__img">
+                                            <svg version="1.1" viewBox="0 0 40 40" class="svg-icon svg-fill"
+                                                 style="width: 40px; height: 40px;">
+                                                <defs>
+                                                    <linearGradient x1="50%" y1="0%" x2="50%" y2="100%"
+                                                                    id="svgicon_whatsapp_b">
+                                                        <stop stop-color="#4B4B4B" offset="0%"></stop>
+                                                        <stop offset="100%"></stop>
+                                                    </linearGradient>
+                                                    <linearGradient x1="0%" y1="25.77%" x2="100%" y2="74.23%"
+                                                                    id="svgicon_whatsapp_e">
+                                                        <stop stop-color="#C77D0E" offset="0%"></stop>
+                                                        <stop stop-color="#F98713" offset="100%"></stop>
+                                                    </linearGradient>
+                                                    <linearGradient x1="0%" y1="24.995%" x2="100%" y2="75.005%"
+                                                                    id="svgicon_whatsapp_f">
+                                                        <stop stop-color="#F98713" offset="0%"></stop>
+                                                        <stop stop-color="#FBAC36" offset="100%"></stop>
+                                                    </linearGradient>
+                                                    <path pid="0"
+                                                          d="M9.083 17.431L3.52 20.16H1.76l1.4-5.483C1.182 13.132 0 11.172 0 9.04 0 4.047 6.483 0 14.48 0c7.997 0 14.48 4.047 14.48 9.04 0 4.993-6.483 9.04-14.48 9.04-1.908 0-3.73-.23-5.397-.649z"
+                                                          id="svgicon_whatsapp_a"></path>
+                                                    <path pid="1"
+                                                          d="M9.083 17.431L3.52 20.16H1.76l1.4-5.483C1.182 13.132 0 11.172 0 9.04 0 4.047 6.483 0 14.48 0c7.997 0 14.48 4.047 14.48 9.04 0 4.993-6.483 9.04-14.48 9.04-1.908 0-3.73-.23-5.397-.649z"
+                                                          id="svgicon_whatsapp_d"></path>
+                                                </defs>
+                                                <g fill="none" fill-rule="evenodd">
+                                                    <circle pid="2" fill-opacity=".03" fill="#000" cx="20" cy="20"
+                                                            r="20">
+                                                    </circle>
+                                                    <ellipse pid="3" fill="#E4E4E4" cx="20" cy="36.64" rx="20"
+                                                             ry="1.28">
+                                                    </ellipse>
+                                                    <g transform="translate(0 4)">
+                                                        <mask id="svgicon_whatsapp_c" fill="#fff">
+                                                            <use xlink:href="#svgicon_whatsapp_a"></use>
+                                                        </mask>
+                                                        <use fill="url(#svgicon_whatsapp_b)"
+                                                             xlink:href="#svgicon_whatsapp_a"></use>
+                                                        <path pid="4"
+                                                              d="M10.843 17.431L5.28 20.16H3.52l1.4-5.483c-1.978-1.545-3.16-3.505-3.16-5.637C1.76 4.047 8.243 0 16.24 0c7.997 0 14.48 4.047 14.48 9.04 0 4.993-6.483 9.04-14.48 9.04-1.908 0-3.73-.23-5.397-.649z"
+                                                              fill="#414141" mask="url(#svgicon_whatsapp_c)"></path>
+                                                        <circle pid="5" fill="#FFF" opacity=".2"
+                                                                mask="url(#svgicon_whatsapp_c)" cx="9.6" cy="8.48" r="1.6">
+                                                        </circle>
+                                                        <circle pid="6" fill="#FFF" opacity=".2"
+                                                                mask="url(#svgicon_whatsapp_c)" cx="14.72" cy="8.48"
+                                                                r="1.6">
+                                                        </circle>
+                                                        <circle pid="7" fill="#FFF" opacity=".2"
+                                                                mask="url(#svgicon_whatsapp_c)" cx="19.84" cy="8.48"
+                                                                r="1.6">
+                                                        </circle>
+                                                    </g>
+                                                    <g transform="matrix(-1 0 0 1 40 16)">
+                                                        <mask id="svgicon_whatsapp_g" fill="#fff">
+                                                            <use xlink:href="#svgicon_whatsapp_d"></use>
+                                                        </mask>
+                                                        <use fill="url(#svgicon_whatsapp_e)"
+                                                             xlink:href="#svgicon_whatsapp_d"></use>
+                                                        <path pid="8"
+                                                              d="M7.808 17.112L1.6 20.16H-.16l1.759-6.03C-.21 12.622-1.28 10.75-1.28 8.72c0-4.993 6.483-9.04 14.48-9.04 7.997 0 14.48 4.047 14.48 9.04 0 4.993-6.483 9.04-14.48 9.04-1.906 0-3.725-.23-5.392-.648z"
+                                                              fill="url(#svgicon_whatsapp_f)"
+                                                              mask="url(#svgicon_whatsapp_g)">
+                                                        </path>
+                                                        <circle pid="9" fill="#CF3B00" opacity=".413"
+                                                                mask="url(#svgicon_whatsapp_g)" cx="8.64" cy="8.48" r="1.6">
+                                                        </circle>
+                                                        <circle pid="10" fill="#CF3B00" opacity=".413"
+                                                                mask="url(#svgicon_whatsapp_g)" cx="13.76" cy="8.48"
+                                                                r="1.6">
+                                                        </circle>
+                                                        <circle pid="11" fill="#CF3B00" opacity=".413"
+                                                                mask="url(#svgicon_whatsapp_g)" cx="18.88" cy="8.48"
+                                                                r="1.6">
+                                                        </circle>
+                                                    </g>
+                                                </g>
+                                            </svg>
+                                        </div>
+                                        <div class="contact__content">
+                                            <p class="contact__content--heading">Messenger</p>
+                                            <a href="" class="contact__content--link">http://m.me/luxstay</a>
+                                        </div>
+                                    </li>
+                                    <li class="footer-body__section-content--item is-flex middle">
+                                        <div class="contact__img">
+                                            <svg version="1.1" viewBox="0 0 40 40" class="svg-icon svg-fill"
+                                                 style="width: 40px; height: 40px;">
+                                                <defs>
+                                                    <linearGradient x1="0%" y1="25.77%" x2="100%" y2="74.23%"
+                                                                    id="svgicon_call-center_b">
+                                                        <stop stop-color="#C77D0E" offset="0%"></stop>
+                                                        <stop stop-color="#F98713" offset="100%"></stop>
+                                                    </linearGradient>
+                                                    <linearGradient x1="0%" y1="25.77%" x2="100%" y2="74.23%"
+                                                                    id="svgicon_call-center_c">
+                                                        <stop stop-color="#F98713" offset="0%"></stop>
+                                                        <stop stop-color="#FBAC36" offset="100%"></stop>
+                                                    </linearGradient>
+                                                    <linearGradient x1="50%" y1="0%" x2="50%" y2="100%"
+                                                                    id="svgicon_call-center_f">
+                                                        <stop stop-color="#4B4B4B" offset="0%"></stop>
+                                                        <stop offset="100%"></stop>
+                                                    </linearGradient>
+                                                    <path pid="0"
+                                                          d="M6.83 13.108L2.647 15.16H1.323l1.053-4.123C.89 9.875 0 8.401 0 6.797 0 3.045 4.875 0 10.889 0c6.013 0 10.888 3.044 10.888 6.798s-4.875 6.798-10.888 6.798c-1.435 0-2.805-.173-4.059-.488z"
+                                                          id="svgicon_call-center_a"></path>
+                                                    <path pid="1"
+                                                          d="M0 6.084c0-3 2.176-5.168 3.71-5.832C5.241-.41 9.103.39 9.53.866c.427.477 1.048 5.218.852 6.143-.11.525-.774 1.077-1.988 1.656a1 1 0 00-.55 1.097 12.858 12.858 0 001.443 3.897c.813 1.424 1.954 2.861 3.422 4.31l.632-.587a4.094 4.094 0 012.789-1.097c1.037 0 2.04.378 2.819 1.064l3.157 2.778a1 1 0 01.282 1.085c-.49 1.386-1.315 2.368-2.473 2.947-1.333.667-3.068.937-5.206.81-3 0-8.105-3.52-11-8.217C.814 12.054 0 9.084 0 6.084z"
+                                                          id="svgicon_call-center_e"></path>
+                                                </defs>
+                                                <g fill="none" fill-rule="evenodd">
+                                                    <circle pid="2" fill-opacity=".03" fill="#000" cx="20" cy="20"
+                                                            r="20"></circle>
+                                                    <ellipse pid="3" fill="#E4E4E4" cx="20" cy="36.64" rx="20"
+                                                             ry="1.28"></ellipse>
+                                                    <g transform="translate(15.71 7)">
+                                                        <mask id="svgicon_call-center_d" fill="#fff">
+                                                            <use xlink:href="#svgicon_call-center_a"></use>
+                                                        </mask>
+                                                        <use fill="url(#svgicon_call-center_b)"
+                                                             xlink:href="#svgicon_call-center_a"></use>
+                                                        <path pid="4"
+                                                              d="M8.154 13.108L3.97 15.16H2.647L3.7 11.037c-1.487-1.162-2.377-2.636-2.377-4.24C1.323 3.045 6.2 0 12.213 0 18.225 0 23.1 3.044 23.1 6.798s-4.875 6.798-10.889 6.798c-1.434 0-2.804-.173-4.058-.488z"
+                                                              fill="url(#svgicon_call-center_c)"
+                                                              mask="url(#svgicon_call-center_d)"></path>
+                                                        <circle pid="5" fill="#CF3B00" opacity=".413"
+                                                                mask="url(#svgicon_call-center_d)" cx="7.219" cy="6.377"
+                                                                r="1.203"></circle>
+                                                        <circle pid="6" fill="#CF3B00" opacity=".413"
+                                                                mask="url(#svgicon_call-center_d)" cx="11.069" cy="6.377"
+                                                                r="1.203"></circle>
+                                                        <circle pid="7" fill="#CF3B00" opacity=".413"
+                                                                mask="url(#svgicon_call-center_d)" cx="14.919" cy="6.377"
+                                                                r="1.203"></circle>
+                                                    </g>
+                                                    <g transform="translate(2 11.03)">
+                                                        <mask id="svgicon_call-center_g" fill="#fff">
+                                                            <use xlink:href="#svgicon_call-center_e"></use>
+                                                        </mask>
+                                                        <use fill="url(#svgicon_call-center_f)"
+                                                             xlink:href="#svgicon_call-center_e"></use>
+                                                        <path pid="8"
+                                                              d="M2.71 6.084c0-3 2.175-5.168 3.708-5.832C7.951-.41 11.813.39 12.24.866c.426.477 1.047 5.218.852 6.143-.112.525-.775 1.077-1.99 1.656a1 1 0 00-.55 1.097 12.858 12.858 0 001.444 3.897c.813 1.424 1.954 2.861 3.422 4.31l.632-.587a4.094 4.094 0 012.789-1.097c1.038 0 2.04.378 2.819 1.064l3.157 2.778a1 1 0 01.282 1.085c-.49 1.386-1.315 2.368-2.472 2.947-1.334.667-3.07.937-5.207.81-3 0-8.105-3.52-11-8.217C3.523 12.054 2.71 9.084 2.71 6.084z"
+                                                              fill="#414141" mask="url(#svgicon_call-center_g)"></path>
+                                                    </g>
+                                                </g>
+                                            </svg>
+                                        </div>
+                                        <div class="contact__content">
+                                            <p class="contact__content--heading">Call center</p>
+                                            <a href="" class="contact__content--link">18006586 (Việt Nam)</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- footer top liked homstay -->
+                        <div class="col l-2-4">
+                            <div class="footer-body__section footer__popular">
+                                <div class="footer-body__section-heading">
+                                    <h3>TOP homestay yêu thích</h3>
+                                </div>
+                                <ul class="footer-body__section-content">
+                                    <li class="footer-body__section-content--item is-flex middle">
+                                        <a href="">Homestay Đà lạt</a>
+                                    </li>
+                                    <li class="footer-body__section-content--item is-flex middle">
+                                        <a href="">Homestay Hà Nội</a>
+                                    </li>
+                                    <li class="footer-body__section-content--item is-flex middle">
+                                        <a href="">Homestay Hồ chí minh</a>
+                                    </li>
+                                    <li class="footer-body__section-content--item is-flex middle">
+                                        <a href="">Homestay Sapa</a>
+                                    </li>
+                                    <li class="footer-body__section-content--item is-flex middle">
+                                        <a href="">Homestay vũng tàu</a>
+                                    </li>
+                                    <li class="footer-body__section-content--item is-flex middle">
+                                        <a href="">Homestay Tám đảo</a>
+                                    </li>
+                                    <li class="footer-body__section-content--item is-flex middle">
+                                        <a href="">Homestay Hội an</a>
+                                    </li>
+                                    <li class="footer-body__section-content--item is-flex middle">
+                                        <a href="">Homestay đà nẵng</a>
+                                    </li>
+                                    <li class="footer-body__section-content--item is-flex middle">
+                                        <a href="">Homestay hạ long</a>
+                                    </li>
+                                    <li class="footer-body__section-content--item is-flex middle">
+                                        <a href="">Homestay phan thiết</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- footer space -->
+                        <div class="col l-2-4">
+                            <div class="footer-body__section footer__space">
+                                <div class="footer-body__section-heading">
+                                    <h3>Không gian ưa thích</h3>
+                                </div>
+                                <ul class="footer-body__section-content">
+                                    <li class="footer-body__section-content--item is-flex middle">
+                                        <a href="">Căn hộ dịch vụ</a>
+                                    </li>
+                                    <li class="footer-body__section-content--item is-flex middle">
+                                        <a href="">Biệt thự</a>
+                                    </li>
+                                    <li class="footer-body__section-content--item is-flex middle">
+                                        <a href="">Nhà riêng</a>
+                                    </li>
+                                    <li class="footer-body__section-content--item is-flex middle">
+                                        <a href="">Studio</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- footer  about us-->
+                        <div class="col l-2-4">
+                            <div class="footer-body__section footer__aboutus">
+                                <div class="footer-body__section-heading">
+                                    <h3>Về chúng tôi</h3>
+                                </div>
+                                <ul class="footer-body__section-content">
+                                    <li class="footer-body__section-content--item is-flex middle">
+                                        <a href="">Blog</a>
+                                    </li>
+                                    <li class="footer-body__section-content--item is-flex middle">
+                                        <a href="">Điều khoản hoạt động</a>
+                                    </li>
+                                    <li class="footer-body__section-content--item is-flex middle">
+                                        <a href="">info@luxstay.com</a>
+                                    </li>
+                                    <li class="footer-body__section-content--item is-flex middle">
+                                        <a href="">Cơ hội nghề nghiệp</a>
+                                    </li>
+                                    <li class="footer-body__section-content--item is-flex middle">
+                                        <a href="">Tạp chí du lịch</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- footer dowload-->
+                        <div class="col l-2-4">
+                            <div class="footer-body__section text-center footer__social">
+                                <div class="footer-body__section-heading">
+                                    <h3>Tải ứng dụng Luxstay</h3>
+                                </div>
+                                <div class="footer-body__section-content">
+                                    <div class="row">
+                                        <div class="moblie__app--qr col l-6">
+                                            <img src="~/Assets/Client/assets/img/mobile/qr-code.png" alt="">
+                                        </div>
+                                        <div class="moblie__app--download-wp col l-6">
+                                            <div>
+                                                <div class="row">
+                                                    <a href="" class="col l-12 moblie__app--download-btn">
+                                                        <img alt="Apple Store" width="103" height="32"
+                                                             data-src="/icons/apple-store.svg"
+                                                             src="https://www.luxstay.com/icons/apple-store.svg">
+                                                    </a>
+                                                    <a href="" class="col l-12 moblie__app--download-btn">
+                                                        <img alt="Apple Store" width="103" height="32"
+                                                             data-src="/icons/apple-store.svg"
+                                                             src="https://www.luxstay.com/icons/huawei.svg">
+                                                    </a>
+                                                    <a href="" class="col l-12 moblie__app--download-btn">
+                                                        <img alt="Apple Store" width="103" height="32"
+                                                             data-src="/icons/apple-store.svg"
+                                                             src="https://www.luxstay.com/icons/google-play.svg">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- footer part 2 -->
+                        <div class="col l-12">
+                            <!-- footer CERTIFICATION -->
+                            <div class="row mt-42">
+                                <div class="col l-4">
+                                    <div class="footer-body__section text-center">
+                                        <div class="footer-body__section-heading">
+                                            <h3>Đã thông báo công thương</h3>
+                                        </div>
+                                        <ul class="footer-body__section-content is-flex center">
+                                            <li class="footer-body__section-content--item">
+                                                <img style="width: 100px" src="~/Assets/Client/assets/img/certification/bct.png" alt="">
+                                            </li>
+                                            <li class="footer-body__section-content--item ml-10">
+                                                <img style="width: 100px; position: relative; top: -2px;"
+                                                     src="~/Assets/Client/assets/img/certification/dmca.png" alt="">
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- footer transaction -->
+                                <div class="col l-4">
+                                    <div class="footer-body__section text-center ">
+                                        <div class="footer-body__section-heading">
+                                            <h3>Phương thức giao dịch</h3>
+                                        </div>
+                                        <ul class="footer-body__section-content is-flex center">
+                                            <li class="footer-body__section-content--item is-flex middle">
+                                                <img src="https://www.luxstay.com/icons/visa.svg" alt="">
+                                            </li>
+                                            <li class="footer-body__section-content--item is-flex middle">
+                                                <img src="https://www.luxstay.com/icons/mastercard.svg" alt="">
+                                            </li>
+                                            <li class="footer-body__section-content--item is-flex middle">
+                                                <img src="https://www.luxstay.com/icons/maestro.svg" alt="">
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- footer follow us -->
+                                <div class="col l-4">
+                                    <div class="footer-body__section text-center ">
+                                        <div class="footer-body__section-heading">
+                                            <h3>Theo dõi chúng tôi</h3>
+                                        </div>
+                                        <ul class="footer-body__section-content is-flex center">
+                                            <li class="footer-icon__item">
+                                                <a href="" class="footer-icon__item--link">
+                                                    <i class="fab fa-youtube-square"></i>
+                                                </a>
+                                            </li>
+                                            <li class="footer-icon__item">
+                                                <a href="" class="footer-icon__item--link">
+                                                    <i class="fab fa-facebook-square"></i>
+                                                </a>
+                                            </li>
+                                            <li class="footer-icon__item">
+                                                <a href="" class="footer-icon__item--link">
+                                                    <i class="fab fa-instagram-square"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-coppyright">
+                <span>Made with <i class="footer-coppyright-icon fas fa-heart"></i> | powered by The 2000s</span>
+            </div>
+
+        </footer>
+    </div>
+    <script src="~/Assets/Client/assets/js/jquery.js"></script>
+    <script src="~/Assets/Client/assets/plugin/slick-carousel/slick.min.js"></script>
+    <script src="~/Assets/Client/assets/plugin/datePicker/datePiker.js"></script>
+    <script src="~/Assets/Client/assets/js/slick-cus.js"></script>
+    <script src="~/Assets/Client/assets/js/main.js"></script>
+    <script>
+        var datepickerOptions = {}
+        Vue.use(window.AirbnbStyleDatepicker, datepickerOptions)
+
+        var app = new Vue({
+            el: '#appDatePicker',
+            data: {
+                dateFormat: 'D MMM',
+                inputDateOne: '',
+                inputDateTwo: '',
+                buttonDateOne: '',
+                buttonDateTwo: '',
+                inlineDateOne: '',
+                sundayDateOne: '',
+                sundayFirst: false,
+                alignRight: false,
+                trigger: false,
+            },
+            methods: {
+                formatDates: function (dateOne, dateTwo) {
+                    var formattedDates = ''
+                    if (dateOne) {
+                        formattedDates = dateFns.format(dateOne, this.dateFormat)
+                    }
+                    if (dateTwo) {
+                        formattedDates += ' - ' + dateFns.format(dateTwo, this.dateFormat)
+                    }
+                    return formattedDates
+                },
+                onClosed: function () {
+                    var datesStr = this.formatDates(this.inputDateOne, this.inputDateTwo)
+                    console.log('Dates Selected: ' + datesStr)
+                    this.trigger = false
+                },
+                toggleAlign: function () {
+                    this.alignRight = !this.alignRight
+                },
+                triggerDatepicker: function () {
+                    this.trigger = !this.trigger
+                },
+                onMonthChange: function (dates) {
+                    console.log('months changed', dates)
+                },
+            },
+        })
+    </script>
+
+</body>
+</html>

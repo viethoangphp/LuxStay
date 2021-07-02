@@ -54,6 +54,39 @@ namespace LuxStay.Areas.Admin.Helper
                 model.bathRoom = (int)item.BathRoom;
                 model.peopleMax = (int)item.PeopleMax;
                 model.content = item.ContentRoom;
+                model.status = item.Status;
+                result.Add(model);
+            }
+            return result;
+        }
+        public int Delete(int id)
+        {
+            return dao.Delete(id);
+        }
+        public List<RoomModel> getListRoomByLocationId(int locationId)
+        {
+            var list = dao.getListRoomByLocationId(locationId);
+            CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");   // try with "en-US"
+            List<RoomModel> result = new List<RoomModel>();
+            foreach (var item in list)
+            {
+                RoomModel model = new RoomModel();
+                model.id = item.RoomID;
+                model.saleID = (int)item.SaleID;
+                model.salePersent = (int)item.Sale.PercentSale;
+                model.roomName = item.RoomName;
+                model.roomCategory = item.RoomCategory.CatName;
+                model.roomLocation = item.Location.LocationName;
+                model.Address = item.Address;
+                model.area = (int)item.Area;
+                model.avatar = item.Avatar;
+                model.priceShow = double.Parse(item.Price.ToString()).ToString("#,###", cul.NumberFormat);
+                model.bedNumber = (int)item.BedNumber;
+                model.bedRoom = (int)item.BedRoom;
+                model.bathRoom = (int)item.BathRoom;
+                model.peopleMax = (int)item.PeopleMax;
+                model.content = item.ContentRoom;
+                model.status = item.Status;
                 result.Add(model);
             }
             return result;
