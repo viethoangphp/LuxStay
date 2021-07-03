@@ -9,38 +9,44 @@
             var table = $("#listView").DataTable({
                 ordering: false,
                 columnDefs: [
-                    { orderable: false, sortable: false, targets: 0 }
+                    { orderable: false, sortable: false, targets: 0 },
+                    { width: 125, targets: 5 },
+                    { width: 100, targets: 4 }
                 ],
-                //columns: [
-                //    { "data": "id" },
-                //    { "data": "fullname" },
-                //    { "data": "address" },
-                //    { "data": "email" },
-                //    { "data": "phone" },
-                //    { "data": "gender" },
-                //    {
-                //        "data": "id",
-                //        "render": function (data, type, row, meta) {
-                //            return '<div class="align-middle">' +
-                //                '<button class="btn btn-success m-1 edit-btn" data-id="' + data + '" data-toggle="modal" data-target="#formEditModal">' +
-                //                '<i class="fas fa-eye"></i>' +
-                //                '</button>' +
-                //                '<button class="btn btn-danger delete-btn" data-id="' + data + '">' +
-                //                '<i class="fas fa-trash-alt"></i>' +
-                //                '</button>' +
-                //                '</div>';
-                //        }
-                //    }
-                //],
+                columns: [
+                    { "data": "postID" },
+                    {
+                        "data": "postAvatar",
+                        "render": function (data, type, row, meta) {
+                            return '<img src="'+data+'" alt="Avatar" width="200px">';
+                        }
+                    },
+                    { "data": "postTitle" },
+                    { "data": "postDesc" },
+                    { "data": "postStatus" },
+                    {
+                        "data": "postID",
+                        "render": function (data, type, row, meta) {
+                            return '<div class="align-middle">' +
+                                '<button class="btn btn-success m-1 btn-edit" data-id="' + data + '" data-toggle="modal" data-target="#formEditModal">' +
+                                '<i class="fas fa-eye"></i>' +
+                                '</button>' +
+                                '<button class="btn btn-danger btn-delete" data-id="' + data + '">' +
+                                '<i class="fas fa-trash-alt"></i>' +
+                                '</button>' +
+                                '</div>';
+                        }
+                    }
+                ],
                 responsive: true,
                 autoWidth: false,
                 lengthMenu: [5, 10, 20, 50],
                 order: [[1, 'asc']],
-                //ajax: {
-                //    url: "/Admin/Customer/LoadData",
-                //    method: "post",
-                //    dataSrc: ""
-                //}
+                ajax: {
+                    url: "/Admin/Post/LoadData",
+                    method: "post",
+                    dataSrc: ""
+                }
             });
 
             table.on('order.dt search.dt', function () {
@@ -55,6 +61,7 @@
             $(".textarea").summernote();
         });
     </script>
+    <script src="~/Assets/Admin/dist/js/ajax/post.js"></script>
 }
 <!-- Style Img Selector-->
 <style>
@@ -120,10 +127,10 @@
                                     </li>
                                 </ul>
                             </div>
-                            <div class="card-body">
-                                <div class="tab-content" id="tab-content">
-                                    <div class="tab-pane fade show active" id="infomation" role="tabpanel" aria-labelledby="infomation-tab">
-                                        <form id="addPost" method="post">
+                            <form id="addPost" method="post">
+                                <div class="card-body">
+                                    <div class="tab-content" id="tab-content">
+                                        <div class="tab-pane fade show active" id="infomation" role="tabpanel" aria-labelledby="infomation-tab">
                                             <!-- Infomation Form-->
                                             <div class="row">
                                                 <div class="col-md-6">
@@ -138,7 +145,7 @@
 
                                                     <div class="form-group">
                                                         <label for="postStatus">Trạng thái</label>
-                                                        <select id="postStatus" class="form-control">
+                                                        <select id="postStatus" name="postStatus" class="form-control">
                                                             <option value="1">Hiển thị</option>
                                                             <option value="0">Ẩn</option>
                                                         </select>
@@ -150,27 +157,29 @@
                                                         <label>
                                                             <img class="target" src="https://cdn-app.kiotviet.vn/retailler/bundles/2021616941/default-product-img.jpg" alt="">
                                                         </label>
-                                                        <input type="file" class="upload-photo" name="avatar">
+                                                        <input type="file" class="upload-photo" name="avatarFile" required>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
+                                                <button type="reset" id="btn-reset" hidden>Reset</button>
+                                                <button type="button" class="btn btn-secondary btn-dismiss" data-dismiss="modal">Đóng</button>
+                                                <button type="submit" class="btn btn-primary">Lưu</button>
+                                            </div>
+
+                                        </div>
+                                        <div class="tab-pane fade" id="content" role="tabpanel" aria-labelledby="content-tab">
+                                            <textarea class="textarea" id="postContent" name="postContent" required>
+
+                                            </textarea>
+                                            <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
                                                 <button type="submit" class="btn btn-primary">Lưu</button>
                                             </div>
-                                        </form>
-                                    </div>
-                                    <div class="tab-pane fade" id="content" role="tabpanel" aria-labelledby="content-tab">
-                                        <textarea class="textarea">
-
-                                        </textarea>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                                            <button type="button" class="btn btn-primary">Lưu</button>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                         <!-- End Nav Tab-->
                     </div>
