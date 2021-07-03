@@ -59,6 +59,7 @@
     <script>
         $(document).ready(function () {
             $(".textarea").summernote();
+            $(".textarea2").summernote();
         });
     </script>
     <script src="~/Assets/Admin/dist/js/ajax/post.js"></script>
@@ -162,7 +163,7 @@
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="reset" id="btn-reset" hidden>Reset</button>
+                                                <button type="reset" class="btn-reset" hidden>Reset</button>
                                                 <button type="button" class="btn btn-secondary btn-dismiss" data-dismiss="modal">Đóng</button>
                                                 <button type="submit" class="btn btn-primary">Lưu</button>
                                             </div>
@@ -210,105 +211,85 @@
             <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <ul class="nav nav-pills">
-                            <li class="nav-item"><a class="nav-link active" href="#customerInfo" data-toggle="tab">Thông tin khách hàng</a></li>
-                            <li class="nav-item"><a class="nav-link" id="btn-orderList" href="#orderList" data-toggle="tab">Danh sách đơn đặt phòng</a></li>
-                        </ul>
+                        <h5 class="modal-title" id="formEditModal">Thông tin bài viết</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="tab-content">
-                        <div class="active tab-pane" id="customerInfo">
-                            <form id="editUser" method="post" action="">
-                                <div class="modal-body">
-                                    <div class="row">
-                                        <div class="form-group col-md-6">
-                                            <label for="inputEditID">Mã khách hàng</label>
-                                            <input type="text" class="form-control" name="inputEditID" id="inputEditID" required disabled>
-                                            <div class="invalid-feedback">Không Được Để Trống Trường Này</div>
+                    <div class="modal-body">
+                        <!-- Nav Tab-->
+                        <div class="card card-primary card-outline card-outline-tabs">
+                            <div class="card-header p-0 border-bottom-0">
+                                <ul class="nav nav-tabs" id="tabs-list" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="infomation-tab-e" data-toggle="pill" href="#infomation-e" role="tab" aria-controls="infomation-e" aria-selected="true">Thông tin bài viết</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="content-tab-e" data-toggle="pill" href="#content-e" role="tab" aria-controls="content-e" aria-selected="false">Nội dung bài viết</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <form id="editPost" method="post">
+                                <div class="card-body">
+                                    <div class="tab-content" id="tab-content">
+                                        <div class="tab-pane fade show active" id="infomation-e" role="tabpanel" aria-labelledby="infomation-tab-e">
+                                            <!-- Infomation Form-->
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="postID">Mã bài viết</label>
+                                                        <input type="text" class="form-control" id="postEditID" name="postID" required readonly>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="postTitle">Tên bài viết</label>
+                                                        <input type="text" class="form-control" id="postEditTitle" name="postTitle" required>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="postDesc">Mô tả bài viết</label>
+                                                        <input type="text" class="form-control" id="postEditDesc" name="postDesc" required>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="postStatus">Trạng thái</label>
+                                                        <select id="postEditStatus" name="postStatus" class="form-control">
+                                                            <option value="1">Hiển thị</option>
+                                                            <option value="0">Ẩn</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 align-bottom">
+                                                    <label for="" class="">Hình đại diện</label>
+                                                    <div class="image-upload">
+                                                        <label>
+                                                            <img class="target editPic" src="https://cdn-app.kiotviet.vn/retailler/bundles/2021616941/default-product-img.jpg" alt="">
+                                                        </label>
+                                                        <input type="file" class="upload-photo" name="avatarFile">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="reset" class="btn-reset" hidden>Reset</button>
+                                                <button type="button" class="btn btn-secondary btn-dismiss" data-dismiss="modal">Đóng</button>
+                                                <button type="submit" class="btn btn-primary">Cập nhật</button>
+                                            </div>
+
                                         </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="inputEditFullName">Họ tên</label>
-                                            <input type="text" class="form-control" name="inputEditFullName" id="inputEditFullName" required>
-                                            <div class="invalid-feedback">Không Được Để Trống Trường Này</div>
+                                        <div class="tab-pane fade" id="content-e" role="tabpanel" aria-labelledby="content-tab-e">
+                                            <textarea class="textarea2" id="postEditContent" name="postContent" required>
+
+                                            </textarea>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                                                <button type="submit" class="btn btn-primary">Cập nhật</button>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="form-group col-md-6">
-                                            <label for="inputEditEmail">Email</label>
-                                            <input type="email" class="form-control" name="inputEditEmail" id="inputEditEmail" required>
-                                            <div class="invalid-feedback">Email để trống hoặc không đúng định dạng</div>
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="inputEditPhone">Phone</label>
-                                            <input type="tel" class="form-control" name="inputEditPhone" id="inputEditPhone" required>
-                                            <div class="invalid-feedback">Không Được Để Trống Trường Này</div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="form-group col-md-6">
-                                            <label for="inputEditGender">Giới tính</label>
-                                            <select class="form-control" name="inputEditGender" id="inputEditGender" required>
-                                                <option value="">(chọn)</option>
-                                                <option value="1">Nam</option>
-                                                <option value="0">Nữ</option>
-                                            </select>
-                                            <div class="invalid-feedback">Vui lòng chọn giới tính</div>
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="inputEditAddress">Địa chỉ</label>
-                                            <input type="text" class="form-control" name="inputEditAddress" id="inputEditAddress" required>
-                                            <div class="invalid-feedback">Không Được Để Trống Trường Này</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="reset" hidden id="btn-edit-reset" class="btn btn-secondary">Reset</button>
-                                    <button type="button" id="btn-edit-dismiss" class="btn btn-danger" data-dismiss="modal">Đóng</button>
-                                    <button type="submit" class="btn btn-success">Cập nhật</button>
                                 </div>
                             </form>
                         </div>
-                        <div class="tab-pane" id="orderList">
-                            <div class="modal-body">
-                                <div id="dataTable2">
-                                    <h3 style="font-size: 22px">Danh sách đơn đặt phòng của <span style="font-weight: bold">Insert Name Here</span></h3>
-                                    <table id="listView2" class="table table-bordered table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Mã đơn đặt phòng</th>
-                                                <th>Tên phòng</th>
-                                                <th>Ngày nhận phòng</th>
-                                                <th>Ngày trả phòng</th>
-                                                <th>Số tiền</th>
-                                                <th>Trạng thái</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody class="text-center">
-
-                                            @for (int i = 0; i < 25; i++)
-                                            {
-                                                <tr>
-                                                    <td>@i</td>
-                                                    <td>HCM @i</td>
-                                                    <td>Phòng ABCDEF @i</td>
-                                                    <td>25/06/2021</td>
-                                                    <td>15/07/2021</td>
-                                                    <td>3.200.000 đ</td>
-                                                    <td>Đã xác nhận</td>
-                                                </tr>
-                                            }
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" id="btn-edit-dismiss" class="btn btn-danger" data-dismiss="modal">Đóng</button>
-                            </div>
-                        </div>
+                        <!-- End Nav Tab-->
                     </div>
+
                 </div>
             </div>
         </div>

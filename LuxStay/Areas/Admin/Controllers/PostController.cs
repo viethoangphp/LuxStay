@@ -22,6 +22,11 @@ namespace LuxStay.Areas.Admin.Controllers
         {
             return Json(helper.getListPost(),JsonRequestBehavior.AllowGet);
         }
+        //GET 1 DATA
+        public JsonResult Get(int id)
+        {
+            return Json(helper.getPost(id), JsonRequestBehavior.AllowGet);
+        }
 
         [ValidateInput(false)]
         public JsonResult Add(PostModel model)
@@ -44,6 +49,23 @@ namespace LuxStay.Areas.Admin.Controllers
         public JsonResult Delete(int id)
         {
             if(helper.DeletePost(id) == 1)
+            {
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
+            return Json(false, JsonRequestBehavior.AllowGet);
+        }
+        //Edit
+        [ValidateInput(false)]
+        public JsonResult Edit(PostModel model)
+        {
+            if(model.avatarFile != null)
+            {
+                HttpPostedFileBase file = model.avatarFile;
+                file.SaveAs(Server.MapPath("~/Assets/Admin/dist/img/") + file.FileName);
+                model.postAvatar = "/Assets/Admin/dist/img/" + file.FileName;
+            }
+
+            if (helper.EditPost(model) == 1)
             {
                 return Json(true, JsonRequestBehavior.AllowGet);
             }

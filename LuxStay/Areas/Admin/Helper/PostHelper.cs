@@ -36,7 +36,21 @@ namespace LuxStay.Areas.Admin.Helper
             }
             return listModel;
         }
-
+        public PostModel getPost(int id)
+        {
+            Post model = dao.getPost(id);
+            int st = Convert.ToInt32(model.Status);
+            PostModel post = new PostModel()
+            {
+                postID = model.PostID,
+                postTitle = model.PostName,
+                postDesc = model.Descprition,
+                postAvatar = model.Avatar,
+                postContent = model.ContentPost,
+                postStatus = model.Status.ToString()
+            };
+            return post;
+        }
         public int AddPost(PostModel model)
         {
             int st = Convert.ToInt32(model.postStatus);
@@ -55,6 +69,18 @@ namespace LuxStay.Areas.Admin.Helper
         public int DeletePost(int id)
         {
             return dao.Delete(id);
+        }
+        public int EditPost(PostModel model)
+        {
+            Post post = new Post();
+            int st = Convert.ToInt32(model.postStatus);
+            post.PostID = model.postID;
+            if (model.postAvatar != null) { post.Avatar = model.postAvatar; }
+            post.PostName = model.postTitle;
+            post.Descprition = model.postDesc;
+            post.ContentPost = model.postContent;
+            post.Status = st;
+            return dao.Edit(post);
         }
     }
 }

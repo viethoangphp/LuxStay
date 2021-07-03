@@ -26,6 +26,10 @@ namespace Models.DAO
             }
             return list;
         }
+        public Post getPost(int id)
+        {
+            return db.Posts.Find(id);
+        }
         public int Add(Post post)
         {
             try
@@ -54,6 +58,29 @@ namespace Models.DAO
             }
             catch (Exception)
             {
+                return 0;
+            }
+        }
+        public int Edit(Post post)
+        {
+            try
+            {
+                Post p = getPost(post.PostID);
+                if(p != null)
+                { 
+                    p.PostName = post.PostName;
+                    if(post.Avatar != null) { p.Avatar = post.Avatar; }
+                    p.Descprition = post.Descprition;
+                    p.ContentPost = post.ContentPost;
+                    p.Status = post.Status;
+                    db.SaveChanges();
+                    return 1;
+                }
+                return 0;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
                 return 0;
             }
         }
