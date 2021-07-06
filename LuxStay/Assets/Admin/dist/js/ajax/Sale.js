@@ -285,7 +285,7 @@ function UpdateTable(listObj) {
             markup += "<td class='middle'>Đang Áp Dụng</td>"
         }
         else {
-            markup += "<td class='middle'>Ngưng Áp Dụng</td>"
+            markup += "<td class='middle'>Đã Quá Hạn</td>"
         }
         markup +=  "<td class='middle'>" +
             "<div class='d-flex d-flex justify-content-around'>" +

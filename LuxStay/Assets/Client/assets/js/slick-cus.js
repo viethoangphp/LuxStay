@@ -44,4 +44,10 @@ $(document).ready(function () {
         centerMode: true,
         variableWidth: true,
     });
+    $('.detail-product__room-sugesst--list').slick({
+        infinite: false,
+        arrows: true,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+    });
 });

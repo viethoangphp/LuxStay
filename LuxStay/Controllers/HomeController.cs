@@ -19,6 +19,10 @@ namespace LuxStay.Controllers
             var list = new LocationHeper().getListAll();
             return PartialView(list);
         }
+        public ActionResult SearchParial()
+        {
+            return PartialView();
+        }
         public ActionResult Location(int id)
         {
             ViewBag.Location = new LocationHeper().getById(id);

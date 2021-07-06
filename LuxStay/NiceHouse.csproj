@@ -161,6 +161,7 @@
     <Compile Include="Areas\Admin\Helper\UserHelper.cs" />
     <Compile Include="Areas\Admin\Helper\UtilityHelper.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RoomsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1942,6 +1943,7 @@
     <Content Include="Assets\Client\assets\img\wellcome\wellcom1.png" />
     <Content Include="Assets\Client\assets\img\wellcome\wellcome2.jpg" />
     <Content Include="Assets\Client\assets\js\jquery.js" />
+    <Content Include="Assets\Client\assets\js\lazyload.min.js" />
     <Content Include="Assets\Client\assets\js\main.js" />
     <Content Include="Assets\Client\assets\js\slick-cus.js" />
     <Content Include="Assets\Client\assets\plugin\datePicker\datePiker.css" />
@@ -2221,11 +2223,14 @@
     <Content Include="Areas\Admin\Views\Room\Location.cshtml" />
     <Content Include="Areas\Admin\Views\Room\Category.cshtml" />
     <Content Include="Areas\Admin\Views\Room\Utility.cshtml" />
+    <Content Include="Areas\Admin\Views\Room\Sale.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\__HomeLayout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\LoctionParial.cshtml" />
     <Content Include="Views\Home\Location.cshtml" />
+    <Content Include="Views\Home\SearchParial.cshtml" />
+    <Content Include="Views\Rooms\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Models\Models.csproj">

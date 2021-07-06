@@ -32,9 +32,40 @@ namespace Models.DAO
             }
             return 0;
         }
-        public List<Room> getListRoomByLocationId(int locationId)
+        public List<Room> getListRoomByLocationId(int locationId , int count = 0)
         {
-            return db.Rooms.Where(m => m.Status == "Enable" && m.LocationID == locationId).ToList();
+            if(count == 0)
+            {
+                return db.Rooms.Where(m => m.Status == "Enable" && m.LocationID == locationId).ToList();
+            }
+            return db.Rooms.Where(m => m.Status == "Enable" && m.LocationID == locationId).Take(count).ToList();
+        }
+        public void Update(Room room)
+        {
+            Room update = db.Rooms.Find(room.RoomID);
+            if(update != null)
+            {
+                update.RoomName = room.RoomName;
+                update.CatID = room.CatID;
+                update.SaleID = room.SaleID;
+                update.LocationID = room.LocationID;
+                update.SaleID = room.SaleID;
+                update.Area = room.Area;
+                update.Price = room.Price;
+                update.ContentRoom = room.ContentRoom;
+                update.Avatar = room.Avatar;
+                update.BedNumber = room.BedNumber;
+                update.BedRoom = room.BedRoom;
+                update.BathRoom = room.BathRoom;
+                update.PeopleMax = room.PeopleMax;
+                update.Status = room.Status;
+                update.Address = room.Address;
+                db.SaveChanges();
+            }    
+        }
+        public Room getRoomById(int id)
+        {
+            return db.Rooms.Find(id);
         }
     }
 }

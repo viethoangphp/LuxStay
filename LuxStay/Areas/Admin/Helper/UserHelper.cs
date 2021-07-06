@@ -51,6 +51,7 @@ namespace LuxStay.Areas.Admin.Helper
             user.Email = model.email;
             user.Password = model.password;
             user.Phone = model.phone;
+            user.Status = 0;
             var id = dao.Insert(user);
             return id;
         }

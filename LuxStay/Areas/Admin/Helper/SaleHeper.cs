@@ -23,7 +23,15 @@ namespace LuxStay.Areas.Admin.Helper
                 temp.check_out = String.Format("{0:dd/MM/yyyy}", item.Check_out);
                 temp.create_at = String.Format("{0:dd/MM/yyyy}", item.Create_At);
                 temp.id = item.SaleID;
-                temp.status =(int)item.Status;
+                DateTime check_out = (DateTime)item.Check_out;
+                if (DateTime.Compare(DateTime.Now,check_out) == -1 || DateTime.Compare(DateTime.Now, check_out) == 0)
+                {
+                    temp.status = 1;
+                }
+                else
+                {
+                    temp.status = 2;
+                }
                 temp.persent = (int)item.PercentSale;
                 list.Add(temp);
             }
@@ -72,6 +80,28 @@ namespace LuxStay.Areas.Admin.Helper
             var result = dao.Update(sale);
             if (result == 1) return 1;
             return 0;
+        }
+        public List<SaleModel> getListSaled()
+        {
+            var listSale = dao.getListAll();
+            List<SaleModel> list = new List<SaleModel>();
+            foreach (var item in listSale.Where(m => m.PercentSale != 0))
+            {
+                SaleModel temp = new SaleModel();
+                DateTime check_out = (DateTime)item.Check_out;
+                if (DateTime.Compare(DateTime.Now, check_out) == -1 || DateTime.Compare(DateTime.Now, check_out) == 0)
+                {
+                    temp.check_in = String.Format("{0:dd/MM/yyyy}", item.Check_in);
+                    temp.check_out = String.Format("{0:dd/MM/yyyy}", item.Check_out);
+                    temp.create_at = String.Format("{0:dd/MM/yyyy}", item.Create_At);
+                    temp.id = item.SaleID;
+                    temp.status = (int)item.Status;
+                    temp.persent = (int)item.PercentSale;
+                    list.Add(temp);
+                }
+                
+            }
+            return list;
         }
     }
     

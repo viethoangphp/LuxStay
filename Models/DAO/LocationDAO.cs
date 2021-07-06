@@ -47,7 +47,7 @@ namespace Models.DAO
         }
         public int CoutRoomBeLongToLocation(int locationID)
         {
-            return db.Rooms.Where(m => m.LocationID == locationID).Count();
+            return db.Rooms.Where(m => m.LocationID == locationID && m.Status == "Enable").Count();
         }
     }
 }
