@@ -6,7 +6,7 @@ using System.Web;
 
 namespace LuxStay.Areas.Admin.Data
 {
-    public class CustomerView
+    public class CustomerModel
     {
         [Required]
         public int id { get; set; }
@@ -17,9 +17,9 @@ namespace LuxStay.Areas.Admin.Data
         [Required]
         [EmailAddress]
         public string email { get; set; }
-        [Required]
+        public string password { get; set; }
         public string gender { get; set; }
-        [Required]
+        
         public string address { get; set; }
     }
 }
