@@ -20,12 +20,12 @@ namespace LuxStay.Areas.Admin.Controllers
         }
         public JsonResult LoadData()
         {
-            List<CustomerView> list = helper.getListCustomer();
+            List<CustomerModel> list = helper.getListCustomer();
             return Json(list, JsonRequestBehavior.AllowGet);
         }
         public JsonResult Get(int id)
         {
-            CustomerView cus = helper.getCustomer(id);
+            CustomerModel cus = helper.getCustomer(id);
             if (cus == null)
             {
                 return Json(false, JsonRequestBehavior.AllowGet);
@@ -44,7 +44,7 @@ namespace LuxStay.Areas.Admin.Controllers
 
         //Thêm khách hàng
         [HttpPost]
-        public JsonResult Add(CustomerView data)
+        public JsonResult Add(CustomerModel data)
         {
             if(ModelState.IsValid)
             {
@@ -77,7 +77,7 @@ namespace LuxStay.Areas.Admin.Controllers
 
         //Sửa khách hàng
         [HttpPost]
-        public JsonResult Edit(CustomerView data)
+        public JsonResult Edit(CustomerModel data)
         {
             if (ModelState.IsValid)
             {
@@ -93,10 +93,5 @@ namespace LuxStay.Areas.Admin.Controllers
             return Json(false, JsonRequestBehavior.AllowGet);
         }
         //----------------------------------------------------------------------------------------
-        public ActionResult Details(int id)
-        {
-            ViewData["CustomerName"] = helper.getCustomer(id).fullname;
-            return View();
-        }
     }
 }

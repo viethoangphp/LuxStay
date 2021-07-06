@@ -12,17 +12,15 @@ namespace LuxStay.Areas.Admin.Controllers
 {
     public class ServiceController : BaseController
     {
-        protected ServiceDAO dao = new ServiceDAO();
+        ServiceHelper helper = new ServiceHelper();
         public ActionResult Index()
         {
-            
-            return View(dao.getListAll());
+            return View(helper.getListAll());
         }
         public JsonResult LoadData()
         {
-            List<ServiceView> list = new ServiceHelper().getListUtility();
-            var data = Json(list, JsonRequestBehavior.AllowGet);
-            return data;
+            List<ServiceView> list = new ServiceHelper().getListAll();
+            return Json(list, JsonRequestBehavior.AllowGet);
         }
         public JsonResult Get(int id)
         {
@@ -48,33 +46,24 @@ namespace LuxStay.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                int st = Convert.ToInt32(data.status);
-                Utility utl = new Utility()
+                if (helper.AddUtility(data) == 0)
                 {
-                    Name = data.name,
-                    ParentID = data.parentid,
-                    Icon = data.icon,
-                    Status = st
-                };
-                int id = dao.Add(utl);
-                if (id == 0)
-                {
-                    return Json("false", JsonRequestBehavior.AllowGet);
+                    return Json(false, JsonRequestBehavior.AllowGet);
                 }
                 else
                 {
-                    return Json(LoadData(), JsonRequestBehavior.AllowGet);
+                    return Json(true, JsonRequestBehavior.AllowGet);
                 }
 
             }
-            return Json("false", JsonRequestBehavior.AllowGet);
+            return Json(false, JsonRequestBehavior.AllowGet);
         }
 
         //Xóa tiện ích
         [HttpPost]
         public JsonResult Delete(int id)
         {
-            if (dao.Delete(id) == 1)
+            if (helper.DeleteUtility(id) == 1)
             {
                 return Json(true, JsonRequestBehavior.AllowGet);
             }
@@ -88,23 +77,18 @@ namespace LuxStay.Areas.Admin.Controllers
         [HttpPost]
         public JsonResult Edit(ServiceView data)
         {
-            int st = Convert.ToInt32(data.status);
-            Utility utl = new Utility()
+            if (ModelState.IsValid)
             {
-                UtilityID = data.id,
-                Name = data.name,
-                ParentID = data.parentid,
-                Icon = data.icon,
-                Status = st
-            };
-            if (dao.Edit(utl) == 1)
-            {
-                return Json(true, JsonRequestBehavior.AllowGet);
+                if (helper.EditUtility(data) == 1)
+                {
+                    return Json(true, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    return Json(false, JsonRequestBehavior.AllowGet);
+                }
             }
-            else
-            {
-                return Json(false, JsonRequestBehavior.AllowGet);
-            }
+            return Json(false, JsonRequestBehavior.AllowGet);
         }
     }
 }

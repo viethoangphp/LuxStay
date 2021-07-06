@@ -136,6 +136,7 @@
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\LocationController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PostController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProfileController.cs" />
     <Compile Include="Areas\Admin\Controllers\RoomController.cs" />
     <Compile Include="Areas\Admin\Controllers\SaleController.cs" />
@@ -143,14 +144,16 @@
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Areas\Admin\Data\AdminLogin.cs" />
     <Compile Include="Areas\Admin\Data\CategoryModel.cs" />
+    <Compile Include="Areas\Admin\Data\PostModel.cs" />
     <Compile Include="Areas\Admin\Data\RoomModel.cs" />
-    <Compile Include="Areas\Admin\Data\CustomerView.cs" />
+    <Compile Include="Areas\Admin\Data\CustomerModel.cs" />
     <Compile Include="Areas\Admin\Data\InformationUser.cs" />
     <Compile Include="Areas\Admin\Data\LocationModel.cs" />
     <Compile Include="Areas\Admin\Data\PasswordUser.cs" />
     <Compile Include="Areas\Admin\Data\ServiceView.cs" />
     <Compile Include="Areas\Admin\Helper\CustomerHelper.cs" />
     <Compile Include="Areas\Admin\Helper\RoomHepler.cs" />
+    <Compile Include="Areas\Admin\Helper\PostHelper.cs" />
     <Compile Include="Areas\Admin\Helper\ServiceHelper.cs" />
     <Compile Include="Areas\Admin\Data\SaleModel.cs" />
     <Compile Include="Areas\Admin\Data\UserModel.cs" />
@@ -162,9 +165,12 @@
     <Compile Include="Areas\Admin\Helper\UtilityHelper.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RoomsController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Data\LoginModel.cs" />
+    <Compile Include="Models\Data\RegisterModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -215,6 +221,7 @@
     <Content Include="Assets\Admin\dist\js\adminlte.js" />
     <Content Include="Assets\Admin\dist\js\adminlte.min.js" />
     <Content Include="Assets\Admin\dist\js\ajax\customerDetails.js" />
+    <Content Include="Assets\Admin\dist\js\ajax\post.js" />
     <Content Include="Assets\Admin\dist\js\ajax\utility.js" />
     <Content Include="Assets\Admin\dist\js\ajax\customer.js" />
     <Content Include="Assets\Admin\dist\js\ajax\Category.js" />
@@ -2135,6 +2142,8 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Views\Base\" />
     <Folder Include="Models\" />
+    <Folder Include="Areas\Admin\Views\Bill\" />
+    <Folder Include="Views\Account\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Views\Login\Index.cshtml" />
@@ -2224,6 +2233,7 @@
     <Content Include="Areas\Admin\Views\Room\Category.cshtml" />
     <Content Include="Areas\Admin\Views\Room\Utility.cshtml" />
     <Content Include="Areas\Admin\Views\Room\Sale.cshtml" />
+    <Content Include="Areas\Admin\Views\Post\Index.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\__HomeLayout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />

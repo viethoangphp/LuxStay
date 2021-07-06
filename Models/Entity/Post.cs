@@ -11,18 +11,17 @@ namespace Models.Entity
     {
         public int PostID { get; set; }
 
-        [StringLength(150)]
+        [StringLength(255)]
         public string PostName { get; set; }
 
-        [Column(TypeName = "ntext")]
         public string ContentPost { get; set; }
 
-        [StringLength(150)]
+        [StringLength(255)]
         public string Descprition { get; set; }
 
         public int? Status { get; set; }
 
-        [StringLength(50)]
+        [StringLength(255)]
         public string Avatar { get; set; }
 
         public int Create_by { get; set; }

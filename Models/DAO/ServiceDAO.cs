@@ -30,7 +30,7 @@ namespace Models.DAO
             {
                 db.Utilities.Add(utl);
                 db.SaveChanges();
-                return utl.UtilityID;
+                return 1;
             }
             catch (Exception)
             {

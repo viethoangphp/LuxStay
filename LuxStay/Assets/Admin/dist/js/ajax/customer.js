@@ -137,6 +137,19 @@ $(document).ready(function () {
     })
 });
 
-$("#btn-refresh").click(function () {
+$(document).on("click","#btn-refresh",function () {
     $("#listView").DataTable().ajax.reload();
 });
+
+//$(document).on("click", ".btn-orderList", function () {
+//    var cusID = $("#inputEditID").val();
+//    $.ajax({
+//        url: "Admin/Bill/GetCus/" + cusID,
+//        method: "post",
+//        data: { id: cusID },
+//        dataType: "json",
+//        success: function (data) {
+            
+//        }
+//    })
+//});
