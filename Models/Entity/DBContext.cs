@@ -15,6 +15,7 @@ namespace Models.Entity
         public virtual DbSet<Advice> Advices { get; set; }
         public virtual DbSet<Bill> Bills { get; set; }
         public virtual DbSet<CODE> CODEs { get; set; }
+        public virtual DbSet<CodeDetail> CodeDetails { get; set; }
         public virtual DbSet<Config> Configs { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Image> Images { get; set; }
@@ -23,8 +24,10 @@ namespace Models.Entity
         public virtual DbSet<Room> Rooms { get; set; }
         public virtual DbSet<RoomCategory> RoomCategories { get; set; }
         public virtual DbSet<Sale> Sales { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Utility> Utilities { get; set; }
+        public virtual DbSet<UtilityDetail> UtilityDetails { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -45,9 +48,9 @@ namespace Models.Entity
                 .IsFixedLength();
 
             modelBuilder.Entity<CODE>()
-                .HasMany(e => e.Rooms)
-                .WithMany(e => e.CODEs)
-                .Map(m => m.ToTable("CodeDetail").MapLeftKey("CodeID").MapRightKey("RoomID"));
+                .HasMany(e => e.CodeDetails)
+                .WithRequired(e => e.CODE)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Config>()
                 .Property(e => e.Phone)
@@ -95,11 +98,6 @@ namespace Models.Entity
                 .HasForeignKey(e => e.Create_by);
 
             modelBuilder.Entity<Image>()
-                .Property(e => e.Image1)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Image>()
                 .Property(e => e.Url)
                 .IsFixedLength()
                 .IsUnicode(false);
@@ -120,14 +118,19 @@ namespace Models.Entity
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Room>()
+                .HasMany(e => e.CodeDetails)
+                .WithRequired(e => e.Room)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Room>()
                 .HasMany(e => e.Images)
                 .WithRequired(e => e.Room)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Room>()
-                .HasMany(e => e.Utilities)
-                .WithMany(e => e.Rooms)
-                .Map(m => m.ToTable("UtilityDetail").MapLeftKey("RoomID").MapRightKey("UtilityID"));
+                .HasMany(e => e.UtilityDetails)
+                .WithRequired(e => e.Room)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<RoomCategory>()
                 .HasMany(e => e.Rooms)
@@ -162,6 +165,11 @@ namespace Models.Entity
                 .HasMany(e => e.Posts)
                 .WithRequired(e => e.User)
                 .HasForeignKey(e => e.Create_by)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Utility>()
+                .HasMany(e => e.UtilityDetails)
+                .WithRequired(e => e.Utility)
                 .WillCascadeOnDelete(false);
         }
     }

@@ -54,6 +54,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAO\CustomerDAO.cs" />
+    <Compile Include="DAO\ImageDAO.cs" />
+    <Compile Include="DAO\RoomDAO.cs" />
     <Compile Include="DAO\PostDAO.cs" />
     <Compile Include="DAO\ServiceDAO.cs" />
     <Compile Include="DAO\CategoryDAO.cs" />
@@ -61,9 +63,11 @@
     <Compile Include="DAO\SaleDAO.cs" />
     <Compile Include="DAO\UserDAO.cs" />
     <Compile Include="DAO\UtilityDAO.cs" />
+    <Compile Include="DAO\UtilityDetailDAO.cs" />
     <Compile Include="Entity\Advice.cs" />
     <Compile Include="Entity\Bill.cs" />
     <Compile Include="Entity\CODE.cs" />
+    <Compile Include="Entity\CodeDetail.cs" />
     <Compile Include="Entity\Config.cs" />
     <Compile Include="Entity\Customer.cs" />
     <Compile Include="Entity\DBContext.cs" />
@@ -73,8 +77,10 @@
     <Compile Include="Entity\Room.cs" />
     <Compile Include="Entity\RoomCategory.cs" />
     <Compile Include="Entity\Sale.cs" />
+    <Compile Include="Entity\sysdiagram.cs" />
     <Compile Include="Entity\User.cs" />
     <Compile Include="Entity\Utility.cs" />
+    <Compile Include="Entity\UtilityDetail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

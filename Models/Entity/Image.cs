@@ -11,10 +11,6 @@ namespace Models.Entity
     {
         public int ImageID { get; set; }
 
-        [Column("Image")]
-        [StringLength(150)]
-        public string Image1 { get; set; }
-
         [StringLength(150)]
         public string Url { get; set; }
 

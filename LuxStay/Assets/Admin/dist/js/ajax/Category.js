@@ -57,9 +57,9 @@ $(document).on("click", ".btn-view", function () {
         data: { id: id },
         dataType: "json",
         success: function (data) {
-            $("#update_category").data("id", data.CatID);
-            $("#Category_view").val(data.CatName);
-            if (data.Status == "1") {
+            $("#update_category").data("id", data.id);
+            $("#Category_view").val(data.categoryName);
+            if (data.status == "1") {
                 $("#status_view").val("1");
             } else {
                 $("#status_view").val("2");

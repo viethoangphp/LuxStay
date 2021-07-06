@@ -9,7 +9,7 @@ using Models.DAO;
 using Models.Entity;
 namespace LuxStay.Areas.Admin.Controllers
 {
-    public class SaleController : Controller
+    public class SaleController : BaseController
     {
         // GET: Admin/Sale
         SaleHeper sale = new SaleHeper();

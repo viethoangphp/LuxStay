@@ -19,9 +19,11 @@ namespace Models.Entity
         public int CatID { get; set; }
 
         [StringLength(150)]
-        public string CatName { get; set; }
+        public string CatName { get; set;}
+        public int roomNumber = 0;
 
         public int? Status { get; set; }
+
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Room> Rooms { get; set; }

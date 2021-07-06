@@ -18,7 +18,18 @@ namespace Models.DAO
         }
         public List<Location> getListAll()
         {
-            return db.Locations.ToList();
+            var list = db.Locations.ToList();
+            foreach(var item in list)
+            {
+                item.RoomNumber = this.CoutRoomBeLongToLocation(item.LocationID);
+            }    
+            return list;
+        }
+        public Location getByLocationId(int id)
+        {
+            Location item = db.Locations.Find(id);
+            item.RoomNumber = this.CoutRoomBeLongToLocation(item.LocationID);
+            return item;
         }
         public int Delete(int id)
         {
@@ -33,6 +44,10 @@ namespace Models.DAO
             {
                 return 0;
             }    
+        }
+        public int CoutRoomBeLongToLocation(int locationID)
+        {
+            return db.Rooms.Where(m => m.LocationID == locationID && m.Status == "Enable").Count();
         }
     }
 }

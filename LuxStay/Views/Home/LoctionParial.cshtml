@@ -1,0 +1,17 @@
+﻿﻿@model IEnumerable<LuxStay.Areas.Admin.Data.LocationModel>
+<div class="page-section__content">
+    <div class="place-list">
+        @foreach (var item in Model)
+        {
+            <a href="/Home/Location/@item.id" class="place-item col l-2-4">
+                <div class="place-item--img"
+                     style="background-image: url(@item.avatar);">
+                </div>
+                <div class="place-item__info">
+                    <div class="place-item__info--heading">@item.LocationName</div>
+                    <div class="place-item__info--number"><b>@item.roomNumber</b> Chỗ ở</div>
+                </div>
+            </a>
+        }
+    </div>
+</div>
