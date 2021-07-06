@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using LuxStay.Areas.Admin.Data;
+using LuxStay.Areas.Admin.Helper;
 using Models.DAO;
 using Models.Entity;
 
@@ -45,7 +47,7 @@ namespace LuxStay.Areas.Admin.Controllers
         [HttpPost]
         public JsonResult View(int id)
         {
-            RoomCategory model = dao.GetCategoryById(id);
+            CategoryModel model = new CategoryHelper().getById(id);
             if (model != null)
             {
                 return Json(model, JsonRequestBehavior.AllowGet);

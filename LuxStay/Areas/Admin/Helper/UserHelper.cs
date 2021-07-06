@@ -22,6 +22,7 @@ namespace LuxStay.Areas.Admin.Helper
                 user.fullname = item.Fullname;
                 user.email = item.Email;
                 user.phone = item.Phone;
+                user.status = (int)item.Status;
                 user.avatar = item.Avatar;
                 listUser.Add(user);
             }
@@ -38,7 +39,7 @@ namespace LuxStay.Areas.Admin.Helper
                 user.phone = model.Phone;
                 user.email = model.Email;
                 user.avatar = model.Avatar;
-                user.status = model.Status;
+                user.status = (int)model.Status;
                 return user;
             }
             return null;
@@ -50,6 +51,7 @@ namespace LuxStay.Areas.Admin.Helper
             user.Email = model.email;
             user.Password = model.password;
             user.Phone = model.phone;
+            user.Status = 0;
             var id = dao.Insert(user);
             return id;
         }

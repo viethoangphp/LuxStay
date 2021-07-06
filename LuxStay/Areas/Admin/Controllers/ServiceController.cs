@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace LuxStay.Areas.Admin.Controllers
 {
-    public class ServiceController : Controller
+    public class ServiceController : BaseController
     {
         protected ServiceDAO dao = new ServiceDAO();
         public ActionResult Index()

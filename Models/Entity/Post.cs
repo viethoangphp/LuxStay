@@ -15,7 +15,7 @@ namespace Models.Entity
         public string PostName { get; set; }
 
         [Column(TypeName = "ntext")]
-        public string Content { get; set; }
+        public string ContentPost { get; set; }
 
         [StringLength(150)]
         public string Descprition { get; set; }

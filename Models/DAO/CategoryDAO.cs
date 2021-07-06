@@ -11,7 +11,12 @@ namespace Models.DAO
         DBContext db = new DBContext();
         public List<RoomCategory> getListAll()
         {
-            return db.RoomCategories.ToList();
+            var list = db.RoomCategories.ToList();
+            foreach(var item in list)
+            {
+                item.roomNumber = this.countRoomByCatId(item.CatID);
+            }
+            return list;
         }
         public int Insert(RoomCategory model)
         {
@@ -44,6 +49,10 @@ namespace Models.DAO
                 rom.Status = model.Status;
                 db.SaveChanges();
             }    
+        }
+        public int countRoomByCatId(int catId)
+        {
+            return db.Rooms.Where(m => m.CatID == catId).Count();
         }
     }
 }

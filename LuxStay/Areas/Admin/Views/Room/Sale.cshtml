@@ -1,0 +1,14 @@
+﻿@model IEnumerable<LuxStay.Areas.Admin.Data.SaleModel>
+<div class="col-md-5">
+    <div class="form-group">
+        <label>Áp Dụng Giảm Giá : </label>
+        <select class="form-control select2 select2-blue" data-dropdown-css-class="select2-danger"
+                style="width: 100%;" name="saleID" id="saleID">
+            <option value="1" selected>Không Áp Dụng</option>
+            @foreach (var item in Model)
+            {
+                <option value="@item.id">@item.persent %</option>
+            }
+        </select>
+    </div>
+</div>
