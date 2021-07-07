@@ -102,6 +102,7 @@ $(document).on("click", ".btn-view", function () {
         data: { id: id },
         dataType: "json",
         success: function (data) {
+            ClearValueForm();
             var formDataId = $("#Room").data("id", data.id);
             console.log(formDataId.data("id"));
             console.log(data);
@@ -118,7 +119,7 @@ $(document).on("click", ".btn-view", function () {
             document.getElementsByName("area")[0].value = data.area;
             document.getElementsByName("Address")[0].value = data.Address;
             for (var i = 0; i < data.utility.length; i++) {
-                document.getElementsByName("utility")[data.utility[i]].checked = true;
+                $("#" + data.utility[i]).prop("checked", true);
             }
             $(".textarea").summernote('code', data.content);
             $("#avatarRoom").attr("src", data.avatar);
