@@ -58,10 +58,16 @@ namespace LuxStay.Controllers
                     ViewData["Error"] = "Hai mật khẩu không khớp nhau";
                     return View();
                 }
-                if (helper.AddCustomer(data) == 1)
+                int code = helper.AddCustomer(data);
+                if (code == 1)
                 {
                     TempData["Message"] = "Đăng ký thành công! Bạn đã có thể đăng nhập";
                     return RedirectToAction("Login", "Account");
+                }
+                else if(code == 2)
+                {
+                    ViewData["Error"] = "Email đã tồn tại! Vui lòng chọn email khác";
+                    return View();
                 }
                 ViewData["Error"] = "Đã có lỗi xảy ra! Vui lòng thử lại";
                 return View();

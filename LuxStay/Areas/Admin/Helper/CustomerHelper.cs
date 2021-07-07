@@ -97,6 +97,11 @@ namespace LuxStay.Areas.Admin.Helper
         }
         public int AddCustomer(RegisterModel data)
         {
+            Customer check = dao.getCustomer(data.email);
+            if(check != null)
+            {
+                return 2;
+            }
             int gd = 0;
             if (data.gender == "1")
             {
