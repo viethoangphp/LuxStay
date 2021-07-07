@@ -31,7 +31,7 @@ namespace LuxStay.Controllers
                 if (cus != null)
                 {
                     Session["USER"] = cus;
-                    return RedirectToAction("Index", "Home"); // Need Update -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {
@@ -43,13 +43,19 @@ namespace LuxStay.Controllers
             return View();
         }
 
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
         public ActionResult Register(RegisterModel data)
         {
             if (ModelState.IsValid)
             {
                 if (data.password != data.confirmpassword)
                 {
-                    ViewData["Error"] = "Password doesn't match";
+                    ViewData["Error"] = "Hai mật khẩu không khớp nhau";
                     return View();
                 }
                 if (helper.AddCustomer(data) == 1)
@@ -66,7 +72,7 @@ namespace LuxStay.Controllers
         public ActionResult Logout()
         {
             Session["USER"] = null;
-            return RedirectToAction("Index", "Home"); // Need Update -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+            return RedirectToAction("Index", "Home"); 
         }
     }
 }

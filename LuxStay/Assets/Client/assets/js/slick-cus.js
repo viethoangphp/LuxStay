@@ -39,15 +39,17 @@ $(document).ready(function () {
 
     $('.detail-products-page__slider').slick({
         infinite: true,
-        speed: 300,
+        speed: 800,
         slidesToShow: 1,
         centerMode: true,
         variableWidth: true,
     });
+
     $('.detail-product__room-sugesst--list').slick({
         infinite: false,
         arrows: true,
         slidesToShow: 4,
         slidesToScroll: 1,
     });
+
 });
