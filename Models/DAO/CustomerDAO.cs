@@ -23,6 +23,11 @@ namespace Models.DAO
             Customer cus = db.Customers.Find(id);
             return cus;
         }
+        public Customer getCustomer(string email)
+        {
+            Customer cus = db.Customers.FirstOrDefault(m=>m.Email == email);
+            return cus;
+        }
         public Customer Auth(string email, string pass)
         {
             return db.Customers.Where(m => m.Email == email && m.Password == pass).FirstOrDefault();
