@@ -36,6 +36,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/date-fns/1.29.0/date_fns.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
+    <!-- --------------- Custom CSS --------------------- -->
+    <link href="~/Assets/Admin/plugins/toastr/toastr.min.css" rel="stylesheet">
+
     <!-- --------------- Page tittle --------------------- -->
     <link rel="shortcut icon" href="~/Assets/Client/assets/img/logo/logo.png">
     <title>Đặt Phòng Nhanh Tại LuxStay</title>
@@ -52,53 +55,59 @@
                     <!-- header-navbar -->
                     <nav class="header__navbar col l-6 is-flex middle">
                         <ul class="header__navbar--list is-flex middle">
-                            <!-- Not login -->
-                            <li class="header__navbar--item header__navbar-register">
-                                <a href="">Đăng ký</a>
-                            </li>
-                            <li class="header__navbar--item header__navbar-login">
-                                <a href="">Đăng nhập</a>
-                            </li>
-                            <!-- Login
-                            <li class="header__navbar--item header__navbar-user has-dropdown-box">
-                                <a class="is-flex middle btn--dropdown">
-                                    <div class="user-avar">
-                                        data-original="assets/img/user-ava.jpg" alt="">
+                            @using LuxStay.Areas.Admin.Data
+                            @if (Session["USER"] == null)
+                            {
+                                <!-- Not login -->
+                                <li class="header__navbar--item header__navbar-register">
+                                    <a href="/Account/Register">Đăng ký</a>
+                                </li>
+                                <li class="header__navbar--item header__navbar-login">
+                                    <a href="/Account/Login">Đăng nhập</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <!-- Login -->
+                                <li class="header__navbar--item header__navbar-user has-dropdown-box">
+                                    <a class="is-flex middle btn--dropdown">
+                                        <div class="user-avar">
+                                            <img src="~/Assets/Client/assets/img/user-ava.jpg" alt="">
+                                        </div>
+                                        <span>@(((CustomerModel)Session["USER"]).fullname)</span>
+                                    </a>
+                                    <div class="user-menu dropdown-box">
+                                        <ul class="user-menu__list">
+                                            <li class="user-menu__item">
+                                                <a href="" class="user-menu__link">
+                                                    <i class="far fa-calendar"></i>
+                                                    <p>Đặt chỗ của tôi</p>
+                                                </a>
+                                            </li>
+                                            <li class="user-menu__item">
+                                                <a href="" class="user-menu__link">
+                                                    <i class="fas fa-cog"></i>
+                                                    <p>Cài đặt tài khoản</p>
+                                                </a>
+                                            </li>
+                                            <li class="user-menu__item">
+                                                <a href="" class="user-menu__link">
+                                                    <i class="far fa-heart"></i>
+                                                    <p>Yêu thích</p>
+                                                </a>
+                                            </li>
+                                            <li class="user-menu__item">
+                                                <a href="/Account/Logout" class="user-menu__link">
+                                                    <i class="fas fa-sign-out-alt"></i>
+                                                    <p>Đăng xuất</p>
+                                                </a>
+                                            </li>
+                                            <li class="user-menu__line"></li>
+                                        </ul>
                                     </div>
-                                    <span>Thế Duy</span>
-                                </a>
-                                <div class="user-menu dropdown-box">
-                                    <ul class="user-menu__list">
-                                        <li class="user-menu__item">
-                                            <a href="" class="user-menu__link">
-                                                <i class="far fa-calendar"></i>
-                                                <p>Đặt chỗ của tôi</p>
-                                            </a>
-                                        </li>
-                                        <li class="user-menu__item">
-                                            <a href="" class="user-menu__link">
-                                                <i class="fas fa-cog"></i>
-                                                <p>Cài đặt tài khoản</p>
-                                            </a>
-                                        </li>
-                                        <li class="user-menu__item">
-                                            <a href="" class="user-menu__link">
-                                                <i class="far fa-heart"></i>
-                                                <p>Yêu thích</p>
-                                            </a>
-                                        </li>
-                                        <li class="user-menu__item">
-                                            <a href="" class="user-menu__link">
-                                                <i class="fas fa-sign-out-alt"></i>
-                                                <p>Đăng xuất</p>
-                                            </a>
-                                        </li>
-                                        <div class="user-menu__line"></div>
-                                    </ul>
-
-                                </div>
-                            </li>
-                            <-- crurrency -->
+                                </li>
+                            }
+                            <!-- crurrency -->
                             <li class="header__navbar--item header__navbar-currency has-dropdown-box">
                                 <a class="is-flex middle btn--dropdown">
                                     <div class="currency-avar">
@@ -510,6 +519,7 @@
     <script src="~/Assets/Client/assets/plugin/datePicker/datePiker.js"></script>
     <script src="~/Assets/Client/assets/js/slick-cus.js"></script>
     <script src="~/Assets/Client/assets/js/main.js"></script>
+    <script src="~/Assets/Admin/plugins/toastr/toastr.min.js"></script>
     @RenderSection("js", false);
     <script>
         var datepickerOptions = {}
@@ -556,8 +566,8 @@
                 },
             },
         })
-        
+
     </script>
-  
+
 </body>
 </html>
