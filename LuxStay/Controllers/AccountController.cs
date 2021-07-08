@@ -21,7 +21,7 @@ namespace LuxStay.Controllers
             }
             return View();
         }
-
+        [ValidateAntiForgeryToken]
         [HttpPost]
         public ActionResult Login(LoginModel data)
         {
@@ -47,7 +47,7 @@ namespace LuxStay.Controllers
         {
             return View();
         }
-
+        [ValidateAntiForgeryToken]
         [HttpPost]
         public ActionResult Register(RegisterModel data)
         {
@@ -56,7 +56,7 @@ namespace LuxStay.Controllers
                 if (data.password != data.confirmpassword)
                 {
                     ViewData["Error"] = "Hai mật khẩu không khớp nhau";
-                    return View();
+                    return View(data);
                 }
                 int code = helper.AddCustomer(data);
                 if (code == 1)
@@ -67,7 +67,8 @@ namespace LuxStay.Controllers
                 else if(code == 2)
                 {
                     ViewData["Error"] = "Email đã tồn tại! Vui lòng chọn email khác";
-                    return View();
+                    data.email = null;
+                    return View(data);
                 }
                 ViewData["Error"] = "Đã có lỗi xảy ra! Vui lòng thử lại";
                 return View();
