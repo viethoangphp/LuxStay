@@ -3,8 +3,6 @@
     ViewBag.Title = "Danh sách khách hàng";
     Layout = "~/Areas/Admin/Views/Shared/__AdminLayout.cshtml";
 }
-@using Models.Entity
-@model List<Customer>
 
 @section js{
     <script>
@@ -53,17 +51,50 @@
             }).draw();
         });
     </script>
-
     <script>
-        $(document).ready(function () {
+        $(document).on("click", ".edit-btn", function () {
+            var cusID = $(this).data("id");
+            $.ajax({
+                url: "/Admin/Customer/Get",
+                method: "post",
+                data: { id: cusID },
+                dataType: "json",
+                success: function (data) {
+                    $(".customerName").html(data.fullname)
+                }
+            });
             var table2 = $("#listView2").DataTable({
+                destroy: true,
                 columnDefs: [
                     { orderable: false, sortable: false, targets: 0 }
+                ],
+                columns: [
+                    { "data": "billid" },
+                    { "data": "roomid" },
+                    { "data": "roomname" },
+                    { "data": "checkin" },
+                    { "data": "checkout" },
+                    {
+                        "data": "total",
+                        "render": function (data, type, row, meta) {
+                            var formatter = new Intl.NumberFormat('vi-VN', {
+                                style: 'currency',
+                                currency: 'VND',
+                            });
+                            return formatter.format(data);
+                        }
+                    },
+                    { "data": "status" }
                 ],
                 responsive: true,
                 autoWidth: false,
                 lengthMenu: [5, 10, 20, 50],
                 order: [[1, 'asc']],
+                ajax: {
+                    url: "/Admin/Bill/GetByCus/" + cusID,
+                    method: "post",
+                    dataSrc: ""
+                }
             });
 
             table2.on('order.dt search.dt', function () {
@@ -206,7 +237,7 @@
                                     <div class="row">
                                         <div class="form-group col-md-6">
                                             <label for="inputEditID">Mã khách hàng</label>
-                                            <input type="text" class="form-control" name="inputEditID" id="inputEditID" required disabled>
+                                            <input type="text" class="form-control" name="inputEditID" id="inputEditID" required readonly>
                                             <div class="invalid-feedback">Không Được Để Trống Trường Này</div>
                                         </div>
                                         <div class="form-group col-md-6">
@@ -254,7 +285,7 @@
                         <div class="tab-pane" id="orderList">
                             <div class="modal-body">
                                 <div id="dataTable2" >
-                                    <h3 style="font-size: 22px">Lịch sử đơn đặt phòng của <span style="font-weight: bold">Insert Name Here</span></h3>
+                                    <h3 style="font-size: 22px">Lịch sử đơn đặt phòng của <span class="customerName" style="font-weight: bold">Insert Name Here</span></h3>
                                     <table id="listView2" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
@@ -268,19 +299,7 @@
                                             </tr>
                                         </thead>
                                         <tbody class="text-center">
-
-                                            @for (int i = 0; i < 25; i++)
-                                            {
-                                                <tr>
-                                                    <td>@i</td>
-                                                    <td>HCM @i</td>
-                                                    <td>Phòng ABCDEF @i</td>
-                                                    <td>25/06/2021</td>
-                                                    <td>15/07/2021</td>
-                                                    <td>3.200.000 đ</td>
-                                                    <td>Đã xác nhận</td>
-                                                </tr>
-                                            }
+                                            
                                         </tbody>
                                     </table>
                                 </div>
