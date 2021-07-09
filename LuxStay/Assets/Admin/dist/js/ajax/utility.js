@@ -20,10 +20,12 @@ $(document).ready(function () {
 
         var name = $("#name").val();
         var parentname = $("#parentName").val();
+        var icon = $("#icon").val();
         var status = $("#status").val();
         var obj = {
             name: name,
             parentid: parentname,
+            icon: icon,
             status: status
         }
         $.ajax({
@@ -84,6 +86,7 @@ $(document).ready(function () {
                     $("#editId").val(data.id);
                     $("#editName").val(data.name);
                     $("#editParentName").val(data.parentid);
+                    $("#editIcon").val(data.icon);
                     $("#editStatus").val(data.status);
                 }
             }

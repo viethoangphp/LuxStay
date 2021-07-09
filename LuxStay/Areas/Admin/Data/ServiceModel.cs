@@ -6,7 +6,7 @@ using System.Web;
 
 namespace LuxStay.Areas.Admin.Data
 {
-    public class ServiceView
+    public class ServiceModel
     {
         [Required]
         public int id { get; set; }
