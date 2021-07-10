@@ -18,5 +18,9 @@ namespace Models.DAO
         {
             return db.Bills.Where(p=>p.Customer.CustomerID == cusID).ToList();
         }
+        public List<Bill> getListByMonth(int month,int status)
+        {
+            return db.Bills.Where(p=>p.Create_At.Value.Month == month && p.Status == status).ToList();
+        }
     }
 }

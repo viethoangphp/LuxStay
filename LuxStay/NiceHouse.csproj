@@ -146,6 +146,7 @@
     <Compile Include="Areas\Admin\Data\AdminLogin.cs" />
     <Compile Include="Areas\Admin\Data\BillModel.cs" />
     <Compile Include="Areas\Admin\Data\CategoryModel.cs" />
+    <Compile Include="Areas\Admin\Data\DashboardModel.cs" />
     <Compile Include="Areas\Admin\Data\PostModel.cs" />
     <Compile Include="Areas\Admin\Data\RoomModel.cs" />
     <Compile Include="Areas\Admin\Data\CustomerModel.cs" />
@@ -155,6 +156,7 @@
     <Compile Include="Areas\Admin\Data\ServiceModel.cs" />
     <Compile Include="Areas\Admin\Helper\BillHelper.cs" />
     <Compile Include="Areas\Admin\Helper\CustomerHelper.cs" />
+    <Compile Include="Areas\Admin\Helper\DashboardHelper.cs" />
     <Compile Include="Areas\Admin\Helper\RoomHepler.cs" />
     <Compile Include="Areas\Admin\Helper\PostHelper.cs" />
     <Compile Include="Areas\Admin\Helper\ServiceHelper.cs" />
@@ -233,6 +235,7 @@
     <Content Include="Assets\Admin\dist\js\ajax\Room.js" />
     <Content Include="Assets\Admin\dist\js\ajax\Sale.js" />
     <Content Include="Assets\Admin\dist\js\ajax\User.js" />
+    <Content Include="Assets\Admin\dist\js\chart-new.js" />
     <Content Include="Assets\Admin\dist\js\chart.js" />
     <Content Include="Assets\Admin\dist\js\demo.js" />
     <Content Include="Assets\Admin\dist\js\fontawesome.js" />
