@@ -35,9 +35,12 @@
             maintainAspectRatio: false,
             datasetFill: false,
             scales: {
-                y: {
+                yAxes: [{
                     beginAtZero: true,
-                }
+                    ticks: {
+                        precision: 0
+                    }
+                }]
             }
         }
     })

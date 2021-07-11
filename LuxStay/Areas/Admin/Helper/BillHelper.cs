@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using LuxStay.Areas.Admin.Data;
@@ -19,12 +20,17 @@ namespace LuxStay.Areas.Admin.Helper
             {
                 BillModel bill = new BillModel()
                 {
-                    billid = item.BillID,
-                    checkin = item.Check_in.ToString(),
-                    checkout = item.Check_out.ToString(),
-                    datecreate = item.Create_At.ToString(),
+                    billId = item.BillID,
+                    adult = (int)item.Adult,
+                    kid = (int)item.Kid,
+                    baby = (int)item.Baby,
+                    customername = item.Customer.FullName,
+                    check_in = string.Format("{0:dd/MM/yyyy}", item.Check_in),
+                    check_out = string.Format("{0:dd/MM/yyyy}", item.Check_out),
+                    create_at = string.Format("{0:dd/MM/yyyy}", item.Create_At),
                     roomname = item.Room.RoomName,
-                    total = (int)item.Total
+                    total = ((int)item.Total).ToString("#,###", CultureInfo.GetCultureInfo("vi-VN").NumberFormat) + " đ",
+                    status = (int)item.Status
                 };
                 view.Add(bill);
             }
@@ -36,25 +42,45 @@ namespace LuxStay.Areas.Admin.Helper
             List<Bill> list = dao.getListBill(cusID);
             foreach (var item in list)
             {
-                string st = "Chưa thanh toán";
-                
-                if(item.Status == 1)
-                {
-                    st = "Đã thanh toán";
-                }
                 BillModel bill = new BillModel()
                 {
-                    billid = item.BillID,
-                    checkin = item.Check_in.ToString(),
-                    checkout = item.Check_out.ToString(),
-                    datecreate = item.Create_At.ToString(),
+                    billId = item.BillID,
+                    adult = (int)item.Adult,
+                    kid = (int)item.Kid,
+                    baby = (int)item.Baby,
+                    customername = item.Customer.FullName,
+                    check_in = string.Format("{0:dd/MM/yyyy}", item.Check_in),
+                    check_out = string.Format("{0:dd/MM/yyyy}", item.Check_out),
+                    create_at = string.Format("{0:dd/MM/yyyy}", item.Create_At),
                     roomname = item.Room.RoomName,
-                    total = (int)item.Total,
-                    status = st
+                    total = ((int)item.Total).ToString("#,###", CultureInfo.GetCultureInfo("vi-VN").NumberFormat) + " đ",
+                    status = (int)item.Status
                 };
-                view.Add(bill);
             }
             return view;
+        }
+        public BillModel getBill(int billid)
+        {
+            Bill item = dao.getBill(billid);
+            BillModel bill = new BillModel()
+            {
+                billId = item.BillID,
+                adult = (int)item.Adult,
+                kid = (int)item.Kid,
+                baby = (int)item.Baby,
+                customername = item.Customer.FullName,
+                check_in = string.Format("{0:dd/MM/yyyy}", item.Check_in),
+                check_out = string.Format("{0:dd/MM/yyyy}", item.Check_out),
+                create_at = string.Format("{0:dd/MM/yyyy}", item.Create_At),
+                roomname = item.Room.RoomName,
+                total = ((int)item.Total).ToString("#,###", CultureInfo.GetCultureInfo("vi-VN").NumberFormat) + " đ",
+                status = (int)item.Status
+            };
+            return bill;
+        }
+        public bool confirmBill(int id,int confirmby)
+        {
+            return dao.confirmBill(id,confirmby);
         }
     }
 }

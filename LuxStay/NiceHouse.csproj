@@ -225,7 +225,9 @@
     <Content Include="Assets\Admin\dist\img\user1-128x128.jpg" />
     <Content Include="Assets\Admin\dist\js\adminlte.js" />
     <Content Include="Assets\Admin\dist\js\adminlte.min.js" />
+    <Content Include="Assets\Admin\dist\js\ajax\bill.js" />
     <Content Include="Assets\Admin\dist\js\ajax\customerDetails.js" />
+    <Content Include="Assets\Admin\dist\js\ajax\dashboard.js" />
     <Content Include="Assets\Admin\dist\js\ajax\post.js" />
     <Content Include="Assets\Admin\dist\js\ajax\utility.js" />
     <Content Include="Assets\Admin\dist\js\ajax\customer.js" />
@@ -2156,7 +2158,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Views\Base\" />
-    <Folder Include="Areas\Admin\Views\Bill\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Views\Login\Index.cshtml" />
@@ -2247,6 +2248,7 @@
     <Content Include="Areas\Admin\Views\Room\Utility.cshtml" />
     <Content Include="Areas\Admin\Views\Room\Sale.cshtml" />
     <Content Include="Areas\Admin\Views\Post\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Bill\Index.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\__HomeLayout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />

@@ -7,12 +7,19 @@ namespace LuxStay.Areas.Admin.Data
 {
     public class BillModel
     {
-        public int billid { get; set; }
+        public int billId { set; get; }
+        public int roomId { set; get; }
         public string roomname { get; set; }
-        public string datecreate { get; set; }
-        public string checkin { get; set; }
-        public string checkout { get; set; }
-        public int total { get; set; }
-        public string status { get; set; }
+        public string create_at { set; get; }
+        public string check_in { set; get; }
+        public string check_out { set; get; }
+        public string customername { get; set; }
+        public string total { set; get; }
+        public int confirm_by { set; get; }
+        public int create_by { set; get; }
+        public int adult { set; get; }
+        public int kid { set; get; }
+        public int baby { set; get; }
+        public int status { set; get; }
     }
 }

@@ -110,9 +110,9 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Đơn Đặt Phòng Mới</h3>
+                        <h3 class="card-title">Đơn Đặt Phòng Mới (Tối đa 5)</h3>
 
-                        <div class="card-tools">
+                        @*<div class="card-tools">
                             <div class="input-group input-group-sm" style="width: 150px;">
                                 <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
 
@@ -120,7 +120,7 @@
                                     <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
                                 </div>
                             </div>
-                        </div>
+                        </div>*@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body table-responsive p-0">
@@ -130,127 +130,76 @@
                                     <th>Đơn Đặt Phòng</th>
                                     <th>Tên Khách Hàng</th>
                                     <th>Tên Phòng</th>
-                                    <th>Người Lớn</th>
-                                    <th>Trẻ Em</th>
                                     <th>Ngày Nhận Phòng</th>
                                     <th>Ngày Trả Phòng</th>
+                                    <th>Ngày Tạo Đơn</th>
                                     <th>Tổng Tiền</th>
                                     <th>Trạng Thái</th>
                                     <th>Tác Vụ</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach (var item in Model.latestBill)
+                                {
                                 <tr>
-                                    <td class="middle">ĐĐP0025</td>
-                                    <td class="middle">Trần Việt Hoàng</td>
-                                    <td class="middle">HomeStay-001</td>
-                                    <td class="middle">2</td>
-                                    <td class="middle">1</td>
-                                    <td class="middle">21-6-2021</td>
-                                    <td class="middle">25-6-2021</td>
-                                    <td class="middle">2.352.255đ</td>
-                                    <td class="middle">Chờ Nhận Phòng</td>
+                                    <td class="middle">@item.billId</td>
+                                    <td class="middle">@item.customername</td>
+                                    <td class="middle">@item.roomname</td>
+                                    <td class="middle">@item.check_in</td>
+                                    <td class="middle">@item.check_out</td>
+                                    <td class="middle">@item.create_at</td>
+                                    <td class="middle">@item.total</td>
+                                    @if (item.status == 0)
+                                    {
+                                        <td class="middle">Chờ xác nhận</td>
+                                    }
+                                    else if (item.status == 1)
+                                    {
+                                        <td class="middle">Đã thanh toán</td>
+                                    }
+                                    else
+                                    {
+                                        <td class="middle">Đã hủy bỏ</td>
+                                    }
                                     <td class="middle">
                                         <div class="d-flex d-flex justify-content-around">
-                                            <button class="btn btn-secondary btn-view" data-id="1" data-toggle="modal" data-target="#viewUserInform">
+                                            <button class="btn btn-secondary btn-view" data-id="@item.billId" data-toggle="modal" data-target="#billDetailModal">
                                                 <i class="fas fa-eye"></i>
                                             </button>
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td class="middle">ĐĐP0025</td>
-                                    <td class="middle">Trần Việt Hoàng</td>
-                                    <td class="middle">HomeStay-001</td>
-                                    <td class="middle">2</td>
-                                    <td class="middle">1</td>
-                                    <td class="middle">21-6-2021</td>
-                                    <td class="middle">25-6-2021</td>
-                                    <td class="middle">2.352.255đ</td>
-                                    <td class="middle">Chờ Nhận Phòng</td>
-                                    <td class="middle">
-                                        <div class="d-flex d-flex justify-content-around">
-                                            <button class="btn btn-secondary btn-view" data-id="1" data-toggle="modal" data-target="#viewUserInform">
-                                                <i class="fas fa-eye"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="middle">ĐĐP0025</td>
-                                    <td class="middle">Trần Việt Hoàng</td>
-                                    <td class="middle">HomeStay-001</td>
-                                    <td class="middle">2</td>
-                                    <td class="middle">1</td>
-                                    <td class="middle">21-6-2021</td>
-                                    <td class="middle">25-6-2021</td>
-                                    <td class="middle">2.352.255đ</td>
-                                    <td class="middle">Chờ Nhận Phòng</td>
-                                    <td class="middle">
-                                        <div class="d-flex d-flex justify-content-around">
-                                            <button class="btn btn-secondary btn-view" data-id="1" data-toggle="modal" data-target="#viewUserInform">
-                                                <i class="fas fa-eye"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="middle">ĐĐP0025</td>
-                                    <td class="middle">Trần Việt Hoàng</td>
-                                    <td class="middle">HomeStay-001</td>
-                                    <td class="middle">2</td>
-                                    <td class="middle">1</td>
-                                    <td class="middle">21-6-2021</td>
-                                    <td class="middle">25-6-2021</td>
-                                    <td class="middle">2.352.255đ</td>
-                                    <td class="middle">Chờ Nhận Phòng</td>
-                                    <td class="middle">
-                                        <div class="d-flex d-flex justify-content-around">
-                                            <button class="btn btn-secondary btn-view" data-id="1" data-toggle="modal" data-target="#viewUserInform">
-                                                <i class="fas fa-eye"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="middle">ĐĐP0025</td>
-                                    <td class="middle">Trần Việt Hoàng</td>
-                                    <td class="middle">HomeStay-001</td>
-                                    <td class="middle">2</td>
-                                    <td class="middle">1</td>
-                                    <td class="middle">21-6-2021</td>
-                                    <td class="middle">25-6-2021</td>
-                                    <td class="middle">2.352.255đ</td>
-                                    <td class="middle">Chờ Nhận Phòng</td>
-                                    <td class="middle">
-                                        <div class="d-flex d-flex justify-content-around">
-                                            <button class="btn btn-secondary btn-view" data-id="1" data-toggle="modal" data-target="#viewUserInform">
-                                                <i class="fas fa-eye"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="middle">ĐĐP0025</td>
-                                    <td class="middle">Trần Việt Hoàng</td>
-                                    <td class="middle">HomeStay-001</td>
-                                    <td class="middle">2</td>
-                                    <td class="middle">1</td>
-                                    <td class="middle">21-6-2021</td>
-                                    <td class="middle">25-6-2021</td>
-                                    <td class="middle">2.352.255đ</td>
-                                    <td class="middle">Chờ Nhận Phòng</td>
-                                    <td class="middle">
-                                        <div class="d-flex d-flex justify-content-around">
-                                            <button class="btn btn-secondary btn-view" data-id="1" data-toggle="modal" data-target="#viewUserInform">
-                                                <i class="fas fa-eye"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-
+                                }
                             </tbody>
                         </table>
+                    </div>
+                    <div class="modal fade" id="billDetailModal" tabindex="-1" role="dialog" aria-labelledby="billDetailModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="billDetailModalLabel">Thông tin đơn đặt phòng</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p id="billID"></p>
+                                    <p id="customerName"></p>
+                                    <p id="roomName"></p>
+                                    <p id="numAdult"></p>
+                                    <p id="numKid"></p>
+                                    <p id="numBaby"></p>
+                                    <p id="checkIn"></p>
+                                    <p id="checkOut"></p>
+                                    <p id="createAt"></p>
+                                    <p id="totalMoney"></p>
+                                    <p id="status"></p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <!-- /.card-body -->
                 </div>
@@ -265,4 +214,5 @@
 @section js
 {
     <script src="~/Assets/Admin/dist/js/chart-new.js"></script>
+    <script src="~/Assets/Admin/dist/js/ajax/dashboard.js"></script>
 }

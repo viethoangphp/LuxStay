@@ -5,6 +5,7 @@ using System.Web;
 using Models.DAO;
 using LuxStay.Areas.Admin.Data;
 using System.Dynamic;
+using System.Globalization;
 
 namespace LuxStay.Areas.Admin.Helper
 {
@@ -12,11 +13,13 @@ namespace LuxStay.Areas.Admin.Helper
     {
         public DashboardModel getStat()
         {
+            int total = (int)new BillDAO().getListBill().Where(m => m.Status == 1).Sum(p => p.Total);
             DashboardModel data = new DashboardModel()
             {
                 totalCustomer = new CustomerDAO().getListAll().Count,
-                totalOrder = new BillDAO().getListBill().Count,
-                totalValue = (int)new BillDAO().getListBill().Where(m=>m.Status == 1).Sum(p => p.Total)
+                totalOrder = new BillDAO().getListBill().Where(m=>m.Status == 1).ToList().Count,
+                totalValue = total.ToString("#,###", CultureInfo.GetCultureInfo("vi-VN").NumberFormat), 
+                latestBill = new BillHelper().getListBill().Take(10).OrderByDescending(m=>m.billId).ToList()
             };
             return data;
         }
