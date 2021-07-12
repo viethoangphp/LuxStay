@@ -101,6 +101,7 @@
             <div class="col l-4">
                 <div class="form-account">
                     <form action="/Account/Login" method="post">
+                        @Html.AntiForgeryToken()
                         <h3 class="form-account__title">Đăng nhập</h3>
                         <!-- email -->
                         <div class="form-account__input-group">
@@ -108,7 +109,7 @@
                                 Tên đăng
                                 nhập
                             </label>
-                            <input type="email" class="form-account__input" id="inputEmail" name="email" placeholder="Email">
+                            <input type="email" class="form-account__input" id="inputEmail" name="email" placeholder="Email" required>
                             <span class="form-account__validation is-block"></span>
                             <i class="far fa-envelope form-account__icon"></i>
                         </div>
@@ -119,7 +120,7 @@
                                 khấu
                             </label>
                             <input type="password" class="form-account__input" id="inputPassword" name="password"
-                                   placeholder="Mật khẩu">
+                                   placeholder="Mật khẩu" required>
                             <span class="form-account__validation is-block"></span>
                             <lord-icon class="form-account__icon cover"
                                        src="https://cdn.lordicon.com//tyounuzx.json" trigger="hover"

@@ -96,7 +96,9 @@ $(document).ready(function () {
                 }
             }
         })
+
     });
+
     $("#editUser").submit(function (e) {
         e.preventDefault();
 
@@ -141,10 +143,10 @@ $(document).on("click","#btn-refresh",function () {
     $("#listView").DataTable().ajax.reload();
 });
 
-//$(document).on("click", ".btn-orderList", function () {
+//$(document).on("click", "#btn-orderList", function () {
 //    var cusID = $("#inputEditID").val();
 //    $.ajax({
-//        url: "Admin/Bill/GetCus/" + cusID,
+//        url: "Admin/Bill/GetByCus/" + cusID,
 //        method: "post",
 //        data: { id: cusID },
 //        dataType: "json",

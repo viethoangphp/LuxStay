@@ -136,5 +136,10 @@ namespace LuxStay.Areas.Admin.Helper
             };
             return dao.Edit(cus);
         }
+
+        public int TotalCustomer()
+        {
+            return dao.getListAll().Count;
+        }
     }
 }

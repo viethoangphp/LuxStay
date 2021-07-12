@@ -23,6 +23,11 @@ namespace LuxStay.Controllers
         {
             return PartialView();
         }
+        public ActionResult PostPartial()
+        {
+            var list = new PostHelper().getListPost().OrderByDescending(p=>p.postID).ToList();
+            return PartialView(list);
+        }
         public ActionResult Location(int id)
         {
             ViewBag.Location = new LocationHeper().getById(id);

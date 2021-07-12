@@ -54,13 +54,41 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="PayPal, Version=1.9.1.0, Culture=neutral, PublicKeyToken=5b4afc1ccaef40fb, processorArchitecture=MSIL">
       <HintPath>..\packages\PayPal.1.9.1\lib\net451\PayPal.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web, Version=5.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.5.0.1\lib\net461\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=5.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.5.0.2\lib\net461\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -134,6 +162,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
+    <Compile Include="Areas\Admin\Controllers\BillController.cs" />
     <Compile Include="Areas\Admin\Controllers\CustomerController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
@@ -144,19 +173,22 @@
     <Compile Include="Areas\Admin\Controllers\RoomController.cs" />
     <Compile Include="Areas\Admin\Controllers\SaleController.cs" />
     <Compile Include="Areas\Admin\Controllers\ServiceController.cs" />
+    <Compile Include="Areas\Admin\Controllers\StatController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Areas\Admin\Data\AdminLogin.cs" />
     <Compile Include="Areas\Admin\Data\BillModel.cs" />
     <Compile Include="Areas\Admin\Data\CategoryModel.cs" />
+    <Compile Include="Areas\Admin\Data\DashboardModel.cs" />
     <Compile Include="Areas\Admin\Data\PostModel.cs" />
     <Compile Include="Areas\Admin\Data\RoomModel.cs" />
     <Compile Include="Areas\Admin\Data\CustomerModel.cs" />
     <Compile Include="Areas\Admin\Data\InformationUser.cs" />
     <Compile Include="Areas\Admin\Data\LocationModel.cs" />
     <Compile Include="Areas\Admin\Data\PasswordUser.cs" />
-    <Compile Include="Areas\Admin\Data\ServiceView.cs" />
+    <Compile Include="Areas\Admin\Data\ServiceModel.cs" />
     <Compile Include="Areas\Admin\Helper\BillHelper.cs" />
     <Compile Include="Areas\Admin\Helper\CustomerHelper.cs" />
+    <Compile Include="Areas\Admin\Helper\DashboardHelper.cs" />
     <Compile Include="Areas\Admin\Helper\RoomHepler.cs" />
     <Compile Include="Areas\Admin\Helper\PostHelper.cs" />
     <Compile Include="Areas\Admin\Helper\ServiceHelper.cs" />
@@ -166,6 +198,7 @@
     <Compile Include="Areas\Admin\Helper\CategoryHelper.cs" />
     <Compile Include="Areas\Admin\Helper\LocationHeper.cs" />
     <Compile Include="Areas\Admin\Helper\SaleHeper.cs" />
+    <Compile Include="Areas\Admin\Helper\StatHelper.cs" />
     <Compile Include="Areas\Admin\Helper\UserHelper.cs" />
     <Compile Include="Areas\Admin\Helper\UtilityHelper.cs" />
     <Compile Include="Configuration.cs" />
@@ -230,7 +263,9 @@
     <Content Include="Assets\Admin\dist\img\user1-128x128.jpg" />
     <Content Include="Assets\Admin\dist\js\adminlte.js" />
     <Content Include="Assets\Admin\dist\js\adminlte.min.js" />
+    <Content Include="Assets\Admin\dist\js\ajax\bill.js" />
     <Content Include="Assets\Admin\dist\js\ajax\customerDetails.js" />
+    <Content Include="Assets\Admin\dist\js\ajax\dashboard.js" />
     <Content Include="Assets\Admin\dist\js\ajax\post.js" />
     <Content Include="Assets\Admin\dist\js\ajax\utility.js" />
     <Content Include="Assets\Admin\dist\js\ajax\customer.js" />
@@ -240,6 +275,8 @@
     <Content Include="Assets\Admin\dist\js\ajax\Room.js" />
     <Content Include="Assets\Admin\dist\js\ajax\Sale.js" />
     <Content Include="Assets\Admin\dist\js\ajax\User.js" />
+    <Content Include="Assets\Admin\dist\js\chart-new.js" />
+    <Content Include="Assets\Admin\dist\js\chart-stat.js" />
     <Content Include="Assets\Admin\dist\js\chart.js" />
     <Content Include="Assets\Admin\dist\js\demo.js" />
     <Content Include="Assets\Admin\dist\js\fontawesome.js" />
@@ -1971,6 +2008,9 @@
     <Content Include="Assets\Client\assets\plugin\datePicker\datePicker.css" />
     <Content Include="Assets\Client\assets\plugin\datePicker\datePicker.js" />
     <Content Include="Assets\Client\assets\plugin\datePicker\datePicker2.js" />
+    <Content Include="Assets\Client\assets\plugin\datePicker\datePiker.css" />
+    <Content Include="Assets\Client\assets\plugin\datePicker\datePiker.js" />
+    <Content Include="Assets\Client\assets\plugin\slick-carousel\ajax-loader.gif" />
     <Content Include="Assets\Client\assets\plugin\slick-carousel\slick-theme.css" />
     <Content Include="Assets\Client\assets\plugin\slick-carousel\slick.css" />
     <Content Include="Assets\Client\assets\plugin\slick-carousel\slick.min.js" />
@@ -2250,6 +2290,8 @@
     <Content Include="Areas\Admin\Views\Room\Utility.cshtml" />
     <Content Include="Areas\Admin\Views\Room\Sale.cshtml" />
     <Content Include="Areas\Admin\Views\Post\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Bill\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Stat\Index.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\__HomeLayout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -2259,6 +2301,7 @@
     <Content Include="Views\Rooms\Index.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Home\PostPartial.cshtml" />
     <Content Include="Views\Checkout\Index.cshtml" />
     <Content Include="Views\Checkout\FailureView.cshtml" />
     <Content Include="Views\Checkout\SuccessView.cshtml" />

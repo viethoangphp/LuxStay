@@ -102,6 +102,7 @@
             <div class="col l-4">
                 <div class="form-account">
                     <form action="/Account/Register" method="post">
+                        @Html.AntiForgeryToken()
                         <h3 class="form-account__title">Đăng ký thành viên</h3>
                         <!-- email -->
                         <div class="form-account__input-group">
@@ -109,8 +110,12 @@
                                 Địa chỉ
                                 email
                             </label>
-                            <input type="email" class="form-account__input" id="user-email" name="email" placeholder="Email">
-                            <span class="form-account__validation is-block"></span>
+                            <input type="email" class="form-account__input" id="user-email" name="email" placeholder="Email" required
+                                   @if (Model != null) { 
+                                   @:value="@Model.email"
+                                   }>
+
+                                    <span class="form-account__validation is-block"></span>
                             <i class="far fa-envelope form-account__icon"></i>
                         </div>
                         <!-- Phone number -->
@@ -120,7 +125,10 @@
                                 thoại
                             </label>
                             <input type="number" class="form-account__input" id="user-phone" name="phone"
-                                   placeholder="Số điện thoại">
+                                   placeholder="Số điện thoại" required
+                                   @if (Model != null) { 
+                                   @:value="@Model.phone"
+                                   }>
                             <span class="form-account__validation is-block"></span>
                             <i class="fas fa-phone form-account__icon"></i>
                         </div>
@@ -128,7 +136,10 @@
                         <div class="form-account__input-group">
                             <label for="user-name" class="form-account__input-lable is-block">Họ tên</label>
                             <input type="text" class="form-account__input" id="user-name" name="fullname"
-                                   placeholder="Họ tên">
+                                   placeholder="Họ tên" required
+                                   @if (Model != null) { 
+                                   @:value="@Model.fullname"
+                                   }>
                             <span class="form-account__validation is-block"></span>
                             <i class="far fa-user-circle form-account__icon"></i>
                         </div>
@@ -137,8 +148,8 @@
                             <label for="user-password" class="form-account__input-lable is-block">
                                 Mật khấu<span class="form-account__input-lable-sub">(Tối thiểu 8 ký tự)</span>
                             </label>
-                            <input type="password" class="form-account__input" id="user-password" name="password" min="8"
-                                   placeholder="Mật khẩu">
+                            <input type="password" class="form-account__input" id="user-password" name="password" minlength="8"
+                                   placeholder="Mật khẩu" required>
                             <span class="form-account__validation is-block"></span>
                             <lord-icon class="form-account__icon cover"
                                        src="https://cdn.lordicon.com//tyounuzx.json" trigger="hover"
@@ -154,8 +165,8 @@
                                 khẩu
                                 mới
                             </label>
-                            <input type="password" class="form-account__input" id="user-repassword" name="confirmpassword" min="8"
-                                   placeholder="Xác nhận mật khẩu">
+                            <input type="password" class="form-account__input" id="user-repassword" name="confirmpassword" minlength="8"
+                                   placeholder="Xác nhận mật khẩu" required>
                             <span class="form-account__validation is-block"></span>
                             <lord-icon class="form-account__icon cover"
                                        src="https://cdn.lordicon.com//tyounuzx.json" trigger="hover"

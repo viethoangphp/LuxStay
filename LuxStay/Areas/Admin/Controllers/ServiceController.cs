@@ -15,16 +15,16 @@ namespace LuxStay.Areas.Admin.Controllers
         ServiceHelper helper = new ServiceHelper();
         public ActionResult Index()
         {
-            return View(helper.getListAll());
+            return View(helper.getListAll(0));
         }
         public JsonResult LoadData()
         {
-            List<ServiceView> list = new ServiceHelper().getListAll();
+            List<ServiceModel> list = new ServiceHelper().getListAll();
             return Json(list, JsonRequestBehavior.AllowGet);
         }
         public JsonResult Get(int id)
         {
-            ServiceView utl = new ServiceHelper().getUtility(id);
+            ServiceModel utl = new ServiceHelper().getUtility(id);
             if (utl == null)
             {
                 return Json(false, JsonRequestBehavior.AllowGet);
@@ -42,7 +42,7 @@ namespace LuxStay.Areas.Admin.Controllers
 
         //Thêm tiện ích
         [HttpPost]
-        public JsonResult Add(ServiceView data)
+        public JsonResult Add(ServiceModel data)
         {
             if (ModelState.IsValid)
             {
@@ -75,7 +75,7 @@ namespace LuxStay.Areas.Admin.Controllers
 
         //Sửa tiện ích
         [HttpPost]
-        public JsonResult Edit(ServiceView data)
+        public JsonResult Edit(ServiceModel data)
         {
             if (ModelState.IsValid)
             {
