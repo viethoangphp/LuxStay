@@ -17,7 +17,7 @@
                 $("#checkIn").html("Ngày nhận phòng: " + data.check_in);
                 $("#checkOut").html("Ngày trả phòng: " + data.check_out);
                 $("#createAt").html("Ngày tạo đơn: " + data.create_at);
-                $("#totalMoney").html("Tổng tiền: " + data.total);
+                $("#totalMoney").html("Tổng tiền: " + data.totalShow);
                 if (data.status == 1) {
                     $("#status").html("Trạng thái: Đã thanh toán");
                 } else if (data.status == -1) {

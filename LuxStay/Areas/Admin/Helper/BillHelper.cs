@@ -29,7 +29,7 @@ namespace LuxStay.Areas.Admin.Helper
                     check_out = string.Format("{0:dd/MM/yyyy}", item.Check_out),
                     create_at = string.Format("{0:dd/MM/yyyy}", item.Create_At),
                     roomname = item.Room.RoomName,
-                    total = ((int)item.Total).ToString("#,###", CultureInfo.GetCultureInfo("vi-VN").NumberFormat) + " đ",
+                    totalShow = ((int)item.Total).ToString("#,###", CultureInfo.GetCultureInfo("vi-VN").NumberFormat) + " đ",
                     status = (int)item.Status
                 };
                 view.Add(bill);
@@ -53,7 +53,7 @@ namespace LuxStay.Areas.Admin.Helper
                     check_out = string.Format("{0:dd/MM/yyyy}", item.Check_out),
                     create_at = string.Format("{0:dd/MM/yyyy}", item.Create_At),
                     roomname = item.Room.RoomName,
-                    total = ((int)item.Total).ToString("#,###", CultureInfo.GetCultureInfo("vi-VN").NumberFormat) + " đ",
+                    totalShow = ((int)item.Total).ToString("#,###", CultureInfo.GetCultureInfo("vi-VN").NumberFormat) + " đ",
                     status = (int)item.Status
                 };
             }
@@ -73,7 +73,7 @@ namespace LuxStay.Areas.Admin.Helper
                 check_out = string.Format("{0:dd/MM/yyyy}", item.Check_out),
                 create_at = string.Format("{0:dd/MM/yyyy}", item.Create_At),
                 roomname = item.Room.RoomName,
-                total = ((int)item.Total).ToString("#,###", CultureInfo.GetCultureInfo("vi-VN").NumberFormat) + " đ",
+                totalShow = ((int)item.Total).ToString("#,###", CultureInfo.GetCultureInfo("vi-VN").NumberFormat) + " đ",
                 status = (int)item.Status
             };
             return bill;
