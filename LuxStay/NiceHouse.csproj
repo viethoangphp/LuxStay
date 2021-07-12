@@ -58,6 +58,9 @@
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PayPal, Version=1.9.1.0, Culture=neutral, PublicKeyToken=5b4afc1ccaef40fb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PayPal.1.9.1\lib\net451\PayPal.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
@@ -198,12 +201,17 @@
     <Compile Include="Areas\Admin\Helper\StatHelper.cs" />
     <Compile Include="Areas\Admin\Helper\UserHelper.cs" />
     <Compile Include="Areas\Admin\Helper\UtilityHelper.cs" />
+    <Compile Include="Configuration.cs" />
+    <Compile Include="Controllers\CheckoutController.cs" />
+    <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RoomsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="EmailService.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Data\Checkout.cs" />
     <Compile Include="Models\Data\LoginModel.cs" />
     <Compile Include="Models\Data\RegisterModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -2189,6 +2197,9 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Views\Base\" />
+    <Folder Include="Areas\Admin\Views\Bill\" />
+    <Folder Include="Models\Helper\" />
+    <Folder Include="Views\Client\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Views\Login\Index.cshtml" />
@@ -2291,6 +2302,10 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Home\PostPartial.cshtml" />
+    <Content Include="Views\Checkout\Index.cshtml" />
+    <Content Include="Views\Checkout\FailureView.cshtml" />
+    <Content Include="Views\Checkout\SuccessView.cshtml" />
+    <Content Include="Views\Checkout\Payment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Models\Models.csproj">

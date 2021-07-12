@@ -14,7 +14,8 @@ namespace LuxStay.Areas.Admin.Data
         public string check_in { set; get; }
         public string check_out { set; get; }
         public string customername { get; set; }
-        public string total { set; get; }
+        public int total { set; get; }
+        public string totalShow { set; get; }
         public int confirm_by { set; get; }
         public int create_by { set; get; }
         public int adult { set; get; }

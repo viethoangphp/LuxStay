@@ -25,26 +25,7 @@
                 <div class="header__search--item header__search-day">
                     <div class="is-flex middle">
                         <i class="header__search-icon far fa-calendar"></i>
-                        <div id="appDatePicker" :class="{&apos;align-right&apos;: alignRight}">
-                            <div class="datepicker-container with-button">
-                                <div class="datepicker-trigger">
-                                    <button id="datepicker-button-trigger">
-                                        {{ formatDates(buttonDateOne, buttonDateTwo) || &apos;Ngày&apos;
-                                        }}
-                                    </button>
-
-                                    <airbnb-style-datepicker :trigger-element-id="&apos;datepicker-button-trigger&apos;"
-                                                             :mode="&apos;range&apos;" :date-one="buttonDateOne"
-                                                             :date-two="buttonDateTwo" :min-date="&apos;2018-02-28&apos;"
-                                                             :fullscreen-mobile="true" :months-to-show="2" :offset-y="10"
-                                                             :trigger="trigger"
-                                                             v-on:date-one-selected="function(val) { buttonDateOne = val }"
-                                                             v-on:date-two-selected="function(val) { buttonDateTwo = val }"
-                                                             v-on:closed="onClosed" v-on:previous-month="onMonthChange"
-                                                             v-on:next-month="onMonthChange"></airbnb-style-datepicker>
-                                </div>
-                            </div>
-                        </div>
+                        <input type="text" name="daterange" class="app-datepicker datepicker__header" readonly />
                     </div>
                 </div>
                 <!-- header input people -->
@@ -110,14 +91,102 @@
                     </div>
                 </div>
                 <!-- header search btn -->
-                <div class="header__search--item btn header__search-btn">
+                <div class="header__search--item btn header__search-btn p-0">
                     <i class="header__search-icon fas fa-search"></i>
                 </div>
             </div>
-
-
         </div>
+
     </div>
+    <nav class="header__navbar col l-6 is-flex middle">
+        <ul class="header__navbar--list is-flex middle">
+            @using LuxStay.Areas.Admin.Data
+            @if (Session["USER"] == null)
+            {
+                <!-- Not login -->
+                <li class="header__navbar--item header__navbar-register">
+                    <a href="/Account/Register">Đăng ký</a>
+                </li>
+                <li class="header__navbar--item header__navbar-login">
+                    <a href="/Account/Login">Đăng nhập</a>
+                </li>
+            }
+            else
+            {
+                <!-- Login -->
+                <li class="header__navbar--item header__navbar-user has-dropdown-box">
+                    <a class="is-flex middle btn--dropdown">
+                        <div class="user-avar">
+                            <img src="~/Assets/Client/assets/img/user-ava.jpg" alt="">
+                        </div>
+                        <span>@(((CustomerModel)Session["USER"]).fullname)</span>
+                    </a>
+                    <div class="user-menu dropdown-box">
+                        <ul class="user-menu__list">
+                            <li class="user-menu__item">
+                                <a href="" class="user-menu__link">
+                                    <i class="far fa-calendar"></i>
+                                    <p>Đặt chỗ của tôi</p>
+                                </a>
+                            </li>
+                            <li class="user-menu__item">
+                                <a href="" class="user-menu__link">
+                                    <i class="fas fa-cog"></i>
+                                    <p>Cài đặt tài khoản</p>
+                                </a>
+                            </li>
+                            <li class="user-menu__item">
+                                <a href="" class="user-menu__link">
+                                    <i class="far fa-heart"></i>
+                                    <p>Yêu thích</p>
+                                </a>
+                            </li>
+                            <li class="user-menu__item">
+                                <a href="/Account/Logout" class="user-menu__link">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                    <p>Đăng xuất</p>
+                                </a>
+                            </li>
+                            <li class="user-menu__line"></li>
+                        </ul>
+                    </div>
+                </li>
+            }
+            <!-- crurrency -->
+            <li class="header__navbar--item header__navbar-currency has-dropdown-box">
+                <a class="is-flex middle btn--dropdown">
+                    <div class="currency-avar">
+                        <img src="~/Assets/Client/assets/img/flag/vn.svg" alt="">
+                    </div>
+                    <span>VND</span>
+                </a>
+                <div class="currency-box dropdown-box">
+                    <div class="is-flex">
+                        <div class="currency-box__language ">
+                            <a href="" class="is-flex middle is-checked">
+                                <img src="~/Assets/Client/assets/img/flag/vn.svg" alt="">
+                                <span>Tiếng Việt</span>
+                            </a>
+                            <a href="" class="is-flex middle ">
+                                <img src="~/Assets/Client/assets/img/flag/en.svg" alt="">
+                                <span>English</span>
+                            </a>
+                        </div>
+                        <div class="currency-box__monney">
+                            <a href="" class="is-flex middle is-checked">
+                                <b>VND</b>
+                                <span>Việt Nam Đồng</span>
+                            </a>
+                            <a href="" class="is-flex middle ">
+                                <b>USA</b>
+                                <span>United States Dollar</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </nav>
 }
 <div class="home-page-wp">
     <section class="home-page grid wide">
@@ -498,5 +567,21 @@
         </div>
     </section>
 </div>
+@section js{
+    <script>
+        $('.app-datepicker').daterangepicker({
+            opens: 'right',
+            locale: {
+                "format": "DD/MM/YY",
+                "separator": " đến ",
+            }
+        }, function (start, end, label) {
+            console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+        });
+        $('.app-datepicker').on('apply.daterangepicker', function (ev, picker) {
+            $(this).val(picker.startDate.format('DD-MM-YY') + ' đến ' + picker.endDate.format('DD-MM-YY'));
+        });
+    </script>
+}
 
 
