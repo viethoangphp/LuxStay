@@ -110,7 +110,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Đơn Đặt Phòng Mới (Tối đa 5)</h3>
+                        <h3 class="card-title">Đơn Đặt Phòng Mới (Tối đa 10)</h3>
 
                         @*<div class="card-tools">
                             <div class="input-group input-group-sm" style="width: 150px;">
@@ -142,7 +142,7 @@
                                 @foreach (var item in Model.latestBill)
                                 {
                                 <tr>
-                                    <td class="middle">@item.billId</td>
+                                    <td class="middle">@("DDP00" + item.billId)</td>
                                     <td class="middle">@item.customername</td>
                                     <td class="middle">@item.roomname</td>
                                     <td class="middle">@item.check_in</td>
