@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
 
     <!--  ---------- Date piker css tool  ---------------- -->
-    <link rel="stylesheet" href="~/Assets/Client/assets/plugin/datePicker/datePiker.css">
+    <link rel="stylesheet" href="~/Assets/Client/assets/plugin/datePicker/datePicker.css">
 
     <!-- ---------------- Slick carousel ----------------- -->
     <link rel="stylesheet" href="~/Assets/Client/assets/plugin/slick-carousel/slick.css">
@@ -32,9 +32,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 
-    <!-- -------------- Date piker js tool --------------- -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/date-fns/1.29.0/date_fns.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+   
+
 
     <!-- --------------- Custom CSS --------------------- -->
     <link href="~/Assets/Admin/plugins/toastr/toastr.min.css" rel="stylesheet">
@@ -53,95 +52,7 @@
                     <!-- header-sreach -->
                     @RenderSection("Header")
                     <!-- header-navbar -->
-                    <nav class="header__navbar col l-6 is-flex middle">
-                        <ul class="header__navbar--list is-flex middle">
-                            @using LuxStay.Areas.Admin.Data
-                            @if (Session["USER"] == null)
-                            {
-                                <!-- Not login -->
-                                <li class="header__navbar--item header__navbar-register">
-                                    <a href="/Account/Register">Đăng ký</a>
-                                </li>
-                                <li class="header__navbar--item header__navbar-login">
-                                    <a href="/Account/Login">Đăng nhập</a>
-                                </li>
-                            }
-                            else
-                            {
-                                <!-- Login -->
-                                <li class="header__navbar--item header__navbar-user has-dropdown-box">
-                                    <a class="is-flex middle btn--dropdown">
-                                        <div class="user-avar">
-                                            <img src="~/Assets/Client/assets/img/user-ava.jpg" alt="">
-                                        </div>
-                                        <span>@(((CustomerModel)Session["USER"]).fullname)</span>
-                                    </a>
-                                    <div class="user-menu dropdown-box">
-                                        <ul class="user-menu__list">
-                                            <li class="user-menu__item">
-                                                <a href="" class="user-menu__link">
-                                                    <i class="far fa-calendar"></i>
-                                                    <p>Đặt chỗ của tôi</p>
-                                                </a>
-                                            </li>
-                                            <li class="user-menu__item">
-                                                <a href="" class="user-menu__link">
-                                                    <i class="fas fa-cog"></i>
-                                                    <p>Cài đặt tài khoản</p>
-                                                </a>
-                                            </li>
-                                            <li class="user-menu__item">
-                                                <a href="" class="user-menu__link">
-                                                    <i class="far fa-heart"></i>
-                                                    <p>Yêu thích</p>
-                                                </a>
-                                            </li>
-                                            <li class="user-menu__item">
-                                                <a href="/Account/Logout" class="user-menu__link">
-                                                    <i class="fas fa-sign-out-alt"></i>
-                                                    <p>Đăng xuất</p>
-                                                </a>
-                                            </li>
-                                            <li class="user-menu__line"></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                            }
-                            <!-- crurrency -->
-                            <li class="header__navbar--item header__navbar-currency has-dropdown-box">
-                                <a class="is-flex middle btn--dropdown">
-                                    <div class="currency-avar">
-                                        <img src="~/Assets/Client/assets/img/flag/vn.svg" alt="">
-                                    </div>
-                                    <span>VND</span>
-                                </a>
-                                <div class="currency-box dropdown-box">
-                                    <div class="is-flex">
-                                        <div class="currency-box__language ">
-                                            <a href="" class="is-flex middle is-checked">
-                                                <img src="~/Assets/Client/assets/img/flag/vn.svg" alt="">
-                                                <span>Tiếng Việt</span>
-                                            </a>
-                                            <a href="" class="is-flex middle ">
-                                                <img src="~/Assets/Client/assets/img/flag/en.svg" alt="">
-                                                <span>English</span>
-                                            </a>
-                                        </div>
-                                        <div class="currency-box__monney">
-                                            <a href="" class="is-flex middle is-checked">
-                                                <b>VND</b>
-                                                <span>Việt Nam Đồng</span>
-                                            </a>
-                                            <a href="" class="is-flex middle ">
-                                                <b>USA</b>
-                                                <span>United States Dollar</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </nav>
+                    
                 </div>
             </div>
         </header>
@@ -412,7 +323,7 @@
                                 <div class="footer-body__section-content">
                                     <div class="row">
                                         <div class="moblie__app--qr col l-6">
-                                            <img data-original="~/Assets/Client/assets/img/mobile/qr-code.png" alt="">
+                                            <img src="~/Assets/Client/assets/img/mobile/qr-code.png" alt="">
                                         </div>
                                         <div class="moblie__app--download-wp col l-6">
                                             <div>
@@ -516,58 +427,12 @@
     </div>
     <script src="~/Assets/Client/assets/js/jquery.js"></script>
     <script src="~/Assets/Client/assets/plugin/slick-carousel/slick.min.js"></script>
-    <script src="~/Assets/Client/assets/plugin/datePicker/datePiker.js"></script>
+    <script src="~/Assets/Client/assets/plugin/datePicker/datePicker.js"></script>
+    <script src="~/Assets/Client/assets/plugin/datePicker/datePicker2.js"></script>
     <script src="~/Assets/Client/assets/js/slick-cus.js"></script>
     <script src="~/Assets/Client/assets/js/main.js"></script>
     <script src="~/Assets/Admin/plugins/toastr/toastr.min.js"></script>
     @RenderSection("js", false);
-    <script>
-        var datepickerOptions = {}
-        Vue.use(window.AirbnbStyleDatepicker, datepickerOptions)
-
-        var app = new Vue({
-            el: '#appDatePicker',
-            data: {
-                dateFormat: 'D MMM',
-                inputDateOne: '',
-                inputDateTwo: '',
-                buttonDateOne: '',
-                buttonDateTwo: '',
-                inlineDateOne: '',
-                sundayDateOne: '',
-                sundayFirst: false,
-                alignRight: false,
-                trigger: false,
-            },
-            methods: {
-                formatDates: function (dateOne, dateTwo) {
-                    var formattedDates = ''
-                    if (dateOne) {
-                        formattedDates = dateFns.format(dateOne, this.dateFormat)
-                    }
-                    if (dateTwo) {
-                        formattedDates += ' - ' + dateFns.format(dateTwo, this.dateFormat)
-                    }
-                    return formattedDates
-                },
-                onClosed: function () {
-                    var datesStr = this.formatDates(this.inputDateOne, this.inputDateTwo)
-                    console.log('Dates Selected: ' + datesStr)
-                    this.trigger = false
-                },
-                toggleAlign: function () {
-                    this.alignRight = !this.alignRight
-                },
-                triggerDatepicker: function () {
-                    this.trigger = !this.trigger
-                },
-                onMonthChange: function (dates) {
-                    console.log('months changed', dates)
-                },
-            },
-        })
-
-    </script>
-
+  
 </body>
 </html>

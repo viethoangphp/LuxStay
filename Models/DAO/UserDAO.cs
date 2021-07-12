@@ -12,6 +12,7 @@ namespace Models.DAO
         public UserDAO()
         {
             db = new DBContext();
+            
         }
         public int Insert(User user)
         {

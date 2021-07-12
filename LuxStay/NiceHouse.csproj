@@ -55,6 +55,9 @@
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PayPal, Version=1.9.1.0, Culture=neutral, PublicKeyToken=5b4afc1ccaef40fb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PayPal.1.9.1\lib\net451\PayPal.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -143,6 +146,7 @@
     <Compile Include="Areas\Admin\Controllers\ServiceController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Areas\Admin\Data\AdminLogin.cs" />
+    <Compile Include="Areas\Admin\Data\BillModel.cs" />
     <Compile Include="Areas\Admin\Data\CategoryModel.cs" />
     <Compile Include="Areas\Admin\Data\PostModel.cs" />
     <Compile Include="Areas\Admin\Data\RoomModel.cs" />
@@ -151,6 +155,7 @@
     <Compile Include="Areas\Admin\Data\LocationModel.cs" />
     <Compile Include="Areas\Admin\Data\PasswordUser.cs" />
     <Compile Include="Areas\Admin\Data\ServiceView.cs" />
+    <Compile Include="Areas\Admin\Helper\BillHelper.cs" />
     <Compile Include="Areas\Admin\Helper\CustomerHelper.cs" />
     <Compile Include="Areas\Admin\Helper\RoomHepler.cs" />
     <Compile Include="Areas\Admin\Helper\PostHelper.cs" />
@@ -163,12 +168,17 @@
     <Compile Include="Areas\Admin\Helper\SaleHeper.cs" />
     <Compile Include="Areas\Admin\Helper\UserHelper.cs" />
     <Compile Include="Areas\Admin\Helper\UtilityHelper.cs" />
+    <Compile Include="Configuration.cs" />
+    <Compile Include="Controllers\CheckoutController.cs" />
+    <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RoomsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="EmailService.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Data\Checkout.cs" />
     <Compile Include="Models\Data\LoginModel.cs" />
     <Compile Include="Models\Data\RegisterModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -1961,8 +1971,6 @@
     <Content Include="Assets\Client\assets\plugin\datePicker\datePicker.css" />
     <Content Include="Assets\Client\assets\plugin\datePicker\datePicker.js" />
     <Content Include="Assets\Client\assets\plugin\datePicker\datePicker2.js" />
-    <Content Include="Assets\Client\assets\plugin\datePicker\datePiker.css" />
-    <Content Include="Assets\Client\assets\plugin\datePicker\datePiker.js" />
     <Content Include="Assets\Client\assets\plugin\slick-carousel\slick-theme.css" />
     <Content Include="Assets\Client\assets\plugin\slick-carousel\slick.css" />
     <Content Include="Assets\Client\assets\plugin\slick-carousel\slick.min.js" />
@@ -2150,6 +2158,8 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Views\Base\" />
     <Folder Include="Areas\Admin\Views\Bill\" />
+    <Folder Include="Models\Helper\" />
+    <Folder Include="Views\Client\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Views\Login\Index.cshtml" />
@@ -2249,6 +2259,10 @@
     <Content Include="Views\Rooms\Index.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Checkout\Index.cshtml" />
+    <Content Include="Views\Checkout\FailureView.cshtml" />
+    <Content Include="Views\Checkout\SuccessView.cshtml" />
+    <Content Include="Views\Checkout\Payment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Models\Models.csproj">

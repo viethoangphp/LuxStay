@@ -257,189 +257,176 @@
                 </div>
             </div>
             <!-- page sidebar -->
-            <div class="col l-4 px-35">
-                <div class="detail-product__sidebar">
-                    <div class="detail-product__share">
-                        <div class="btn">
-                            <span>Chia sẻ</span>
-                            <lord-icon src="https://cdn.lordicon.com//udwhdpod.json" trigger="loop"
-                                       colors="primary:#222,secondary:#f65e39"
-                                       style="width:30px;height:30px;margin-left:5px;">
-                            </lord-icon>
+          
+                <div class="col l-4 px-35">
+                    <div class="detail-product__sidebar">
+                        <div class="detail-product__share">
+                            <div class="btn">
+                                <span>Chia sẻ</span>
+                               
+                            </div>
                         </div>
-                    </div>
-                    <div class="detail-product__sidebar-content-wp">
-                        <!-- check up -->
-                        <div class="detail-product__sidebar-content">
-                            <div class="detail-product__room-pricing">
-                                <span class="detail-product__room-price">@Model.priceShow ₫</span>
-                                <span class="detail-product__room-night">/1 đêm</span>
-                            </div>
-                            <div class="detail-product__room-date">
-                                <div id="appDatePicker" :class="{&apos;align-right&apos;: alignRight}">
-                                    <div class="datepicker-container with-button">
-                                        <div class="datepicker-trigger">
-                                            <button id="datepicker-button-trigger">
-                                                {{ formatDates(buttonDateOne, buttonDateTwo) || &apos;Ngày&apos;
-                                                }}
-                                            </button>
-
-                                            <airbnb-style-datepicker :trigger-element-id="&apos;datepicker-button-trigger&apos;"
-                                                                     :mode="&apos;range&apos;" :date-one="buttonDateOne"
-                                                                     :date-two="buttonDateTwo" :min-date="&apos;2018-02-28&apos;"
-                                                                     :fullscreen-mobile="true" :months-to-show="2" :offset-y="10"
-                                                                     :trigger="trigger"
-                                                                     v-on:date-one-selected="function(val) { buttonDateOne = val }"
-                                                                     v-on:date-two-selected="function(val) { buttonDateTwo = val }"
-                                                                     v-on:closed="onClosed" v-on:previous-month="onMonthChange"
-                                                                     v-on:next-month="onMonthChange"></airbnb-style-datepicker>
+                        <div class="detail-product__sidebar-content-wp">
+                            <!-- check up -->
+                            <form action="/checkout" method="get">
+                                <div class="detail-product__sidebar-content">
+                                    <div class="detail-product__room-pricing">
+                                        <span class="detail-product__room-price">@Model.priceShow ₫</span>
+                                        <span class="detail-product__room-night">/1 đêm</span>
+                                    </div>
+                                    <div class="detail-product__room-date">
+                                        <div class="header__search--item header__search-day center" style="width: 100%">
+                                            <div class="is-flex middle" style="width:100%">
+                                                <input class="app-datepicker datepicker__header text-center" style="font-size:20px;font-weight:500" readonly/>
+                                                <input type="hidden" name="checkin" id="checkin"/>
+                                                <input  type="hidden" name="checkout" id="checkout"/>
+                                            </div>
                                         </div>
+                                    </div>
+                                    <div class="detail-product__room-people has-dropdown-box">
+                                        <span class="detail-product__room-people--title">1 khách</span>
+                                        <div class="dropdown-box">
+                                            <div class="select-number">
+                                                <div class="select-number__title">
+                                                    <p>Người lớn</p>
+                                                    <span>Trên 18 tuổi</span>
+                                                </div>
+                                                <div class="select-number__input-wp">
+                                                    <div class="select-number__input--decrease disable">
+                                                        -
+                                                    </div>
+                                                    <div class="select-number__input">
+                                                        <input type="text" placeholder="0">
+                                                    </div>
+                                                    <div class="select-number__input--increase ">
+                                                        +
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="select-number">
+                                                <div class="select-number__title">
+                                                    <p>Trẻ em</p>
+                                                    <span>Tuổi từ 2-12</span>
+                                                </div>
+                                                <div class="select-number__input-wp">
+                                                    <div class="select-number__input--decrease">
+                                                        -
+                                                    </div>
+                                                    <div class="select-number__input">
+                                                        <input type="text" placeholder="0">
+                                                    </div>
+                                                    <div class="select-number__input--increase ">
+                                                        +
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="select-number">
+                                                <div class="select-number__title">
+                                                    <p>Trẻ sơ sinh</p>
+                                                    <span>Dưới 2 tuổi</span>
+                                                </div>
+                                                <div class="select-number__input-wp">
+                                                    <div class="select-number__input--decrease">
+                                                        -
+                                                    </div>
+                                                    <div class="select-number__input">
+                                                        <input type="text" placeholder="0">
+                                                    </div>
+                                                    <div class="select-number__input--increase ">
+                                                        +
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="select-number__options is-flex">
+                                                <button class="select-number__options--delete">Xóa</button>
+                                                <button class="select-number__options--save">Áp dụng</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="detail-product__room-checkup-price">
+                                        <div class="detail-product__room-checkup--item">
+                                            <div class="is-flex middle">
+                                                <span class="detail-product__room-checkup--item-title">
+                                                    Giá thuê 1
+                                                    đêm
+                                                </span>
+                                                <i class="fas fa-question-circle detail-product__room-checkup--item-icon"></i>
+                                            </div>
+                                            <span class="detail-product__room-checkup--item-price">@Model.priceShow ₫</span>
+                                        </div>
+                                        <div class="detail-product__room-checkup--item">
+                                            <span class="detail-product__room-checkup--item-title">
+                                                Phí dịch vụ
+                                            </span>
+                                            <span class="detail-product__room-checkup--item-price">312,000₫</span>
+                                        </div>
+                                        <div class="detail-product__room-checkup--item room__checkup--sum">
+                                            <span class="detail-product__room-checkup--item-title">
+                                                Tổng tiền
+                                            </span>
+                                            <span class="detail-product__room-checkup--item-price">@Model.priceShow ₫</span>
+                                        </div>
+                                    </div>
+                                    <div class="detail-product__room-coupon is-flex middle">
+                                        <div class="detail-product__room-coupon-title">
+                                            Giảm giá:
+                                            <strong style="color: #FF0037;">
+                                                30.000đ
+                                            </strong> - Mã:
+                                            <strong style=" color: #FF0037;">
+                                                CODE30
+                                            </strong>
+                                            <br>Ngày check-in:
+                                            <strong>Không giới hạn</strong>
+                                        </div>
+                                        <div class="detail-product__room-coupon-btn btn">
+                                            Áp dụng
+                                        </div>
+                                    </div>
+                                    <div class="detail-product__room-booking">
+                                        <button  type="submit" class="detail-product__room-booking--btn btn" name="id" value="@Model.id">
+                                               ĐẶT NGAY
+                                        </button>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="detail-product__room-people has-dropdown-box">
-                                <span class="detail-product__room-people--title">1 khách</span>
-                                <div class="dropdown-box">
-                                    <div class="select-number">
-                                        <div class="select-number__title">
-                                            <p>Người lớn</p>
-                                            <span>Trên 18 tuổi</span>
-                                        </div>
-                                        <div class="select-number__input-wp">
-                                            <div class="select-number__input--decrease disable">
-                                                -
-                                            </div>
-                                            <div class="select-number__input">
-                                                <input type="text" placeholder="0">
-                                            </div>
-                                            <div class="select-number__input--increase ">
-                                                +
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="select-number">
-                                        <div class="select-number__title">
-                                            <p>Trẻ em</p>
-                                            <span>Tuổi từ 2-12</span>
-                                        </div>
-                                        <div class="select-number__input-wp">
-                                            <div class="select-number__input--decrease">
-                                                -
-                                            </div>
-                                            <div class="select-number__input">
-                                                <input type="text" placeholder="0">
-                                            </div>
-                                            <div class="select-number__input--increase ">
-                                                +
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="select-number">
-                                        <div class="select-number__title">
-                                            <p>Trẻ sơ sinh</p>
-                                            <span>Dưới 2 tuổi</span>
-                                        </div>
-                                        <div class="select-number__input-wp">
-                                            <div class="select-number__input--decrease">
-                                                -
-                                            </div>
-                                            <div class="select-number__input">
-                                                <input type="text" placeholder="0">
-                                            </div>
-                                            <div class="select-number__input--increase ">
-                                                +
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="select-number__options is-flex">
-                                        <button class="select-number__options--delete">Xóa</button>
-                                        <button class="select-number__options--save">Áp dụng</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="detail-product__room-checkup-price">
-                                <div class="detail-product__room-checkup--item">
-                                    <div class="is-flex middle">
-                                        <span class="detail-product__room-checkup--item-title">
-                                            Giá thuê 1
-                                            đêm
-                                        </span>
-                                        <i class="fas fa-question-circle detail-product__room-checkup--item-icon"></i>
-                                    </div>
-                                    <span class="detail-product__room-checkup--item-price">@Model.priceShow ₫</span>
-                                </div>
-                                <div class="detail-product__room-checkup--item">
-                                    <span class="detail-product__room-checkup--item-title">
-                                        Phí dịch vụ
+                            </form>
+                            <!-- contact -->
+                            <div class="detail-product__sidebar-content mt-12">
+                                <div class="detail-product__contact--heading">
+                                    <h4 class="detail-product__contact--title">
+                                        Tư vấn từ Luxstay
+                                    </h4>
+                                    <span class="detail-product__contact--sub-title">
+                                        Vui lòng cung cấp số điện thoại để nhận được tư vấn từ Luxstay cho chuyến đi
+                                        của bạn.
                                     </span>
-                                    <span class="detail-product__room-checkup--item-price">312,000₫</span>
                                 </div>
-                                <div class="detail-product__room-checkup--item room__checkup--sum">
-                                    <span class="detail-product__room-checkup--item-title">
-                                        Tổng tiền
-                                    </span>
-                                    <span class="detail-product__room-checkup--item-price">@Model.priceShow ₫</span>
+                                <input type="text" class="detail-product__contact--cus-name"
+                                       placeholder="Tên khách hàng">
+                                <input type="number" class="detail-product__contact--cus-phone"
+                                       placeholder="Số điện thoại">
+                                <div class="detail-product__contacting">
+                                    <div class="detail-product__contacting--btn btn">
+                                        <span>Nhận tư vấn miễn phí</span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="detail-product__room-coupon is-flex middle">
-                                <div class="detail-product__room-coupon-title">
-                                    Giảm giá:
-                                    <strong style="color: #FF0037;">
-                                        30.000đ
-                                    </strong> - Mã:
-                                    <strong style=" color: #FF0037;">
-                                        CODE30
-                                    </strong>
-                                    <br>Ngày check-in:
-                                    <strong>Không giới hạn</strong>
-                                </div>
-                                <div class="detail-product__room-coupon-btn btn">
-                                    Áp dụng
-                                </div>
-                            </div>
-                            <div class="detail-product__room-booking">
-                                <div class="detail-product__room-booking--btn btn">
-                                    <span>Đặt ngay</span>
+                                <div class="detail-product__fast-contact">
+                                    <p class="mb--0 p--small-2 c-gray-3">
+                                        Gọi <a href="tel:0931889432"
+                                               class="text-bold detail-product__fast-contact-link">
+                                            0931889432 (miễn
+                                            phí)
+                                        </a> để
+                                        được hỗ trợ.
+                                    </p>
+                                    <i class="far fa-comment-dots detail-product__fast-contact-icon"></i>
                                 </div>
                             </div>
                         </div>
-                        <!-- contact -->
-                        <div class="detail-product__sidebar-content mt-12">
-                            <div class="detail-product__contact--heading">
-                                <h4 class="detail-product__contact--title">
-                                    Tư vấn từ Luxstay
-                                </h4>
-                                <span class="detail-product__contact--sub-title">
-                                    Vui lòng cung cấp số điện thoại để nhận được tư vấn từ Luxstay cho chuyến đi
-                                    của bạn.
-                                </span>
-                            </div>
-                            <input type="text" class="detail-product__contact--cus-name"
-                                   placeholder="Tên khách hàng">
-                            <input type="number" class="detail-product__contact--cus-phone"
-                                   placeholder="Số điện thoại">
-                            <div class="detail-product__contacting">
-                                <div class="detail-product__contacting--btn btn">
-                                    <span>Nhận tư vấn miễn phí</span>
-                                </div>
-                            </div>
-                            <div class="detail-product__fast-contact">
-                                <p class="mb--0 p--small-2 c-gray-3">
-                                    Gọi <a href="tel:0931889432"
-                                           class="text-bold detail-product__fast-contact-link">
-                                        0931889432 (miễn
-                                        phí)
-                                    </a> để
-                                    được hỗ trợ.
-                                </p>
-                                <i class="far fa-comment-dots detail-product__fast-contact-icon"></i>
 
-                            </div>
-                        </div>
                     </div>
-
                 </div>
-            </div>
+           
             <!-- page room suggestion -->
             <div class="col l-12">
                 <div class="detail-product__room-sugesst mt-80">
@@ -481,5 +468,21 @@
 @section js{
     <script>
         $(".short-info-item p").attr("style", "line-hight:1.5");
+        $('.app-datepicker').daterangepicker({
+            opens: 'left',
+            locale: {
+                "separator": " đến ",
+                "format": "DD-MM-YYYY"
+            }
+        }, function (start, end, label) {
+            console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+        });
+        $('.app-datepicker').on('apply.daterangepicker', function (ev, picker) {
+            $(this).val(picker.startDate.format('DD-MM-YYYY') + ' đến ' + picker.endDate.format('DD-MM-YYYY'));
+            $("#checkin").val(picker.startDate.format('DD-MM-YYYY'));
+            $("#checkout").val(picker.endDate.format('DD-MM-YYYY'));
+        });
+
     </script>
+    
 }
