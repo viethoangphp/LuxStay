@@ -19,7 +19,7 @@ namespace LuxStay.Areas.Admin.Helper
                 totalCustomer = new CustomerDAO().getListAll().Count,
                 totalOrder = new BillDAO().getListBill().Where(m=>m.Status == 1).ToList().Count,
                 totalValue = total.ToString("#,###", CultureInfo.GetCultureInfo("vi-VN").NumberFormat), 
-                latestBill = new BillHelper().getListBill().Take(10).OrderByDescending(m=>m.billId).ToList()
+                latestBill = new BillHelper().getListBill().Where(m=>m.status == 0).OrderByDescending(m=>m.billId).ToList()
             };
             return data;
         }

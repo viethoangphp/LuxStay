@@ -15,7 +15,12 @@
                     { width: 100, targets: 6 }
                 ],
                 columns: [
-                    { "data": "billId" },
+                    {
+                        "data": "billId",
+                        "render": function (data) {
+                            return 'DDP00' + data;
+                        }
+                    },
                     { "data": "customername" },
                     { "data": "roomname" },
                     { "data": "check_in" },
@@ -42,7 +47,7 @@
                                 html += '<button class="btn btn-primary btn-confirm" data-id="' + data + '">' +
                                 '<i class="fas fa-check"></i>' +
                                 '</button>' }
-                            html += '<button class="btn btn-success btn-edit" data-id="' + data + '" data-toggle="modal" data-target="#formModal">' +
+                            html += '<button class="btn btn-success btn-view" data-id="' + data + '" data-toggle="modal" data-target="#billDetailModal">' +
                                 '<i class="fas fa-eye"></i>' +
                                 '</button>' +
                                 '<button class="btn btn-danger btn-delete" data-id="' + data + '">' +
@@ -97,8 +102,8 @@
                             </button>
                         </div>
                         @*<form id="addBill" method="post" action="">*@
-                            <div class="modal-body">
-                                @*<input type="text" class="form-control" name="inputBillID" required hidden>
+                        <div class="modal-body">
+                            @*<input type="text" class="form-control" name="inputBillID" required hidden>
                                 <div class="form-group">
                                     <label for="inputFullName">Họ tên</label>
                                     <input type="text" class="form-control" name="inputFullName"  required>
@@ -124,12 +129,12 @@
                                     <input type="text" class="form-control" name="inputAddress" id="inputAddress" required>
                                     <div class="invalid-feedback">Không Được Để Trống Trường Này</div>
                                 </div>*@
-                            </div>
-                            <div class="modal-footer">
-                                @*<button type="reset" hidden id="btn-reset" class="btn btn-secondary">Reset</button>*@
-                                <button type="button" id="btn-dismiss" class="btn btn-danger" data-dismiss="modal">Đóng</button>
-                                @*<button type="submit" class="btn btn-success">Lưu</button>*@
-                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            @*<button type="reset" hidden id="btn-reset" class="btn btn-secondary">Reset</button>*@
+                            <button type="button" id="btn-dismiss" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+                            @*<button type="submit" class="btn btn-success">Lưu</button>*@
+                        </div>
                         @*</form>*@
                     </div>
                 </div>
@@ -154,9 +159,38 @@
                 </tr>
             </thead>
             <tbody>
-
             </tbody>
         </table>
     </div>
+    <!-- View Modal-->
+    <div class="modal fade" id="billDetailModal" tabindex="-1" role="dialog" aria-labelledby="billDetailModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="billDetailModalLabel">Thông tin đơn đặt phòng</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p id="billID"></p>
+                    <p id="customerName"></p>
+                    <p id="roomName"></p>
+                    <p id="numAdult"></p>
+                    <p id="numKid"></p>
+                    <p id="numBaby"></p>
+                    <p id="checkIn"></p>
+                    <p id="checkOut"></p>
+                    <p id="createAt"></p>
+                    <p id="totalMoney"></p>
+                    <p id="status"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End View Modal-->
     <!-- /.card-body -->
 </div>

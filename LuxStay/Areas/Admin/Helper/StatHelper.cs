@@ -4,22 +4,25 @@ using System.Dynamic;
 using System.Linq;
 using System.Web;
 using Models.DAO;
+using LuxStay.Areas.Admin.Data;
 
 namespace LuxStay.Areas.Admin.Helper
 {
     public class StatHelper
     {
-        public List<dynamic> totalValue(int length)
+        public List<StatModel> totalValue(int length)
         {
             //Length: month
-            List<dynamic> list = new List<dynamic>();
+            List<StatModel> list = new List<StatModel>();
             for (int i = 0; i < length; i++)
             {
-                dynamic item = new ExpandoObject();
-                item.labels = DateTime.Now.AddMonths(-i).ToString("MM/yyyy");
                 DateTime check = DateTime.Now.AddMonths(-i);
-                item.value = (int)new BillDAO().getListBill().Where(m => (m.Create_At.Value.Month == check.Month && m.Create_At.Value.Year == check.Year)).Sum(m => m.Total);
-                list.Add(item);
+                StatModel model = new StatModel()
+                {
+                    labels = DateTime.Now.AddMonths(-i).ToString("MM/yyyy"),
+                    values = (int)new BillDAO().getListBill().Where(m => (m.Create_At.Value.Month == check.Month && m.Create_At.Value.Year == check.Year && m.Status == 1)).Sum(m => m.Total)
+                };
+                list.Add(model);
             }
             list.Reverse();
             return list;

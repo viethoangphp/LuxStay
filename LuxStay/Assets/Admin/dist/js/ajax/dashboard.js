@@ -8,7 +8,7 @@
             dataType: "json",
             success: function (data) {
                 resetInfo();
-                $("#billID").html("Mã đơn đặt phòng: " + data.billId);
+                $("#billID").html("Mã đơn đặt phòng: DDP00" + data.billId);
                 $("#customerName").html("Tên khách hàng: " + data.customername);
                 $("#roomName").html("Tên phòng: " + data.roomname);
                 $("#numAdult").html("Số lượng người lớn: " + data.adult);

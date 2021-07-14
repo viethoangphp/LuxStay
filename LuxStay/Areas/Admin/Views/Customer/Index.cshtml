@@ -69,22 +69,38 @@
                     { orderable: false, sortable: false, targets: 0 }
                 ],
                 columns: [
-                    { "data": "billid" },
-                    { "data": "billid" },
-                    { "data": "roomname" },
-                    { "data": "checkin" },
-                    { "data": "checkout" },
+                    { "data": "billId" },
                     {
-                        "data": "total",
-                        "render": function (data, type, row, meta) {
-                            var formatter = new Intl.NumberFormat('vi-VN', {
-                                style: 'currency',
-                                currency: 'VND',
-                            });
-                            return formatter.format(data);
+                        "data": "billId",
+                        "render": function (data) {
+                            return 'DDP00' + data;
                         }
                     },
-                    { "data": "status" }
+                    { "data": "roomname" },
+                    { "data": "check_in" },
+                    { "data": "check_out" },
+                    {
+                        "data": "totalShow",
+                        //"render": function (data, type, row, meta) {
+                        //    var formatter = new Intl.NumberFormat('vi-VN', {
+                        //        style: 'currency',
+                        //        currency: 'VND',
+                        //    });
+                        //    return formatter.format(data);
+                        //}
+                    },
+                    {
+                        "data": "status",
+                        "render": function (data) {
+                            if (data == 0) {
+                                return 'Chờ xác nhận';
+                            }else if (data == 1) {
+                                return 'Đã thanh toán';
+                            } else{
+                                return 'Đã hủy bỏ';
+                            }
+                        }
+                    }
                 ],
                 responsive: true,
                 autoWidth: false,

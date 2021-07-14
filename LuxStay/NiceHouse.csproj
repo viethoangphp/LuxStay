@@ -186,6 +186,7 @@
     <Compile Include="Areas\Admin\Data\LocationModel.cs" />
     <Compile Include="Areas\Admin\Data\PasswordUser.cs" />
     <Compile Include="Areas\Admin\Data\ServiceModel.cs" />
+    <Compile Include="Areas\Admin\Data\StatModel.cs" />
     <Compile Include="Areas\Admin\Helper\BillHelper.cs" />
     <Compile Include="Areas\Admin\Helper\CustomerHelper.cs" />
     <Compile Include="Areas\Admin\Helper\DashboardHelper.cs" />
@@ -2197,7 +2198,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Views\Base\" />
-    <Folder Include="Areas\Admin\Views\Bill\" />
     <Folder Include="Models\Helper\" />
     <Folder Include="Views\Client\" />
   </ItemGroup>
