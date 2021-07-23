@@ -2,7 +2,9 @@
     overflow: hidden;
 }
 
+
 /* ================== Header ================= */
+
 .header {
     position: fixed;
     z-index: 999;
@@ -21,7 +23,7 @@
 
 .header__logo-link {
     padding: 1rem;
-    background: rgba(0,0,0,.04);
+    background: rgba(0, 0, 0, .04);
     border-radius: 50%;
 }
 
@@ -48,16 +50,218 @@
     line-height: 3rem;
 }
 
-    .header__search--item:not(.header__search--item:last-child,.header__search--item:nth-child(3)):after {
+    .header__search--item:not(.header__search--item:last-child, .header__search--item:nth-child(3)):after {
         content: "";
         position: absolute;
         height: 4rem;
         top: 0;
         right: 1rem;
         width: 0.1rem;
-        background-color: rgba(0,0,0,.06);
+        background-color: rgba(0, 0, 0, .06);
     }
+
+
+/* 404 page */
+
+.st0 {
+    fill: #fff
+}
+
+.st2 {
+    fill: #5d89af
+}
+
+.st3 {
+    fill: #709abf
+}
+
+.st4,
+.st6 {
+    fill: #fff;
+    stroke: #b3dcdf;
+    stroke-miterlimit: 10
+}
+
+.st6 {
+    stroke: #5d89af;
+    stroke-width: 2
+}
+
+.st7,
+.st8,
+.st9 {
+    stroke: #709abf;
+    stroke-miterlimit: 10
+}
+
+.st7 {
+    stroke-width: 5;
+    stroke-linecap: round;
+    fill: none
+}
+
+.st8,
+.st9 {
+    fill: #fff
+}
+
+.st9 {
+    fill: none
+}
+
+.st10 {
+}
+
+#cloud1 {
+    animation: cloud003 15s linear infinite;
+}
+
+#cloud2 {
+    animation: cloud002 25s linear infinite;
+}
+
+#cloud3 {
+    animation: cloud003 20s linear infinite;
+}
+
+#cloud4 {
+    animation: float 4s linear infinite;
+}
+
+#cloud5 {
+    animation: float 8s linear infinite;
+}
+
+#cloud7 {
+    animation: float 5s linear infinite;
+}
+
+#tracks {
+    animation: slide 650ms linear infinite;
+}
+
+#bumps {
+    animation: land 10000ms linear infinite;
+}
+
+@keyframes jig {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(1px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+#car-layers {
+    animation: jig 0.35s linear infinite;
+}
+
+@keyframes land {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(1000px);
+    }
+}
+
+@keyframes slide {
+    from {
+        transform: translateX(0px);
+    }
+
+    to {
+        transform: translateX(100px);
+    }
+}
+
+
+/* @keyframes cloudFloat {
+        0% { transform: translateX(0) translateY(3px); }
+        100% { transform: translateX(1000px) translateY(0); }
+} */
+
+@keyframes cloud001 {
+    0% {
+        transform: translateX(-1000px) translateY(3px);
+    }
+
+    100% {
+        transform: translateX(1000px) translateY(0);
+    }
+}
+
+@keyframes cloud002 {
+    0% {
+        transform: translateX(-1000px) translateY(3px);
+    }
+
+    100% {
+        transform: translateX(1000px) translateY(0);
+    }
+}
+
+@keyframes cloud003 {
+    0% {
+        transform: translateX(-1000px) translateY(3px);
+    }
+
+    100% {
+        transform: translateX(1000px) translateY(0);
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px) translateX(0);
+    }
+
+    50% {
+        transform: translateY(8px) translateX(5px);
+    }
+
+    100% {
+        transform: translateY(0px) translateX(0);
+    }
+}
+
+#bracefront,
+#braceback {
+    animation: braces 1s linear infinite;
+}
+
+@keyframes braces {
+    0% {
+        transform: translateX(-2px);
+    }
+
+    25% {
+        transform: translateX(3px);
+    }
+
+    50% {
+        transform: translateX(-2px);
+    }
+
+    75% {
+        transform: translateX(3px);
+    }
+
+    100% {
+        transform: translateX(-2px);
+    }
+}
+
+
 /* ----  header input ---- */
+
 .header__search-input input {
     width: 19rem;
     border: none;
@@ -66,11 +270,17 @@
     .header__search-input input:focus {
         outline: none;
     }
+
+
 /* ----  header days ---- */
+
 .header__search-day {
     width: 18rem;
 }
+
+
 /* ----  header people ---- */
+
 .header__search-people {
     width: 13rem;
 }
@@ -88,7 +298,9 @@
     transform: translateX(50%);
 }
 
+
 /* ----  Selcect people box ---- */
+
 .select-number {
     margin-bottom: 1.5rem;
     display: flex;
@@ -187,7 +399,10 @@
 .header__search-people:hover {
     cursor: pointer;
 }
+
+
 /* ----  search btn ---- */
+
 .header__search-btn {
     height: 3.5rem;
     width: 5.5rem;
@@ -205,8 +420,8 @@
 }
 
 
-
 /* ----  Nav bar ---- */
+
 .header__navbar {
     justify-content: flex-end;
 }
@@ -236,7 +451,9 @@
         color: var(--primary-color);
     }
 
+
 /* ---- Checkout Nav bar ---- */
+
 .header__navbar-checkout {
     padding-left: 2.8rem;
     line-height: 1.5;
@@ -258,8 +475,8 @@
 }
 
 
-
 /* ----  user ---- */
+
 .user-avar,
 .currency-avar {
     display: flex;
@@ -322,12 +539,17 @@
     margin: 0 0 0 1rem;
 }
 
+
 /* ----  currency ---- */
+
 .header__navbar-currency {
     position: relative;
     ;
 }
+
+
 /* ----  currency box ---- */
+
 .currency-box {
     justify-content: space-between;
     width: 47rem;
@@ -382,10 +604,14 @@
 
 
 /* ================== home page =================== */
+
 .home-page {
     padding-top: var(--header-height);
 }
+
+
 /* ----  home slider ---- */
+
 .home-page__slider--item {
     display: block;
 }
@@ -394,7 +620,10 @@
     width: 100%;
     border-radius: 10px;
 }
+
+
 /* ----  home section layout ---- */
+
 .page-section {
     margin-top: 6.4rem;
 }
@@ -445,6 +674,7 @@
 
 
 /* ----  derection section ---- */
+
 .search-direction {
     position: relative;
     display: block;
@@ -486,7 +716,9 @@
     color: var(--light-black-color);
 }
 
+
 /* ----  place section ---- */
+
 .place-item {
     padding: 0;
     display: block;
@@ -510,7 +742,7 @@
     height: 100%;
     top: 0;
     position: absolute;
-    background-image: linear-gradient( transparent,rgba(0,0,0,0.17));
+    background-image: linear-gradient( transparent, rgba(0, 0, 0, 0.17));
     border-radius: 0.7rem;
 }
 
@@ -535,7 +767,9 @@
     font-size: 1.6rem;
 }
 
+
 /* ----  discount section ---- */
+
 .discount__slider--item {
     padding: 0;
     display: inline-block;
@@ -547,7 +781,9 @@
     border-radius: 10px;
 }
 
+
 /* ----  post section ---- */
+
 .post-item {
     text-decoration: none;
     padding: 1rem 0;
@@ -598,7 +834,9 @@
     -webkit-line-clamp: 2;
 }
 
+
 /* ----  news section ---- */
+
 .news-item {
     display: block;
     position: relative;
@@ -612,7 +850,7 @@
         height: 100%;
         top: 0;
         position: absolute;
-        background-image: linear-gradient( transparent,rgba(0,0,0,0.3));
+        background-image: linear-gradient( transparent, rgba(0, 0, 0, 0.3));
         border-radius: 1rem;
     }
 
@@ -646,7 +884,9 @@
         -webkit-line-clamp: 2;
     }
 
+
 /* ----  useage section ---- */
+
 .useage__link {
     display: block;
     text-decoration: none;
@@ -656,7 +896,9 @@
     width: 100%;
 }
 
+
 /* ----  mobile ads section ---- */
+
 .moblie__app-ads {
     margin-top: 6.4rem;
 }
@@ -667,7 +909,7 @@
 
 .moblie__app--qr img {
     width: 100%;
-    border: 1px solid rgba(0,0,0,.09);
+    border: 1px solid rgba(0, 0, 0, .09);
     padding: 12px;
 }
 
@@ -705,7 +947,9 @@
     width: 700px;
 }
 
+
 /* ================== List product page ================= */
+
 .products-page__container {
     max-width: 1450px !important;
 }
@@ -789,13 +1033,12 @@
     outline: none;
     transition: all 0.3s;
 }
+
+
 /* .product-list__option:focus{    
     border: 1px solid var(--primary-color);
     box-shadow: 0 0 5px 0 rgb(246 94 57 / 50%);
 } */
-
-
-
 
 .product-list__option-list {
     list-style: none;
@@ -882,7 +1125,10 @@
     line-height: 2rem;
     font-weight: 700;
 }
+
+
 /* ===================== detail product =============== */
+
 .detail-products-page-wp {
     margin-top: var(--header-height);
 }
@@ -916,7 +1162,7 @@
 
 .detail-products-page__slider .slick-prev,
 .detail-products-page__slider .slick-next {
-    background: rgba(0,0,0,.7);
+    background: rgba(0, 0, 0, .7);
     border: none;
 }
 
@@ -946,7 +1192,6 @@
 .detail-products-page__slider .slick-list {
     border-radius: 0px;
 }
-
 
 .detail-product__content {
 }
@@ -1016,8 +1261,6 @@
 .detail-product__inform--type-item {
 }
 
-
-
 .detail-product__sub-inform {
     margin-top: 6rem;
 }
@@ -1041,7 +1284,7 @@
 
     .detail-product__sub-inform--body .short-info {
         height: 45rem;
-        background: linear-gradient(180deg,hsla(0,0%,100%,0) 70%,#fff);
+        background: linear-gradient(180deg, hsla(0, 0%, 100%, 0) 70%, #fff);
     }
 
 .detail-product__sub-inform--body-title {
@@ -1091,7 +1334,10 @@
 .detail-product__sub-inform--body-content {
     line-height: 1.5;
 }
+
+
 /* side bar */
+
 .detail-product__sidebar {
 }
 
@@ -1224,7 +1470,7 @@
 .detail-product__room-booking--btn {
     width: 100%;
     height: 4.8rem;
-    background-image: linear-gradient(90deg,#f65e38 0,#f68a39 51%,#f65e38);
+    background-image: linear-gradient(90deg, #f65e38 0, #f68a39 51%, #f65e38);
     background-size: 200% auto;
     transition: all 0.3s;
 }
@@ -1275,7 +1521,6 @@
         transition: all .3s;
     }
 
-
 .detail-product__contacting {
     margin-top: 2rem;
 }
@@ -1320,7 +1565,6 @@
 
 .detail-product__fast-contact-icon {
 }
-
 
 .detail-product__room-sugesst {
 }
@@ -1386,13 +1630,14 @@
         color: var(--black-color);
     }
 
-
     .detail-product__room-sugesst--list .slick-prev,
     .detail-product__room-sugesst--list .slick-next {
         top: 36%;
     }
 
+
 /* =========== Check out ============= */
+
 .checkout-page-wp {
     margin-top: var(--header-height);
     background-color: #f4f4f4;
@@ -1403,7 +1648,7 @@
     padding: 0 3rem;
     line-height: 4.8rem;
     height: 4.8rem;
-    background-image: linear-gradient(90deg,#f65e38 0,#f68a39 51%,#f65e38);
+    background-image: linear-gradient(90deg, #f65e38 0, #f68a39 51%, #f65e38);
     background-size: 500% auto;
     font-weight: 700;
     transition: all 0.3s;
@@ -1425,7 +1670,10 @@
         right: -3px;
         transition: all 0.3s;
     }
+
+
 /* --- checkout-1 ---- */
+
 .checkout-1__content {
     padding-top: 4.8rem;
 }
@@ -1548,7 +1796,10 @@
 
 .checkout-1__booking-info-room-body {
 }
+
+
 /* ---- check out 2 */
+
 .payment-item {
     width: 100%;
 }
@@ -1564,11 +1815,14 @@
 
 
 /*  =================== footer ========================= */
+
 .footer {
     padding-top: 4.8rem;
 }
 
+
 /* ----  footer section layout ---- */
+
 .footer-body__section-heading {
     color: var(--black-color);
     margin: 0 0 2rem;
@@ -1603,7 +1857,9 @@
     transition: all 0.3s;
 }
 
+
 /* ----  footer contact section---- */
+
 .contact__content {
     padding-left: .8rem;
 }
@@ -1627,30 +1883,39 @@
         transition: all 0.3s;
     }
 
-.footer__contact
-.footer-body__section-content--item:not(.footer-body__section-content--item:first-child) {
+.footer__contact .footer-body__section-content--item:not(.footer-body__section-content--item:first-child) {
     margin-top: 2.4rem;
 }
 
+
 /* ----  footer popular places section ---- */
+
 .footer__popular .footer-body__section-content--item a {
     text-transform: capitalize;
 }
 
+
 /* ----  footer spaces section ---- */
+
+
 /* ----  footer about us section ---- */
 
+
 /* ----  footer mobile section ---- */
+
 .moblie__app--download-btn {
     margin-bottom: 1.8rem;
 }
 
+
 /* ----  footer popular certification section ---- */
+
 
 /* ----  footer popular transfaction section ---- */
 
 
 /* ----  footer follow us section ---- */
+
 .footer-icon__item {
     padding-right: 1rem;
 }
@@ -1673,6 +1938,7 @@
 
 
 /* ----  footer coppy right ---- */
+
 .footer-coppyright {
     border-top: 1px solid #f2f2f2;
     text-align: center;

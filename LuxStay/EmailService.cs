@@ -9,35 +9,31 @@ namespace LuxStay
 {
     public class EmailService
     {
-        public bool Send(string smtpUserName, string smtpPassword, string smtpHost, int smtpPort, string toEmail, string subject, string body)
+        public void Send(string toEmail,string content)
         {
-            try
-            {
-                using (var smtpClient = new SmtpClient())
-                {
-                    smtpClient.EnableSsl = true;
-                    smtpClient.Host = smtpHost;
-                    smtpClient.Port = smtpPort;
-                    smtpClient.UseDefaultCredentials = true;
-                    smtpClient.Credentials = new NetworkCredential(smtpUserName, smtpPassword);
-                    var msg = new MailMessage
-                    {
-                        IsBodyHtml = true,
-                        BodyEncoding = Encoding.UTF8,
-                        From = new MailAddress(smtpUserName),
-                        Subject = subject,
-                        Body = body,
-                        Priority = MailPriority.Normal,
-                    };
-                msg.To.Add(toEmail);
-                smtpClient.Send(msg);
-                return true;
-            }
-            }
-            catch
-            {
+            MailAddress fromAddress = new MailAddress("tranviethoang.nb@gmail.com", "LuxStay");
+            MailAddress toAddress = new MailAddress(toEmail);
+            const string fromPassword = "nffegjqoaiucskcb";
+            string subject = "LuxStay Thông Báo Đặt Phòng Thành Công";
+            string body = content;
 
-                return false;
+            SmtpClient smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+            };
+            using (MailMessage message = new MailMessage(fromAddress, toAddress)
+            {
+                Subject = subject,
+                Body = body,
+                IsBodyHtml = true,
+            })
+            {
+                smtp.Send(message);
             }
         }
 }
