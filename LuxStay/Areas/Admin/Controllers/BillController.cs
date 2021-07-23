@@ -36,5 +36,9 @@ namespace LuxStay.Areas.Admin.Controllers
         {
             return Json(helper.confirmBill(billid,(int)Session["USER_ID"]), JsonRequestBehavior.AllowGet);
         }
+        public JsonResult Filter()
+        {
+            return Json("test", JsonRequestBehavior.AllowGet);
+        }
     }
 }

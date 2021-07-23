@@ -8,7 +8,7 @@ using System.IO;
 
 namespace LuxStay.Areas.Admin.Controllers
 {
-    public class StatController : Controller
+    public class StatController : BaseController
     {
         StatHelper helper = new StatHelper();
         // GET: Admin/Stat
