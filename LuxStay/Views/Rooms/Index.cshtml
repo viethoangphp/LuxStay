@@ -1,8 +1,8 @@
-﻿@{
-    ViewBag.Title = "Index";
+﻿@model LuxStay.Areas.Admin.Data.RoomModel
+@{
+    ViewBag.Title = Model.roomName;
     Layout = "~/Views/Shared/__HomeLayout.cshtml";
 }
-@model LuxStay.Areas.Admin.Data.RoomModel
 @section Header{
     <!-- header-sreach -->
     <div class="header__search col l-6 is-flex middle">
@@ -16,6 +16,95 @@
             </a>
         </div>
     </div>
+    <nav class="header__navbar col l-6 is-flex middle">
+        <ul class="header__navbar--list is-flex middle">
+            @using LuxStay.Areas.Admin.Data
+            @if (Session["USER"] == null)
+            {
+                <!-- Not login -->
+                <li class="header__navbar--item header__navbar-register">
+                    <a href="/Account/Register">Đăng ký</a>
+                </li>
+                <li class="header__navbar--item header__navbar-login">
+                    <a href="/Account/Login">Đăng nhập</a>
+                </li>
+            }
+            else
+            {
+                <!-- Login -->
+                <li class="header__navbar--item header__navbar-user has-dropdown-box">
+                    <a class="is-flex middle btn--dropdown">
+                        <div class="user-avar">
+                            <img src="~/Assets/Client/assets/img/user-ava.jpg" alt="">
+                        </div>
+                        <span>@(((CustomerModel)Session["USER"]).fullname)</span>
+                    </a>
+                    <div class="user-menu dropdown-box">
+                        <ul class="user-menu__list">
+                            <li class="user-menu__item">
+                                <a href="" class="user-menu__link">
+                                    <i class="far fa-calendar"></i>
+                                    <p>Đặt chỗ của tôi</p>
+                                </a>
+                            </li>
+                            <li class="user-menu__item">
+                                <a href="" class="user-menu__link">
+                                    <i class="fas fa-cog"></i>
+                                    <p>Cài đặt tài khoản</p>
+                                </a>
+                            </li>
+                            <li class="user-menu__item">
+                                <a href="" class="user-menu__link">
+                                    <i class="far fa-heart"></i>
+                                    <p>Yêu thích</p>
+                                </a>
+                            </li>
+                            <li class="user-menu__item">
+                                <a href="/Account/Logout" class="user-menu__link">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                    <p>Đăng xuất</p>
+                                </a>
+                            </li>
+                            <li class="user-menu__line"></li>
+                        </ul>
+                    </div>
+                </li>
+            }
+            <!-- crurrency -->
+            <li class="header__navbar--item header__navbar-currency has-dropdown-box">
+                <a class="is-flex middle btn--dropdown">
+                    <div class="currency-avar">
+                        <img src="~/Assets/Client/assets/img/flag/vn.svg" alt="">
+                    </div>
+                    <span>VND</span>
+                </a>
+                <div class="currency-box dropdown-box">
+                    <div class="is-flex">
+                        <div class="currency-box__language ">
+                            <a href="" class="is-flex middle is-checked">
+                                <img src="~/Assets/Client/assets/img/flag/vn.svg" alt="">
+                                <span>Tiếng Việt</span>
+                            </a>
+                            <a href="" class="is-flex middle ">
+                                <img src="~/Assets/Client/assets/img/flag/en.svg" alt="">
+                                <span>English</span>
+                            </a>
+                        </div>
+                        <div class="currency-box__monney">
+                            <a href="" class="is-flex middle is-checked">
+                                <b>VND</b>
+                                <span>Việt Nam Đồng</span>
+                            </a>
+                            <a href="" class="is-flex middle ">
+                                <b>USA</b>
+                                <span>United States Dollar</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </nav>
 }
 <div class="detail-products-page-wp">
     <div class="detail-products-page__slider-wp">
@@ -120,6 +209,18 @@
                                                 <li class="detail-product__sub-inform--item col l-3">
                                                     <i class="fas fa-wifi detail-product__sub-inform--item-icon"></i>
                                                     <span class="detail-product__sub-inform--item-info">Wifi</span>
+                                                </li>
+                                                <li class="detail-product__sub-inform--item col l-3">
+                                                    <i class="fas fa-tv detail-product__sub-inform--item-icon"></i>
+                                                    <span class="detail-product__sub-inform--item-info">TV</span>
+                                                </li>
+                                                <li class="detail-product__sub-inform--item col l-3">
+                                                    <i class="fas fa-wifi detail-product__sub-inform--item-icon"></i>
+                                                    <span class="detail-product__sub-inform--item-info">Tủ Lạnh</span>
+                                                </li>
+                                                <li class="detail-product__sub-inform--item col l-3">
+                                                    <i class="fas fa-wifi detail-product__sub-inform--item-icon"></i>
+                                                    <span class="detail-product__sub-inform--item-info">Điều Hòa</span>
                                                 </li>
                                             </ul>
                                         </div>
@@ -257,176 +358,211 @@
                 </div>
             </div>
             <!-- page sidebar -->
-          
-                <div class="col l-4 px-35">
-                    <div class="detail-product__sidebar">
-                        <div class="detail-product__share">
-                            <div class="btn">
-                                <span>Chia sẻ</span>
-                               
-                            </div>
+
+            <div class="col l-4 px-35">
+                <div class="detail-product__sidebar">
+                    <div class="detail-product__share">
+                        <div class="btn">
+                            <span>Chia sẻ</span>
+
                         </div>
-                        <div class="detail-product__sidebar-content-wp">
-                            <!-- check up -->
-                            <form action="/checkout" method="get">
-                                <div class="detail-product__sidebar-content">
-                                    <div class="detail-product__room-pricing">
+                    </div>
+                    <div class="detail-product__sidebar-content-wp">
+                        <!-- check up -->
+                        <form action="/checkout" method="get">
+                            <div class="detail-product__sidebar-content">
+                                <div class="detail-product__room-pricing">
+                                    @if (Model.salePersent != 0)
+                                    {
+                                        <span class="detail-product__room-price">@Model.priceSale ₫</span>
+                                        <span class="detail-product__room-night">/1 đêm</span>
+                                        <strike class="detail-product__room-price-discount">@Model.priceShow ₫</strike>
+                                    }
+                                    else
+                                    {
                                         <span class="detail-product__room-price">@Model.priceShow ₫</span>
                                         <span class="detail-product__room-night">/1 đêm</span>
+                                    }
+
+
+                                </div>
+                                @if (Model.salePersent != 0)
+                                {
+                                    <div class="detail-product__room-discount">
+                                        <span class="btn discount-box">
+                                            Giảm @Model.salePersent % từ chủ
+                                            nhà
+                                        </span>
                                     </div>
-                                    <div class="detail-product__room-date">
-                                        <div class="header__search--item header__search-day center" style="width: 100%">
-                                            <div class="is-flex middle" style="width:100%">
-                                                <input class="app-datepicker datepicker__header text-center" style="font-size:20px;font-weight:500" readonly/>
-                                                <input type="hidden" name="checkin" id="checkin"/>
-                                                <input  type="hidden" name="checkout" id="checkout"/>
-                                            </div>
+                                }
+
+                                <div class="detail-product__room-date">
+                                    <div class="header__search--item header__search-day center" style="width: 100%">
+                                        <div class="is-flex middle" style="width:100%">
+                                            <input class="app-datepicker datepicker__header text-center" style="font-size:20px;font-weight:500" readonly />
+                                            <input type="hidden" name="checkin" id="checkin" />
+                                            <input type="hidden" name="checkout" id="checkout" />
                                         </div>
                                     </div>
-                                    <div class="detail-product__room-people has-dropdown-box">
-                                        <span class="detail-product__room-people--title">1 khách</span>
-                                        <div class="dropdown-box">
-                                            <div class="select-number">
-                                                <div class="select-number__title">
-                                                    <p>Người lớn</p>
-                                                    <span>Trên 18 tuổi</span>
+                                </div>
+                                <div class="detail-product__room-people has-dropdown-box">
+                                    <span class="detail-product__room-people--title">1 khách</span>
+                                    <div class="dropdown-box">
+                                        <div class="select-number">
+                                            <div class="select-number__title">
+                                                <p>Người lớn</p>
+                                                <span>Trên 18 tuổi</span>
+                                            </div>
+                                            <div class="select-number__input-wp">
+                                                <div class="select-number__input--decrease disable">
+                                                    -
                                                 </div>
-                                                <div class="select-number__input-wp">
-                                                    <div class="select-number__input--decrease disable">
-                                                        -
-                                                    </div>
-                                                    <div class="select-number__input">
-                                                        <input type="text" placeholder="0">
-                                                    </div>
-                                                    <div class="select-number__input--increase ">
-                                                        +
-                                                    </div>
+                                                <div class="select-number__input">
+                                                    <input type="text" placeholder="0">
+                                                </div>
+                                                <div class="select-number__input--increase ">
+                                                    +
                                                 </div>
                                             </div>
-                                            <div class="select-number">
-                                                <div class="select-number__title">
-                                                    <p>Trẻ em</p>
-                                                    <span>Tuổi từ 2-12</span>
+                                        </div>
+                                        <div class="select-number">
+                                            <div class="select-number__title">
+                                                <p>Trẻ em</p>
+                                                <span>Tuổi từ 2-12</span>
+                                            </div>
+                                            <div class="select-number__input-wp">
+                                                <div class="select-number__input--decrease">
+                                                    -
                                                 </div>
-                                                <div class="select-number__input-wp">
-                                                    <div class="select-number__input--decrease">
-                                                        -
-                                                    </div>
-                                                    <div class="select-number__input">
-                                                        <input type="text" placeholder="0">
-                                                    </div>
-                                                    <div class="select-number__input--increase ">
-                                                        +
-                                                    </div>
+                                                <div class="select-number__input">
+                                                    <input type="text" placeholder="0">
+                                                </div>
+                                                <div class="select-number__input--increase ">
+                                                    +
                                                 </div>
                                             </div>
-                                            <div class="select-number">
-                                                <div class="select-number__title">
-                                                    <p>Trẻ sơ sinh</p>
-                                                    <span>Dưới 2 tuổi</span>
+                                        </div>
+                                        <div class="select-number">
+                                            <div class="select-number__title">
+                                                <p>Trẻ sơ sinh</p>
+                                                <span>Dưới 2 tuổi</span>
+                                            </div>
+                                            <div class="select-number__input-wp">
+                                                <div class="select-number__input--decrease">
+                                                    -
                                                 </div>
-                                                <div class="select-number__input-wp">
-                                                    <div class="select-number__input--decrease">
-                                                        -
-                                                    </div>
-                                                    <div class="select-number__input">
-                                                        <input type="text" placeholder="0">
-                                                    </div>
-                                                    <div class="select-number__input--increase ">
-                                                        +
-                                                    </div>
+                                                <div class="select-number__input">
+                                                    <input type="text" placeholder="0">
+                                                </div>
+                                                <div class="select-number__input--increase ">
+                                                    +
                                                 </div>
                                             </div>
-                                            <div class="select-number__options is-flex">
-                                                <button class="select-number__options--delete">Xóa</button>
-                                                <button class="select-number__options--save">Áp dụng</button>
-                                            </div>
+                                        </div>
+                                        <div class="select-number__options is-flex">
+                                            <button class="select-number__options--delete">Xóa</button>
+                                            <button class="select-number__options--save">Áp dụng</button>
                                         </div>
                                     </div>
-                                    <div class="detail-product__room-checkup-price">
-                                        <div class="detail-product__room-checkup--item">
-                                            <div class="is-flex middle">
-                                                <span class="detail-product__room-checkup--item-title">
-                                                    Giá thuê 1
-                                                    đêm
-                                                </span>
-                                                <i class="fas fa-question-circle detail-product__room-checkup--item-icon"></i>
-                                            </div>
-                                            <span class="detail-product__room-checkup--item-price">@Model.priceShow ₫</span>
-                                        </div>
-                                        <div class="detail-product__room-checkup--item">
-                                            <span class="detail-product__room-checkup--item-title">
-                                                Phí dịch vụ
+                                </div>
+                                <div class="detail-product__room-checkup-price">
+                                    <div class="detail-product__room-checkup--item">
+                                        <div class="is-flex middle">
+                                            <span class="detail-product__room-checkup--item-title" id="numStay">
+                                                Giá thuê 1
+                                                đêm
                                             </span>
-                                            <span class="detail-product__room-checkup--item-price">312,000₫</span>
+                                            <i class="fas fa-question-circle detail-product__room-checkup--item-icon"></i>
                                         </div>
-                                        <div class="detail-product__room-checkup--item room__checkup--sum">
-                                            <span class="detail-product__room-checkup--item-title">
-                                                Tổng tiền
-                                            </span>
-                                            <span class="detail-product__room-checkup--item-price">@Model.priceShow ₫</span>
-                                        </div>
+                                        @if (Model.salePersent != 0)
+                                        {
+                                            <span class="detail-product__room-checkup--item-price" id="price">@Model.priceSale ₫</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="detail-product__room-checkup--item-price" id="price">@Model.priceShow ₫</span>
+                                        }
                                     </div>
-                                    <div class="detail-product__room-coupon is-flex middle">
-                                        <div class="detail-product__room-coupon-title">
-                                            Giảm giá:
-                                            <strong style="color: #FF0037;">
-                                                30.000đ
-                                            </strong> - Mã:
-                                            <strong style=" color: #FF0037;">
-                                                CODE30
-                                            </strong>
-                                            <br>Ngày check-in:
-                                            <strong>Không giới hạn</strong>
-                                        </div>
-                                        <div class="detail-product__room-coupon-btn btn">
-                                            Áp dụng
-                                        </div>
+                                    <div class="detail-product__room-checkup--item">
+                                        <span class="detail-product__room-checkup--item-title">
+                                            Phí dịch vụ
+                                        </span>
+                                        <span class="detail-product__room-checkup--item-price">0₫</span>
                                     </div>
-                                    <div class="detail-product__room-booking">
-                                        <button  type="submit" class="detail-product__room-booking--btn btn" name="id" value="@Model.id">
-                                               ĐẶT NGAY
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                            <!-- contact -->
-                            <div class="detail-product__sidebar-content mt-12">
-                                <div class="detail-product__contact--heading">
-                                    <h4 class="detail-product__contact--title">
-                                        Tư vấn từ Luxstay
-                                    </h4>
-                                    <span class="detail-product__contact--sub-title">
-                                        Vui lòng cung cấp số điện thoại để nhận được tư vấn từ Luxstay cho chuyến đi
-                                        của bạn.
-                                    </span>
-                                </div>
-                                <input type="text" class="detail-product__contact--cus-name"
-                                       placeholder="Tên khách hàng">
-                                <input type="number" class="detail-product__contact--cus-phone"
-                                       placeholder="Số điện thoại">
-                                <div class="detail-product__contacting">
-                                    <div class="detail-product__contacting--btn btn">
-                                        <span>Nhận tư vấn miễn phí</span>
+                                    <div class="detail-product__room-checkup--item room__checkup--sum">
+                                        <span class="detail-product__room-checkup--item-title">
+                                            Tổng tiền
+                                        </span>
+                                        @if (Model.salePersent != 0)
+                                        {
+                                            <span class="detail-product__room-checkup--item-price" id="total">@Model.priceSale ₫</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="detail-product__room-checkup--item-price" id="total">@Model.priceShow ₫</span>
+                                        }
                                     </div>
                                 </div>
-                                <div class="detail-product__fast-contact">
-                                    <p class="mb--0 p--small-2 c-gray-3">
-                                        Gọi <a href="tel:0931889432"
-                                               class="text-bold detail-product__fast-contact-link">
-                                            0931889432 (miễn
-                                            phí)
-                                        </a> để
-                                        được hỗ trợ.
-                                    </p>
-                                    <i class="far fa-comment-dots detail-product__fast-contact-icon"></i>
+                                <div class="detail-product__room-coupon is-flex middle">
+                                    <div class="detail-product__room-coupon-title">
+                                        Giảm giá:
+                                        <strong style="color: #FF0037;">
+                                            30.000đ
+                                        </strong> - Mã:
+                                        <strong style=" color: #FF0037;">
+                                            CODE30
+                                        </strong>
+                                        <br>Ngày check-in:
+                                        <strong>Không giới hạn</strong>
+                                    </div>
+                                    <div class="detail-product__room-coupon-btn btn">
+                                        Áp dụng
+                                    </div>
+                                </div>
+                                <div class="detail-product__room-booking">
+                                    <button type="submit" class="detail-product__room-booking--btn btn" name="id" value="@Model.id">
+                                        ĐẶT NGAY
+                                    </button>
                                 </div>
                             </div>
+                        </form>
+                        <!-- contact -->
+                        <div class="detail-product__sidebar-content mt-12">
+                            <div class="detail-product__contact--heading">
+                                <h4 class="detail-product__contact--title">
+                                    Tư vấn từ Luxstay
+                                </h4>
+                                <span class="detail-product__contact--sub-title">
+                                    Vui lòng cung cấp số điện thoại để nhận được tư vấn từ Luxstay cho chuyến đi
+                                    của bạn.
+                                </span>
+                            </div>
+                            <input type="text" class="detail-product__contact--cus-name"
+                                   placeholder="Tên khách hàng">
+                            <input type="number" class="detail-product__contact--cus-phone"
+                                   placeholder="Số điện thoại">
+                            <div class="detail-product__contacting">
+                                <div class="detail-product__contacting--btn btn">
+                                    <span>Nhận tư vấn miễn phí</span>
+                                </div>
+                            </div>
+                            <div class="detail-product__fast-contact">
+                                <p class="mb--0 p--small-2 c-gray-3">
+                                    Gọi <a href="tel:0931889432"
+                                           class="text-bold detail-product__fast-contact-link">
+                                        0931889432 (miễn
+                                        phí)
+                                    </a> để
+                                    được hỗ trợ.
+                                </p>
+                                <i class="far fa-comment-dots detail-product__fast-contact-icon"></i>
+                            </div>
                         </div>
-
                     </div>
+
                 </div>
-           
+            </div>
+
             <!-- page room suggestion -->
             <div class="col l-12">
                 <div class="detail-product__room-sugesst mt-80">
@@ -468,21 +604,48 @@
 @section js{
     <script>
         $(".short-info-item p").attr("style", "line-hight:1.5");
+        var today = new Date();
+        var date1 = today.getDate() + '-' + '0' + (today.getMonth() + 1) + '-' + today.getFullYear();
+        var date2 = (today.getDate() + 1) + '-' + '0' + (today.getMonth() + 1) + '-' + today.getFullYear();
         $('.app-datepicker').daterangepicker({
             opens: 'left',
             locale: {
                 "separator": " đến ",
                 "format": "DD-MM-YYYY"
-            }
+            },
+            startDate: date1,
+            endDate: date2
         }, function (start, end, label) {
             console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
         });
+
+        $("#checkin").val(date1);
+        $("#checkout").val(date2);
         $('.app-datepicker').on('apply.daterangepicker', function (ev, picker) {
             $(this).val(picker.startDate.format('DD-MM-YYYY') + ' đến ' + picker.endDate.format('DD-MM-YYYY'));
             $("#checkin").val(picker.startDate.format('DD-MM-YYYY'));
             $("#checkout").val(picker.endDate.format('DD-MM-YYYY'));
+            var numDay = getNumberOfDays(picker.startDate.format('MM-DD-YYYY'), picker.endDate.format('MM-DD-YYYY'));
+            var total = numDay * @Model.priceSale1;
+            $("#numStay").text("Giá Thuê " + numDay + " đêm ");
+            $("#price").text(new Intl.NumberFormat({ style: 'currency', currency: 'JPY' }).format(total) + "đ");
+            $("#total").text(new Intl.NumberFormat({ style: 'currency', currency: 'JPY' }).format(total)+"đ");
         });
+        function getNumberOfDays(start, end) {
+            const date1 = new Date(start);
+            const date2 = new Date(end);
 
+            // One day in milliseconds
+            const oneDay = 1000 * 60 * 60 * 24;
+
+            // Calculating the time difference between two dates
+            const diffInTime = date2.getTime() - date1.getTime();
+
+            // Calculating the no. of days between two dates
+            const diffInDays = Math.round(diffInTime / oneDay);
+
+            return diffInDays;
+        }
     </script>
-    
+
 }

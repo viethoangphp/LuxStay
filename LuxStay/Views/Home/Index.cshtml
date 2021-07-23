@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Đặt Phòng Nhanh Chóng Tại LuxStay";
     Layout = "~/Views/Shared/__HomeLayout.cshtml";
 }
 @section Header{
@@ -211,7 +211,10 @@
                     <!-- section header -->
                     <div class="page-section__tittle-wp">
                         <div class="page-section__tittle">
-                            <h3 class="page-section__tittle--main">Chào mừng đến với Luxstay, The Duy!</h3>
+                            @if (Session["USER"] != null)
+                            {
+                                <h3 class="page-section__tittle--main">Chào mừng đến với Luxstay, @(((CustomerModel)Session["USER"]).fullname) </h3>
+                            }
                             <p class="page-section__tittle--sub">
                                 Đặt chỗ ở, homestay, cho thuê xe, trải nghiệm
                                 và

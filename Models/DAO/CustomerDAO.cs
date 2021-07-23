@@ -25,7 +25,7 @@ namespace Models.DAO
         }
         public Customer getCustomer(string email)
         {
-            Customer cus = db.Customers.FirstOrDefault(m=>m.Email == email);
+            Customer cus = db.Customers.FirstOrDefault(m => m.Email == email);
             return cus;
         }
         public Customer Auth(string email, string pass)
@@ -50,7 +50,7 @@ namespace Models.DAO
             try
             {
                 Customer cus = db.Customers.Find(id);
-                if(cus == null)
+                if (cus == null)
                 {
                     return 0;
                 }

@@ -20,7 +20,7 @@ namespace LuxStay.Areas.Admin.Controllers
         }
         public JsonResult Add(SaleModel model)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 int result = sale.Insert(model);
                 var list = sale.getListAll();
@@ -31,12 +31,12 @@ namespace LuxStay.Areas.Admin.Controllers
         public JsonResult Delete(int id)
         {
             int result = sale.Delete(id);
-            if(result == 1)
+            if (result == 1)
             {
                 var list = sale.getListAll();
                 return Json(list, JsonRequestBehavior.AllowGet);
             }
-           return Json("false", JsonRequestBehavior.AllowGet);
+            return Json("false", JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
         public JsonResult View(int id)
@@ -47,14 +47,14 @@ namespace LuxStay.Areas.Admin.Controllers
         }
         public JsonResult Update(SaleModel model)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 int result = sale.Update(model);
-                if(result == 1)
+                if (result == 1)
                 {
                     var list = sale.getListAll();
                     return Json(list, JsonRequestBehavior.AllowGet);
-                }    
+                }
             }
             return Json("false", JsonRequestBehavior.AllowGet);
         }
