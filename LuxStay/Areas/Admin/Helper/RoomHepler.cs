@@ -96,8 +96,11 @@ namespace LuxStay.Areas.Admin.Helper
                     model.Address = item.Address;
                     model.area = (int)item.Area;
                     model.avatar = item.Avatar;
+                    int priceSale = (int)(((100 - item.Sale.PercentSale) * item.Price))/ 100;
+                    model.priceSale = double.Parse(priceSale.ToString()).ToString("#,###", cul.NumberFormat);
                     model.priceShow = double.Parse(item.Price.ToString()).ToString("#,###", cul.NumberFormat);
                     model.bedNumber = (int)item.BedNumber;
+                    model.priceSale1 = priceSale;
                     model.bedRoom = (int)item.BedRoom;
                     model.bathRoom = (int)item.BathRoom;
                     model.peopleMax = (int)item.PeopleMax;
@@ -174,12 +177,15 @@ namespace LuxStay.Areas.Admin.Helper
             model.area = (int)item.Area;
             model.avatar = item.Avatar;
             model.price = (int)item.Price;
+            int priceSale = (int)(((100 - item.Sale.PercentSale) * item.Price))/100;
+            model.priceSale = double.Parse(priceSale.ToString()).ToString("#,###", cul.NumberFormat);
             model.priceShow = double.Parse(item.Price.ToString()).ToString("#,###", cul.NumberFormat);
             model.bedNumber = (int)item.BedNumber;
             model.bedRoom = (int)item.BedRoom;
             model.bathRoom = (int)item.BathRoom;
             model.peopleMax = (int)item.PeopleMax;
             model.content = item.ContentRoom;
+            model.priceSale1 = priceSale;
             model.status = item.Status;
             model.status = item.Status;
             model.utility = new List<int>();

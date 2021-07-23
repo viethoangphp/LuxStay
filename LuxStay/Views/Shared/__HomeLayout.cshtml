@@ -27,12 +27,13 @@
     <link rel="stylesheet" href="~/Assets/Client/assets/css/base.css">
     <link rel="stylesheet" href="~/Assets/Client/assets/css/main.css">
     <link rel="stylesheet" href="~/Assets/Client/assets/css/responsive.css">
+    <link href="~/Assets/Client/assets/css/loading.css" rel="stylesheet" />
 
     <!-- ------------------ Google font ------------------ -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 
-   
+
 
 
     <!-- --------------- Custom CSS --------------------- -->
@@ -40,11 +41,17 @@
 
     <!-- --------------- Page tittle --------------------- -->
     <link rel="shortcut icon" href="~/Assets/Client/assets/img/logo/logo.png">
-    <title>Đặt Phòng Nhanh Tại LuxStay</title>
+    <title>@ViewBag.Title</title>
 
 </head>
 
 <body>
+    <div class="loading">
+        <div class="lds-ripple">
+            <div></div>
+            <div></div>
+        </div>
+    </div>
     <div id="app">
         <header class="header">
             <div class="header__container grid wide">
@@ -52,7 +59,7 @@
                     <!-- header-sreach -->
                     @RenderSection("Header")
                     <!-- header-navbar -->
-                    
+
                 </div>
             </div>
         </header>
@@ -432,7 +439,15 @@
     <script src="~/Assets/Client/assets/js/slick-cus.js"></script>
     <script src="~/Assets/Client/assets/js/main.js"></script>
     <script src="~/Assets/Admin/plugins/toastr/toastr.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            setTimeout(() => {
+                document.getElementsByClassName("loading")[0].style.display = "none";
+                console.log("loaded")
+            }, 1500);
+        })
+    </script>
     @RenderSection("js", false);
-  
+
 </body>
 </html>

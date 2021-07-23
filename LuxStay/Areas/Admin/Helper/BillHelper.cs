@@ -88,8 +88,8 @@ namespace LuxStay.Areas.Admin.Helper
             Bill bill = new Bill();
             bill.Create_At = DateTime.Now;
             bill.RoomID = model.roomId;
-            bill.Check_in = DateTime.ParseExact(model.check_in, "dd-mm-yyyy", null);
-            bill.Check_out = DateTime.ParseExact(model.check_out, "dd-mm-yyyy", null);
+            bill.Check_in = DateTime.ParseExact(model.check_in, "dd-MM-yyyy", null);
+            bill.Check_out = DateTime.ParseExact(model.check_out, "dd-MM-yyyy", null);
             bill.Adult = model.adult;
             bill.Baby = model.baby;
             bill.Kid = model.kid;

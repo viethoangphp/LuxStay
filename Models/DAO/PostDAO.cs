@@ -17,9 +17,9 @@ namespace Models.DAO
         public List<Post> getListAll()
         {
             List<Post> list = new List<Post>();
-            foreach(var item in db.Posts)
+            foreach (var item in db.Posts)
             {
-                if(item.Status != -1)
+                if (item.Status != -1)
                 {
                     list.Add(item);
                 }
@@ -66,10 +66,10 @@ namespace Models.DAO
             try
             {
                 Post p = getPost(post.PostID);
-                if(p != null)
-                { 
+                if (p != null)
+                {
                     p.PostName = post.PostName;
-                    if(post.Avatar != null) { p.Avatar = post.Avatar; }
+                    if (post.Avatar != null) { p.Avatar = post.Avatar; }
                     p.Descprition = post.Descprition;
                     p.ContentPost = post.ContentPost;
                     p.Status = post.Status;

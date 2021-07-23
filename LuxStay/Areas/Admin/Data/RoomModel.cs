@@ -35,6 +35,8 @@ namespace LuxStay.Areas.Admin.Data
         [Required]
         public int price { set; get; }
         public String priceShow { set; get; }
+        public string priceSale { set; get; }
+        public int priceSale1 { set; get; }
         public String status { set; get; }
         public string avatar { set; get; }
         public HttpPostedFileBase avatarFile { set; get;}

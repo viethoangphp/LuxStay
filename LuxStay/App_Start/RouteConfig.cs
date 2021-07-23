@@ -22,6 +22,13 @@ namespace LuxStay
                url: "Rooms/{id}",
                defaults: new { controller = "Rooms", action = "Index", id = UrlParameter.Optional }
            );
+
+            routes.MapRoute(
+              name: "404",
+              url: "404",
+              defaults: new { controller = "Error", action = "NotFound" }
+          );
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

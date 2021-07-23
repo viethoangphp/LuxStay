@@ -5,7 +5,7 @@ using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using PagedList;
 namespace Models.DAO
 {
     public class RoomDAO
@@ -19,12 +19,12 @@ namespace Models.DAO
         }
         public List<Room> getListAll()
         {
-            return db.Rooms.Where(m=>m.Status == "Enable").ToList();
+            return db.Rooms.Where(m => m.Status == "Enable").ToList();
         }
         public int Delete(int id)
         {
             Room room = db.Rooms.Find(id);
-            if(room != null)
+            if (room != null)
             {
                 room.Status = "Disable";
                 db.SaveChanges();
@@ -32,9 +32,9 @@ namespace Models.DAO
             }
             return 0;
         }
-        public List<Room> getListRoomByLocationId(int locationId , int count = 0)
+        public List<Room> getListRoomByLocationId(int locationId, int count = 0)
         {
-            if(count == 0)
+            if (count == 0)
             {
                 return db.Rooms.Where(m => m.Status == "Enable" && m.LocationID == locationId).ToList();
             }
@@ -43,7 +43,7 @@ namespace Models.DAO
         public void Update(Room room)
         {
             Room update = db.Rooms.Find(room.RoomID);
-            if(update != null)
+            if (update != null)
             {
                 update.RoomName = room.RoomName;
                 update.CatID = room.CatID;
@@ -61,11 +61,15 @@ namespace Models.DAO
                 update.Status = room.Status;
                 update.Address = room.Address;
                 db.SaveChanges();
-            }    
+            }
         }
         public Room getRoomById(int id)
         {
             return db.Rooms.Find(id);
+        }
+        public IEnumerable<Room> getListPagination(int page, int pageSize)
+        {
+            return db.Rooms.OrderBy(m => m.RoomID).ToPagedList(page, pageSize);
         }
     }
 }
