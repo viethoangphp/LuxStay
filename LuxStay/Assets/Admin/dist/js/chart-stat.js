@@ -3,7 +3,7 @@
     var chart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10'],
+            labels: [],//['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10'],
             datasets: [
                 {
                     label: 'Doanh thu',
@@ -15,7 +15,7 @@
                     //pointStrokeColor: 'rgba(60,141,188,1)',
                     //pointHighlightFill: '#fff',
                     //pointHighlightStroke: 'rgba(60,141,188,1)',
-                    data: [44, 83, 18, 100, 30, 83, 10, 92, 96, 52]
+                    //data: [44, 83, 18, 100, 30, 83, 10, 92, 96, 52]
                 },
             ]
         },
@@ -33,28 +33,24 @@
         }
     })
 
-    //$.ajax({
-    //    url: "/Admin/Stat/Value",
-    //    method: "post",
-    //    data: { length: 10 },
-    //    dataType: "json",
-    //    success: function (data) {
-    //        var result = JSON.stringify(data)
-    //        alert(result);
-    //        var labels = result.map(function (e) {
-    //            return e.labels;
-    //        });
-    //        var value = result.map(function (e) {
-    //            return e.value;
-    //        });
+    $.ajax({
+        url: "/Admin/Stat/Value",
+        method: "post",
+        data: { length: 10 },
+        dataType: "json",
+        success: function (data) {
+            console.log(data);
+            var labels = data.map(function (e) {
+                return e.labels;
+            });
+            var values = data.map(function (e) {
+                return e.values;
+            });
 
-    //        alert(labels);
-    //        alert(value);
-
-    //        chart.data.labels = labels;
-    //        chart.data.datasets[0].data = value;
-    //        chart.update();
-    //    }
-    //});
+            chart.data.labels = labels;
+            chart.data.datasets[0].data = values;
+            chart.update();
+        }
+    });
     
 })

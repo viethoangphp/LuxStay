@@ -192,6 +192,7 @@
     <Compile Include="Areas\Admin\Data\LocationModel.cs" />
     <Compile Include="Areas\Admin\Data\PasswordUser.cs" />
     <Compile Include="Areas\Admin\Data\ServiceModel.cs" />
+    <Compile Include="Areas\Admin\Data\StatModel.cs" />
     <Compile Include="Areas\Admin\Helper\BillHelper.cs" />
     <Compile Include="Areas\Admin\Helper\CustomerHelper.cs" />
     <Compile Include="Areas\Admin\Helper\DashboardHelper.cs" />

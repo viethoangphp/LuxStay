@@ -56,6 +56,7 @@ namespace LuxStay.Areas.Admin.Helper
                     totalShow = ((int)item.Total).ToString("#,###", CultureInfo.GetCultureInfo("vi-VN").NumberFormat) + " đ",
                     status = (int)item.Status
                 };
+                view.Add(bill);
             }
             return view;
         }
