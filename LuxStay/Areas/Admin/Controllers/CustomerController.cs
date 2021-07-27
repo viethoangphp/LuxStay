@@ -41,7 +41,7 @@ namespace LuxStay.Areas.Admin.Controllers
             return Json(cus,JsonRequestBehavior.AllowGet);
         }
         //Thông tin khách hàng
-
+        
         //Thêm khách hàng
         [HttpPost]
         public JsonResult Add(CustomerModel data)

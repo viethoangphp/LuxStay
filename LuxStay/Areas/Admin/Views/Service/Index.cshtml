@@ -4,7 +4,7 @@
     Layout = "~/Areas/Admin/Views/Shared/__AdminLayout.cshtml";
 }
 @using LuxStay.Areas.Admin.Data
-@model List<ServiceView>
+@model List<ServiceModel>
 
 @section js{
     <script>
@@ -120,6 +120,10 @@
                         </select>
                     </div>
                     <div class="form-group">
+                        <label for="name">Icon</label>
+                        <input type="text" class="form-control" id="icon" value="" />
+                    </div>
+                    <div class="form-group">
                         <label for="status">Trạng thái</label>
                         <select class="form-control" id="status" required>
                             <option value="1">Hiển thị</option>
@@ -167,6 +171,10 @@
                                 <option value="@item.id">@item.name</option>
                             }
                         </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Icon</label>
+                        <input type="text" class="form-control" id="editIcon" value="" />
                     </div>
                     <div class="form-group">
                         <label for="status">Trạng thái</label>

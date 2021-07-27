@@ -11,10 +11,10 @@ namespace LuxStay.Areas.Admin.Helper
     public class ServiceHelper
     {
         protected ServiceDAO dao = new ServiceDAO();
-        public List<ServiceView> getListAll()
+        public List<ServiceModel> getListAll()
         {
             var models = dao.getListAll();
-            List<ServiceView> list = new List<ServiceView>();
+            List<ServiceModel> list = new List<ServiceModel>();
             foreach (var item in models)
             {
                 string st = "Hiển thị";
@@ -25,7 +25,7 @@ namespace LuxStay.Areas.Admin.Helper
                 Utility parent = dao.getUtility((int)item.ParentID);
                 string pName = "";
                 if(parent == null) { pName = "Gốc"; } else { pName = parent.Name; }
-                ServiceView utl = new ServiceView()
+                ServiceModel utl = new ServiceModel()
                 {
                     id = item.UtilityID,
                     name = item.Name,
@@ -38,7 +38,34 @@ namespace LuxStay.Areas.Admin.Helper
             }
             return list;
         }
-        public ServiceView getUtility(int id)
+        public List<ServiceModel> getListAll(int parentID)
+        {
+            var models = dao.getListAll(parentID);
+            List<ServiceModel> list = new List<ServiceModel>();
+            foreach (var item in models)
+            {
+                string st = "Hiển thị";
+                if (item.Status == 0)
+                {
+                    st = "Ẩn";
+                }
+                Utility parent = dao.getUtility((int)item.ParentID);
+                string pName = "";
+                if(parent == null) { pName = "Gốc"; } else { pName = parent.Name; }
+                ServiceModel utl = new ServiceModel()
+                {
+                    id = item.UtilityID,
+                    name = item.Name,
+                    parentid = (int)item.ParentID,
+                    parentname = pName,
+                    icon = item.Icon,
+                    status = st
+                };
+                list.Add(utl);
+            }
+            return list;
+        }
+        public ServiceModel getUtility(int id)
         {
             var models = dao.getUtility(id);
             string st = "Hiển thị";
@@ -49,7 +76,7 @@ namespace LuxStay.Areas.Admin.Helper
             Utility parent = dao.getUtility((int)models.ParentID);
             string pName = "";
             if (parent == null) { pName = "Gốc"; } else { pName = parent.Name; }
-            ServiceView view = new ServiceView()
+            ServiceModel view = new ServiceModel()
             {
                 id = models.UtilityID,
                 name = models.Name,
@@ -60,7 +87,7 @@ namespace LuxStay.Areas.Admin.Helper
             };
             return view;
         }
-        public int AddUtility(ServiceView data)
+        public int AddUtility(ServiceModel data)
         {
             int st = Convert.ToInt32(data.status);
             Utility utl = new Utility()
@@ -76,7 +103,7 @@ namespace LuxStay.Areas.Admin.Helper
         {
             return dao.Delete(id);
         }
-        public int EditUtility(ServiceView data)
+        public int EditUtility(ServiceModel data)
         {
             int st = Convert.ToInt32(data.status);
             Utility utl = new Utility()

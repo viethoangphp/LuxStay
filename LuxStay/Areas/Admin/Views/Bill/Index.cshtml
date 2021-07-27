@@ -1,0 +1,180 @@
+﻿
+@{
+    ViewBag.Title = "Danh sách đơn đặt phòng";
+    Layout = "~/Areas/Admin/Views/Shared/__AdminLayout.cshtml";
+}
+
+@section js{
+    <script>
+        $(document).ready(function () {
+            var table = $("#listView").DataTable({
+                ordering: false,
+                columnDefs: [
+                    { orderable: false, sortable: false, targets: 0 },
+                    { width: 130, targets: 8 },
+                    { width: 100, targets: 6 }
+                ],
+                columns: [
+                    {
+                        "data": "billId",
+                        "render": function (data) {
+                            return 'DDP00' + data;
+                        }
+                    },
+                    { "data": "customername" },
+                    { "data": "roomname" },
+                    { "data": "check_in" },
+                    { "data": "check_out" },
+                    { "data": "create_at" },
+                    { "data": "totalShow" },
+                    {
+                        "data": "status",
+                        "render": function (data, type, row, meta) {
+                            if (data == 1) {
+                                return 'Đã thanh toán';
+                            } else if (data == -1) {
+                                return 'Đã hủy bỏ';
+                            } else {
+                                return 'Chờ xác nhận';
+                            }
+                        }
+                    },
+                    {
+                        "data": "billId",
+                        "render": function (data, type, row, meta) {
+                            var html = '<div class="align-middle">';
+                            if (row.status == 0) {
+                                html += '<button class="btn btn-primary btn-confirm" data-id="' + data + '">' +
+                                    '<i class="fas fa-check"></i>' +
+                                    '</button>'
+                            }
+                            html += '<button class="btn btn-success btn-view" data-id="' + data + '" data-toggle="modal" data-target="#billDetailModal">' +
+                                '<i class="fas fa-eye"></i>' +
+                                '</button>' +
+                                '<button class="btn btn-danger btn-delete" data-id="' + data + '">' +
+                                '<i class="fas fa-trash-alt"></i>' +
+                                '</button>' +
+                                '</div>';
+                            return html;
+                        }
+                    }
+                ],
+                responsive: true,
+                autoWidth: false,
+                lengthMenu: [5, 10, 20, 50],
+                order: [[1, 'asc']],
+                ajax: {
+                    url: "/Admin/Bill/LoadData",
+                    method: "post",
+                    dataSrc: ""
+                }
+            });
+
+            //table.on('order.dt search.dt', function () {
+            //    table.column(0, { search: 'applied', order: 'applied' }).nodes().each(function (cell, i) {
+            //        cell.innerHTML = i + 1;
+            //    });
+            //}).draw();
+        });
+    </script>
+    <script src="~/Assets/Admin/dist/js/ajax/bill.js"></script>
+}
+
+<div class="card">
+    <div class="card-header">Tìm kiếm đơn hàng</div>
+    <div class="card-body">
+        <div class="row">
+            <div class="form-group col-4">
+                <label for="searchStatus">Trạng thái</label>
+                <select class="form-control" name="searchStatus">
+                    <option value="">Tất cả</option>
+                    <option value="1">Đã thanh toán</option>
+                    <option value="0">Chờ xác nhận</option>
+                    <option value="-1">Đã hủy bỏ</option>
+                </select>
+            </div>
+            <div class="form-group col-4">
+                <label for="searchStatus">Trạng thái</label>
+                <select class="form-control" name="searchStatus">
+                    <option value="">Tất cả</option>
+                    <option value="1">Đã thanh toán</option>
+                    <option value="0">Chờ xác nhận</option>
+                    <option value="-1">Đã hủy bỏ</option>
+                </select>
+            </div>
+            <div class="form-group col-4">
+                <label for="searchStatus">Trạng thái</label>
+                <select class="form-control" name="searchStatus">
+                    <option value="">Tất cả</option>
+                    <option value="1">Đã thanh toán</option>
+                    <option value="0">Chờ xác nhận</option>
+                    <option value="-1">Đã hủy bỏ</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title" style="margin-top: 9px;">
+            Danh sách đơn đặt phòng
+        </h3>
+        <div style="float: right;">
+            <button class="btn btn-primary" id="btn-refresh">
+                <i class="fas fa-sync-alt"></i>
+            </button>
+        </div>
+    </div>
+    <!-- /.card-header -->
+    <div id="dataTable" class="card-body">
+        <table id="listView" class="table table-bordered table-striped text-center">
+            <thead>
+                <tr>
+                    <th>Mã đơn</th>
+                    <th>Tên khách hàng</th>
+                    <th>Tên phòng</th>
+                    <th>Ngày nhận phòng</th>
+                    <th>Ngày trả phòng</th>
+                    <th>Ngày tạo</th>
+                    <th>Tổng tiền</th>
+                    <th>Trạng thái</th>
+                    <th>Tác vụ</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <!-- View Modal-->
+    <div class="modal fade" id="billDetailModal" tabindex="-1" role="dialog" aria-labelledby="billDetailModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="billDetailModalLabel">Thông tin đơn đặt phòng</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p id="billID"></p>
+                    <p id="customerName"></p>
+                    <p id="roomName"></p>
+                    <p id="numAdult"></p>
+                    <p id="numKid"></p>
+                    <p id="numBaby"></p>
+                    <p id="checkIn"></p>
+                    <p id="checkOut"></p>
+                    <p id="createAt"></p>
+                    <p id="totalMoney"></p>
+                    <p id="status"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End View Modal-->
+    <!-- /.card-body -->
+</div>

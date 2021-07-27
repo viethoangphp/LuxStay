@@ -12,6 +12,7 @@ namespace Models.DAO
         public UserDAO()
         {
             db = new DBContext();
+
         }
         public int Insert(User user)
         {
@@ -25,7 +26,7 @@ namespace Models.DAO
             else
             {
                 return 0;
-            }   
+            }
         }
         public User getUserById(int id)
         {
@@ -36,21 +37,21 @@ namespace Models.DAO
         {
             int id = user.UserID;
             var result = db.Users.Where(m => m.UserID == id).FirstOrDefault();
-            if(result != null)
+            if (result != null)
             {
                 result.Fullname = user.Fullname;
                 result.Password = user.Password;
                 result.Phone = user.Phone;
                 db.SaveChanges();
             }
-          
+
         }
         public void Status(int id)
         {
             User user = db.Users.Where(m => m.UserID == id).FirstOrDefault();
-            if(user != null)
+            if (user != null)
             {
-                if(user.Status != 1)
+                if (user.Status != 1)
                 {
                     user.Status = 1;
                     db.SaveChanges();
@@ -60,16 +61,16 @@ namespace Models.DAO
                     user.Status = 0;
                     db.SaveChanges();
                 }
-            }    
+            }
         }
         public int Delete(int id)
         {
-            if(id == 1)
+            if (id == 1)
             {
                 return 0;
-            }    
+            }
             User user = db.Users.Where(m => m.UserID == id).FirstOrDefault();
-            if(user != null)
+            if (user != null)
             {
                 db.Users.Remove(user);
                 db.SaveChanges();
@@ -81,10 +82,10 @@ namespace Models.DAO
         {
             return db.Users.ToList();
         }
-        public User Login(string email , string password)
+        public User Login(string email, string password)
         {
             var user = db.Users.Where(m => m.Email == email && m.Password == password).FirstOrDefault();
-            if(user != null)
+            if (user != null)
             {
                 return user;
             }

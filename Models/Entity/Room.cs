@@ -52,7 +52,7 @@ namespace Models.Entity
         [Column(TypeName = "ntext")]
         public string Note { get; set; }
 
-        [StringLength(11)]
+        [StringLength(10)]
         public string Status { get; set; }
 
         public int? MaxStay { get; set; }

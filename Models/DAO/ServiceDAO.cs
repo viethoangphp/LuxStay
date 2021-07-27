@@ -19,6 +19,11 @@ namespace Models.DAO
             List<Utility> list = db.Utilities.ToList();
             return list;
         }
+        public List<Utility> getListAll(int parentID)
+        {
+            List<Utility> list = db.Utilities.Where(p=>p.ParentID == parentID).ToList();
+            return list;
+        }
         public Utility getUtility(int id)
         {
             Utility utl = db.Utilities.Find(id);

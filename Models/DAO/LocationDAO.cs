@@ -19,10 +19,10 @@ namespace Models.DAO
         public List<Location> getListAll()
         {
             var list = db.Locations.ToList();
-            foreach(var item in list)
+            foreach (var item in list)
             {
                 item.RoomNumber = this.CoutRoomBeLongToLocation(item.LocationID);
-            }    
+            }
             return list;
         }
         public Location getByLocationId(int id)
@@ -34,7 +34,7 @@ namespace Models.DAO
         public int Delete(int id)
         {
             Location location = db.Locations.Find(id);
-            if(location != null)
+            if (location != null)
             {
                 db.Locations.Remove(location);
                 db.SaveChanges();
@@ -43,7 +43,7 @@ namespace Models.DAO
             else
             {
                 return 0;
-            }    
+            }
         }
         public int CoutRoomBeLongToLocation(int locationID)
         {

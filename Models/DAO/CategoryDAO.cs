@@ -12,7 +12,7 @@ namespace Models.DAO
         public List<RoomCategory> getListAll()
         {
             var list = db.RoomCategories.ToList();
-            foreach(var item in list)
+            foreach (var item in list)
             {
                 item.roomNumber = this.countRoomByCatId(item.CatID);
             }
@@ -27,7 +27,7 @@ namespace Models.DAO
         public int Delete(int id)
         {
             RoomCategory result = db.RoomCategories.Find(id);
-            if(result != null)
+            if (result != null)
             {
                 db.RoomCategories.Remove(result);
                 db.SaveChanges();
@@ -43,12 +43,12 @@ namespace Models.DAO
         public void Update(RoomCategory model)
         {
             RoomCategory rom = db.RoomCategories.Find(model.CatID);
-            if(rom != null)
+            if (rom != null)
             {
                 rom.CatName = model.CatName;
                 rom.Status = model.Status;
                 db.SaveChanges();
-            }    
+            }
         }
         public int countRoomByCatId(int catId)
         {

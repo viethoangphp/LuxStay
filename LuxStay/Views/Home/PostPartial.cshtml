@@ -1,0 +1,23 @@
+﻿@using LuxStay.Areas.Admin.Data
+@model List<PostModel>
+
+<div class="page-section__content">
+    <div class="news-list">
+        @foreach (var item in Model)
+        {
+            <div class="col l-4">
+                <a href="/bai-viet/@item.postID" class="news-item">
+                    <div class="item__notion">
+                        <p>Thông tin homestay</p>
+                    </div>
+                    <div class="news-item__img"
+                         style="background-image: url(@item.postAvatar);">
+                    </div>
+                    <div class="news-item__title">
+                        <p>@item.postTitle</p>
+                    </div>
+                </a>
+            </div>
+        }
+    </div>
+</div>
